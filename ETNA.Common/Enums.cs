@@ -9,6 +9,8 @@ namespace ETNA.Common
         // Para obtener una descripción del enumerador utilizar:
         // Enums.GetEnumDescription((MyEnum)value);
 
+        //hola
+
         #region Común
         public enum EstadoProducto
         {
