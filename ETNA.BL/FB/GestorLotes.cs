@@ -14,6 +14,7 @@ namespace ETNA.BL.FB
         {
             var context = new ETNADbModelContainer();
             return context.Lotes.ToList();
+            //AAAAAA
         }
 
         public int InsertarLote(string nroLote, int idTipoLote)
