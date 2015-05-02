@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DI\GestorVehiculos.cs" />
     <Compile Include="FB\GestorLotes.cs" />
     <Compile Include="LO\GestorAlmacenes.cs" />
     <Compile Include="LO\GestorEmpleados.cs" />
@@ -74,9 +75,7 @@
       <Name>ETNA.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PV\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

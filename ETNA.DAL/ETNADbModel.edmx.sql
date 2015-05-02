@@ -1,9 +1,9 @@
 
 -- --------------------------------------------------
--- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
+-- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/07/2015 19:34:51
--- Generated from EDMX file: C:\Users\DiegoMartín\documents\visual studio 2012\Projects\ETNA\ETNA.DAL\ETNADbModel.edmx
+-- Date Created: 05/02/2015 16:06:12
+-- Generated from EDMX file: D:\Proyectos\TP3\Etna\TP3-ETNA\ETNA.DAL\ETNADbModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -141,6 +141,9 @@ IF OBJECT_ID(N'[dbo].[DetalleSolicitudSalidaConjunto]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[DetalleGuiaSalidaConjunto]', 'U') IS NOT NULL
     DROP TABLE [dbo].[DetalleGuiaSalidaConjunto];
+GO
+IF OBJECT_ID(N'[dbo].[prueba]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[prueba];
 GO
 IF OBJECT_ID(N'[dbo].[DocumentosReferencia_GuiaEntrada]', 'U') IS NOT NULL
     DROP TABLE [dbo].[DocumentosReferencia_GuiaEntrada];
@@ -321,6 +324,14 @@ CREATE TABLE [dbo].[DetalleGuiaSalidaConjunto] (
 );
 GO
 
+-- Creating table 'Vehiculos'
+CREATE TABLE [dbo].[Vehiculos] (
+    [id] int IDENTITY(1,1) NOT NULL,
+    [marca] varchar(50)  NULL,
+    [placa] nvarchar(max)  NOT NULL
+);
+GO
+
 -- Creating table 'DocumentosReferencia_GuiaEntrada'
 CREATE TABLE [dbo].[DocumentosReferencia_GuiaEntrada] (
     [Id] int  NOT NULL,
@@ -456,6 +467,12 @@ ADD CONSTRAINT [PK_DetalleGuiaSalidaConjunto]
     PRIMARY KEY CLUSTERED ([IdGuiaSalida], [IdProducto] ASC);
 GO
 
+-- Creating primary key on [id] in table 'Vehiculos'
+ALTER TABLE [dbo].[Vehiculos]
+ADD CONSTRAINT [PK_Vehiculos]
+    PRIMARY KEY CLUSTERED ([id] ASC);
+GO
+
 -- Creating primary key on [Id] in table 'DocumentosReferencia_GuiaEntrada'
 ALTER TABLE [dbo].[DocumentosReferencia_GuiaEntrada]
 ADD CONSTRAINT [PK_DocumentosReferencia_GuiaEntrada]
@@ -477,13 +494,13 @@ GO
 -- Creating primary key on [webpages_Roles_RoleId], [UserProfile_UserId] in table 'webpages_UsersInRoles'
 ALTER TABLE [dbo].[webpages_UsersInRoles]
 ADD CONSTRAINT [PK_webpages_UsersInRoles]
-    PRIMARY KEY NONCLUSTERED ([webpages_Roles_RoleId], [UserProfile_UserId] ASC);
+    PRIMARY KEY CLUSTERED ([webpages_Roles_RoleId], [UserProfile_UserId] ASC);
 GO
 
 -- Creating primary key on [Empleado_Id], [Almacen_Id] in table 'EmpleadoAlmacen'
 ALTER TABLE [dbo].[EmpleadoAlmacen]
 ADD CONSTRAINT [PK_EmpleadoAlmacen]
-    PRIMARY KEY NONCLUSTERED ([Empleado_Id], [Almacen_Id] ASC);
+    PRIMARY KEY CLUSTERED ([Empleado_Id], [Almacen_Id] ASC);
 GO
 
 -- --------------------------------------------------

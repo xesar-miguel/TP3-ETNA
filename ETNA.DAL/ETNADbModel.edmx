@@ -22,6 +22,7 @@
     <EntitySet Name="SolicitudSalidaConjunto" EntityType="ETNADbModel.Store.SolicitudSalidaConjunto" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetalleSolicitudSalidaConjunto" EntityType="ETNADbModel.Store.DetalleSolicitudSalidaConjunto" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetalleGuiaSalidaConjunto" EntityType="ETNADbModel.Store.DetalleGuiaSalidaConjunto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vehiculos" EntityType="ETNADbModel.Store.Vehiculos" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DocumentosReferencia_GuiaEntrada" EntityType="ETNADbModel.Store.DocumentosReferencia_GuiaEntrada" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DocumentosReferencia_GuiaSalida" EntityType="ETNADbModel.Store.DocumentosReferencia_GuiaSalida" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DocumentosReferencia_AjusteInventario" EntityType="ETNADbModel.Store.DocumentosReferencia_AjusteInventario" store:Type="Tables" Schema="dbo" />
@@ -286,6 +287,14 @@
     <Property Name="Cantidad" Type="int" Nullable="false" />
     <Property Name="IdGuiaSalida" Type="int" Nullable="false" />
     <Property Name="IdProducto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehiculos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="marca" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="placa" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="DocumentosReferencia_GuiaEntrada">
     <Key>
@@ -715,15 +724,16 @@
             <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalidaConjunto" />
             <End Role="Producto" EntitySet="Productos" />
           </AssociationSet>
+          <EntitySet Name="Vehiculos" EntityType="ETNADbModel.Vehiculo" />
           </EntityContainer>
         <EntityType Name="DocumentoReferencia">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="IdentificadorDocumento" Nullable="false" />
-          <Property Type="DateTime" Name="FechaElaboracion" Nullable="false" />
-          <Property Type="String" Name="Observaciones" Nullable="true" />
+          <Property Type="String" Name="IdentificadorDocumento" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="DateTime" Name="FechaElaboracion" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Almacen" Relationship="ETNADbModel.DocumentoReferenciaAlmacen" FromRole="DocumentoReferencia" ToRole="Almacen" />
           <NavigationProperty Name="Empleado" Relationship="ETNADbModel.EmpleadoDocumentoReferencia" FromRole="DocumentoReferencia" ToRole="Empleado" />
           <NavigationProperty Name="Kardex" Relationship="ETNADbModel.DocumentoReferenciaKardex" FromRole="DocumentoReferencia" ToRole="Kardex" />
@@ -743,8 +753,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Nombre" Nullable="false" />
-          <Property Type="String" Name="Direccion" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Direccion" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Type="Int32" Name="Tipo" Nullable="false" />
           <Property Type="Int32" Name="AreaEnM2" Nullable="false" />
           <NavigationProperty Name="DocumentoReferencia" Relationship="ETNADbModel.DocumentoReferenciaAlmacen" FromRole="Almacen" ToRole="DocumentoReferencia" />
@@ -808,10 +818,10 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="UserProfile" Relationship="ETNADbModel.EmpleadoUserProfile" FromRole="Empleado" ToRole="UserProfile" />
           <NavigationProperty Name="Almacen" Relationship="ETNADbModel.EmpleadoAlmacen" FromRole="Empleado" ToRole="Almacen" />
-          <Property Type="String" Name="Nombres" Nullable="false" />
-          <Property Type="String" Name="Apellidos" Nullable="false" />
-          <Property Type="String" Name="Direccion" Nullable="false" />
-          <Property Type="String" Name="Cargo" Nullable="false" />
+          <Property Type="String" Name="Nombres" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Apellidos" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Direccion" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Cargo" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="DocumentoReferencia" Relationship="ETNADbModel.EmpleadoDocumentoReferencia" FromRole="Empleado" ToRole="DocumentoReferencia" />
           <NavigationProperty Name="SolicitudEntrada" Relationship="ETNADbModel.EmpleadoSolicitudEntrada" FromRole="Empleado" ToRole="SolicitudEntrada" />
           <NavigationProperty Name="SolicitudSalida" Relationship="ETNADbModel.SolicitudSalidaEmpleado" FromRole="Empleado" ToRole="SolicitudSalida" />
@@ -833,9 +843,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Nombre" Nullable="false" />
-          <Property Type="String" Name="DescripcionCorta" Nullable="false" />
-          <Property Type="String" Name="DescripcionLarga" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="DescripcionCorta" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="DescripcionLarga" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Type="Double" Name="PrecioListaCompra" Nullable="false" />
           <Property Type="Double" Name="PrecioListaVenta" Nullable="false" />
           <Property Type="Int32" Name="Estado" Nullable="false" />
@@ -849,13 +859,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="FechaElaboracion" Nullable="false" />
+          <Property Type="DateTime" Name="FechaElaboracion" Nullable="false" Precision="3" />
           <Property Type="Int32" Name="TipoEntrada" Nullable="false" />
           <Property Type="Int32" Name="Estado" Nullable="false" />
           <NavigationProperty Name="GuiaEntrada" Relationship="ETNADbModel.GuiaEntradaSolicitudEntrada" FromRole="SolicitudEntrada" ToRole="GuiaEntrada" />
           <NavigationProperty Name="SolicitudEntradaProducto" Relationship="ETNADbModel.SolicitudEntradaSolicitudEntradaProducto" FromRole="SolicitudEntrada" ToRole="SolicitudEntradaProducto" />
           <NavigationProperty Name="Empleado" Relationship="ETNADbModel.EmpleadoSolicitudEntrada" FromRole="SolicitudEntrada" ToRole="Empleado" />
-          <Property Type="String" Name="Observaciones" />
+          <Property Type="String" Name="Observaciones" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <Association Name="GuiaEntradaSolicitudEntrada">
           <End Type="ETNADbModel.GuiaEntrada" Role="GuiaEntrada" Multiplicity="0..1" />
@@ -868,7 +878,7 @@
           </Key>
           <Property Type="Int32" Name="IdProducto" Nullable="false" />
           <Property Type="Int32" Name="IdSolicitudEntrada" Nullable="false" />
-          <Property Type="String" Name="Cantidad" Nullable="false" />
+          <Property Type="String" Name="Cantidad" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="SolicitudEntrada" Relationship="ETNADbModel.SolicitudEntradaSolicitudEntradaProducto" FromRole="SolicitudEntradaProducto" ToRole="SolicitudEntrada" />
           <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoSolicitudEntradaProducto" FromRole="SolicitudEntradaProducto" ToRole="Producto" />
         </EntityType>
@@ -905,7 +915,7 @@
           <NavigationProperty Name="DocumentoReferencia" Relationship="ETNADbModel.DocumentoReferenciaKardex" FromRole="Kardex" ToRole="DocumentoReferencia" />
           <NavigationProperty Name="Almacen" Relationship="ETNADbModel.AlmacenKardex" FromRole="Kardex" ToRole="Almacen" />
           <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoKardex" FromRole="Kardex" ToRole="Producto" />
-          <Property Type="String" Name="Cantidad" Nullable="false" />
+          <Property Type="String" Name="Cantidad" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Type="Double" Name="ValorUnitario" Nullable="false" />
         </EntityType>
         <Association Name="DocumentoReferenciaKardex">
@@ -929,8 +939,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="NroLote" Nullable="false" />
-          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" />
+          <Property Type="String" Name="NroLote" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="3" />
           <NavigationProperty Name="TipoLote" Relationship="ETNADbModel.LoteTipoLote" FromRole="Lote" ToRole="TipoLote" />
         </EntityType>
         <EntityType Name="TipoLote">
@@ -938,7 +948,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Descripcion" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Lote" Relationship="ETNADbModel.LoteTipoLote" FromRole="TipoLote" ToRole="Lote" />
         </EntityType>
         <Association Name="LoteTipoLote">
@@ -950,12 +960,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="FechaElaboracion" Nullable="false" />
-          <Property Type="String" Name="DireccionEntrega" Nullable="false" />
-          <Property Type="String" Name="RazonSocialDestinatario" Nullable="false" />
+          <Property Type="DateTime" Name="FechaElaboracion" Nullable="false" Precision="3" />
+          <Property Type="String" Name="DireccionEntrega" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="RazonSocialDestinatario" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Type="Int32" Name="TipoSalida" Nullable="false" />
           <Property Type="Int32" Name="Estado" Nullable="false" />
-          <Property Type="String" Name="Observaciones" Nullable="true" />
+          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Empleado" Relationship="ETNADbModel.SolicitudSalidaEmpleado" FromRole="SolicitudSalida" ToRole="Empleado" />
           <NavigationProperty Name="GuiaSalida" Relationship="ETNADbModel.GuiaSalidaSolicitudSalida" FromRole="SolicitudSalida" ToRole="GuiaSalida" />
           <NavigationProperty Name="DetalleSolicitudSalida" Relationship="ETNADbModel.DetalleSolicitudSalidaSolicitudSalida" FromRole="SolicitudSalida" ToRole="DetalleSolicitudSalida" />
@@ -1039,6 +1049,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="placa" Type="String" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1227,6 +1245,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Vehiculos">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.Vehiculo)">
+        <MappingFragment StoreEntitySet="Vehiculos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="placa" ColumnName="placa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="DocumentoReferenciaAlmacen" TypeName="ETNADbModel.DocumentoReferenciaAlmacen" StoreEntitySet="DocumentosReferencia">
       <EndProperty Name="Almacen">
         <ScalarProperty Name="Id" ColumnName="Almacen_Id" />
@@ -1347,6 +1374,7 @@
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->

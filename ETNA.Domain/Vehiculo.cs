@@ -12,14 +12,10 @@ namespace ETNA.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class DetalleSolicitudSalida
+    public partial class Vehiculo
     {
-        public int Cantidad { get; set; }
-        public int IdProducto { get; set; }
-        public int IdSolicitudSalida { get; set; }
-        public int CantidadFinal { get; set; }
-    
-        public virtual Producto Producto { get; set; }
-        public virtual SolicitudSalida SolicitudSalida { get; set; }
+        public int id { get; set; }
+        public string marca { get; set; }
+        public string placa { get; set; }
     }
 }

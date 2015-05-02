@@ -101,6 +101,9 @@
     <Compile Include="UserProfile.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Vehiculo.cs">
+      <DependentUpon>ETNADbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="webpages_Membership.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>

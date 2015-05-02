@@ -8,7 +8,7 @@ GO
 
 /****** Object:  Table [dbo].[webpages_Membership]  */  
 INSERT [dbo].[webpages_Membership] ([UserId], [CreateDate], [ConfirmationToken], [IsConfirmed], [LastPasswordFailureDate], [PasswordFailuresSinceLastSuccess], [Password], [PasswordChangedDate], [PasswordSalt], [PasswordVerificationToken], [PasswordVerificationTokenExpirationDate]) 
-VALUES (1, CAST(0x0000A4620119316B AS DateTime), NULL, 1, NULL, 0, N'AIFI3+cfcxEdq+WHP8sIaQhFlWuXIugpzI0Ydd2kC51UyFuN1ZMyT4czvIrKcp0XgQ==', CAST(0x0000A4620119316B AS DateTime), N'', NULL, NULL)
+VALUES (1, CAST(0x0000A4620119316B AS DateTime), NULL, 1, NULL, 0, N'AKGufSA/XPH8iKxL3Wc2VLSBkCh1/M7tPEiftGE9hUtUXSQx2xy5xPJ9Y+FwTBhDVA==', CAST(0x0000A4620119316B AS DateTime), N'', NULL, NULL)
 INSERT [dbo].[webpages_Membership] ([UserId], [CreateDate], [ConfirmationToken], [IsConfirmed], [LastPasswordFailureDate], [PasswordFailuresSinceLastSuccess], [Password], [PasswordChangedDate], [PasswordSalt], [PasswordVerificationToken], [PasswordVerificationTokenExpirationDate]) 
 VALUES (2, CAST(0x0000A4620119316B AS DateTime), NULL, 1, NULL, 0, N'AKGufSA/XPH8iKxL3Wc2VLSBkCh1/M7tPEiftGE9hUtUXSQx2xy5xPJ9Y+FwTBhDVA==', CAST(0x0000A4620119316B AS DateTime), N'', NULL, NULL)
 INSERT [dbo].[webpages_Membership] ([UserId], [CreateDate], [ConfirmationToken], [IsConfirmed], [LastPasswordFailureDate], [PasswordFailuresSinceLastSuccess], [Password], [PasswordChangedDate], [PasswordSalt], [PasswordVerificationToken], [PasswordVerificationTokenExpirationDate]) 
@@ -41,9 +41,9 @@ INSERT INTO USERPROFILE (USERNAME) VALUES ('MIBERICO');
 INSERT INTO USERPROFILE (USERNAME) VALUES ('CROJAS');
 
 INSERT INTO EMPLEADOS (NOMBRES, APELLIDOS, DIRECCION, CARGO, USERPROFILE_USERID) 
-VALUES ('DIEGO MARTIN','VALDIVIA PEREZ','PRIMAVERA 1212','ASISTENTE ALMACEN',2);
+VALUES ('DIEGO MARTIN','VALDIVIA PEREZ','PRIMAVERA 1212','ASISTENTE ALMACEN',1);
 INSERT INTO EMPLEADOS (NOMBRES, APELLIDOS, DIRECCION, CARGO, USERPROFILE_USERID) 
-VALUES ('MIGUEL EDUARDO','DEL ALCAZAR ALVAREZ','PRIMERA JUNTA 127','ASISTENTE ALMACEN',1);
+VALUES ('MIGUEL EDUARDO','DEL ALCAZAR ALVAREZ','PRIMERA JUNTA 127','ASISTENTE ALMACEN',2);
 INSERT INTO EMPLEADOS (NOMBRES, APELLIDOS, DIRECCION, CARGO, USERPROFILE_USERID) 
 VALUES ('JOAN','MOSCOSO','AV. PERU 222','ASISTENTE ALMACEN',3);
 INSERT INTO EMPLEADOS (NOMBRES, APELLIDOS, DIRECCION, CARGO, USERPROFILE_USERID) 

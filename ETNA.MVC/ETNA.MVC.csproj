@@ -179,6 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DI\VehiculosController.cs" />
     <Compile Include="Controllers\FB\LoteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LO\GuiaEntradaController.cs" />
@@ -189,6 +190,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DI\VehiculoViewModel.cs" />
     <Compile Include="Models\FB\LoteViewModel.cs" />
     <Compile Include="Models\LO\AlmacenViewModel.cs" />
     <Compile Include="Models\LO\AltaGuiaEntradaModel.cs" />
@@ -333,6 +335,8 @@
     <Content Include="Views\GuiaSalida\Solicitudes.cshtml" />
     <Content Include="Views\GuiaSalida\Atender.cshtml" />
     <Content Include="Views\GuiaSalida\_ListaSolicitudSalida.cshtml" />
+    <Content Include="Views\Vehiculos\Index.cshtml" />
+    <Content Include="Views\Vehiculos\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
