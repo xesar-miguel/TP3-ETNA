@@ -1,0 +1,155 @@
+﻿@model ETNA.MVC.Models.LO.SolicitudEntradaViewModel
+
+@{
+    ViewBag.Title = "Atender solicitud de Entrada";
+}
+
+<h2>Atender Solicitud de Entrada</h2>
+
+<fieldset>
+    <legend>SolicitudEntradaViewModel</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.FechaElaboracion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaElaboracion)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.TipoEntrada)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoEntrada)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.NombreEmpleado)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NombreEmpleado)
+    </div>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "guiaentradaform" }))
+    {
+        <div class="display-label">
+            @Html.DisplayName("Productos")
+        </div>
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayName("Código de Producto")
+                </th>
+                <th>
+                    @Html.DisplayName("Nombre")
+                </th>
+                <th>
+                    @Html.DisplayName("Cantidad")
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Detalle)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreProducto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </table>
+        
+        @Html.Hidden("IdSolicitud", (int)ViewBag.IdSolicitud)
+        @Html.Hidden("IdAlmacen", (int)ViewBag.IdAlmacen)
+        @Html.Hidden("Observaciones", "")
+        @Html.Hidden("Rechazar", false)
+    
+        <input type="button" value="Cancelar" onclick="cancelar();"/>
+        <input type="button" value="Rechazar Solicitud" onclick="rechazarCreacion()" />
+        <input type="button" value="Generar Guía" onclick="confirmarCreacion()" />
+    }
+</fieldset>
+@section Scripts{
+    <script type="text/javascript">
+        var confirmarCreacion = function() {
+            bootbox.dialog({
+                message: "¿Está seguro de querer generar la guía de entrada?",
+                title: "Confirmación",
+                buttons: {
+                    cancel: {
+                        label: "Cancelar",
+                        callback: function() {
+                            // Don't do anything
+                        }
+                    },
+                    ok: {
+                        label: "Aceptar",
+                        callback: function() {
+                            $('#guiaentradaform').submit();
+                        }
+                    }
+                }
+            });
+        };
+
+        var rechazarCreacion = function() {
+            bootbox.dialog({
+                message: "¿Está seguro de querer rechazar la solicitud de entrada?",
+                title: "Confirmación",
+                buttons: {
+                    cancel: {
+                        label: "Cancelar",
+                        callback: function() {
+                            // Don't do anything
+                        }
+                    },
+                    ok: {
+                        label: "Aceptar",
+                        callback: function() {
+                            solicitarObservaciones();
+                        }
+                    }
+                }
+            });
+        };
+
+        var solicitarObservaciones = function() {
+            bootbox.prompt("Por favor, ingrese las observaciones correspondientes.", function(result) {
+                if (result == null) {
+                    //Presionaron Cancel
+                    return true;
+                } else {
+                    //Presionaron OK
+                    if (result.trim() === '') {
+                        //No metieron las observaciones
+                        toastr["error"]('Las observaciones son un campo obligatorio.');
+                        return false;
+                    } else {
+                        //Solicitamos el rechazo
+                        $('#Observaciones').val(result);
+                        $('#Rechazar').val(true);
+                        $('#guiaentradaform').submit();
+                        return true;
+                    }
+                }
+            });
+        };
+
+        var cancelar = function() {
+            var url = '@Url.Action("Solicitudes", "GuiaEntrada", new {id = (int)ViewBag.IdAlmacen })';
+            window.location.href = url;
+        };
+    </script>
+}
+
+
+
+
+

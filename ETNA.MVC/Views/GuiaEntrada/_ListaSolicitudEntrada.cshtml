@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ETNA.MVC.Models.LO.ListaSolicitudEntradaViewModel>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaElaboracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoEntrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreEmpleado)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaElaboracion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoEntrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreEmpleado)
+            </td>
+            <td>
+                @Html.ActionLink("Atender", "Atender", new { id = item.Id, idAlmacen = ViewContext.RouteData.Values["id"] })
+            </td>
+        </tr>
+    }
+</table>

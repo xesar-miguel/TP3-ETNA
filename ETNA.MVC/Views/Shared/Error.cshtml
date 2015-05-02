@@ -1,0 +1,12 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<hgroup class="title">
+    <h1 class="error">Error.</h1>
+    <h2 class="error">@ViewBag.Message</h2>
+</hgroup>
+
+<input type="submit" value="Atrás"  onclick="window.history.back();"/>

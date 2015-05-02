@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d4f655158b6048a3b7a28136c7c3a2cf" Name="Diagrama1" ZoomLevel="109" >
+        <EntityTypeShape EntityType="ETNADbModel.DocumentoReferencia" Width="2.125" PointX="3.625" PointY="1" />
+        <EntityTypeShape EntityType="ETNADbModel.GuiaEntrada" Width="1.5" PointX="1.25" PointY="1.5" />
+        <InheritanceConnector EntityType="ETNADbModel.GuiaEntrada" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="ETNADbModel.GuiaSalida" Width="1.5" PointX="2.125" PointY="4" />
+        <InheritanceConnector EntityType="ETNADbModel.GuiaSalida" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="ETNADbModel.AjusteInventario" PointX="3.625" PointY="5.375" Width="1.5" />
+        <InheritanceConnector ManuallyRouted="false" EntityType="ETNADbModel.AjusteInventario">
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="ETNADbModel.Almacen" Width="1.5" PointX="10" PointY="2.125" />
+        <AssociationConnector Association="ETNADbModel.DocumentoReferenciaAlmacen" />
+        <EntityTypeShape EntityType="ETNADbModel.UserProfile" Width="1.5" PointX="16.625" PointY="1.125" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="ETNADbModel.webpages_Membership" Width="1.5" PointX="14.125" PointY="4.75" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="ETNADbModel.webpages_OAuthMembership" PointX="16.25" PointY="4.75" Width="1.5" FillColor="255, 128, 0" />
+        <EntityTypeShape EntityType="ETNADbModel.webpages_Roles" Width="1.5" PointX="18.5" PointY="3.875" FillColor="255, 128, 0" />
+        <AssociationConnector Association="ETNADbModel.webpages_UsersInRoles" ></AssociationConnector>
+        <EntityTypeShape EntityType="ETNADbModel.Empleado" Width="1.5" PointX="13.625" PointY="0.875" FillColor="LightGreen" />
+        <AssociationConnector Association="ETNADbModel.EmpleadoUserProfile" />
+        <AssociationConnector Association="ETNADbModel.EmpleadoAlmacen" />
+        <AssociationConnector Association="ETNADbModel.EmpleadoDocumentoReferencia" />
+        <EntityTypeShape EntityType="ETNADbModel.Producto" Width="1.5" PointX="9.125" PointY="8.125" FillColor="LightGreen" />
+        <EntityTypeShape EntityType="ETNADbModel.SolicitudEntrada" Width="1.5" PointX="0.5" PointY="5" />
+        <AssociationConnector Association="ETNADbModel.GuiaEntradaSolicitudEntrada" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleSolicitudEntrada" Width="1.5" PointX="3.875" PointY="7.875" />
+        <AssociationConnector Association="ETNADbModel.SolicitudEntradaSolicitudEntradaProducto" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="ETNADbModel.ProductoSolicitudEntradaProducto" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ETNADbModel.Kardex" Width="1.5" PointX="6.25" PointY="4.5" />
+        <AssociationConnector Association="ETNADbModel.DocumentoReferenciaKardex" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="ETNADbModel.AlmacenKardex" />
+        <AssociationConnector Association="ETNADbModel.ProductoKardex" />
+        <AssociationConnector Association="ETNADbModel.EmpleadoSolicitudEntrada" />
+        <EntityTypeShape EntityType="ETNADbModel.Lote" Width="1.5" PointX="12.5" PointY="8.875" FillColor="Red" />
+        <EntityTypeShape EntityType="ETNADbModel.TipoLote" Width="1.5" PointX="16.25" PointY="8.875" FillColor="Red" />
+        <AssociationConnector Association="ETNADbModel.LoteTipoLote" />
+        <EntityTypeShape EntityType="ETNADbModel.SolicitudSalida" Width="1.5" PointX="12" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleSolicitudSalida" Width="1.5" PointX="6" PointY="7.625" />
+        <AssociationConnector Association="ETNADbModel.SolicitudSalidaEmpleado" />
+        <AssociationConnector Association="ETNADbModel.GuiaSalidaSolicitudSalida" />
+        <AssociationConnector Association="ETNADbModel.DetalleSolicitudSalidaProducto" />
+        <AssociationConnector Association="ETNADbModel.DetalleSolicitudSalidaSolicitudSalida" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleGuiaSalida" Width="1.5" PointX="9.875" PointY="5.125" />
+        <AssociationConnector Association="ETNADbModel.DetalleGuiaSalidaGuiaSalida" />
+        <AssociationConnector Association="ETNADbModel.DetalleGuiaSalidaProducto" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

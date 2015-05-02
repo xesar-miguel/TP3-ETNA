@@ -1,0 +1,239 @@
+﻿@model ETNA.MVC.Models.LO.SolicitudSalidaViewModel
+
+@{
+    ViewBag.Title = "Atender solicitud de Salida";
+}
+
+<h2>Atender Solicitud de Salida</h2>
+
+<fieldset>
+    <legend>SolicitudSalidaViewModel</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.FechaElaboracion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaElaboracion)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.TipoSalida)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoSalida)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.NombreEmpleado)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NombreEmpleado)
+    </div>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "guiasalidaform" }))
+    {
+        <div class="display-label">
+            @Html.DisplayName("Productos")
+        </div>
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayName("Código de Producto")
+                </th>
+                <th>
+                    @Html.DisplayName("Nombre")
+                </th>
+                <th>
+                    @Html.DisplayName("Cantidad Inicial")
+                </th>
+                <th>
+                    @Html.DisplayName("Cantidad Restante")
+                </th>
+                <th>
+                    @Html.DisplayName("Cantidad Saliente")
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Detalle)
+            {
+                <tr>
+                    <td>
+                        @Html.Hidden("IdProducto", item.Id)
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreProducto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
+                    <td>
+                        @Html.Hidden("CantidadFinal", item.CantidadFinal)
+                        @Html.DisplayFor(modelItem => item.CantidadFinal)
+                    </td>
+                    <td>
+                        @Html.EditorFor(modelItem => item.CantidadSaliente, "", "cantidadSaliente")
+                    </td>
+                    <td></td>
+                </tr>
+            }
+        </table>
+        
+        @Html.Hidden("IdSolicitud", (int)ViewBag.IdSolicitud)
+        @Html.Hidden("IdAlmacen", (int)ViewBag.IdAlmacen)
+        @Html.Hidden("Observaciones", "")
+        @Html.Hidden("Rechazar", false)
+    
+        <input type="button" value="Cancelar" onclick="cancelar();" />
+        <input type="button" value="Generar Guía" onclick="confirmarCreacion()" />
+    }
+</fieldset>
+@section Scripts{
+    <script type="text/javascript">
+
+        $.postify = function(value) {
+            var result = {};
+
+            var buildResult = function(object, prefix) {
+                for (var key in object) {
+
+                    var postKey = isFinite(key)
+                        ? (prefix != "" ? prefix : "") + "[" + key + "]"
+                        : (prefix != "" ? prefix + "." : "") + key;
+
+                    switch (typeof (object[key])) {
+                    case "number":
+                    case "string":
+                    case "boolean":
+                        result[postKey] = object[key];
+                        break;
+
+                    case "object":
+                        if (object[key].toUTCString)
+                            result[postKey] = object[key].toUTCString().replace("UTC", "GMT");
+                        else {
+                            buildResult(object[key], postKey != "" ? postKey : key);
+                        }
+                    }
+                }
+            };
+
+            buildResult(value, "");
+
+            return result;
+        };
+
+        var generarGuia = function() {
+
+            var postdata = {};
+            postdata.IdSolicitud = $('#IdSolicitud').val();
+            postdata.IdAlmacen = $('#IdAlmacen').val();
+            postdata.Productos = [];
+
+            var idProductos = [];
+            $('[name="IdProducto"]').each(function() {
+                idProductos.push(this.value);
+            });
+
+            var cantidades = [];
+            $('[name="cantidadSaliente"]').each(function() {
+                cantidades.push(this.value);
+            });
+
+            var cantidadesFinales = [];
+            $('[name="CantidadFinal"]').each(function () {
+                cantidadesFinales.push(this.value);
+            });
+
+            for (var i = 0; i < idProductos.length; i++) {
+
+                var cantidadesUnit = parseInt(cantidades[i]);
+                var cantidadesFinalesUnit = parseInt(cantidadesFinales[i]);
+
+                // Si cantidad no es un número
+
+                var patron = /^\d*$/;
+
+                if (patron.test(cantidadesUnit)) {
+                    null;
+                }
+                else
+                {
+                    toastr["error"]('Por favor corrija las cantidades ingresadas. Deben ser números y no inferiores a cero.');
+                    return false;
+                }
+
+                // Si cantidad < 0
+                if (cantidadesUnit < 0) {
+                    toastr["error"]('No se pueden atender atender cantidades inferiores a cero.');
+                    return false;
+                }
+                // Si cantidad > cantidad restante
+                if (cantidadesFinalesUnit < cantidadesUnit) {
+                    toastr["error"]('No se pueden atender cantidades mayores que las restantes.');
+                    return false;
+                }
+
+                postdata.Productos.push({ IdProducto: idProductos[i], CantidadSaliente: cantidades[i] });
+            }
+
+
+            $.post('@Url.Action("Atender")', $.postify(postdata), function(data) {
+                var url = '@Url.Action("Solicitudes", new {id = ViewBag.IdAlmacen})';
+                window.location = url;
+            }).error(function() {
+                alert('there was an error');
+            });
+        };
+
+        var confirmarCreacion = function() {
+            bootbox.dialog({
+                message: "¿Está seguro de querer generar la guía de salida?",
+                title: "Confirmación",
+                buttons: {
+                    cancel: {
+                        label: "Cancelar",
+                        callback: function() {
+                            // Don't do anything
+                        }
+                    },
+                    ok: {
+                        label: "Aceptar",
+                        callback: function() {
+                            generarGuia();
+                        }
+                    }
+                }
+            });
+        };
+
+        var solicitarObservaciones = function() {
+            bootbox.prompt("Por favor, ingrese las observaciones correspondientes.", function(result) {
+                if (result == null) {
+                    //Presionaron Cancel
+                    return true;
+                } else {
+                    //Presionaron OK
+                    if (result.trim() === '') {
+                        //No metieron las observaciones
+                        toastr["error"]('Las observaciones son un campo obligatorio.');
+                        return false;
+                    } else {
+                        //Solicitamos el rechazo
+                        $('#Observaciones').val(result);
+                        $('#Rechazar').val(true);
+                        $('#guiaentradaform').submit();
+                        return true;
+                    }
+                }
+            });
+        };
+
+        var cancelar = function() {
+            var url = '@Url.Action("Solicitudes", "GuiaSalida", new {id = (int) ViewBag.IdAlmacen})';
+            window.location.href = url;
+        };
+
+
+    </script>
+}

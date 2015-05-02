@@ -1,0 +1,1356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ETNADbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ETNADbModelStoreContainer">
+    <EntitySet Name="DocumentosReferencia" EntityType="ETNADbModel.Store.DocumentosReferencia" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Almacenes" EntityType="ETNADbModel.Store.Almacenes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserProfile" EntityType="ETNADbModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_Membership" EntityType="ETNADbModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="ETNADbModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_Roles" EntityType="ETNADbModel.Store.webpages_Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Empleados" EntityType="ETNADbModel.Store.Empleados" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Productos" EntityType="ETNADbModel.Store.Productos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SolicitudesEntrada" EntityType="ETNADbModel.Store.SolicitudesEntrada" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleSolicitudEntrada" EntityType="ETNADbModel.Store.DetalleSolicitudEntrada" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kardex" EntityType="ETNADbModel.Store.Kardex" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Lotes" EntityType="ETNADbModel.Store.Lotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoLotes" EntityType="ETNADbModel.Store.TipoLotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SolicitudSalidaConjunto" EntityType="ETNADbModel.Store.SolicitudSalidaConjunto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleSolicitudSalidaConjunto" EntityType="ETNADbModel.Store.DetalleSolicitudSalidaConjunto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleGuiaSalidaConjunto" EntityType="ETNADbModel.Store.DetalleGuiaSalidaConjunto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DocumentosReferencia_GuiaEntrada" EntityType="ETNADbModel.Store.DocumentosReferencia_GuiaEntrada" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DocumentosReferencia_GuiaSalida" EntityType="ETNADbModel.Store.DocumentosReferencia_GuiaSalida" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DocumentosReferencia_AjusteInventario" EntityType="ETNADbModel.Store.DocumentosReferencia_AjusteInventario" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_UsersInRoles" EntityType="ETNADbModel.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmpleadoAlmacen" EntityType="ETNADbModel.Store.EmpleadoAlmacen" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="DocumentoReferenciaAlmacen" Association="ETNADbModel.Store.DocumentoReferenciaAlmacen">
+      <End Role="DocumentoReferencia" EntitySet="DocumentosReferencia" />
+      <End Role="Almacen" EntitySet="Almacenes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_webpages_UsersInRoles_webpages_Roles" Association="ETNADbModel.Store.FK_webpages_UsersInRoles_webpages_Roles">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_webpages_UsersInRoles_UserProfile" Association="ETNADbModel.Store.FK_webpages_UsersInRoles_UserProfile">
+      <End Role="UserProfile" EntitySet="UserProfile" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="EmpleadoUserProfile" Association="ETNADbModel.Store.EmpleadoUserProfile">
+      <End Role="Empleado" EntitySet="Empleados" />
+      <End Role="UserProfile" EntitySet="UserProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpleadoAlmacen_Empleado" Association="ETNADbModel.Store.FK_EmpleadoAlmacen_Empleado">
+      <End Role="Empleado" EntitySet="Empleados" />
+      <End Role="EmpleadoAlmacen" EntitySet="EmpleadoAlmacen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmpleadoAlmacen_Almacen" Association="ETNADbModel.Store.FK_EmpleadoAlmacen_Almacen">
+      <End Role="Almacen" EntitySet="Almacenes" />
+      <End Role="EmpleadoAlmacen" EntitySet="EmpleadoAlmacen" />
+    </AssociationSet>
+    <AssociationSet Name="EmpleadoDocumentoReferencia" Association="ETNADbModel.Store.EmpleadoDocumentoReferencia">
+      <End Role="Empleado" EntitySet="Empleados" />
+      <End Role="DocumentoReferencia" EntitySet="DocumentosReferencia" />
+    </AssociationSet>
+    <AssociationSet Name="GuiaEntradaSolicitudEntrada" Association="ETNADbModel.Store.GuiaEntradaSolicitudEntrada">
+      <End Role="GuiaEntrada" EntitySet="DocumentosReferencia_GuiaEntrada" />
+      <End Role="SolicitudEntrada" EntitySet="SolicitudesEntrada" />
+    </AssociationSet>
+    <AssociationSet Name="SolicitudEntradaSolicitudEntradaProducto" Association="ETNADbModel.Store.SolicitudEntradaSolicitudEntradaProducto">
+      <End Role="SolicitudEntrada" EntitySet="SolicitudesEntrada" />
+      <End Role="SolicitudEntradaProducto" EntitySet="DetalleSolicitudEntrada" />
+    </AssociationSet>
+    <AssociationSet Name="ProductoSolicitudEntradaProducto" Association="ETNADbModel.Store.ProductoSolicitudEntradaProducto">
+      <End Role="Producto" EntitySet="Productos" />
+      <End Role="SolicitudEntradaProducto" EntitySet="DetalleSolicitudEntrada" />
+    </AssociationSet>
+    <AssociationSet Name="DocumentoReferenciaKardex" Association="ETNADbModel.Store.DocumentoReferenciaKardex">
+      <End Role="DocumentoReferencia" EntitySet="DocumentosReferencia" />
+      <End Role="Kardex" EntitySet="Kardex" />
+    </AssociationSet>
+    <AssociationSet Name="AlmacenKardex" Association="ETNADbModel.Store.AlmacenKardex">
+      <End Role="Almacen" EntitySet="Almacenes" />
+      <End Role="Kardex" EntitySet="Kardex" />
+    </AssociationSet>
+    <AssociationSet Name="ProductoKardex" Association="ETNADbModel.Store.ProductoKardex">
+      <End Role="Producto" EntitySet="Productos" />
+      <End Role="Kardex" EntitySet="Kardex" />
+    </AssociationSet>
+    <AssociationSet Name="EmpleadoSolicitudEntrada" Association="ETNADbModel.Store.EmpleadoSolicitudEntrada">
+      <End Role="Empleado" EntitySet="Empleados" />
+      <End Role="SolicitudEntrada" EntitySet="SolicitudesEntrada" />
+    </AssociationSet>
+    <AssociationSet Name="LoteTipoLote" Association="ETNADbModel.Store.LoteTipoLote">
+      <End Role="Lote" EntitySet="Lotes" />
+      <End Role="TipoLote" EntitySet="TipoLotes" />
+    </AssociationSet>
+    <AssociationSet Name="SolicitudSalidaEmpleado" Association="ETNADbModel.Store.SolicitudSalidaEmpleado">
+      <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
+      <End Role="Empleado" EntitySet="Empleados" />
+    </AssociationSet>
+    <AssociationSet Name="GuiaSalidaSolicitudSalida" Association="ETNADbModel.Store.GuiaSalidaSolicitudSalida">
+      <End Role="GuiaSalida" EntitySet="DocumentosReferencia_GuiaSalida" />
+      <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
+    </AssociationSet>
+    <AssociationSet Name="DetalleSolicitudSalidaProducto" Association="ETNADbModel.Store.DetalleSolicitudSalidaProducto">
+      <End Role="DetalleSolicitudSalida" EntitySet="DetalleSolicitudSalidaConjunto" />
+      <End Role="Producto" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="DetalleSolicitudSalidaSolicitudSalida" Association="ETNADbModel.Store.DetalleSolicitudSalidaSolicitudSalida">
+      <End Role="DetalleSolicitudSalida" EntitySet="DetalleSolicitudSalidaConjunto" />
+      <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
+    </AssociationSet>
+    <AssociationSet Name="DetalleGuiaSalidaGuiaSalida" Association="ETNADbModel.Store.DetalleGuiaSalidaGuiaSalida">
+      <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalidaConjunto" />
+      <End Role="GuiaSalida" EntitySet="DocumentosReferencia_GuiaSalida" />
+    </AssociationSet>
+    <AssociationSet Name="DetalleGuiaSalidaProducto" Association="ETNADbModel.Store.DetalleGuiaSalidaProducto">
+      <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalidaConjunto" />
+      <End Role="Producto" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GuiaEntrada_inherits_DocumentoReferencia" Association="ETNADbModel.Store.FK_GuiaEntrada_inherits_DocumentoReferencia">
+      <End Role="DocumentoReferencia" EntitySet="DocumentosReferencia" />
+      <End Role="GuiaEntrada" EntitySet="DocumentosReferencia_GuiaEntrada" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GuiaSalida_inherits_DocumentoReferencia" Association="ETNADbModel.Store.FK_GuiaSalida_inherits_DocumentoReferencia">
+      <End Role="DocumentoReferencia" EntitySet="DocumentosReferencia" />
+      <End Role="GuiaSalida" EntitySet="DocumentosReferencia_GuiaSalida" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AjusteInventario_inherits_DocumentoReferencia" Association="ETNADbModel.Store.FK_AjusteInventario_inherits_DocumentoReferencia">
+      <End Role="DocumentoReferencia" EntitySet="DocumentosReferencia" />
+      <End Role="AjusteInventario" EntitySet="DocumentosReferencia_AjusteInventario" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DocumentosReferencia">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdentificadorDocumento" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaElaboracion" Type="datetime" Nullable="false" />
+    <Property Name="Observaciones" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Almacen_Id" Type="int" Nullable="false" />
+    <Property Name="Empleado_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Almacenes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tipo" Type="int" Nullable="false" />
+    <Property Name="AreaEnM2" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="56" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="true" />
+    <Property Name="ConfirmationToken" Type="nvarchar" Nullable="true" MaxLength="128" />
+    <Property Name="IsConfirmed" Type="bit" Nullable="true" />
+    <Property Name="LastPasswordFailureDate" Type="datetime" Nullable="true" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="PasswordChangedDate" Type="datetime" Nullable="true" />
+    <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="PasswordVerificationToken" Type="nvarchar" Nullable="true" MaxLength="128" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombres" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Apellidos" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cargo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserProfile_UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DescripcionCorta" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DescripcionLarga" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PrecioListaCompra" Type="float" Nullable="false" />
+    <Property Name="PrecioListaVenta" Type="float" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SolicitudesEntrada">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaElaboracion" Type="datetime" Nullable="false" />
+    <Property Name="TipoEntrada" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
+    <Property Name="Observaciones" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Empleado_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleSolicitudEntrada">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+      <PropertyRef Name="IdSolicitudEntrada" />
+    </Key>
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+    <Property Name="IdSolicitudEntrada" Type="int" Nullable="false" />
+    <Property Name="Cantidad" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kardex">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoMovimiento" Type="int" Nullable="false" />
+    <Property Name="Cantidad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ValorUnitario" Type="float" Nullable="false" />
+    <Property Name="DocumentoReferencia_Id" Type="int" Nullable="false" />
+    <Property Name="Almacen_Id" Type="int" Nullable="false" />
+    <Property Name="Producto_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NroLote" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="TipoLote_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoLotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SolicitudSalidaConjunto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaElaboracion" Type="datetime" Nullable="false" />
+    <Property Name="DireccionEntrega" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RazonSocialDestinatario" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TipoSalida" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
+    <Property Name="Observaciones" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Empleado_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleSolicitudSalidaConjunto">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+      <PropertyRef Name="IdSolicitudSalida" />
+    </Key>
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+    <Property Name="IdSolicitudSalida" Type="int" Nullable="false" />
+    <Property Name="CantidadFinal" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleGuiaSalidaConjunto">
+    <Key>
+      <PropertyRef Name="IdGuiaSalida" />
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="IdGuiaSalida" Type="int" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DocumentosReferencia_GuiaEntrada">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="SolicitudEntrada_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DocumentosReferencia_GuiaSalida">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="SolicitudSalida_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DocumentosReferencia_AjusteInventario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Estado" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_UsersInRoles">
+    <Key>
+      <PropertyRef Name="webpages_Roles_RoleId" />
+      <PropertyRef Name="UserProfile_UserId" />
+    </Key>
+    <Property Name="webpages_Roles_RoleId" Type="int" Nullable="false" />
+    <Property Name="UserProfile_UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmpleadoAlmacen">
+    <Key>
+      <PropertyRef Name="Empleado_Id" />
+      <PropertyRef Name="Almacen_Id" />
+    </Key>
+    <Property Name="Empleado_Id" Type="int" Nullable="false" />
+    <Property Name="Almacen_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="DocumentoReferenciaAlmacen">
+    <End Role="DocumentoReferencia" Type="ETNADbModel.Store.DocumentosReferencia" Multiplicity="*" />
+    <End Role="Almacen" Type="ETNADbModel.Store.Almacenes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Almacen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocumentoReferencia">
+        <PropertyRef Name="Almacen_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmpleadoUserProfile">
+    <End Role="Empleado" Type="ETNADbModel.Store.Empleados" Multiplicity="*" />
+    <End Role="UserProfile" Type="ETNADbModel.Store.UserProfile" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="UserProfile_UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmpleadoDocumentoReferencia">
+    <End Role="Empleado" Type="ETNADbModel.Store.Empleados" Multiplicity="1" />
+    <End Role="DocumentoReferencia" Type="ETNADbModel.Store.DocumentosReferencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocumentoReferencia">
+        <PropertyRef Name="Empleado_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GuiaEntradaSolicitudEntrada">
+    <End Role="GuiaEntrada" Type="ETNADbModel.Store.DocumentosReferencia_GuiaEntrada" Multiplicity="*" />
+    <End Role="SolicitudEntrada" Type="ETNADbModel.Store.SolicitudesEntrada" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudEntrada">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GuiaEntrada">
+        <PropertyRef Name="SolicitudEntrada_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SolicitudEntradaSolicitudEntradaProducto">
+    <End Role="SolicitudEntrada" Type="ETNADbModel.Store.SolicitudesEntrada" Multiplicity="1" />
+    <End Role="SolicitudEntradaProducto" Type="ETNADbModel.Store.DetalleSolicitudEntrada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudEntrada">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SolicitudEntradaProducto">
+        <PropertyRef Name="IdSolicitudEntrada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductoSolicitudEntradaProducto">
+    <End Role="Producto" Type="ETNADbModel.Store.Productos" Multiplicity="1" />
+    <End Role="SolicitudEntradaProducto" Type="ETNADbModel.Store.DetalleSolicitudEntrada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SolicitudEntradaProducto">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DocumentoReferenciaKardex">
+    <End Role="DocumentoReferencia" Type="ETNADbModel.Store.DocumentosReferencia" Multiplicity="1" />
+    <End Role="Kardex" Type="ETNADbModel.Store.Kardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentoReferencia">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kardex">
+        <PropertyRef Name="DocumentoReferencia_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AlmacenKardex">
+    <End Role="Almacen" Type="ETNADbModel.Store.Almacenes" Multiplicity="1" />
+    <End Role="Kardex" Type="ETNADbModel.Store.Kardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Almacen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kardex">
+        <PropertyRef Name="Almacen_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductoKardex">
+    <End Role="Producto" Type="ETNADbModel.Store.Productos" Multiplicity="1" />
+    <End Role="Kardex" Type="ETNADbModel.Store.Kardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kardex">
+        <PropertyRef Name="Producto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmpleadoSolicitudEntrada">
+    <End Role="Empleado" Type="ETNADbModel.Store.Empleados" Multiplicity="1" />
+    <End Role="SolicitudEntrada" Type="ETNADbModel.Store.SolicitudesEntrada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SolicitudEntrada">
+        <PropertyRef Name="Empleado_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LoteTipoLote">
+    <End Role="Lote" Type="ETNADbModel.Store.Lotes" Multiplicity="*" />
+    <End Role="TipoLote" Type="ETNADbModel.Store.TipoLotes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TipoLote">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lote">
+        <PropertyRef Name="TipoLote_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SolicitudSalidaEmpleado">
+    <End Role="SolicitudSalida" Type="ETNADbModel.Store.SolicitudSalidaConjunto" Multiplicity="*" />
+    <End Role="Empleado" Type="ETNADbModel.Store.Empleados" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SolicitudSalida">
+        <PropertyRef Name="Empleado_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GuiaSalidaSolicitudSalida">
+    <End Role="GuiaSalida" Type="ETNADbModel.Store.DocumentosReferencia_GuiaSalida" Multiplicity="*" />
+    <End Role="SolicitudSalida" Type="ETNADbModel.Store.SolicitudSalidaConjunto" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudSalida">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GuiaSalida">
+        <PropertyRef Name="SolicitudSalida_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DetalleSolicitudSalidaProducto">
+    <End Role="DetalleSolicitudSalida" Type="ETNADbModel.Store.DetalleSolicitudSalidaConjunto" Multiplicity="*" />
+    <End Role="Producto" Type="ETNADbModel.Store.Productos" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleSolicitudSalida">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DetalleSolicitudSalidaSolicitudSalida">
+    <End Role="DetalleSolicitudSalida" Type="ETNADbModel.Store.DetalleSolicitudSalidaConjunto" Multiplicity="*" />
+    <End Role="SolicitudSalida" Type="ETNADbModel.Store.SolicitudSalidaConjunto" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudSalida">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleSolicitudSalida">
+        <PropertyRef Name="IdSolicitudSalida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DetalleGuiaSalidaGuiaSalida">
+    <End Role="DetalleGuiaSalida" Type="ETNADbModel.Store.DetalleGuiaSalidaConjunto" Multiplicity="*" />
+    <End Role="GuiaSalida" Type="ETNADbModel.Store.DocumentosReferencia_GuiaSalida" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="GuiaSalida">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleGuiaSalida">
+        <PropertyRef Name="IdGuiaSalida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DetalleGuiaSalidaProducto">
+    <End Role="DetalleGuiaSalida" Type="ETNADbModel.Store.DetalleGuiaSalidaConjunto" Multiplicity="*" />
+    <End Role="Producto" Type="ETNADbModel.Store.Productos" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleGuiaSalida">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_webpages_UsersInRoles_webpages_Roles">
+    <End Role="webpages_Roles" Type="ETNADbModel.Store.webpages_Roles" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="ETNADbModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webpages_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="webpages_Roles_RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_webpages_UsersInRoles_UserProfile">
+    <End Role="webpages_UsersInRoles" Type="ETNADbModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+    <End Role="UserProfile" Type="ETNADbModel.Store.UserProfile" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="UserProfile_UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpleadoAlmacen_Empleado">
+    <End Role="Empleado" Type="ETNADbModel.Store.Empleados" Multiplicity="1" />
+    <End Role="EmpleadoAlmacen" Type="ETNADbModel.Store.EmpleadoAlmacen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmpleadoAlmacen">
+        <PropertyRef Name="Empleado_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmpleadoAlmacen_Almacen">
+    <End Role="EmpleadoAlmacen" Type="ETNADbModel.Store.EmpleadoAlmacen" Multiplicity="*" />
+    <End Role="Almacen" Type="ETNADbModel.Store.Almacenes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Almacen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmpleadoAlmacen">
+        <PropertyRef Name="Almacen_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GuiaEntrada_inherits_DocumentoReferencia">
+    <End Role="DocumentoReferencia" Type="ETNADbModel.Store.DocumentosReferencia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GuiaEntrada" Type="ETNADbModel.Store.DocumentosReferencia_GuiaEntrada" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentoReferencia">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GuiaEntrada">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GuiaSalida_inherits_DocumentoReferencia">
+    <End Role="DocumentoReferencia" Type="ETNADbModel.Store.DocumentosReferencia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GuiaSalida" Type="ETNADbModel.Store.DocumentosReferencia_GuiaSalida" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentoReferencia">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GuiaSalida">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AjusteInventario_inherits_DocumentoReferencia">
+    <End Role="DocumentoReferencia" Type="ETNADbModel.Store.DocumentosReferencia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AjusteInventario" Type="ETNADbModel.Store.DocumentosReferencia_AjusteInventario" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentoReferencia">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AjusteInventario">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ETNADbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ETNADbModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DocumentosReferencia" EntityType="ETNADbModel.DocumentoReferencia" />
+          <EntitySet Name="Almacenes" EntityType="ETNADbModel.Almacen" />
+          <AssociationSet Name="DocumentoReferenciaAlmacen" Association="ETNADbModel.DocumentoReferenciaAlmacen">
+            <End Role="DocumentoReferencia" EntitySet="DocumentosReferencia" />
+            <End Role="Almacen" EntitySet="Almacenes" />
+          </AssociationSet>
+          <EntitySet Name="UserProfile" EntityType="ETNADbModel.UserProfile" />
+          <EntitySet Name="webpages_Membership" EntityType="ETNADbModel.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="ETNADbModel.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="ETNADbModel.webpages_Roles" />
+          <AssociationSet Name="webpages_UsersInRoles" Association="ETNADbModel.webpages_UsersInRoles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <EntitySet Name="Empleados" EntityType="ETNADbModel.Empleado" />
+          <AssociationSet Name="EmpleadoUserProfile" Association="ETNADbModel.EmpleadoUserProfile">
+            <End Role="Empleado" EntitySet="Empleados" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="EmpleadoAlmacen" Association="ETNADbModel.EmpleadoAlmacen">
+            <End Role="Empleado" EntitySet="Empleados" />
+            <End Role="Almacen" EntitySet="Almacenes" />
+          </AssociationSet>
+          <AssociationSet Name="EmpleadoDocumentoReferencia" Association="ETNADbModel.EmpleadoDocumentoReferencia">
+            <End Role="Empleado" EntitySet="Empleados" />
+            <End Role="DocumentoReferencia" EntitySet="DocumentosReferencia" />
+          </AssociationSet>
+          <EntitySet Name="Productos" EntityType="ETNADbModel.Producto" />
+          <EntitySet Name="SolicitudesEntrada" EntityType="ETNADbModel.SolicitudEntrada" />
+          <AssociationSet Name="GuiaEntradaSolicitudEntrada" Association="ETNADbModel.GuiaEntradaSolicitudEntrada">
+            <End Role="GuiaEntrada" EntitySet="DocumentosReferencia" />
+            <End Role="SolicitudEntrada" EntitySet="SolicitudesEntrada" />
+          </AssociationSet>
+          <EntitySet Name="DetalleSolicitudEntrada" EntityType="ETNADbModel.DetalleSolicitudEntrada" />
+          <AssociationSet Name="SolicitudEntradaSolicitudEntradaProducto" Association="ETNADbModel.SolicitudEntradaSolicitudEntradaProducto">
+            <End Role="SolicitudEntrada" EntitySet="SolicitudesEntrada" />
+            <End Role="SolicitudEntradaProducto" EntitySet="DetalleSolicitudEntrada" />
+          </AssociationSet>
+          <AssociationSet Name="ProductoSolicitudEntradaProducto" Association="ETNADbModel.ProductoSolicitudEntradaProducto">
+            <End Role="Producto" EntitySet="Productos" />
+            <End Role="SolicitudEntradaProducto" EntitySet="DetalleSolicitudEntrada" />
+          </AssociationSet>
+          <EntitySet Name="Kardex" EntityType="ETNADbModel.Kardex" />
+          <AssociationSet Name="DocumentoReferenciaKardex" Association="ETNADbModel.DocumentoReferenciaKardex">
+            <End Role="DocumentoReferencia" EntitySet="DocumentosReferencia" />
+            <End Role="Kardex" EntitySet="Kardex" />
+          </AssociationSet>
+          <AssociationSet Name="AlmacenKardex" Association="ETNADbModel.AlmacenKardex">
+            <End Role="Almacen" EntitySet="Almacenes" />
+            <End Role="Kardex" EntitySet="Kardex" />
+          </AssociationSet>
+          <AssociationSet Name="ProductoKardex" Association="ETNADbModel.ProductoKardex">
+            <End Role="Producto" EntitySet="Productos" />
+            <End Role="Kardex" EntitySet="Kardex" />
+          </AssociationSet>
+          <AssociationSet Name="EmpleadoSolicitudEntrada" Association="ETNADbModel.EmpleadoSolicitudEntrada">
+            <End Role="Empleado" EntitySet="Empleados" />
+            <End Role="SolicitudEntrada" EntitySet="SolicitudesEntrada" />
+          </AssociationSet>
+          <EntitySet Name="Lotes" EntityType="ETNADbModel.Lote" />
+          <EntitySet Name="TipoLotes" EntityType="ETNADbModel.TipoLote" />
+          <AssociationSet Name="LoteTipoLote" Association="ETNADbModel.LoteTipoLote">
+            <End Role="Lote" EntitySet="Lotes" />
+            <End Role="TipoLote" EntitySet="TipoLotes" />
+          </AssociationSet>
+          <EntitySet Name="SolicitudSalidaConjunto" EntityType="ETNADbModel.SolicitudSalida" />
+          <EntitySet Name="DetalleSolicitudSalidaConjunto" EntityType="ETNADbModel.DetalleSolicitudSalida" />
+          <AssociationSet Name="SolicitudSalidaEmpleado" Association="ETNADbModel.SolicitudSalidaEmpleado">
+            <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
+            <End Role="Empleado" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="GuiaSalidaSolicitudSalida" Association="ETNADbModel.GuiaSalidaSolicitudSalida">
+            <End Role="GuiaSalida" EntitySet="DocumentosReferencia" />
+            <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
+          </AssociationSet>
+          <AssociationSet Name="DetalleSolicitudSalidaProducto" Association="ETNADbModel.DetalleSolicitudSalidaProducto">
+            <End Role="DetalleSolicitudSalida" EntitySet="DetalleSolicitudSalidaConjunto" />
+            <End Role="Producto" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="DetalleSolicitudSalidaSolicitudSalida" Association="ETNADbModel.DetalleSolicitudSalidaSolicitudSalida">
+            <End Role="DetalleSolicitudSalida" EntitySet="DetalleSolicitudSalidaConjunto" />
+            <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
+          </AssociationSet>
+          <EntitySet Name="DetalleGuiaSalidaConjunto" EntityType="ETNADbModel.DetalleGuiaSalida" />
+          <AssociationSet Name="DetalleGuiaSalidaGuiaSalida" Association="ETNADbModel.DetalleGuiaSalidaGuiaSalida">
+            <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalidaConjunto" />
+            <End Role="GuiaSalida" EntitySet="DocumentosReferencia" />
+          </AssociationSet>
+          <AssociationSet Name="DetalleGuiaSalidaProducto" Association="ETNADbModel.DetalleGuiaSalidaProducto">
+            <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalidaConjunto" />
+            <End Role="Producto" EntitySet="Productos" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="DocumentoReferencia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="IdentificadorDocumento" Nullable="false" />
+          <Property Type="DateTime" Name="FechaElaboracion" Nullable="false" />
+          <Property Type="String" Name="Observaciones" Nullable="true" />
+          <NavigationProperty Name="Almacen" Relationship="ETNADbModel.DocumentoReferenciaAlmacen" FromRole="DocumentoReferencia" ToRole="Almacen" />
+          <NavigationProperty Name="Empleado" Relationship="ETNADbModel.EmpleadoDocumentoReferencia" FromRole="DocumentoReferencia" ToRole="Empleado" />
+          <NavigationProperty Name="Kardex" Relationship="ETNADbModel.DocumentoReferenciaKardex" FromRole="DocumentoReferencia" ToRole="Kardex" />
+        </EntityType>
+        <EntityType Name="GuiaEntrada" BaseType="ETNADbModel.DocumentoReferencia" >
+          <NavigationProperty Name="SolicitudEntrada" Relationship="ETNADbModel.GuiaEntradaSolicitudEntrada" FromRole="GuiaEntrada" ToRole="SolicitudEntrada" />
+        </EntityType>
+        <EntityType Name="GuiaSalida" BaseType="ETNADbModel.DocumentoReferencia" >
+          <NavigationProperty Name="SolicitudSalida" Relationship="ETNADbModel.GuiaSalidaSolicitudSalida" FromRole="GuiaSalida" ToRole="SolicitudSalida" />
+          <NavigationProperty Name="DetalleGuiaSalida" Relationship="ETNADbModel.DetalleGuiaSalidaGuiaSalida" FromRole="GuiaSalida" ToRole="DetalleGuiaSalida" />
+        </EntityType>
+        <EntityType Name="AjusteInventario" BaseType="ETNADbModel.DocumentoReferencia">
+          <Property Name="Estado" Nullable="false" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Almacen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombre" Nullable="false" />
+          <Property Type="String" Name="Direccion" Nullable="false" />
+          <Property Type="Int32" Name="Tipo" Nullable="false" />
+          <Property Type="Int32" Name="AreaEnM2" Nullable="false" />
+          <NavigationProperty Name="DocumentoReferencia" Relationship="ETNADbModel.DocumentoReferenciaAlmacen" FromRole="Almacen" ToRole="DocumentoReferencia" />
+          <NavigationProperty Name="Empleado" Relationship="ETNADbModel.EmpleadoAlmacen" FromRole="Almacen" ToRole="Empleado" />
+          <NavigationProperty Name="Kardex" Relationship="ETNADbModel.AlmacenKardex" FromRole="Almacen" ToRole="Kardex" />
+        </EntityType>
+        <Association Name="DocumentoReferenciaAlmacen">
+          <End Type="ETNADbModel.DocumentoReferencia" Role="DocumentoReferencia" Multiplicity="*" />
+          <End Type="ETNADbModel.Almacen" Role="Almacen" Multiplicity="1" />
+        </Association>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="56" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="webpages_Roles" Relationship="ETNADbModel.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+          <NavigationProperty Name="Empleado" Relationship="ETNADbModel.EmpleadoUserProfile" FromRole="UserProfile" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Precision="3" />
+          <Property Type="String" Name="ConfirmationToken" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsConfirmed" />
+          <Property Type="DateTime" Name="LastPasswordFailureDate" Precision="3" />
+          <Property Type="Int32" Name="PasswordFailuresSinceLastSuccess" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PasswordChangedDate" Precision="3" />
+          <Property Type="String" Name="PasswordSalt" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PasswordVerificationToken" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PasswordVerificationTokenExpirationDate" Precision="3" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="ProviderUserId" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="UserId" Nullable="false" Type="Int32" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Type="Int32" Name="RoleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserProfile" Relationship="ETNADbModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="webpages_UsersInRoles">
+          <End Type="ETNADbModel.webpages_Roles" Role="webpages_Roles" Multiplicity="*" />
+          <End Type="ETNADbModel.UserProfile" Role="UserProfile" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="UserProfile" Relationship="ETNADbModel.EmpleadoUserProfile" FromRole="Empleado" ToRole="UserProfile" />
+          <NavigationProperty Name="Almacen" Relationship="ETNADbModel.EmpleadoAlmacen" FromRole="Empleado" ToRole="Almacen" />
+          <Property Type="String" Name="Nombres" Nullable="false" />
+          <Property Type="String" Name="Apellidos" Nullable="false" />
+          <Property Type="String" Name="Direccion" Nullable="false" />
+          <Property Type="String" Name="Cargo" Nullable="false" />
+          <NavigationProperty Name="DocumentoReferencia" Relationship="ETNADbModel.EmpleadoDocumentoReferencia" FromRole="Empleado" ToRole="DocumentoReferencia" />
+          <NavigationProperty Name="SolicitudEntrada" Relationship="ETNADbModel.EmpleadoSolicitudEntrada" FromRole="Empleado" ToRole="SolicitudEntrada" />
+          <NavigationProperty Name="SolicitudSalida" Relationship="ETNADbModel.SolicitudSalidaEmpleado" FromRole="Empleado" ToRole="SolicitudSalida" />
+        </EntityType>
+        <Association Name="EmpleadoUserProfile">
+          <End Type="ETNADbModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="ETNADbModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+        </Association>
+        <Association Name="EmpleadoAlmacen">
+          <End Type="ETNADbModel.Empleado" Role="Empleado" Multiplicity="*" />
+          <End Type="ETNADbModel.Almacen" Role="Almacen" Multiplicity="*" />
+        </Association>
+        <Association Name="EmpleadoDocumentoReferencia">
+          <End Type="ETNADbModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="ETNADbModel.DocumentoReferencia" Role="DocumentoReferencia" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombre" Nullable="false" />
+          <Property Type="String" Name="DescripcionCorta" Nullable="false" />
+          <Property Type="String" Name="DescripcionLarga" Nullable="false" />
+          <Property Type="Double" Name="PrecioListaCompra" Nullable="false" />
+          <Property Type="Double" Name="PrecioListaVenta" Nullable="false" />
+          <Property Type="Int32" Name="Estado" Nullable="false" />
+          <NavigationProperty Name="SolicitudEntradaProducto" Relationship="ETNADbModel.ProductoSolicitudEntradaProducto" FromRole="Producto" ToRole="SolicitudEntradaProducto" />
+          <NavigationProperty Name="Kardex" Relationship="ETNADbModel.ProductoKardex" FromRole="Producto" ToRole="Kardex" />
+          <NavigationProperty Name="DetalleSolicitudSalida" Relationship="ETNADbModel.DetalleSolicitudSalidaProducto" FromRole="Producto" ToRole="DetalleSolicitudSalida" />
+          <NavigationProperty Name="DetalleGuiaSalida" Relationship="ETNADbModel.DetalleGuiaSalidaProducto" FromRole="Producto" ToRole="DetalleGuiaSalida" />
+        </EntityType>
+        <EntityType Name="SolicitudEntrada">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="FechaElaboracion" Nullable="false" />
+          <Property Type="Int32" Name="TipoEntrada" Nullable="false" />
+          <Property Type="Int32" Name="Estado" Nullable="false" />
+          <NavigationProperty Name="GuiaEntrada" Relationship="ETNADbModel.GuiaEntradaSolicitudEntrada" FromRole="SolicitudEntrada" ToRole="GuiaEntrada" />
+          <NavigationProperty Name="SolicitudEntradaProducto" Relationship="ETNADbModel.SolicitudEntradaSolicitudEntradaProducto" FromRole="SolicitudEntrada" ToRole="SolicitudEntradaProducto" />
+          <NavigationProperty Name="Empleado" Relationship="ETNADbModel.EmpleadoSolicitudEntrada" FromRole="SolicitudEntrada" ToRole="Empleado" />
+          <Property Type="String" Name="Observaciones" />
+        </EntityType>
+        <Association Name="GuiaEntradaSolicitudEntrada">
+          <End Type="ETNADbModel.GuiaEntrada" Role="GuiaEntrada" Multiplicity="0..1" />
+          <End Type="ETNADbModel.SolicitudEntrada" Role="SolicitudEntrada" Multiplicity="1" />
+        </Association>
+        <EntityType Name="DetalleSolicitudEntrada" >
+          <Key>
+            <PropertyRef Name="IdProducto" />
+            <PropertyRef Name="IdSolicitudEntrada" />
+          </Key>
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+          <Property Type="Int32" Name="IdSolicitudEntrada" Nullable="false" />
+          <Property Type="String" Name="Cantidad" Nullable="false" />
+          <NavigationProperty Name="SolicitudEntrada" Relationship="ETNADbModel.SolicitudEntradaSolicitudEntradaProducto" FromRole="SolicitudEntradaProducto" ToRole="SolicitudEntrada" />
+          <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoSolicitudEntradaProducto" FromRole="SolicitudEntradaProducto" ToRole="Producto" />
+        </EntityType>
+        <Association Name="SolicitudEntradaSolicitudEntradaProducto">
+          <End Type="ETNADbModel.SolicitudEntrada" Role="SolicitudEntrada" Multiplicity="1" />
+          <End Type="ETNADbModel.DetalleSolicitudEntrada" Role="SolicitudEntradaProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SolicitudEntrada">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SolicitudEntradaProducto">
+              <PropertyRef Name="IdSolicitudEntrada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductoSolicitudEntradaProducto">
+          <End Type="ETNADbModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="ETNADbModel.DetalleSolicitudEntrada" Role="SolicitudEntradaProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SolicitudEntradaProducto">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Kardex">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TipoMovimiento" Nullable="false" />
+          <NavigationProperty Name="DocumentoReferencia" Relationship="ETNADbModel.DocumentoReferenciaKardex" FromRole="Kardex" ToRole="DocumentoReferencia" />
+          <NavigationProperty Name="Almacen" Relationship="ETNADbModel.AlmacenKardex" FromRole="Kardex" ToRole="Almacen" />
+          <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoKardex" FromRole="Kardex" ToRole="Producto" />
+          <Property Type="String" Name="Cantidad" Nullable="false" />
+          <Property Type="Double" Name="ValorUnitario" Nullable="false" />
+        </EntityType>
+        <Association Name="DocumentoReferenciaKardex">
+          <End Type="ETNADbModel.DocumentoReferencia" Role="DocumentoReferencia" Multiplicity="1" />
+          <End Type="ETNADbModel.Kardex" Role="Kardex" Multiplicity="*" />
+        </Association>
+        <Association Name="AlmacenKardex">
+          <End Type="ETNADbModel.Almacen" Role="Almacen" Multiplicity="1" />
+          <End Type="ETNADbModel.Kardex" Role="Kardex" Multiplicity="*" />
+        </Association>
+        <Association Name="ProductoKardex">
+          <End Type="ETNADbModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="ETNADbModel.Kardex" Role="Kardex" Multiplicity="*" />
+        </Association>
+        <Association Name="EmpleadoSolicitudEntrada">
+          <End Type="ETNADbModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="ETNADbModel.SolicitudEntrada" Role="SolicitudEntrada" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Lote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NroLote" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" />
+          <NavigationProperty Name="TipoLote" Relationship="ETNADbModel.LoteTipoLote" FromRole="Lote" ToRole="TipoLote" />
+        </EntityType>
+        <EntityType Name="TipoLote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descripcion" Nullable="false" />
+          <NavigationProperty Name="Lote" Relationship="ETNADbModel.LoteTipoLote" FromRole="TipoLote" ToRole="Lote" />
+        </EntityType>
+        <Association Name="LoteTipoLote">
+          <End Type="ETNADbModel.Lote" Role="Lote" Multiplicity="*" />
+          <End Type="ETNADbModel.TipoLote" Role="TipoLote" Multiplicity="1" />
+        </Association>
+        <EntityType Name="SolicitudSalida">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="FechaElaboracion" Nullable="false" />
+          <Property Type="String" Name="DireccionEntrega" Nullable="false" />
+          <Property Type="String" Name="RazonSocialDestinatario" Nullable="false" />
+          <Property Type="Int32" Name="TipoSalida" Nullable="false" />
+          <Property Type="Int32" Name="Estado" Nullable="false" />
+          <Property Type="String" Name="Observaciones" Nullable="true" />
+          <NavigationProperty Name="Empleado" Relationship="ETNADbModel.SolicitudSalidaEmpleado" FromRole="SolicitudSalida" ToRole="Empleado" />
+          <NavigationProperty Name="GuiaSalida" Relationship="ETNADbModel.GuiaSalidaSolicitudSalida" FromRole="SolicitudSalida" ToRole="GuiaSalida" />
+          <NavigationProperty Name="DetalleSolicitudSalida" Relationship="ETNADbModel.DetalleSolicitudSalidaSolicitudSalida" FromRole="SolicitudSalida" ToRole="DetalleSolicitudSalida" />
+        </EntityType>
+        <EntityType Name="DetalleSolicitudSalida">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+            <PropertyRef Name="IdSolicitudSalida" />
+          </Key>
+          <Property Type="Int32" Name="Cantidad" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="ETNADbModel.DetalleSolicitudSalidaProducto" FromRole="DetalleSolicitudSalida" ToRole="Producto" />
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+          <NavigationProperty Name="SolicitudSalida" Relationship="ETNADbModel.DetalleSolicitudSalidaSolicitudSalida" FromRole="DetalleSolicitudSalida" ToRole="SolicitudSalida" />
+          <Property Type="Int32" Name="IdSolicitudSalida" Nullable="false" />
+          <Property Type="Int32" Name="CantidadFinal" Nullable="false" />
+        </EntityType>
+        <Association Name="SolicitudSalidaEmpleado">
+          <End Type="ETNADbModel.SolicitudSalida" Role="SolicitudSalida" Multiplicity="*" />
+          <End Type="ETNADbModel.Empleado" Role="Empleado" Multiplicity="1" />
+        </Association>
+        <Association Name="GuiaSalidaSolicitudSalida">
+          <End Type="ETNADbModel.GuiaSalida" Role="GuiaSalida" Multiplicity="*" />
+          <End Type="ETNADbModel.SolicitudSalida" Role="SolicitudSalida" Multiplicity="1" />
+        </Association>
+        <Association Name="DetalleSolicitudSalidaProducto">
+          <End Type="ETNADbModel.DetalleSolicitudSalida" Role="DetalleSolicitudSalida" Multiplicity="*" />
+          <End Type="ETNADbModel.Producto" Role="Producto" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleSolicitudSalida">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DetalleSolicitudSalidaSolicitudSalida">
+          <End Type="ETNADbModel.DetalleSolicitudSalida" Role="DetalleSolicitudSalida" Multiplicity="*" />
+          <End Type="ETNADbModel.SolicitudSalida" Role="SolicitudSalida" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="SolicitudSalida">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleSolicitudSalida">
+              <PropertyRef Name="IdSolicitudSalida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DetalleGuiaSalida">
+          <Key>
+            <PropertyRef Name="IdGuiaSalida" />
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Type="Int32" Name="Cantidad" Nullable="false" />
+          <NavigationProperty Name="GuiaSalida" Relationship="ETNADbModel.DetalleGuiaSalidaGuiaSalida" FromRole="DetalleGuiaSalida" ToRole="GuiaSalida" />
+          <Property Type="Int32" Name="IdGuiaSalida" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="ETNADbModel.DetalleGuiaSalidaProducto" FromRole="DetalleGuiaSalida" ToRole="Producto" />
+          <Property Type="Int32" Name="IdProducto" Nullable="false" />
+        </EntityType>
+        <Association Name="DetalleGuiaSalidaGuiaSalida">
+          <End Type="ETNADbModel.DetalleGuiaSalida" Role="DetalleGuiaSalida" Multiplicity="*" />
+          <End Type="ETNADbModel.GuiaSalida" Role="GuiaSalida" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="GuiaSalida">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleGuiaSalida">
+              <PropertyRef Name="IdGuiaSalida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DetalleGuiaSalidaProducto">
+          <End Type="ETNADbModel.DetalleGuiaSalida" Role="DetalleGuiaSalida" Multiplicity="*" />
+          <End Type="ETNADbModel.Producto" Role="Producto" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleGuiaSalida">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ETNADbModelStoreContainer" CdmEntityContainer="ETNADbModelContainer">
+    <EntitySetMapping Name="DocumentosReferencia">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DocumentoReferencia)">
+        <MappingFragment StoreEntitySet="DocumentosReferencia">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdentificadorDocumento" ColumnName="IdentificadorDocumento" />
+          <ScalarProperty Name="FechaElaboracion" ColumnName="FechaElaboracion" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.GuiaEntrada)">
+        <MappingFragment StoreEntitySet="DocumentosReferencia_GuiaEntrada">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.GuiaSalida)">
+        <MappingFragment StoreEntitySet="DocumentosReferencia_GuiaSalida">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.AjusteInventario)">
+        <MappingFragment StoreEntitySet="DocumentosReferencia_AjusteInventario">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Almacenes">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.Almacen)">
+        <MappingFragment StoreEntitySet="Almacenes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="AreaEnM2" ColumnName="AreaEnM2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfile">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.UserProfile)">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_Membership">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.webpages_Membership)">
+        <MappingFragment StoreEntitySet="webpages_Membership">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+          <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+          <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+          <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+          <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_OAuthMembership">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.webpages_OAuthMembership)">
+        <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+          <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.webpages_Roles)">
+        <MappingFragment StoreEntitySet="webpages_Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleados">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.Empleado)">
+        <MappingFragment StoreEntitySet="Empleados">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productos">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.Producto)">
+        <MappingFragment StoreEntitySet="Productos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+          <ScalarProperty Name="DescripcionLarga" ColumnName="DescripcionLarga" />
+          <ScalarProperty Name="PrecioListaCompra" ColumnName="PrecioListaCompra" />
+          <ScalarProperty Name="PrecioListaVenta" ColumnName="PrecioListaVenta" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SolicitudesEntrada">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.SolicitudEntrada)">
+        <MappingFragment StoreEntitySet="SolicitudesEntrada">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FechaElaboracion" ColumnName="FechaElaboracion" />
+          <ScalarProperty Name="TipoEntrada" ColumnName="TipoEntrada" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleSolicitudEntrada">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleSolicitudEntrada)">
+        <MappingFragment StoreEntitySet="DetalleSolicitudEntrada">
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="IdSolicitudEntrada" ColumnName="IdSolicitudEntrada" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kardex">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.Kardex)">
+        <MappingFragment StoreEntitySet="Kardex">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="ValorUnitario" ColumnName="ValorUnitario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lotes">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.Lote)">
+        <MappingFragment StoreEntitySet="Lotes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NroLote" ColumnName="NroLote" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoLotes">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.TipoLote)">
+        <MappingFragment StoreEntitySet="TipoLotes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SolicitudSalidaConjunto">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.SolicitudSalida)">
+        <MappingFragment StoreEntitySet="SolicitudSalidaConjunto">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FechaElaboracion" ColumnName="FechaElaboracion" />
+          <ScalarProperty Name="DireccionEntrega" ColumnName="DireccionEntrega" />
+          <ScalarProperty Name="RazonSocialDestinatario" ColumnName="RazonSocialDestinatario" />
+          <ScalarProperty Name="TipoSalida" ColumnName="TipoSalida" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleSolicitudSalidaConjunto">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleSolicitudSalida)">
+        <MappingFragment StoreEntitySet="DetalleSolicitudSalidaConjunto">
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="IdSolicitudSalida" ColumnName="IdSolicitudSalida" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="CantidadFinal" ColumnName="CantidadFinal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleGuiaSalidaConjunto">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleGuiaSalida)">
+        <MappingFragment StoreEntitySet="DetalleGuiaSalidaConjunto">
+          <ScalarProperty Name="IdGuiaSalida" ColumnName="IdGuiaSalida" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DocumentoReferenciaAlmacen" TypeName="ETNADbModel.DocumentoReferenciaAlmacen" StoreEntitySet="DocumentosReferencia">
+      <EndProperty Name="Almacen">
+        <ScalarProperty Name="Id" ColumnName="Almacen_Id" />
+      </EndProperty>
+      <EndProperty Name="DocumentoReferencia">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="ETNADbModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+      <EndProperty Name="webpages_Roles">
+        <ScalarProperty Name="RoleId" ColumnName="webpages_Roles_RoleId" />
+      </EndProperty>
+      <EndProperty Name="UserProfile">
+        <ScalarProperty Name="UserId" ColumnName="UserProfile_UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmpleadoUserProfile" TypeName="ETNADbModel.EmpleadoUserProfile" StoreEntitySet="Empleados">
+      <EndProperty Name="UserProfile">
+        <ScalarProperty Name="UserId" ColumnName="UserProfile_UserId" />
+      </EndProperty>
+      <EndProperty Name="Empleado">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmpleadoAlmacen" TypeName="ETNADbModel.EmpleadoAlmacen" StoreEntitySet="EmpleadoAlmacen">
+      <EndProperty Name="Empleado">
+        <ScalarProperty Name="Id" ColumnName="Empleado_Id" />
+      </EndProperty>
+      <EndProperty Name="Almacen">
+        <ScalarProperty Name="Id" ColumnName="Almacen_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmpleadoDocumentoReferencia" TypeName="ETNADbModel.EmpleadoDocumentoReferencia" StoreEntitySet="DocumentosReferencia">
+      <EndProperty Name="Empleado">
+        <ScalarProperty Name="Id" ColumnName="Empleado_Id" />
+      </EndProperty>
+      <EndProperty Name="DocumentoReferencia">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GuiaEntradaSolicitudEntrada" TypeName="ETNADbModel.GuiaEntradaSolicitudEntrada" StoreEntitySet="DocumentosReferencia_GuiaEntrada">
+      <EndProperty Name="SolicitudEntrada">
+        <ScalarProperty Name="Id" ColumnName="SolicitudEntrada_Id" />
+      </EndProperty>
+      <EndProperty Name="GuiaEntrada">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DocumentoReferenciaKardex" TypeName="ETNADbModel.DocumentoReferenciaKardex" StoreEntitySet="Kardex">
+      <EndProperty Name="DocumentoReferencia">
+        <ScalarProperty Name="Id" ColumnName="DocumentoReferencia_Id" />
+      </EndProperty>
+      <EndProperty Name="Kardex">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AlmacenKardex" TypeName="ETNADbModel.AlmacenKardex" StoreEntitySet="Kardex">
+      <EndProperty Name="Almacen">
+        <ScalarProperty Name="Id" ColumnName="Almacen_Id" />
+      </EndProperty>
+      <EndProperty Name="Kardex">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductoKardex" TypeName="ETNADbModel.ProductoKardex" StoreEntitySet="Kardex">
+      <EndProperty Name="Producto">
+        <ScalarProperty Name="Id" ColumnName="Producto_Id" />
+      </EndProperty>
+      <EndProperty Name="Kardex">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmpleadoSolicitudEntrada" TypeName="ETNADbModel.EmpleadoSolicitudEntrada" StoreEntitySet="SolicitudesEntrada">
+      <EndProperty Name="Empleado">
+        <ScalarProperty Name="Id" ColumnName="Empleado_Id" />
+      </EndProperty>
+      <EndProperty Name="SolicitudEntrada">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LoteTipoLote" TypeName="ETNADbModel.LoteTipoLote" StoreEntitySet="Lotes">
+      <EndProperty Name="TipoLote">
+        <ScalarProperty Name="Id" ColumnName="TipoLote_Id" />
+      </EndProperty>
+      <EndProperty Name="Lote">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SolicitudSalidaEmpleado" TypeName="ETNADbModel.SolicitudSalidaEmpleado" StoreEntitySet="SolicitudSalidaConjunto">
+      <EndProperty Name="Empleado">
+        <ScalarProperty Name="Id" ColumnName="Empleado_Id" />
+      </EndProperty>
+      <EndProperty Name="SolicitudSalida">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GuiaSalidaSolicitudSalida" TypeName="ETNADbModel.GuiaSalidaSolicitudSalida" StoreEntitySet="DocumentosReferencia_GuiaSalida">
+      <EndProperty Name="SolicitudSalida">
+        <ScalarProperty Name="Id" ColumnName="SolicitudSalida_Id" />
+      </EndProperty>
+      <EndProperty Name="GuiaSalida">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
