@@ -17,8 +17,8 @@
     <EntitySet Name="SolicitudesEntrada" EntityType="ETNADbModel.Store.SolicitudesEntrada" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetalleSolicitudEntrada" EntityType="ETNADbModel.Store.DetalleSolicitudEntrada" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Kardex" EntityType="ETNADbModel.Store.Kardex" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Lotes" EntityType="ETNADbModel.Store.Lotes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TipoLotes" EntityType="ETNADbModel.Store.TipoLotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LoteSet" EntityType="ETNADbModel.Store.LoteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoLoteSet" EntityType="ETNADbModel.Store.TipoLoteSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SolicitudSalidaConjunto" EntityType="ETNADbModel.Store.SolicitudSalidaConjunto" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetalleSolicitudSalidaConjunto" EntityType="ETNADbModel.Store.DetalleSolicitudSalidaConjunto" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetalleGuiaSalidaConjunto" EntityType="ETNADbModel.Store.DetalleGuiaSalidaConjunto" store:Type="Tables" Schema="dbo" />
@@ -85,8 +85,8 @@
       <End Role="SolicitudEntrada" EntitySet="SolicitudesEntrada" />
     </AssociationSet>
     <AssociationSet Name="LoteTipoLote" Association="ETNADbModel.Store.LoteTipoLote">
-      <End Role="Lote" EntitySet="Lotes" />
-      <End Role="TipoLote" EntitySet="TipoLotes" />
+      <End Role="Lote" EntitySet="LoteSet" />
+      <End Role="TipoLote" EntitySet="TipoLoteSet" />
     </AssociationSet>
     <AssociationSet Name="SolicitudSalidaEmpleado" Association="ETNADbModel.Store.SolicitudSalidaEmpleado">
       <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
@@ -240,7 +240,7 @@
     <Property Name="Almacen_Id" Type="int" Nullable="false" />
     <Property Name="Producto_Id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Lotes">
+  <EntityType Name="LoteSet">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -249,7 +249,7 @@
     <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
     <Property Name="TipoLote_Id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="TipoLotes">
+  <EntityType Name="TipoLoteSet">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -454,8 +454,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="LoteTipoLote">
-    <End Role="Lote" Type="ETNADbModel.Store.Lotes" Multiplicity="*" />
-    <End Role="TipoLote" Type="ETNADbModel.Store.TipoLotes" Multiplicity="1" />
+    <End Role="Lote" Type="ETNADbModel.Store.LoteSet" Multiplicity="*" />
+    <End Role="TipoLote" Type="ETNADbModel.Store.TipoLoteSet" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="TipoLote">
         <PropertyRef Name="Id" />
@@ -691,11 +691,11 @@
             <End Role="Empleado" EntitySet="Empleados" />
             <End Role="SolicitudEntrada" EntitySet="SolicitudesEntrada" />
           </AssociationSet>
-          <EntitySet Name="Lotes" EntityType="ETNADbModel.Lote" />
-          <EntitySet Name="TipoLotes" EntityType="ETNADbModel.TipoLote" />
+          <EntitySet Name="LoteSet" EntityType="ETNADbModel.Lote" />
+          <EntitySet Name="TipoLoteSet" EntityType="ETNADbModel.TipoLote" />
           <AssociationSet Name="LoteTipoLote" Association="ETNADbModel.LoteTipoLote">
-            <End Role="Lote" EntitySet="Lotes" />
-            <End Role="TipoLote" EntitySet="TipoLotes" />
+            <End Role="Lote" EntitySet="LoteSet" />
+            <End Role="TipoLote" EntitySet="TipoLoteSet" />
           </AssociationSet>
           <EntitySet Name="SolicitudSalidaConjunto" EntityType="ETNADbModel.SolicitudSalida" />
           <EntitySet Name="DetalleSolicitudSalidaConjunto" EntityType="ETNADbModel.DetalleSolicitudSalida" />
@@ -1196,18 +1196,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Lotes">
+    <EntitySetMapping Name="LoteSet">
       <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.Lote)">
-        <MappingFragment StoreEntitySet="Lotes">
+        <MappingFragment StoreEntitySet="LoteSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="NroLote" ColumnName="NroLote" />
           <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TipoLotes">
+    <EntitySetMapping Name="TipoLoteSet">
       <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.TipoLote)">
-        <MappingFragment StoreEntitySet="TipoLotes">
+        <MappingFragment StoreEntitySet="TipoLoteSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
         </MappingFragment>
@@ -1334,7 +1334,7 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="LoteTipoLote" TypeName="ETNADbModel.LoteTipoLote" StoreEntitySet="Lotes">
+    <AssociationSetMapping Name="LoteTipoLote" TypeName="ETNADbModel.LoteTipoLote" StoreEntitySet="LoteSet">
       <EndProperty Name="TipoLote">
         <ScalarProperty Name="Id" ColumnName="TipoLote_Id" />
       </EndProperty>

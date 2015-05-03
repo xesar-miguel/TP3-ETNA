@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/02/2015 16:06:12
--- Generated from EDMX file: D:\Proyectos\TP3\Etna\TP3-ETNA\ETNA.DAL\ETNADbModel.edmx
+-- Date Created: 05/03/2015 11:40:25
+-- Generated from EDMX file: E:\TP3-ETNA\ETNA.DAL\ETNADbModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -142,8 +142,8 @@ GO
 IF OBJECT_ID(N'[dbo].[DetalleGuiaSalidaConjunto]', 'U') IS NOT NULL
     DROP TABLE [dbo].[DetalleGuiaSalidaConjunto];
 GO
-IF OBJECT_ID(N'[dbo].[prueba]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[prueba];
+IF OBJECT_ID(N'[dbo].[Vehiculos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Vehiculos];
 GO
 IF OBJECT_ID(N'[dbo].[DocumentosReferencia_GuiaEntrada]', 'U') IS NOT NULL
     DROP TABLE [dbo].[DocumentosReferencia_GuiaEntrada];
@@ -278,8 +278,8 @@ CREATE TABLE [dbo].[Kardex] (
 );
 GO
 
--- Creating table 'Lotes'
-CREATE TABLE [dbo].[Lotes] (
+-- Creating table 'LoteSet'
+CREATE TABLE [dbo].[LoteSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [NroLote] nvarchar(max)  NOT NULL,
     [FechaCreacion] datetime  NOT NULL,
@@ -287,8 +287,8 @@ CREATE TABLE [dbo].[Lotes] (
 );
 GO
 
--- Creating table 'TipoLotes'
-CREATE TABLE [dbo].[TipoLotes] (
+-- Creating table 'TipoLoteSet'
+CREATE TABLE [dbo].[TipoLoteSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Descripcion] nvarchar(max)  NOT NULL
 );
@@ -437,15 +437,15 @@ ADD CONSTRAINT [PK_Kardex]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Lotes'
-ALTER TABLE [dbo].[Lotes]
-ADD CONSTRAINT [PK_Lotes]
+-- Creating primary key on [Id] in table 'LoteSet'
+ALTER TABLE [dbo].[LoteSet]
+ADD CONSTRAINT [PK_LoteSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'TipoLotes'
-ALTER TABLE [dbo].[TipoLotes]
-ADD CONSTRAINT [PK_TipoLotes]
+-- Creating primary key on [Id] in table 'TipoLoteSet'
+ALTER TABLE [dbo].[TipoLoteSet]
+ADD CONSTRAINT [PK_TipoLoteSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -688,17 +688,17 @@ ON [dbo].[SolicitudesEntrada]
     ([Empleado_Id]);
 GO
 
--- Creating foreign key on [TipoLote_Id] in table 'Lotes'
-ALTER TABLE [dbo].[Lotes]
+-- Creating foreign key on [TipoLote_Id] in table 'LoteSet'
+ALTER TABLE [dbo].[LoteSet]
 ADD CONSTRAINT [FK_LoteTipoLote]
     FOREIGN KEY ([TipoLote_Id])
-    REFERENCES [dbo].[TipoLotes]
+    REFERENCES [dbo].[TipoLoteSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_LoteTipoLote'
 CREATE INDEX [IX_FK_LoteTipoLote]
-ON [dbo].[Lotes]
+ON [dbo].[LoteSet]
     ([TipoLote_Id]);
 GO
 
