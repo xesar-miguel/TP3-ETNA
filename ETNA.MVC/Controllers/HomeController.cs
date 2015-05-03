@@ -8,6 +8,7 @@ namespace ETNA.MVC.Controllers
 {
     public class HomeController : Controller
     {
+        //prueba diego git desde vs 2013
         public ActionResult Index()
         {
             ViewBag.Message = "Bienvenido a la aplicación baterías ETNA.";
