@@ -23,7 +23,7 @@ namespace ETNA.BL.FB
             var newLote = new Lote();
             newLote.NroLote = nroLote;
             newLote.FechaCreacion = DateTime.Now;
-            newLote.TipoLote = context.TipoLoteSet.Find(idTipoLote);
+            //newLote.TipoLote = context.TipoLoteSet.Find(idTipoLote);
             context.LoteSet.Add(newLote);
             context.SaveChanges();
             return newLote.Id;

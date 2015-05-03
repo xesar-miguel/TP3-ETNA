@@ -43,5 +43,20 @@ namespace ETNA.DAL
         public DbSet<DetalleSolicitudSalida> DetalleSolicitudSalidaConjunto { get; set; }
         public DbSet<DetalleGuiaSalida> DetalleGuiaSalidaConjunto { get; set; }
         public DbSet<Vehiculo> Vehiculos { get; set; }
+        public DbSet<SolicitudInsumo> SolicitudInsumoSet { get; set; }
+        public DbSet<DetalleSolicitudInsumo> DetalleSolicitudInsumoSet { get; set; }
+        public DbSet<DetalleParteProduccionBateria> DetalleParteProduccionBateriaSet { get; set; }
+        public DbSet<Bateria> BateriaSet { get; set; }
+        public DbSet<DetalleOrdenTrabajoInsumo> DetalleOrdenTrabajoInsumoSet { get; set; }
+        public DbSet<ParteProduccion> ParteProduccionSet { get; set; }
+        public DbSet<DetalleParteProduccionInsumo> DetalleParteProduccionInsumoSet { get; set; }
+        public DbSet<OrdenTrabajo> OrdenTrabajoSet { get; set; }
+        public DbSet<DetalleOrdenTrabajoPersonal> DetalleOrdenTrabajoPersonalSet { get; set; }
+        public DbSet<SolicitudProduccion> SolicitudProduccionSet { get; set; }
+        public DbSet<PlanProduccion> PlanProduccionSet { get; set; }
+        public DbSet<ProgramacionProduccion> ProgramacionProduccionSet { get; set; }
+        public DbSet<DetalleSolicitudProduccion> DetalleSolicitudProduccionSet { get; set; }
+        public DbSet<DetalleOrdenTrabajoMaquinaria> DetalleOrdenTrabajoMaquinariaSet { get; set; }
+        public DbSet<Maquinaria> MaquinariaSet { get; set; }
     }
 }

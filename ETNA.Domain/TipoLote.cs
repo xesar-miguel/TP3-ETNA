@@ -14,14 +14,7 @@ namespace ETNA.Domain
     
     public partial class TipoLote
     {
-        public TipoLote()
-        {
-            this.Lote = new HashSet<Lote>();
-        }
-    
         public int Id { get; set; }
         public string Descripcion { get; set; }
-    
-        public virtual ICollection<Lote> Lote { get; set; }
     }
 }

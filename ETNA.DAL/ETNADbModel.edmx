@@ -23,6 +23,21 @@
     <EntitySet Name="DetalleSolicitudSalidaConjunto" EntityType="ETNADbModel.Store.DetalleSolicitudSalidaConjunto" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetalleGuiaSalidaConjunto" EntityType="ETNADbModel.Store.DetalleGuiaSalidaConjunto" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Vehiculos" EntityType="ETNADbModel.Store.Vehiculos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SolicitudInsumoSet" EntityType="ETNADbModel.Store.SolicitudInsumoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleSolicitudInsumoSet" EntityType="ETNADbModel.Store.DetalleSolicitudInsumoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleParteProduccionBateriaSet" EntityType="ETNADbModel.Store.DetalleParteProduccionBateriaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BateriaSet" EntityType="ETNADbModel.Store.BateriaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleOrdenTrabajoInsumoSet" EntityType="ETNADbModel.Store.DetalleOrdenTrabajoInsumoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ParteProduccionSet" EntityType="ETNADbModel.Store.ParteProduccionSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleParteProduccionInsumoSet" EntityType="ETNADbModel.Store.DetalleParteProduccionInsumoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrdenTrabajoSet" EntityType="ETNADbModel.Store.OrdenTrabajoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleOrdenTrabajoPersonalSet" EntityType="ETNADbModel.Store.DetalleOrdenTrabajoPersonalSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SolicitudProduccionSet" EntityType="ETNADbModel.Store.SolicitudProduccionSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlanProduccionSet" EntityType="ETNADbModel.Store.PlanProduccionSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProgramacionProduccionSet" EntityType="ETNADbModel.Store.ProgramacionProduccionSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleSolicitudProduccionSet" EntityType="ETNADbModel.Store.DetalleSolicitudProduccionSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleOrdenTrabajoMaquinariaSet" EntityType="ETNADbModel.Store.DetalleOrdenTrabajoMaquinariaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MaquinariaSet" EntityType="ETNADbModel.Store.MaquinariaSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DocumentosReferencia_GuiaEntrada" EntityType="ETNADbModel.Store.DocumentosReferencia_GuiaEntrada" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DocumentosReferencia_GuiaSalida" EntityType="ETNADbModel.Store.DocumentosReferencia_GuiaSalida" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DocumentosReferencia_AjusteInventario" EntityType="ETNADbModel.Store.DocumentosReferencia_AjusteInventario" store:Type="Tables" Schema="dbo" />
@@ -84,10 +99,6 @@
       <End Role="Empleado" EntitySet="Empleados" />
       <End Role="SolicitudEntrada" EntitySet="SolicitudesEntrada" />
     </AssociationSet>
-    <AssociationSet Name="LoteTipoLote" Association="ETNADbModel.Store.LoteTipoLote">
-      <End Role="Lote" EntitySet="LoteSet" />
-      <End Role="TipoLote" EntitySet="TipoLoteSet" />
-    </AssociationSet>
     <AssociationSet Name="SolicitudSalidaEmpleado" Association="ETNADbModel.Store.SolicitudSalidaEmpleado">
       <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
       <End Role="Empleado" EntitySet="Empleados" />
@@ -111,6 +122,66 @@
     <AssociationSet Name="DetalleGuiaSalidaProducto" Association="ETNADbModel.Store.DetalleGuiaSalidaProducto">
       <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalidaConjunto" />
       <End Role="Producto" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="SolicitudProduccionDetalleSolicitudProduccion" Association="ETNADbModel.Store.SolicitudProduccionDetalleSolicitudProduccion">
+      <End Role="SolicitudProduccion" EntitySet="SolicitudProduccionSet" />
+      <End Role="DetalleSolicitudProduccion" EntitySet="DetalleSolicitudProduccionSet" />
+    </AssociationSet>
+    <AssociationSet Name="OrdenTrabajoDetalleSolicitudProduccion" Association="ETNADbModel.Store.OrdenTrabajoDetalleSolicitudProduccion">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+      <End Role="DetalleSolicitudProduccion" EntitySet="DetalleSolicitudProduccionSet" />
+    </AssociationSet>
+    <AssociationSet Name="SolicitudInsumoDetalleSolicitudInsumo" Association="ETNADbModel.Store.SolicitudInsumoDetalleSolicitudInsumo">
+      <End Role="SolicitudInsumo" EntitySet="SolicitudInsumoSet" />
+      <End Role="DetalleSolicitudInsumo" EntitySet="DetalleSolicitudInsumoSet" />
+    </AssociationSet>
+    <AssociationSet Name="ParteProduccionDetalleParteProduccionInsumo" Association="ETNADbModel.Store.ParteProduccionDetalleParteProduccionInsumo">
+      <End Role="ParteProduccion" EntitySet="ParteProduccionSet" />
+      <End Role="DetalleParteProduccionInsumo" EntitySet="DetalleParteProduccionInsumoSet" />
+    </AssociationSet>
+    <AssociationSet Name="ParteProduccionDetalleParteProduccionBateria" Association="ETNADbModel.Store.ParteProduccionDetalleParteProduccionBateria">
+      <End Role="ParteProduccion" EntitySet="ParteProduccionSet" />
+      <End Role="DetalleParteProduccionBateria" EntitySet="DetalleParteProduccionBateriaSet" />
+    </AssociationSet>
+    <AssociationSet Name="BateriaDetalleParteProduccionBateria" Association="ETNADbModel.Store.BateriaDetalleParteProduccionBateria">
+      <End Role="Bateria" EntitySet="BateriaSet" />
+      <End Role="DetalleParteProduccionBateria" EntitySet="DetalleParteProduccionBateriaSet" />
+    </AssociationSet>
+    <AssociationSet Name="PlanProduccionProgramacionProduccion" Association="ETNADbModel.Store.PlanProduccionProgramacionProduccion">
+      <End Role="PlanProduccion" EntitySet="PlanProduccionSet" />
+      <End Role="ProgramacionProduccion" EntitySet="ProgramacionProduccionSet" />
+    </AssociationSet>
+    <AssociationSet Name="SolicitudProduccionPlanProduccion" Association="ETNADbModel.Store.SolicitudProduccionPlanProduccion">
+      <End Role="SolicitudProduccion" EntitySet="SolicitudProduccionSet" />
+      <End Role="PlanProduccion" EntitySet="PlanProduccionSet" />
+    </AssociationSet>
+    <AssociationSet Name="OrdenTrabajoDetalleOrdenTrabajoPersonal" Association="ETNADbModel.Store.OrdenTrabajoDetalleOrdenTrabajoPersonal">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+      <End Role="DetalleOrdenTrabajoPersonal" EntitySet="DetalleOrdenTrabajoPersonalSet" />
+    </AssociationSet>
+    <AssociationSet Name="OrdenTrabajoDetalleOrdenTrabajoInsumo" Association="ETNADbModel.Store.OrdenTrabajoDetalleOrdenTrabajoInsumo">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+      <End Role="DetalleOrdenTrabajoInsumo" EntitySet="DetalleOrdenTrabajoInsumoSet" />
+    </AssociationSet>
+    <AssociationSet Name="SolicitudProduccionLote" Association="ETNADbModel.Store.SolicitudProduccionLote">
+      <End Role="SolicitudProduccion" EntitySet="SolicitudProduccionSet" />
+      <End Role="Lote" EntitySet="LoteSet" />
+    </AssociationSet>
+    <AssociationSet Name="LoteOrdenTrabajo" Association="ETNADbModel.Store.LoteOrdenTrabajo">
+      <End Role="Lote" EntitySet="LoteSet" />
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+    </AssociationSet>
+    <AssociationSet Name="OrdenTrabajoDetalleOrdenTrabajoMaquinaria" Association="ETNADbModel.Store.OrdenTrabajoDetalleOrdenTrabajoMaquinaria">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+      <End Role="DetalleOrdenTrabajoMaquinaria" EntitySet="DetalleOrdenTrabajoMaquinariaSet" />
+    </AssociationSet>
+    <AssociationSet Name="OrdenTrabajoSolicitudInsumo" Association="ETNADbModel.Store.OrdenTrabajoSolicitudInsumo">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+      <End Role="SolicitudInsumo" EntitySet="SolicitudInsumoSet" />
+    </AssociationSet>
+    <AssociationSet Name="MaquinariaDetalleOrdenTrabajoMaquinaria" Association="ETNADbModel.Store.MaquinariaDetalleOrdenTrabajoMaquinaria">
+      <End Role="Maquinaria" EntitySet="MaquinariaSet" />
+      <End Role="DetalleOrdenTrabajoMaquinaria" EntitySet="DetalleOrdenTrabajoMaquinariaSet" />
     </AssociationSet>
     <AssociationSet Name="FK_GuiaEntrada_inherits_DocumentoReferencia" Association="ETNADbModel.Store.FK_GuiaEntrada_inherits_DocumentoReferencia">
       <End Role="DocumentoReferencia" EntitySet="DocumentosReferencia" />
@@ -247,7 +318,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NroLote" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
-    <Property Name="TipoLote_Id" Type="int" Nullable="false" />
+    <Property Name="SolicitudProduccion_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TipoLoteSet">
     <Key>
@@ -295,6 +366,110 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="marca" Type="varchar" Nullable="true" MaxLength="50" />
     <Property Name="placa" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SolicitudInsumoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrdenTrabajo_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleSolicitudInsumoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SolicitudInsumo_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleParteProduccionBateriaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParteProduccion_Id" Type="int" Nullable="false" />
+    <Property Name="Bateria_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BateriaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleOrdenTrabajoInsumoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrdenTrabajo_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ParteProduccionSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleParteProduccionInsumoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParteProduccion_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrdenTrabajoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Lote_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleOrdenTrabajoPersonalSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrdenTrabajo_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SolicitudProduccionSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlanProduccion_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlanProduccionSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProgramacionProduccionSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlanProduccion_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleSolicitudProduccionSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SolicitudProduccion_Id" Type="int" Nullable="false" />
+    <Property Name="OrdenTrabajo_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleOrdenTrabajoMaquinariaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrdenTrabajo_Id" Type="int" Nullable="false" />
+    <Property Name="Maquinaria_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaquinariaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="DocumentosReferencia_GuiaEntrada">
     <Key>
@@ -453,18 +628,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="LoteTipoLote">
-    <End Role="Lote" Type="ETNADbModel.Store.LoteSet" Multiplicity="*" />
-    <End Role="TipoLote" Type="ETNADbModel.Store.TipoLoteSet" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="TipoLote">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Lote">
-        <PropertyRef Name="TipoLote_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="SolicitudSalidaEmpleado">
     <End Role="SolicitudSalida" Type="ETNADbModel.Store.SolicitudSalidaConjunto" Multiplicity="*" />
     <End Role="Empleado" Type="ETNADbModel.Store.Empleados" Multiplicity="1" />
@@ -534,6 +697,186 @@
       </Principal>
       <Dependent Role="DetalleGuiaSalida">
         <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SolicitudProduccionDetalleSolicitudProduccion">
+    <End Role="SolicitudProduccion" Type="ETNADbModel.Store.SolicitudProduccionSet" Multiplicity="1" />
+    <End Role="DetalleSolicitudProduccion" Type="ETNADbModel.Store.DetalleSolicitudProduccionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudProduccion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleSolicitudProduccion">
+        <PropertyRef Name="SolicitudProduccion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrdenTrabajoDetalleSolicitudProduccion">
+    <End Role="OrdenTrabajo" Type="ETNADbModel.Store.OrdenTrabajoSet" Multiplicity="1" />
+    <End Role="DetalleSolicitudProduccion" Type="ETNADbModel.Store.DetalleSolicitudProduccionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleSolicitudProduccion">
+        <PropertyRef Name="OrdenTrabajo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SolicitudInsumoDetalleSolicitudInsumo">
+    <End Role="SolicitudInsumo" Type="ETNADbModel.Store.SolicitudInsumoSet" Multiplicity="1" />
+    <End Role="DetalleSolicitudInsumo" Type="ETNADbModel.Store.DetalleSolicitudInsumoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudInsumo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleSolicitudInsumo">
+        <PropertyRef Name="SolicitudInsumo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ParteProduccionDetalleParteProduccionInsumo">
+    <End Role="ParteProduccion" Type="ETNADbModel.Store.ParteProduccionSet" Multiplicity="1" />
+    <End Role="DetalleParteProduccionInsumo" Type="ETNADbModel.Store.DetalleParteProduccionInsumoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ParteProduccion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleParteProduccionInsumo">
+        <PropertyRef Name="ParteProduccion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ParteProduccionDetalleParteProduccionBateria">
+    <End Role="ParteProduccion" Type="ETNADbModel.Store.ParteProduccionSet" Multiplicity="1" />
+    <End Role="DetalleParteProduccionBateria" Type="ETNADbModel.Store.DetalleParteProduccionBateriaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ParteProduccion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleParteProduccionBateria">
+        <PropertyRef Name="ParteProduccion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BateriaDetalleParteProduccionBateria">
+    <End Role="Bateria" Type="ETNADbModel.Store.BateriaSet" Multiplicity="1" />
+    <End Role="DetalleParteProduccionBateria" Type="ETNADbModel.Store.DetalleParteProduccionBateriaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bateria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleParteProduccionBateria">
+        <PropertyRef Name="Bateria_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlanProduccionProgramacionProduccion">
+    <End Role="PlanProduccion" Type="ETNADbModel.Store.PlanProduccionSet" Multiplicity="1" />
+    <End Role="ProgramacionProduccion" Type="ETNADbModel.Store.ProgramacionProduccionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanProduccion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProgramacionProduccion">
+        <PropertyRef Name="PlanProduccion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SolicitudProduccionPlanProduccion">
+    <End Role="SolicitudProduccion" Type="ETNADbModel.Store.SolicitudProduccionSet" Multiplicity="*" />
+    <End Role="PlanProduccion" Type="ETNADbModel.Store.PlanProduccionSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="PlanProduccion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SolicitudProduccion">
+        <PropertyRef Name="PlanProduccion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrdenTrabajoDetalleOrdenTrabajoPersonal">
+    <End Role="OrdenTrabajo" Type="ETNADbModel.Store.OrdenTrabajoSet" Multiplicity="1" />
+    <End Role="DetalleOrdenTrabajoPersonal" Type="ETNADbModel.Store.DetalleOrdenTrabajoPersonalSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleOrdenTrabajoPersonal">
+        <PropertyRef Name="OrdenTrabajo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrdenTrabajoDetalleOrdenTrabajoInsumo">
+    <End Role="OrdenTrabajo" Type="ETNADbModel.Store.OrdenTrabajoSet" Multiplicity="1" />
+    <End Role="DetalleOrdenTrabajoInsumo" Type="ETNADbModel.Store.DetalleOrdenTrabajoInsumoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleOrdenTrabajoInsumo">
+        <PropertyRef Name="OrdenTrabajo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SolicitudProduccionLote">
+    <End Role="SolicitudProduccion" Type="ETNADbModel.Store.SolicitudProduccionSet" Multiplicity="1" />
+    <End Role="Lote" Type="ETNADbModel.Store.LoteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudProduccion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lote">
+        <PropertyRef Name="SolicitudProduccion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LoteOrdenTrabajo">
+    <End Role="Lote" Type="ETNADbModel.Store.LoteSet" Multiplicity="1" />
+    <End Role="OrdenTrabajo" Type="ETNADbModel.Store.OrdenTrabajoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lote">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrdenTrabajo">
+        <PropertyRef Name="Lote_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrdenTrabajoDetalleOrdenTrabajoMaquinaria">
+    <End Role="OrdenTrabajo" Type="ETNADbModel.Store.OrdenTrabajoSet" Multiplicity="1" />
+    <End Role="DetalleOrdenTrabajoMaquinaria" Type="ETNADbModel.Store.DetalleOrdenTrabajoMaquinariaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleOrdenTrabajoMaquinaria">
+        <PropertyRef Name="OrdenTrabajo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrdenTrabajoSolicitudInsumo">
+    <End Role="OrdenTrabajo" Type="ETNADbModel.Store.OrdenTrabajoSet" Multiplicity="1" />
+    <End Role="SolicitudInsumo" Type="ETNADbModel.Store.SolicitudInsumoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SolicitudInsumo">
+        <PropertyRef Name="OrdenTrabajo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MaquinariaDetalleOrdenTrabajoMaquinaria">
+    <End Role="Maquinaria" Type="ETNADbModel.Store.MaquinariaSet" Multiplicity="1" />
+    <End Role="DetalleOrdenTrabajoMaquinaria" Type="ETNADbModel.Store.DetalleOrdenTrabajoMaquinariaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maquinaria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleOrdenTrabajoMaquinaria">
+        <PropertyRef Name="Maquinaria_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -693,10 +1036,6 @@
           </AssociationSet>
           <EntitySet Name="LoteSet" EntityType="ETNADbModel.Lote" />
           <EntitySet Name="TipoLoteSet" EntityType="ETNADbModel.TipoLote" />
-          <AssociationSet Name="LoteTipoLote" Association="ETNADbModel.LoteTipoLote">
-            <End Role="Lote" EntitySet="LoteSet" />
-            <End Role="TipoLote" EntitySet="TipoLoteSet" />
-          </AssociationSet>
           <EntitySet Name="SolicitudSalidaConjunto" EntityType="ETNADbModel.SolicitudSalida" />
           <EntitySet Name="DetalleSolicitudSalidaConjunto" EntityType="ETNADbModel.DetalleSolicitudSalida" />
           <AssociationSet Name="SolicitudSalidaEmpleado" Association="ETNADbModel.SolicitudSalidaEmpleado">
@@ -725,6 +1064,81 @@
             <End Role="Producto" EntitySet="Productos" />
           </AssociationSet>
           <EntitySet Name="Vehiculos" EntityType="ETNADbModel.Vehiculo" />
+          <EntitySet Name="SolicitudInsumoSet" EntityType="ETNADbModel.SolicitudInsumo" />
+          <EntitySet Name="DetalleSolicitudInsumoSet" EntityType="ETNADbModel.DetalleSolicitudInsumo" />
+          <EntitySet Name="DetalleParteProduccionBateriaSet" EntityType="ETNADbModel.DetalleParteProduccionBateria" />
+          <EntitySet Name="BateriaSet" EntityType="ETNADbModel.Bateria" />
+          <EntitySet Name="DetalleOrdenTrabajoInsumoSet" EntityType="ETNADbModel.DetalleOrdenTrabajoInsumo" />
+          <EntitySet Name="ParteProduccionSet" EntityType="ETNADbModel.ParteProduccion" />
+          <EntitySet Name="DetalleParteProduccionInsumoSet" EntityType="ETNADbModel.DetalleParteProduccionInsumo" />
+          <EntitySet Name="OrdenTrabajoSet" EntityType="ETNADbModel.OrdenTrabajo" />
+          <EntitySet Name="DetalleOrdenTrabajoPersonalSet" EntityType="ETNADbModel.DetalleOrdenTrabajoPersonal" />
+          <EntitySet Name="SolicitudProduccionSet" EntityType="ETNADbModel.SolicitudProduccion" />
+          <EntitySet Name="PlanProduccionSet" EntityType="ETNADbModel.PlanProduccion" />
+          <EntitySet Name="ProgramacionProduccionSet" EntityType="ETNADbModel.ProgramacionProduccion" />
+          <EntitySet Name="DetalleSolicitudProduccionSet" EntityType="ETNADbModel.DetalleSolicitudProduccion" />
+          <AssociationSet Name="SolicitudProduccionDetalleSolicitudProduccion" Association="ETNADbModel.SolicitudProduccionDetalleSolicitudProduccion">
+            <End Role="SolicitudProduccion" EntitySet="SolicitudProduccionSet" />
+            <End Role="DetalleSolicitudProduccion" EntitySet="DetalleSolicitudProduccionSet" />
+          </AssociationSet>
+          <AssociationSet Name="OrdenTrabajoDetalleSolicitudProduccion" Association="ETNADbModel.OrdenTrabajoDetalleSolicitudProduccion">
+            <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+            <End Role="DetalleSolicitudProduccion" EntitySet="DetalleSolicitudProduccionSet" />
+          </AssociationSet>
+          <AssociationSet Name="SolicitudInsumoDetalleSolicitudInsumo" Association="ETNADbModel.SolicitudInsumoDetalleSolicitudInsumo">
+            <End Role="SolicitudInsumo" EntitySet="SolicitudInsumoSet" />
+            <End Role="DetalleSolicitudInsumo" EntitySet="DetalleSolicitudInsumoSet" />
+          </AssociationSet>
+          <AssociationSet Name="ParteProduccionDetalleParteProduccionInsumo" Association="ETNADbModel.ParteProduccionDetalleParteProduccionInsumo">
+            <End Role="ParteProduccion" EntitySet="ParteProduccionSet" />
+            <End Role="DetalleParteProduccionInsumo" EntitySet="DetalleParteProduccionInsumoSet" />
+          </AssociationSet>
+          <AssociationSet Name="ParteProduccionDetalleParteProduccionBateria" Association="ETNADbModel.ParteProduccionDetalleParteProduccionBateria">
+            <End Role="ParteProduccion" EntitySet="ParteProduccionSet" />
+            <End Role="DetalleParteProduccionBateria" EntitySet="DetalleParteProduccionBateriaSet" />
+          </AssociationSet>
+          <AssociationSet Name="BateriaDetalleParteProduccionBateria" Association="ETNADbModel.BateriaDetalleParteProduccionBateria">
+            <End Role="Bateria" EntitySet="BateriaSet" />
+            <End Role="DetalleParteProduccionBateria" EntitySet="DetalleParteProduccionBateriaSet" />
+          </AssociationSet>
+          <AssociationSet Name="PlanProduccionProgramacionProduccion" Association="ETNADbModel.PlanProduccionProgramacionProduccion">
+            <End Role="PlanProduccion" EntitySet="PlanProduccionSet" />
+            <End Role="ProgramacionProduccion" EntitySet="ProgramacionProduccionSet" />
+          </AssociationSet>
+          <AssociationSet Name="SolicitudProduccionPlanProduccion" Association="ETNADbModel.SolicitudProduccionPlanProduccion">
+            <End Role="SolicitudProduccion" EntitySet="SolicitudProduccionSet" />
+            <End Role="PlanProduccion" EntitySet="PlanProduccionSet" />
+          </AssociationSet>
+          <AssociationSet Name="OrdenTrabajoDetalleOrdenTrabajoPersonal" Association="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajoPersonal">
+            <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+            <End Role="DetalleOrdenTrabajoPersonal" EntitySet="DetalleOrdenTrabajoPersonalSet" />
+          </AssociationSet>
+          <AssociationSet Name="OrdenTrabajoDetalleOrdenTrabajoInsumo" Association="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajoInsumo">
+            <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+            <End Role="DetalleOrdenTrabajoInsumo" EntitySet="DetalleOrdenTrabajoInsumoSet" />
+          </AssociationSet>
+          <AssociationSet Name="SolicitudProduccionLote" Association="ETNADbModel.SolicitudProduccionLote">
+            <End Role="SolicitudProduccion" EntitySet="SolicitudProduccionSet" />
+            <End Role="Lote" EntitySet="LoteSet" />
+          </AssociationSet>
+          <AssociationSet Name="LoteOrdenTrabajo" Association="ETNADbModel.LoteOrdenTrabajo">
+            <End Role="Lote" EntitySet="LoteSet" />
+            <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+          </AssociationSet>
+          <EntitySet Name="DetalleOrdenTrabajoMaquinariaSet" EntityType="ETNADbModel.DetalleOrdenTrabajoMaquinaria" />
+          <AssociationSet Name="OrdenTrabajoDetalleOrdenTrabajoMaquinaria" Association="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajoMaquinaria">
+            <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+            <End Role="DetalleOrdenTrabajoMaquinaria" EntitySet="DetalleOrdenTrabajoMaquinariaSet" />
+          </AssociationSet>
+          <AssociationSet Name="OrdenTrabajoSolicitudInsumo" Association="ETNADbModel.OrdenTrabajoSolicitudInsumo">
+            <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+            <End Role="SolicitudInsumo" EntitySet="SolicitudInsumoSet" />
+          </AssociationSet>
+          <EntitySet Name="MaquinariaSet" EntityType="ETNADbModel.Maquinaria" />
+          <AssociationSet Name="MaquinariaDetalleOrdenTrabajoMaquinaria" Association="ETNADbModel.MaquinariaDetalleOrdenTrabajoMaquinaria">
+            <End Role="Maquinaria" EntitySet="MaquinariaSet" />
+            <End Role="DetalleOrdenTrabajoMaquinaria" EntitySet="DetalleOrdenTrabajoMaquinariaSet" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="DocumentoReferencia">
           <Key>
@@ -941,7 +1355,8 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="NroLote" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="3" />
-          <NavigationProperty Name="TipoLote" Relationship="ETNADbModel.LoteTipoLote" FromRole="Lote" ToRole="TipoLote" />
+          <NavigationProperty Name="SolicitudProduccion" Relationship="ETNADbModel.SolicitudProduccionLote" FromRole="Lote" ToRole="SolicitudProduccion" />
+          <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.LoteOrdenTrabajo" FromRole="Lote" ToRole="OrdenTrabajo" />
         </EntityType>
         <EntityType Name="TipoLote">
           <Key>
@@ -949,12 +1364,7 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Lote" Relationship="ETNADbModel.LoteTipoLote" FromRole="TipoLote" ToRole="Lote" />
         </EntityType>
-        <Association Name="LoteTipoLote">
-          <End Type="ETNADbModel.Lote" Role="Lote" Multiplicity="*" />
-          <End Type="ETNADbModel.TipoLote" Role="TipoLote" Multiplicity="1" />
-        </Association>
         <EntityType Name="SolicitudSalida">
           <Key>
             <PropertyRef Name="Id" />
@@ -1057,6 +1467,184 @@
           <Property Name="marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="placa" Type="String" Nullable="false" />
         </EntityType>
+        <EntityType Name="SolicitudInsumo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="DetalleSolicitudInsumo" Relationship="ETNADbModel.SolicitudInsumoDetalleSolicitudInsumo" FromRole="SolicitudInsumo" ToRole="DetalleSolicitudInsumo" />
+          <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoSolicitudInsumo" FromRole="SolicitudInsumo" ToRole="OrdenTrabajo" />
+        </EntityType>
+        <EntityType Name="DetalleSolicitudInsumo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SolicitudInsumo" Relationship="ETNADbModel.SolicitudInsumoDetalleSolicitudInsumo" FromRole="DetalleSolicitudInsumo" ToRole="SolicitudInsumo" />
+        </EntityType>
+        <EntityType Name="DetalleParteProduccionBateria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ParteProduccion" Relationship="ETNADbModel.ParteProduccionDetalleParteProduccionBateria" FromRole="DetalleParteProduccionBateria" ToRole="ParteProduccion" />
+          <NavigationProperty Name="Bateria" Relationship="ETNADbModel.BateriaDetalleParteProduccionBateria" FromRole="DetalleParteProduccionBateria" ToRole="Bateria" />
+        </EntityType>
+        <EntityType Name="Bateria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="DetalleParteProduccionBateria" Relationship="ETNADbModel.BateriaDetalleParteProduccionBateria" FromRole="Bateria" ToRole="DetalleParteProduccionBateria" />
+        </EntityType>
+        <EntityType Name="DetalleOrdenTrabajoInsumo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajoInsumo" FromRole="DetalleOrdenTrabajoInsumo" ToRole="OrdenTrabajo" />
+        </EntityType>
+        <EntityType Name="ParteProduccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="DetalleParteProduccionInsumo" Relationship="ETNADbModel.ParteProduccionDetalleParteProduccionInsumo" FromRole="ParteProduccion" ToRole="DetalleParteProduccionInsumo" />
+          <NavigationProperty Name="DetalleParteProduccionBateria" Relationship="ETNADbModel.ParteProduccionDetalleParteProduccionBateria" FromRole="ParteProduccion" ToRole="DetalleParteProduccionBateria" />
+        </EntityType>
+        <EntityType Name="DetalleParteProduccionInsumo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ParteProduccion" Relationship="ETNADbModel.ParteProduccionDetalleParteProduccionInsumo" FromRole="DetalleParteProduccionInsumo" ToRole="ParteProduccion" />
+        </EntityType>
+        <EntityType Name="OrdenTrabajo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="DetalleSolicitudProduccion" Relationship="ETNADbModel.OrdenTrabajoDetalleSolicitudProduccion" FromRole="OrdenTrabajo" ToRole="DetalleSolicitudProduccion" />
+          <NavigationProperty Name="DetalleOrdenTrabajoPersonal" Relationship="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajoPersonal" FromRole="OrdenTrabajo" ToRole="DetalleOrdenTrabajoPersonal" />
+          <NavigationProperty Name="DetalleOrdenTrabajoInsumo" Relationship="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajoInsumo" FromRole="OrdenTrabajo" ToRole="DetalleOrdenTrabajoInsumo" />
+          <NavigationProperty Name="Lote" Relationship="ETNADbModel.LoteOrdenTrabajo" FromRole="OrdenTrabajo" ToRole="Lote" />
+          <NavigationProperty Name="DetalleOrdenTrabajoMaquinaria" Relationship="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajoMaquinaria" FromRole="OrdenTrabajo" ToRole="DetalleOrdenTrabajoMaquinaria" />
+          <NavigationProperty Name="SolicitudInsumo" Relationship="ETNADbModel.OrdenTrabajoSolicitudInsumo" FromRole="OrdenTrabajo" ToRole="SolicitudInsumo" />
+        </EntityType>
+        <EntityType Name="DetalleOrdenTrabajoPersonal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajoPersonal" FromRole="DetalleOrdenTrabajoPersonal" ToRole="OrdenTrabajo" />
+        </EntityType>
+        <EntityType Name="SolicitudProduccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="DetalleSolicitudProduccion" Relationship="ETNADbModel.SolicitudProduccionDetalleSolicitudProduccion" FromRole="SolicitudProduccion" ToRole="DetalleSolicitudProduccion" />
+          <NavigationProperty Name="PlanProduccion" Relationship="ETNADbModel.SolicitudProduccionPlanProduccion" FromRole="SolicitudProduccion" ToRole="PlanProduccion" />
+          <NavigationProperty Name="Lote" Relationship="ETNADbModel.SolicitudProduccionLote" FromRole="SolicitudProduccion" ToRole="Lote" />
+        </EntityType>
+        <EntityType Name="PlanProduccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ProgramacionProduccion" Relationship="ETNADbModel.PlanProduccionProgramacionProduccion" FromRole="PlanProduccion" ToRole="ProgramacionProduccion" />
+          <NavigationProperty Name="SolicitudProduccion" Relationship="ETNADbModel.SolicitudProduccionPlanProduccion" FromRole="PlanProduccion" ToRole="SolicitudProduccion" />
+        </EntityType>
+        <EntityType Name="ProgramacionProduccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="PlanProduccion" Relationship="ETNADbModel.PlanProduccionProgramacionProduccion" FromRole="ProgramacionProduccion" ToRole="PlanProduccion" />
+        </EntityType>
+        <EntityType Name="DetalleSolicitudProduccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SolicitudProduccion" Relationship="ETNADbModel.SolicitudProduccionDetalleSolicitudProduccion" FromRole="DetalleSolicitudProduccion" ToRole="SolicitudProduccion" />
+          <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoDetalleSolicitudProduccion" FromRole="DetalleSolicitudProduccion" ToRole="OrdenTrabajo" />
+        </EntityType>
+        <Association Name="SolicitudProduccionDetalleSolicitudProduccion">
+          <End Type="ETNADbModel.SolicitudProduccion" Role="SolicitudProduccion" Multiplicity="1" />
+          <End Type="ETNADbModel.DetalleSolicitudProduccion" Role="DetalleSolicitudProduccion" Multiplicity="*" />
+        </Association>
+        <Association Name="OrdenTrabajoDetalleSolicitudProduccion">
+          <End Type="ETNADbModel.OrdenTrabajo" Role="OrdenTrabajo" Multiplicity="1" />
+          <End Type="ETNADbModel.DetalleSolicitudProduccion" Role="DetalleSolicitudProduccion" Multiplicity="*" />
+        </Association>
+        <Association Name="SolicitudInsumoDetalleSolicitudInsumo">
+          <End Type="ETNADbModel.SolicitudInsumo" Role="SolicitudInsumo" Multiplicity="1" />
+          <End Type="ETNADbModel.DetalleSolicitudInsumo" Role="DetalleSolicitudInsumo" Multiplicity="*" />
+        </Association>
+        <Association Name="ParteProduccionDetalleParteProduccionInsumo">
+          <End Type="ETNADbModel.ParteProduccion" Role="ParteProduccion" Multiplicity="1" />
+          <End Type="ETNADbModel.DetalleParteProduccionInsumo" Role="DetalleParteProduccionInsumo" Multiplicity="*" />
+        </Association>
+        <Association Name="ParteProduccionDetalleParteProduccionBateria">
+          <End Type="ETNADbModel.ParteProduccion" Role="ParteProduccion" Multiplicity="1" />
+          <End Type="ETNADbModel.DetalleParteProduccionBateria" Role="DetalleParteProduccionBateria" Multiplicity="*" />
+        </Association>
+        <Association Name="BateriaDetalleParteProduccionBateria">
+          <End Type="ETNADbModel.Bateria" Role="Bateria" Multiplicity="1" />
+          <End Type="ETNADbModel.DetalleParteProduccionBateria" Role="DetalleParteProduccionBateria" Multiplicity="*" />
+        </Association>
+        <Association Name="PlanProduccionProgramacionProduccion">
+          <End Type="ETNADbModel.PlanProduccion" Role="PlanProduccion" Multiplicity="1" />
+          <End Type="ETNADbModel.ProgramacionProduccion" Role="ProgramacionProduccion" Multiplicity="0..1" />
+        </Association>
+        <Association Name="SolicitudProduccionPlanProduccion">
+          <End Type="ETNADbModel.SolicitudProduccion" Role="SolicitudProduccion" Multiplicity="1" />
+          <End Type="ETNADbModel.PlanProduccion" Role="PlanProduccion" Multiplicity="1" />
+        </Association>
+        <Association Name="OrdenTrabajoDetalleOrdenTrabajoPersonal">
+          <End Type="ETNADbModel.OrdenTrabajo" Role="OrdenTrabajo" Multiplicity="1" />
+          <End Type="ETNADbModel.DetalleOrdenTrabajoPersonal" Role="DetalleOrdenTrabajoPersonal" Multiplicity="*" />
+        </Association>
+        <Association Name="OrdenTrabajoDetalleOrdenTrabajoInsumo">
+          <End Type="ETNADbModel.OrdenTrabajo" Role="OrdenTrabajo" Multiplicity="1" />
+          <End Type="ETNADbModel.DetalleOrdenTrabajoInsumo" Role="DetalleOrdenTrabajoInsumo" Multiplicity="*" />
+        </Association>
+        <Association Name="SolicitudProduccionLote">
+          <End Type="ETNADbModel.SolicitudProduccion" Role="SolicitudProduccion" Multiplicity="1" />
+          <End Type="ETNADbModel.Lote" Role="Lote" Multiplicity="0..1" />
+        </Association>
+        <Association Name="LoteOrdenTrabajo">
+          <End Type="ETNADbModel.Lote" Role="Lote" Multiplicity="1" />
+          <End Type="ETNADbModel.OrdenTrabajo" Role="OrdenTrabajo" Multiplicity="*" />
+        </Association>
+        <EntityType Name="DetalleOrdenTrabajoMaquinaria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajoMaquinaria" FromRole="DetalleOrdenTrabajoMaquinaria" ToRole="OrdenTrabajo" />
+          <NavigationProperty Name="Maquinaria" Relationship="ETNADbModel.MaquinariaDetalleOrdenTrabajoMaquinaria" FromRole="DetalleOrdenTrabajoMaquinaria" ToRole="Maquinaria" />
+        </EntityType>
+        <Association Name="OrdenTrabajoDetalleOrdenTrabajoMaquinaria">
+          <End Type="ETNADbModel.OrdenTrabajo" Role="OrdenTrabajo" Multiplicity="1" />
+          <End Type="ETNADbModel.DetalleOrdenTrabajoMaquinaria" Role="DetalleOrdenTrabajoMaquinaria" Multiplicity="*" />
+        </Association>
+        <Association Name="OrdenTrabajoSolicitudInsumo">
+          <End Type="ETNADbModel.OrdenTrabajo" Role="OrdenTrabajo" Multiplicity="1" />
+          <End Type="ETNADbModel.SolicitudInsumo" Role="SolicitudInsumo" Multiplicity="0..1" />
+        </Association>
+        <EntityType Name="Maquinaria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="DetalleOrdenTrabajoMaquinaria" Relationship="ETNADbModel.MaquinariaDetalleOrdenTrabajoMaquinaria" FromRole="Maquinaria" ToRole="DetalleOrdenTrabajoMaquinaria" />
+        </EntityType>
+        <Association Name="MaquinariaDetalleOrdenTrabajoMaquinaria">
+          <End Type="ETNADbModel.Maquinaria" Role="Maquinaria" Multiplicity="1" />
+          <End Type="ETNADbModel.DetalleOrdenTrabajoMaquinaria" Role="DetalleOrdenTrabajoMaquinaria" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1254,6 +1842,111 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SolicitudInsumoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.SolicitudInsumo)">
+        <MappingFragment StoreEntitySet="SolicitudInsumoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleSolicitudInsumoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleSolicitudInsumo)">
+        <MappingFragment StoreEntitySet="DetalleSolicitudInsumoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleParteProduccionBateriaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleParteProduccionBateria)">
+        <MappingFragment StoreEntitySet="DetalleParteProduccionBateriaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BateriaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.Bateria)">
+        <MappingFragment StoreEntitySet="BateriaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleOrdenTrabajoInsumoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleOrdenTrabajoInsumo)">
+        <MappingFragment StoreEntitySet="DetalleOrdenTrabajoInsumoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParteProduccionSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.ParteProduccion)">
+        <MappingFragment StoreEntitySet="ParteProduccionSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleParteProduccionInsumoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleParteProduccionInsumo)">
+        <MappingFragment StoreEntitySet="DetalleParteProduccionInsumoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdenTrabajoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.OrdenTrabajo)">
+        <MappingFragment StoreEntitySet="OrdenTrabajoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleOrdenTrabajoPersonalSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleOrdenTrabajoPersonal)">
+        <MappingFragment StoreEntitySet="DetalleOrdenTrabajoPersonalSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SolicitudProduccionSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.SolicitudProduccion)">
+        <MappingFragment StoreEntitySet="SolicitudProduccionSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanProduccionSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.PlanProduccion)">
+        <MappingFragment StoreEntitySet="PlanProduccionSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProgramacionProduccionSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.ProgramacionProduccion)">
+        <MappingFragment StoreEntitySet="ProgramacionProduccionSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleSolicitudProduccionSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleSolicitudProduccion)">
+        <MappingFragment StoreEntitySet="DetalleSolicitudProduccionSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleOrdenTrabajoMaquinariaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleOrdenTrabajoMaquinaria)">
+        <MappingFragment StoreEntitySet="DetalleOrdenTrabajoMaquinariaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaquinariaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.Maquinaria)">
+        <MappingFragment StoreEntitySet="MaquinariaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="DocumentoReferenciaAlmacen" TypeName="ETNADbModel.DocumentoReferenciaAlmacen" StoreEntitySet="DocumentosReferencia">
       <EndProperty Name="Almacen">
         <ScalarProperty Name="Id" ColumnName="Almacen_Id" />
@@ -1334,14 +2027,6 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="LoteTipoLote" TypeName="ETNADbModel.LoteTipoLote" StoreEntitySet="LoteSet">
-      <EndProperty Name="TipoLote">
-        <ScalarProperty Name="Id" ColumnName="TipoLote_Id" />
-      </EndProperty>
-      <EndProperty Name="Lote">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="SolicitudSalidaEmpleado" TypeName="ETNADbModel.SolicitudSalidaEmpleado" StoreEntitySet="SolicitudSalidaConjunto">
       <EndProperty Name="Empleado">
         <ScalarProperty Name="Id" ColumnName="Empleado_Id" />
@@ -1355,6 +2040,126 @@
         <ScalarProperty Name="Id" ColumnName="SolicitudSalida_Id" />
       </EndProperty>
       <EndProperty Name="GuiaSalida">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SolicitudProduccionDetalleSolicitudProduccion" TypeName="ETNADbModel.SolicitudProduccionDetalleSolicitudProduccion" StoreEntitySet="DetalleSolicitudProduccionSet">
+      <EndProperty Name="SolicitudProduccion">
+        <ScalarProperty Name="Id" ColumnName="SolicitudProduccion_Id" />
+      </EndProperty>
+      <EndProperty Name="DetalleSolicitudProduccion">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrdenTrabajoDetalleSolicitudProduccion" TypeName="ETNADbModel.OrdenTrabajoDetalleSolicitudProduccion" StoreEntitySet="DetalleSolicitudProduccionSet">
+      <EndProperty Name="OrdenTrabajo">
+        <ScalarProperty Name="Id" ColumnName="OrdenTrabajo_Id" />
+      </EndProperty>
+      <EndProperty Name="DetalleSolicitudProduccion">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SolicitudInsumoDetalleSolicitudInsumo" TypeName="ETNADbModel.SolicitudInsumoDetalleSolicitudInsumo" StoreEntitySet="DetalleSolicitudInsumoSet">
+      <EndProperty Name="SolicitudInsumo">
+        <ScalarProperty Name="Id" ColumnName="SolicitudInsumo_Id" />
+      </EndProperty>
+      <EndProperty Name="DetalleSolicitudInsumo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ParteProduccionDetalleParteProduccionInsumo" TypeName="ETNADbModel.ParteProduccionDetalleParteProduccionInsumo" StoreEntitySet="DetalleParteProduccionInsumoSet">
+      <EndProperty Name="ParteProduccion">
+        <ScalarProperty Name="Id" ColumnName="ParteProduccion_Id" />
+      </EndProperty>
+      <EndProperty Name="DetalleParteProduccionInsumo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ParteProduccionDetalleParteProduccionBateria" TypeName="ETNADbModel.ParteProduccionDetalleParteProduccionBateria" StoreEntitySet="DetalleParteProduccionBateriaSet">
+      <EndProperty Name="ParteProduccion">
+        <ScalarProperty Name="Id" ColumnName="ParteProduccion_Id" />
+      </EndProperty>
+      <EndProperty Name="DetalleParteProduccionBateria">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BateriaDetalleParteProduccionBateria" TypeName="ETNADbModel.BateriaDetalleParteProduccionBateria" StoreEntitySet="DetalleParteProduccionBateriaSet">
+      <EndProperty Name="Bateria">
+        <ScalarProperty Name="Id" ColumnName="Bateria_Id" />
+      </EndProperty>
+      <EndProperty Name="DetalleParteProduccionBateria">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlanProduccionProgramacionProduccion" TypeName="ETNADbModel.PlanProduccionProgramacionProduccion" StoreEntitySet="ProgramacionProduccionSet">
+      <EndProperty Name="PlanProduccion">
+        <ScalarProperty Name="Id" ColumnName="PlanProduccion_Id" />
+      </EndProperty>
+      <EndProperty Name="ProgramacionProduccion">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SolicitudProduccionPlanProduccion" TypeName="ETNADbModel.SolicitudProduccionPlanProduccion" StoreEntitySet="SolicitudProduccionSet">
+      <EndProperty Name="PlanProduccion">
+        <ScalarProperty Name="Id" ColumnName="PlanProduccion_Id" />
+      </EndProperty>
+      <EndProperty Name="SolicitudProduccion">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrdenTrabajoDetalleOrdenTrabajoPersonal" TypeName="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajoPersonal" StoreEntitySet="DetalleOrdenTrabajoPersonalSet">
+      <EndProperty Name="OrdenTrabajo">
+        <ScalarProperty Name="Id" ColumnName="OrdenTrabajo_Id" />
+      </EndProperty>
+      <EndProperty Name="DetalleOrdenTrabajoPersonal">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrdenTrabajoDetalleOrdenTrabajoInsumo" TypeName="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajoInsumo" StoreEntitySet="DetalleOrdenTrabajoInsumoSet">
+      <EndProperty Name="OrdenTrabajo">
+        <ScalarProperty Name="Id" ColumnName="OrdenTrabajo_Id" />
+      </EndProperty>
+      <EndProperty Name="DetalleOrdenTrabajoInsumo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SolicitudProduccionLote" TypeName="ETNADbModel.SolicitudProduccionLote" StoreEntitySet="LoteSet">
+      <EndProperty Name="SolicitudProduccion">
+        <ScalarProperty Name="Id" ColumnName="SolicitudProduccion_Id" />
+      </EndProperty>
+      <EndProperty Name="Lote">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LoteOrdenTrabajo" TypeName="ETNADbModel.LoteOrdenTrabajo" StoreEntitySet="OrdenTrabajoSet">
+      <EndProperty Name="Lote">
+        <ScalarProperty Name="Id" ColumnName="Lote_Id" />
+      </EndProperty>
+      <EndProperty Name="OrdenTrabajo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrdenTrabajoDetalleOrdenTrabajoMaquinaria" TypeName="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajoMaquinaria" StoreEntitySet="DetalleOrdenTrabajoMaquinariaSet">
+      <EndProperty Name="OrdenTrabajo">
+        <ScalarProperty Name="Id" ColumnName="OrdenTrabajo_Id" />
+      </EndProperty>
+      <EndProperty Name="DetalleOrdenTrabajoMaquinaria">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrdenTrabajoSolicitudInsumo" TypeName="ETNADbModel.OrdenTrabajoSolicitudInsumo" StoreEntitySet="SolicitudInsumoSet">
+      <EndProperty Name="OrdenTrabajo">
+        <ScalarProperty Name="Id" ColumnName="OrdenTrabajo_Id" />
+      </EndProperty>
+      <EndProperty Name="SolicitudInsumo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MaquinariaDetalleOrdenTrabajoMaquinaria" TypeName="ETNADbModel.MaquinariaDetalleOrdenTrabajoMaquinaria" StoreEntitySet="DetalleOrdenTrabajoMaquinariaSet">
+      <EndProperty Name="Maquinaria">
+        <ScalarProperty Name="Id" ColumnName="Maquinaria_Id" />
+      </EndProperty>
+      <EndProperty Name="DetalleOrdenTrabajoMaquinaria">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

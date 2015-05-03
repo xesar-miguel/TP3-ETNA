@@ -12,18 +12,17 @@ namespace ETNA.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Lote
+    public partial class SolicitudProduccion
     {
-        public Lote()
+        public SolicitudProduccion()
         {
-            this.OrdenTrabajo = new HashSet<OrdenTrabajo>();
+            this.DetalleSolicitudProduccion = new HashSet<DetalleSolicitudProduccion>();
         }
     
         public int Id { get; set; }
-        public string NroLote { get; set; }
-        public System.DateTime FechaCreacion { get; set; }
     
-        public virtual SolicitudProduccion SolicitudProduccion { get; set; }
-        public virtual ICollection<OrdenTrabajo> OrdenTrabajo { get; set; }
+        public virtual ICollection<DetalleSolicitudProduccion> DetalleSolicitudProduccion { get; set; }
+        public virtual PlanProduccion PlanProduccion { get; set; }
+        public virtual Lote Lote { get; set; }
     }
 }
