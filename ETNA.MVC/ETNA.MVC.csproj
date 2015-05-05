@@ -192,6 +192,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DI\EntregaViewModel.cs" />
     <Compile Include="Models\DI\VehiculoViewModel.cs" />
     <Compile Include="Models\FB\LoteViewModel.cs" />
     <Compile Include="Models\LO\AlmacenViewModel.cs" />
@@ -340,6 +341,7 @@
     <Content Include="Views\Vehiculos\Index.cshtml" />
     <Content Include="Views\Vehiculos\Create.cshtml" />
     <Content Include="Views\Distribucion\Index.cshtml" />
+    <Content Include="Views\Entrega\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

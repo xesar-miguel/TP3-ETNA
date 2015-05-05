@@ -20,6 +20,10 @@ namespace ETNA.Domain
             this.Kardex = new HashSet<Kardex>();
             this.DetalleSolicitudSalida = new HashSet<DetalleSolicitudSalida>();
             this.DetalleGuiaSalida = new HashSet<DetalleGuiaSalida>();
+            this.EntregaDetalle = new HashSet<EntregaDetalle>();
+            this.FacturaDetalle = new HashSet<FacturaDetalle>();
+            this.PedidoDetalle = new HashSet<PedidoDetalle>();
+            this.ProductoBackOrder = new HashSet<ProductoBackOrder>();
         }
     
         public int Id { get; set; }
@@ -29,10 +33,23 @@ namespace ETNA.Domain
         public double PrecioListaCompra { get; set; }
         public double PrecioListaVenta { get; set; }
         public int Estado { get; set; }
+        public string Numero { get; set; }
+        public Nullable<int> Vigencia { get; set; }
+        public string UnidadTiempoVigencia { get; set; }
+        public Nullable<decimal> Largo { get; set; }
+        public Nullable<decimal> Alto { get; set; }
+        public Nullable<decimal> Ancho { get; set; }
+        public string UnidadDimensiones { get; set; }
+        public Nullable<decimal> Peso { get; set; }
+        public string UnidadPeso { get; set; }
     
         public virtual ICollection<DetalleSolicitudEntrada> SolicitudEntradaProducto { get; set; }
         public virtual ICollection<Kardex> Kardex { get; set; }
         public virtual ICollection<DetalleSolicitudSalida> DetalleSolicitudSalida { get; set; }
         public virtual ICollection<DetalleGuiaSalida> DetalleGuiaSalida { get; set; }
+        public virtual ICollection<EntregaDetalle> EntregaDetalle { get; set; }
+        public virtual ICollection<FacturaDetalle> FacturaDetalle { get; set; }
+        public virtual ICollection<PedidoDetalle> PedidoDetalle { get; set; }
+        public virtual ICollection<ProductoBackOrder> ProductoBackOrder { get; set; }
     }
 }

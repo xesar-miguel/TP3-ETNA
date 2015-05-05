@@ -58,7 +58,7 @@
         <EntityTypeShape EntityType="ETNADbModel.Bateria" Width="1.5" PointX="15.125" PointY="13" IsExpanded="false" FillColor="192, 0, 0" />
         <EntityTypeShape EntityType="ETNADbModel.DetalleOrdenTrabajoInsumo" Width="2.25" PointX="11.25" PointY="12.5" IsExpanded="false" FillColor="192, 0, 0" />
         <EntityTypeShape EntityType="ETNADbModel.ParteProduccion" Width="2" PointX="14.625" PointY="10.625" IsExpanded="false" FillColor="192, 0, 0" />
-        <EntityTypeShape EntityType="ETNADbModel.DetalleParteProduccionInsumo" Width="2.375" PointX="11.375" PointY="10.625" IsExpanded="false" FillColor="192, 0, 0" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleParteProduccionInsumo" Width="2.375" PointX="11.375" PointY="10.625" IsExpanded="true" FillColor="192, 0, 0" />
         <EntityTypeShape EntityType="ETNADbModel.OrdenTrabajo" Width="1.5" PointX="18.125" PointY="13.875" IsExpanded="false" FillColor="192, 0, 0" />
         <EntityTypeShape EntityType="ETNADbModel.DetalleOrdenTrabajoPersonal" Width="2.25" PointX="11.25" PointY="14.625" IsExpanded="false" FillColor="192, 0, 0" />
         <EntityTypeShape EntityType="ETNADbModel.SolicitudProduccion" Width="1.875" PointX="21.375" PointY="12" IsExpanded="false" FillColor="192, 0, 0" />
@@ -83,6 +83,137 @@
         <AssociationConnector Association="ETNADbModel.OrdenTrabajoSolicitudInsumo" />
         <EntityTypeShape EntityType="ETNADbModel.Maquinaria" Width="1.5" PointX="8.375" PointY="13.125" FillColor="128, 255, 128" />
         <AssociationConnector Association="ETNADbModel.MaquinariaDetalleOrdenTrabajoMaquinaria" />
+        <EntityTypeShape EntityType="ETNADbModel.Backorder" Width="1.5" PointX="13.5" PointY="35.875" />
+        <EntityTypeShape EntityType="ETNADbModel.Bateria1" Width="1.5" PointX="23" PointY="36.375" />
+        <EntityTypeShape EntityType="ETNADbModel.Calendario" Width="1.5" PointX="14" PointY="30.875" />
+        <EntityTypeShape EntityType="ETNADbModel.Cargo" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ETNADbModel.Cliente" Width="1.5" PointX="3.75" PointY="36.625" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleOrdenTrabajoInsumo1" Width="1.5" PointX="23" PointY="24.5" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleOrdenTrabajoPersonal1" Width="1.5" PointX="24" PointY="14.75" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleParteProduccionBateria1" Width="1.5" PointX="25.25" PointY="32.125" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleParteProduccionInsumo1" Width="1.5" PointX="28.25" PointY="32.125" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleSolicitudInsumo1" Width="1.5" PointX="25.25" PointY="28.5" />
+        <EntityTypeShape EntityType="ETNADbModel.Direccion" Width="1.5" PointX="6" PointY="30.625" />
+        <EntityTypeShape EntityType="ETNADbModel.DisponibilidadRecurso" Width="1.5" PointX="20.25" PointY="16.875" />
+        <EntityTypeShape EntityType="ETNADbModel.DisponibilidadTransporte" Width="1.5" PointX="17.25" PointY="29.75" />
+        <EntityTypeShape EntityType="ETNADbModel.Entrega" Width="1.5" PointX="11.25" PointY="30.5" />
+        <EntityTypeShape EntityType="ETNADbModel.EntregaDetalle" Width="1.5" PointX="13.5" PointY="20.375" />
+        <EntityTypeShape EntityType="ETNADbModel.EstadoCliente" Width="1.5" PointX="1.5" PointY="40.625" />
+        <EntityTypeShape EntityType="ETNADbModel.EstadoEntrega" Width="1.5" PointX="9" PointY="41" />
+        <EntityTypeShape EntityType="ETNADbModel.EstadoFactura" Width="1.5" PointX="6" PointY="36.625" />
+        <EntityTypeShape EntityType="ETNADbModel.EstadoHojaRuta" Width="1.5" PointX="0.75" PointY="44.125" />
+        <EntityTypeShape EntityType="ETNADbModel.EstadoHojaRutaDetalle" Width="1.5" PointX="6" PointY="23" />
+        <EntityTypeShape EntityType="ETNADbModel.EstadoPedido" Width="1.5" PointX="6" PointY="40" />
+        <EntityTypeShape EntityType="ETNADbModel.Factura" Width="1.5" PointX="8.25" PointY="35.625" />
+        <EntityTypeShape EntityType="ETNADbModel.FacturaDetalle" Width="1.5" PointX="14.75" PointY="25.875" />
+        <EntityTypeShape EntityType="ETNADbModel.FacturaEntrega" Width="1.5" PointX="18" PointY="22.75" />
+        <EntityTypeShape EntityType="ETNADbModel.HojaRuta" Width="1.5" PointX="3" PointY="30.875" />
+        <EntityTypeShape EntityType="ETNADbModel.HojaRutaDetalle" Width="1.5" PointX="8.25" PointY="25.875" />
+        <EntityTypeShape EntityType="ETNADbModel.HojaRutaRecurso" Width="1.5" PointX="16.25" PointY="19.125" />
+        <EntityTypeShape EntityType="ETNADbModel.Insumo" Width="1.5" PointX="20.75" PointY="20.375" />
+        <EntityTypeShape EntityType="ETNADbModel.Lotes" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="ETNADbModel.Marca" Width="1.5" PointX="1.5" PointY="20.75" />
+        <EntityTypeShape EntityType="ETNADbModel.MotivoTraslado" Width="1.5" PointX="9" PointY="22.375" />
+        <EntityTypeShape EntityType="ETNADbModel.OrdenTrabajo1" Width="1.5" PointX="20.75" PointY="23.875" />
+        <EntityTypeShape EntityType="ETNADbModel.Parametro" Width="1.5" PointX="6.75" PointY="2.25" />
+        <EntityTypeShape EntityType="ETNADbModel.ParteProduccion1" Width="1.5" PointX="23" PointY="31.875" />
+        <EntityTypeShape EntityType="ETNADbModel.Pedido" Width="1.5" PointX="8.25" PointY="30.375" />
+        <EntityTypeShape EntityType="ETNADbModel.PedidoDetalle" Width="1.5" PointX="11.75" PointY="24.75" />
+        <EntityTypeShape EntityType="ETNADbModel.PedidoEntrega" Width="1.5" PointX="17.75" PointY="25.875" />
+        <EntityTypeShape EntityType="ETNADbModel.ProductoBackOrder" Width="1.5" PointX="15.75" PointY="22.75" />
+        <EntityTypeShape EntityType="ETNADbModel.SolicitudInsumo1" Width="1.5" PointX="23" PointY="28.125" />
+        <EntityTypeShape EntityType="ETNADbModel.TipoCliente" Width="1.5" PointX="1.5" PointY="38.125" />
+        <EntityTypeShape EntityType="ETNADbModel.TipoDireccion" Width="1.5" PointX="3.75" PointY="24" />
+        <EntityTypeShape EntityType="ETNADbModel.TipoDocumento" Width="1.5" PointX="1.5" PointY="35.625" />
+        <EntityTypeShape EntityType="ETNADbModel.TipoLotes" Width="1.5" PointX="0.75" PointY="13.125" />
+        <EntityTypeShape EntityType="ETNADbModel.TipoPedido" Width="1.5" PointX="6" PointY="27.375" />
+        <EntityTypeShape EntityType="ETNADbModel.TipoTransporte" Width="1.5" PointX="1.5" PointY="23.25" />
+        <EntityTypeShape EntityType="ETNADbModel.Transporte" Width="1.5" PointX="0.75" PointY="26.375" />
+        <EntityTypeShape EntityType="ETNADbModel.Ubigeo" Width="1.5" PointX="3.75" PointY="26.75" />
+        <EntityTypeShape EntityType="ETNADbModel.ZonaDespacho" Width="1.5" PointX="0.75" PointY="31.5" />
+        <AssociationConnector Association="ETNADbModel.fk_Backorder_Entrega1" />
+        <AssociationConnector Association="ETNADbModel.fk_ProductoBackOrder_Backorder1" />
+        <AssociationConnector Association="ETNADbModel.FK_DetalleParteProduccionBateriaBateria" />
+        <AssociationConnector Association="ETNADbModel.fk_DisponibilidadRecurso_Calendario1" />
+        <AssociationConnector Association="ETNADbModel.fk_DisponibilidadTransporte_Calendario1" />
+        <AssociationConnector Association="ETNADbModel.fk_HojaRutaRecurso_Calendario1" />
+        <AssociationConnector Association="ETNADbModel.FK__Empleados__Cargo" />
+        <AssociationConnector Association="ETNADbModel.FK_Cliente_EstadoCliente1" />
+        <AssociationConnector Association="ETNADbModel.FK_Cliente_TipoCliente" />
+        <AssociationConnector Association="ETNADbModel.FK_Cliente_TipoDocumento1" />
+        <AssociationConnector Association="ETNADbModel.FK_Direccion_Cliente1" />
+        <AssociationConnector Association="ETNADbModel.fk_Entrega_Cliente1" />
+        <AssociationConnector Association="ETNADbModel.FK_Factura_Cliente1" />
+        <AssociationConnector Association="ETNADbModel.fk_HojaRutaDetalle_Cliente1" />
+        <AssociationConnector Association="ETNADbModel.FK_Pedido_Cliente1" />
+        <AssociationConnector Association="ETNADbModel.FK_InsumoDetalleOrdenTrabajoInsumo" />
+        <AssociationConnector Association="ETNADbModel.FK_OrdenTrabajoDetalleOrdenTrabajoInsumo" />
+        <AssociationConnector Association="ETNADbModel.FK_EmpleadoDetalleOrdenTrabajoRecurso" />
+        <AssociationConnector Association="ETNADbModel.FK_OrdenTrabajoDetalleOrdenTrabajoRecurso" />
+        <AssociationConnector Association="ETNADbModel.FK_ParteProduccionDetalleParteProduccionBateria" />
+        <AssociationConnector Association="ETNADbModel.FK_InsumoDetalleParteProduccionInsumo" />
+        <AssociationConnector Association="ETNADbModel.FK_ParteProduccionDetalleParteProduccionInsumo" />
+        <AssociationConnector Association="ETNADbModel.FK_InsumoDetalleSolicitudInsumo" />
+        <AssociationConnector Association="ETNADbModel.FK_SolicitudInsumoDetalleSolicitudInsumo" />
+        <AssociationConnector Association="ETNADbModel.FK_Direccion_TipoDireccion1" />
+        <AssociationConnector Association="ETNADbModel.fk_Direccion_Ubigeo1" />
+        <AssociationConnector Association="ETNADbModel.FK_Direccion_ZonaDespacho1" />
+        <AssociationConnector Association="ETNADbModel.fk_Entrega_Direccion1" />
+        <AssociationConnector Association="ETNADbModel.fk_Factura_Direccion1" />
+        <AssociationConnector Association="ETNADbModel.fk_HojaRutaDetalle_Direccion1" />
+        <AssociationConnector Association="ETNADbModel.fk_Pedido_Direccion1" />
+        <AssociationConnector Association="ETNADbModel.fk_DisponibilidadRecurso_Empleado1" />
+        <AssociationConnector Association="ETNADbModel.fk_DisponibilidadTransporte_Transporte1" />
+        <AssociationConnector Association="ETNADbModel.fk_HojaRutaRecurso_Recurso1" />
+        <AssociationConnector Association="ETNADbModel.fk_Entrega_EstadoEntrega1" />
+        <AssociationConnector Association="ETNADbModel.fk_Entrega_MotivoTraslado1" />
+        <AssociationConnector Association="ETNADbModel.fk_Entrega_ZonaDespacho1" />
+        <AssociationConnector Association="ETNADbModel.fk_EntregaDetalle_Entrega1" />
+        <AssociationConnector Association="ETNADbModel.fk_EntregaDetalle_Producto1" />
+        <AssociationConnector Association="ETNADbModel.fk_FacturaEntrega_EntregaDetalle1" />
+        <AssociationConnector Association="ETNADbModel.fk_PedidoEntrega_EntregaDetalle1" />
+        <AssociationConnector Association="ETNADbModel.fk_Factura_EstadoFactura1" />
+        <AssociationConnector Association="ETNADbModel.fk_HojaRuta_EstadoHojaRuta1" />
+        <AssociationConnector Association="ETNADbModel.fk_temHojaRutaDetalle_EstadoHojaRutaDetalle1" />
+        <AssociationConnector Association="ETNADbModel.fk_Pedido_EstadoPedido1" />
+        <AssociationConnector Association="ETNADbModel.fk_FacturaDetalle_Factura1" />
+        <AssociationConnector Association="ETNADbModel.fk_FacturaDetalle_Producto1" />
+        <AssociationConnector Association="ETNADbModel.fk_FacturaEntrega_FacturaDetalle1" />
+        <AssociationConnector Association="ETNADbModel.fk_HojaRuta_Transporte1" />
+        <AssociationConnector Association="ETNADbModel.fk_HojaRuta_ZonaDespacho1" />
+        <AssociationConnector Association="ETNADbModel.fk_HojaRutaDetalle_HojaRuta1" />
+        <AssociationConnector Association="ETNADbModel.fk_HojaRutaRecurso_HojaRuta1" />
+        <AssociationConnector Association="ETNADbModel.FK_LoteTipoLote" />
+        <AssociationConnector Association="ETNADbModel.fk_Transporte_Marca1" />
+        <AssociationConnector Association="ETNADbModel.FK_OrdenTrabajoParteProduccion" />
+        <AssociationConnector Association="ETNADbModel.FK_SolicitudInsumoOrdenTrabajo" />
+        <AssociationConnector Association="ETNADbModel.fk_Pedido_tipoPedido1" />
+        <AssociationConnector Association="ETNADbModel.fk_PedidoDetalle_Pedido1" />
+        <AssociationConnector Association="ETNADbModel.fk_PedidoDetalle_Producto1" />
+        <AssociationConnector Association="ETNADbModel.fk_PedidoEntrega_PedidoDetalle1" />
+        <AssociationConnector Association="ETNADbModel.fk_ProductoBackOrder_Producto1" />
+        <AssociationConnector Association="ETNADbModel.fk_Transporte_TipoTransporte1" />
+        <EntityTypeShape EntityType="ETNADbModel.Bateria2" Width="1.5" PointX="28.625" PointY="20" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleOrdenTrabajoInsumo2" Width="1.5" PointX="28.625" PointY="16.375" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleOrdenTrabajoPersonal2" Width="1.5" PointX="28.625" PointY="4.75" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleParteProduccionBateria2" Width="1.5" PointX="30.875" PointY="11.625" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleParteProduccionInsumo2" Width="1.5" PointX="30.875" PointY="18.75" />
+        <EntityTypeShape EntityType="ETNADbModel.DetalleSolicitudInsumo2" Width="1.5" PointX="30.875" PointY="15" />
+        <EntityTypeShape EntityType="ETNADbModel.OrdenTrabajo2" Width="1.5" PointX="26.375" PointY="7.375" />
+        <EntityTypeShape EntityType="ETNADbModel.ParteProduccion2" Width="1.5" PointX="28.625" PointY="12.375" />
+        <EntityTypeShape EntityType="ETNADbModel.SolicitudInsumo2" Width="1.5" PointX="28.625" PointY="8.75" />
+        <AssociationConnector Association="ETNADbModel.FK_DetalleParteProduccionBateriaBateria1" />
+        <AssociationConnector Association="ETNADbModel.FK_InsumoDetalleOrdenTrabajoInsumo1" />
+        <AssociationConnector Association="ETNADbModel.FK_OrdenTrabajoDetalleOrdenTrabajoInsumo1" />
+        <AssociationConnector Association="ETNADbModel.FK_EmpleadoDetalleOrdenTrabajoRecurso1" />
+        <AssociationConnector Association="ETNADbModel.FK_OrdenTrabajoDetalleOrdenTrabajoRecurso1" />
+        <AssociationConnector Association="ETNADbModel.FK_ParteProduccionDetalleParteProduccionBateria1" />
+        <AssociationConnector Association="ETNADbModel.FK_InsumoDetalleParteProduccionInsumo1" />
+        <AssociationConnector Association="ETNADbModel.FK_ParteProduccionDetalleParteProduccionInsumo1" />
+        <AssociationConnector Association="ETNADbModel.FK_InsumoDetalleSolicitudInsumo1" />
+        <AssociationConnector Association="ETNADbModel.FK_SolicitudInsumoDetalleSolicitudInsumo1" />
+        <AssociationConnector Association="ETNADbModel.FK_OrdenTrabajoParteProduccion1" />
+        <AssociationConnector Association="ETNADbModel.FK_SolicitudInsumoOrdenTrabajo1" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

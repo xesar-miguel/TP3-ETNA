@@ -20,6 +20,10 @@ namespace ETNA.Domain
             this.DocumentoReferencia = new HashSet<DocumentoReferencia>();
             this.SolicitudEntrada = new HashSet<SolicitudEntrada>();
             this.SolicitudSalida = new HashSet<SolicitudSalida>();
+            this.DetalleOrdenTrabajoPersonal = new HashSet<DetalleOrdenTrabajoPersonal1>();
+            this.DisponibilidadRecurso = new HashSet<DisponibilidadRecurso>();
+            this.HojaRutaRecurso = new HashSet<HojaRutaRecurso>();
+            this.DetalleOrdenTrabajoPersonal1 = new HashSet<DetalleOrdenTrabajoPersonal2>();
         }
     
         public int Id { get; set; }
@@ -27,11 +31,20 @@ namespace ETNA.Domain
         public string Apellidos { get; set; }
         public string Direccion { get; set; }
         public string Cargo { get; set; }
+        public string Dni { get; set; }
+        public string Correo { get; set; }
+        public string Telefono { get; set; }
+        public Nullable<int> idCargo { get; set; }
     
         public virtual UserProfile UserProfile { get; set; }
         public virtual ICollection<Almacen> Almacen { get; set; }
         public virtual ICollection<DocumentoReferencia> DocumentoReferencia { get; set; }
         public virtual ICollection<SolicitudEntrada> SolicitudEntrada { get; set; }
         public virtual ICollection<SolicitudSalida> SolicitudSalida { get; set; }
+        public virtual Cargo Cargo1 { get; set; }
+        public virtual ICollection<DetalleOrdenTrabajoPersonal1> DetalleOrdenTrabajoPersonal { get; set; }
+        public virtual ICollection<DisponibilidadRecurso> DisponibilidadRecurso { get; set; }
+        public virtual ICollection<HojaRutaRecurso> HojaRutaRecurso { get; set; }
+        public virtual ICollection<DetalleOrdenTrabajoPersonal2> DetalleOrdenTrabajoPersonal1 { get; set; }
     }
 }
