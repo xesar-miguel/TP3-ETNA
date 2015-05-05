@@ -1,5 +1,71 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model ETNA.MVC.Models.DI.FiltradoEntregasViewModel
+
+@{
+    ViewBag.Title = "Entregas";
 }
 
-<h2>Index</h2>
+<h2>Entregas</h2>
+
+<fieldset>
+    <legend>FiltradoEntregasViewModel</legend>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "filtradoForm" }))
+    {
+      
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FechaInicio)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaInicio)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FechaFin)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaFin)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IdCliente)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.IdCliente, Model.Clientes, "Todos")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IdEstadoEntrega)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.IdEstadoEntrega, Model.EstadosEntrega, "Todos")
+        </div>
+        <div class="editor-field" style="padding-top: 10px;">
+            <input type="button" value="Buscar" onclick="filtrar();" />
+        </div>
+    }
+</fieldset>
+
+
+<div id="targetDiv">
+    @Html.Partial("_ListaEntrega", Model.ListaInicial)
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#FechaInicio').datepicker({ dateFormat: "dd/mm/yy" });
+            $('#FechaFin').datepicker({ dateFormat: "dd/mm/yy" });
+
+            var message = '@ViewBag.Message';
+            if (message)
+                toastr["success"](message);
+        });
+
+        var filtrar = function () {
+            $.post('@Url.Action("Index")', $('#filtradoForm').serialize(), function (data) {
+
+                $('#targetDiv').html(data);
+
+            }).error(function () {
+                alert('there was an error');
+            });
+        };
+    </script>
+}

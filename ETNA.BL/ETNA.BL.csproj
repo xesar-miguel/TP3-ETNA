@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DI\GestorCliente.cs" />
+    <Compile Include="DI\GestorEntrega.cs" />
     <Compile Include="DI\GestorVehiculos.cs" />
     <Compile Include="FB\GestorLotes.cs" />
     <Compile Include="LO\GestorAlmacenes.cs" />

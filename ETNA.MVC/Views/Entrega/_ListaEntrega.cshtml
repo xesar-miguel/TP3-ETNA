@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ETNA.MVC.Models.DI.ListaEntregaViewModel>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaGeneracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaEntrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZonaDespacho)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaGeneracion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEntrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZonaDespacho)
+            </td>
+            <td>
+                @Html.ActionLink("Ver", "VerEntrega", new { id = item.Codigo})
+            </td>
+            <td>
+                @Html.ActionLink("Modificar", "VerEntrega", new { id = item.Codigo })
+            </td>
+            <td>
+                @Html.ActionLink("Eliminar", "VerEntrega", new { id = item.Codigo })
+            </td>
+        </tr>
+    }
+</table>

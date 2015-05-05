@@ -5,10 +5,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-
 namespace ETNA.MVC.Models.DI
 {
-    public class EntregaViewModel
+    public class ListaEntregaViewModel
     {
         [Key]
         [DisplayName("Codigo")]
@@ -32,6 +31,5 @@ namespace ETNA.MVC.Models.DI
         [DisplayName("Zona Despacho")]
         public string ZonaDespacho { get; set; }
 
-        public List<DetalleEntregaViewModel> Detalle { get; set; }
     }
 }
