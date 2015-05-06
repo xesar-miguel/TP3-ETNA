@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d4f655158b6048a3b7a28136c7c3a2cf" Name="Diagrama1" ZoomLevel="72" >
+      <Diagram DiagramId="d4f655158b6048a3b7a28136c7c3a2cf" Name="Diagrama1" ZoomLevel="142" >
         <EntityTypeShape EntityType="ETNADbModel.DocumentoReferencia" Width="2.125" PointX="3.625" PointY="1" />
         <EntityTypeShape EntityType="ETNADbModel.GuiaEntrada" Width="1.5" PointX="1.25" PointY="1.5" />
         <InheritanceConnector EntityType="ETNADbModel.GuiaEntrada" ManuallyRouted="false" >

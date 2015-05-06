@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/05/2015 21:17:39
--- Generated from EDMX file: C:\Users\DiegoMartín\Documents\Visual Studio 2012\Projects\ETNA-GIT\ETNA.DAL\ETNADbModel.edmx
+-- Date Created: 05/05/2015 21:32:13
+-- Generated from EDMX file: D:\Proyectos\TP3\Etna\TP3-ETNA\ETNA.DAL\ETNADbModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -818,13 +818,12 @@ GO
 -- Creating table 'Direccion'
 CREATE TABLE [dbo].[Direccion] (
     [Codigo] int IDENTITY(1,1) NOT NULL,
-    [Direccion1] varchar(150)  NULL,
+    [Nombre] varchar(150)  NULL,
     [Descripcion] varchar(150)  NULL,
     [idCliente] int  NOT NULL,
     [idTipoDireccion] int  NOT NULL,
     [idZonaDespacho] int  NOT NULL,
-    [idUbigeo] char(6)  NOT NULL,
-    [Direccion11] varchar(150)  NULL
+    [idUbigeo] char(6)  NOT NULL
 );
 GO
 

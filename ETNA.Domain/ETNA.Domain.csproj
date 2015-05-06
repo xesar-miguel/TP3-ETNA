@@ -169,9 +169,6 @@
     <Compile Include="Lote.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Lotes.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Maquinaria.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
@@ -236,9 +233,6 @@
     <Compile Include="TipoLote.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TipoLotes.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="TipoPedido.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
@@ -252,9 +246,6 @@
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserProfile.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Vehiculo.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="webpages_Membership.cs">

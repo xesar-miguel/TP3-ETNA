@@ -748,13 +748,12 @@
       <PropertyRef Name="Codigo" />
     </Key>
     <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Direccion1" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Nombre" Type="varchar" Nullable="true" MaxLength="150" />
     <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="150" />
     <Property Name="idCliente" Type="int" Nullable="false" />
     <Property Name="idTipoDireccion" Type="int" Nullable="false" />
     <Property Name="idZonaDespacho" Type="int" Nullable="false" />
     <Property Name="idUbigeo" Type="char" Nullable="false" MaxLength="6" />
-    <Property Name="Direccion11" Type="varchar" Nullable="true" MaxLength="150" />
   </EntityType>
   <EntityType Name="DisponibilidadRecurso">
     <Key>
@@ -3113,7 +3112,7 @@
             <PropertyRef Name="Codigo" />
           </Key>
           <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Direccion1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="idCliente" Type="Int32" Nullable="false" />
           <Property Name="idTipoDireccion" Type="Int32" Nullable="false" />
@@ -3127,7 +3126,6 @@
           <NavigationProperty Name="Factura" Relationship="ETNADbModel.fk_Factura_Direccion1" FromRole="Direccion" ToRole="Factura" />
           <NavigationProperty Name="HojaRutaDetalle" Relationship="ETNADbModel.fk_HojaRutaDetalle_Direccion1" FromRole="Direccion" ToRole="HojaRutaDetalle" />
           <NavigationProperty Name="Pedido" Relationship="ETNADbModel.fk_Pedido_Direccion1" FromRole="Direccion" ToRole="Pedido" />
-          <Property Name="Direccion11" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="DisponibilidadRecurso">
           <Key>
@@ -4451,13 +4449,12 @@
       <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.Direccion)">
         <MappingFragment StoreEntitySet="Direccion">
           <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-          <ScalarProperty Name="Direccion1" ColumnName="Direccion1" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="idCliente" ColumnName="idCliente" />
           <ScalarProperty Name="idTipoDireccion" ColumnName="idTipoDireccion" />
           <ScalarProperty Name="idZonaDespacho" ColumnName="idZonaDespacho" />
           <ScalarProperty Name="idUbigeo" ColumnName="idUbigeo" />
-          <ScalarProperty Name="Direccion11" ColumnName="Direccion11" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
