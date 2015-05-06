@@ -92,7 +92,7 @@
         <EntityTypeShape EntityType="ETNADbModel.EstadoEntrega" Width="1.5" PointX="9" PointY="41" />
         <EntityTypeShape EntityType="ETNADbModel.EstadoFactura" Width="1.5" PointX="6" PointY="36.625" />
         <EntityTypeShape EntityType="ETNADbModel.EstadoHojaRuta" Width="1.5" PointX="0.75" PointY="44" />
-        <EntityTypeShape EntityType="ETNADbModel.EstadoHojaRutaDetalle" Width="1.5" PointX="6.25" PointY="20.875" />
+        <EntityTypeShape EntityType="ETNADbModel.EstadoHojaRutaDetalle" Width="1.5" PointX="6.25" PointY="20.875" FillColor="192, 0, 192" />
         <EntityTypeShape EntityType="ETNADbModel.EstadoPedido" Width="1.5" PointX="6" PointY="40" />
         <EntityTypeShape EntityType="ETNADbModel.Factura" Width="1.5" PointX="8.25" PointY="35.75" />
         <EntityTypeShape EntityType="ETNADbModel.FacturaDetalle" Width="1.5" PointX="14.75" PointY="25.875" />
@@ -101,7 +101,7 @@
         <EntityTypeShape EntityType="ETNADbModel.HojaRutaDetalle" Width="1.5" PointX="8.25" PointY="25.875" />
         <EntityTypeShape EntityType="ETNADbModel.HojaRutaRecurso" Width="1.5" PointX="16.125" PointY="17.625" />
         <EntityTypeShape EntityType="ETNADbModel.Marca" Width="1.5" PointX="1.25" PointY="17.625" />
-        <EntityTypeShape EntityType="ETNADbModel.MotivoTraslado" Width="1.5" PointX="8.75" PointY="20.875" />
+        <EntityTypeShape EntityType="ETNADbModel.MotivoTraslado" Width="1.5" PointX="8.75" PointY="20.875" FillColor="192, 0, 192" />
         <EntityTypeShape EntityType="ETNADbModel.Parametro" Width="1.5" PointX="6.75" PointY="2.25" />
         <EntityTypeShape EntityType="ETNADbModel.Pedido" Width="1.5" PointX="8.25" PointY="30.375" />
         <EntityTypeShape EntityType="ETNADbModel.PedidoDetalle" Width="1.5" PointX="11.75" PointY="24.75" />
