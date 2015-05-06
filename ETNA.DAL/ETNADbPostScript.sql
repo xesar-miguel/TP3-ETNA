@@ -284,6 +284,342 @@ VALUES (14,4,7,7);
 INSERT INTO DETALLESOLICITUDSALIDACONJUNTO (IDPRODUCTO, IDSOLICITUDSALIDA, CANTIDAD, CANTIDADFINAL)
 VALUES (15,4,12,12);
 
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150000', 'LIMA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150100', 'LIMA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150101', 'LIMA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150102', 'ANCON' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150103', 'ATE' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150104', 'BARRANCO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150105', 'BREÑA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150106', 'CARABAYLLO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150107', 'CHACLACAYO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150108', 'CHORRILLOS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150109', 'CIENEGUILLA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150110', 'COMAS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150111', 'EL AGUSTINO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150112', 'INDEPENDENCIA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150113', 'JESUS MARIA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150114', 'LA MOLINA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150115', 'LA VICTORIA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150116', 'LINCE' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150117', 'LOS OLIVOS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150118', 'LURIGANCHO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150119', 'LURIN' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150120', 'MAGDALENA DEL MAR' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150121', 'MAGDALENA VIEJA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150122', 'MIRAFLORES' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150123', 'PACHACAMAC' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150124', 'PUCUSANA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150125', 'PUENTE PIEDRA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150126', 'PUNTA HERMOSA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150127', 'PUNTA NEGRA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150128', 'RIMAC' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150129', 'SAN BARTOLO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150130', 'SAN BORJA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150131', 'SAN ISIDRO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150132', 'SAN JUAN DE LURIGANCHO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150133', 'SAN JUAN DE MIRAFLORES' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150134', 'SAN LUIS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150135', 'SAN MARTIN DE PORRES' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150136', 'SAN MIGUEL' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150137', 'SANTA ANITA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150138', 'SANTA MARIA DEL MAR' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150139', 'SANTA ROSA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150140', 'SANTIAGO DE SURCO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150141', 'SURQUILLO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150142', 'VILLA EL SALVADOR' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150143', 'VILLA MARIA DEL TRIUNFO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150200', 'BARRANCA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150201', 'BARRANCA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150202', 'PARAMONGA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150203', 'PATIVILCA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150204', 'SUPE' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150205', 'SUPE PUERTO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150300', 'CAJATAMBO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150301', 'CAJATAMBO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150302', 'COPA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150303', 'GORGOR' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150304', 'HUANCAPON' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150305', 'MANAS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150400', 'CANTA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150401', 'CANTA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150402', 'ARAHUAY' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150403', 'HUAMANTANGA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150404', 'HUAROS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150405', 'LACHAQUI' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150406', 'SAN BUENAVENTURA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150407', 'SANTA ROSA DE QUIVES' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150500', 'CAÑETE' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150501', 'SAN VICENTE DE CAÑETE' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150502', 'ASIA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150503', 'CALANGO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150504', 'CERRO AZUL' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150505', 'CHILCA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150506', 'COAYLLO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150507', 'IMPERIAL' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150508', 'LUNAHUANA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150509', 'MALA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150510', 'NUEVO IMPERIAL' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150511', 'PACARAN' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150512', 'QUILMANA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150513', 'SAN ANTONIO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150514', 'SAN LUIS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150515', 'SANTA CRUZ DE FLORES' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150516', 'ZUÑIGA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150600', 'HUARAL' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150601', 'HUARAL' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150602', 'ATAVILLOS ALTO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150603', 'ATAVILLOS BAJO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150604', 'AUCALLAMA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150605', 'CHANCAY' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150606', 'IHUARI' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150607', 'LAMPIAN' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150608', 'PACARAOS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150609', 'SAN MIGUEL DE ACOS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150610', 'SANTA CRUZ DE ANDAMARCA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150611', 'SUMBILCA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150612', 'VEINTISIETE DE NOVIEMBRE' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150700', 'HUAROCHIRI' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150701', 'MATUCANA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150702', 'ANTIOQUIA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150703', 'CALLAHUANCA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150704', 'CARAMPOMA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150705', 'CHICLA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150706', 'CUENCA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150707', 'HUACHUPAMPA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150708', 'HUANZA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150709', 'HUAROCHIRI' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150710', 'LAHUAYTAMBO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150711', 'LANGA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150712', 'LARAOS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150713', 'MARIATANA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150714', 'RICARDO PALMA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150715', 'SAN ANDRES DE TUPICOCHA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150716', 'SAN ANTONIO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150717', 'SAN BARTOLOME' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150718', 'SAN DAMIAN' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150719', 'SAN JUAN DE IRIS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150720', 'SAN JUAN DE TANTARANCHE' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150721', 'SAN LORENZO DE QUINTI' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150722', 'SAN MATEO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150723', 'SAN MATEO DE OTAO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150724', 'SAN PEDRO DE CASTA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150725', 'SAN PEDRO DE HUANCAYRE' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150726', 'SANGALLAYA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150727', 'SANTA CRUZ DE COCACHACRA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150728', 'SANTA EULALIA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150729', 'SANTIAGO DE ANCHUCAYA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150730', 'SANTIAGO DE TUNA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150731', 'SANTO DOMINGO DE LOS OLLEROS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150732', 'SURCO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150800', 'HUAURA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150801', 'HUACHO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150802', 'AMBAR' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150803', 'CALETA DE CARQUIN' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150804', 'CHECRAS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150805', 'HUALMAY' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150806', 'HUAURA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150807', 'LEONCIO PRADO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150808', 'PACCHO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150809', 'SANTA LEONOR' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150810', 'SANTA MARIA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150811', 'SAYAN' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150812', 'VEGUETA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150900', 'OYON' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150901', 'OYON' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150902', 'ANDAJES' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150903', 'CAUJUL' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150904', 'COCHAMARCA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150905', 'NAVAN' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '150906', 'PACHANGARA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151000', 'YAUYOS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151001', 'YAUYOS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151002', 'ALIS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151003', 'AYAUCA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151004', 'AYAVIRI' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151005', 'AZANGARO' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151006', 'CACRA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151007', 'CARANIA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151008', 'CATAHUASI' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151009', 'CHOCOS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151010', 'COCHAS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151011', 'COLONIA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151012', 'HONGOS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151013', 'HUAMPARA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151014', 'HUANCAYA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151015', 'HUANGASCAR' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151016', 'HUANTAN' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151017', 'HUAÑEC' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151018', 'LARAOS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151019', 'LINCHA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151020', 'MADEAN' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151021', 'MIRAFLORES' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151022', 'OMAS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151023', 'PUTINZA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151024', 'QUINCHES' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151025', 'QUINOCAY' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151026', 'SAN JOAQUIN' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151027', 'SAN PEDRO DE PILAS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151028', 'TANTA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151029', 'TAURIPAMPA' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151030', 'TOMAS' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151031', 'TUPE' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151032', 'VIÑAC' );
+INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151033', 'VITIS' );
+
+--Zona de Despacho
+INSERT INTO ZonaDespacho ( descripcion, abreviatura ) VALUES ( 'Lima Norte', 'LIM-NOR' );
+INSERT INTO ZonaDespacho ( descripcion, abreviatura ) VALUES ( 'Lima Este', 'LIM-EST' );
+INSERT INTO ZonaDespacho ( descripcion, abreviatura ) VALUES ( 'Lima Centro', 'LIM-CEN' );
+INSERT INTO ZonaDespacho ( descripcion, abreviatura ) VALUES ( 'Lima Sur', 'LIM-SUR' );
+INSERT INTO ZonaDespacho ( descripcion, abreviatura ) VALUES ( 'Lima Oeste', 'LIM-OES' );
+
+--Estado de Entrega
+INSERT INTO ESTADOENTREGA(descripcion, abreviatura) VALUES('Generada', 'GEN');
+INSERT INTO ESTADOENTREGA(descripcion, abreviatura) VALUES('Entrega Parcial', 'ENP');
+INSERT INTO ESTADOENTREGA(descripcion, abreviatura) VALUES('Entrega Total', 'ENT');
+INSERT INTO ESTADOENTREGA(descripcion, abreviatura) VALUES('Eliminada', 'DEL');
+
+--Motivo de Traslado
+INSERT INTO MOTIVOTRASLADO(descripcion, abreviatura) VALUES('Venta', 'VEN');
+INSERT INTO MOTIVOTRASLADO(descripcion, abreviatura) VALUES('Traslado Interno', 'TIN');
+INSERT INTO MOTIVOTRASLADO(descripcion, abreviatura) VALUES('Renovaciòn', 'REN');
+
+--Producto
+--INSERT INTO PRODUCTO(numero, nombre, vigencia) VALUES('HL-II PRO', 'Baterìa Profesional HL', '12 meses');
+--INSERT INTO PRODUCTO(numero, nombre, vigencia) VALUES('FF-II PRO', 'Baterìa Profesional FF', '12 meses');
+--INSERT INTO PRODUCTO(numero, nombre, vigencia) VALUES('HL-09 AD', 'Baterìa Alto Desempeño HL', '18 meses');
+--INSERT INTO PRODUCTO(numero, nombre, vigencia) VALUES('FF-09 AD', 'Baterìa Alto Desempeño FF', '18 meses');
+--INSERT INTO PRODUCTO(numero, nombre, vigencia) VALUES('HL-09 PL', 'Baterìa Platinum HL', '24 meses');
+--INSERT INTO PRODUCTO(numero, nombre, vigencia) VALUES('FF-II PL', 'Baterìa Platinum FF', '24 meses');
+
+--Tipo de Cliente
+INSERT INTO TipoCliente ( descripcion, abreviatura ) VALUES ( 'Tercero', 'TER' );
+INSERT INTO TipoCliente ( descripcion, abreviatura ) VALUES ( 'Relacionado', 'REL' );
+INSERT INTO TipoCliente ( descripcion, abreviatura ) VALUES ( 'Sucursal', 'SUC' );
+INSERT INTO TipoCliente ( descripcion, abreviatura ) VALUES ( 'Personal', 'PER' );
+
+--Estado de Cliente
+INSERT INTO EstadoCliente ( descripcion, abreviatura ) VALUES ( 'Activo', 'ACT' );
+INSERT INTO EstadoCliente ( descripcion, abreviatura ) VALUES ( 'Inactivo', 'INA' );
+
+--Tipo de Documento
+INSERT INTO TipoDocumento ( descripcion, abreviatura ) VALUES ( 'RUC', 'RUC' );
+INSERT INTO TipoDocumento ( descripcion, abreviatura ) VALUES ( 'DNI', 'DNI' );
+INSERT INTO TipoDocumento ( descripcion, abreviatura ) VALUES ( 'Carné de Extranjería', 'EXT' );
+
+--Tipo de Direccion
+INSERT INTO TipoDireccion ( descripcion, abreviatura ) VALUES ( 'Principal', 'PRI' );
+INSERT INTO TipoDireccion ( descripcion, abreviatura ) VALUES ( 'Recepción', 'REC' );
+INSERT INTO TipoDireccion ( descripcion, abreviatura ) VALUES ( 'Facturación', 'FAC' );
+
+--Cliente
+INSERT INTO Cliente ( nombre, devolucion, numeroDocumento, renovacion, aceptacion, toleranciaFalta, idTipoCliente, idEstadoCliente, idTipoDocumento, prioridadReposicion ) VALUES ( 'Juan Pérez y Hnos. S.A.', 'N', '20763988311', 'S', 95, 5, '1', '1', '1', null );
+INSERT INTO Cliente ( nombre, devolucion, numeroDocumento, renovacion, aceptacion, toleranciaFalta, idTipoCliente, idEstadoCliente, idTipoDocumento, prioridadReposicion ) VALUES ( 'Distribuidora Comercial S.A.', 'S', '20253981481', 'S', 95, 5, '1', '1', '1', null );
+INSERT INTO Cliente ( nombre, devolucion, numeroDocumento, renovacion, aceptacion, toleranciaFalta, idTipoCliente, idEstadoCliente, idTipoDocumento, prioridadReposicion ) VALUES ( 'Sodimac Home Center', 'S', '20389230724', 'S', 95, 5, '1', '1', '1', null );
+INSERT INTO Cliente ( nombre, devolucion, numeroDocumento, renovacion, aceptacion, toleranciaFalta, idTipoCliente, idEstadoCliente, idTipoDocumento, prioridadReposicion ) VALUES ( 'Repuestos Zárate S.A.', 'S', '20585858671', 'S', 95, 5, '1', '1', '1', null );
+INSERT INTO Cliente ( nombre, devolucion, numeroDocumento, renovacion, aceptacion, toleranciaFalta, idTipoCliente, idEstadoCliente, idTipoDocumento, prioridadReposicion ) VALUES ( 'Grupo Delgadillo & Tomasevich ', 'S', '20982354001', 'S', 95, 5, '1', '2', '1', null );
+INSERT INTO Cliente ( nombre, devolucion, numeroDocumento, renovacion, aceptacion, toleranciaFalta, idTipoCliente, idEstadoCliente, idTipoDocumento, prioridadReposicion ) VALUES ( 'Genaro Fernández M.', 'N', '08812416', 'N', 95, 5, '1', '1', '2', null );
+INSERT INTO Cliente ( nombre, devolucion, numeroDocumento, renovacion, aceptacion, toleranciaFalta, idTipoCliente, idEstadoCliente, idTipoDocumento, prioridadReposicion ) VALUES ( 'CD Comas', 'N', '20100165687', 'N', 0, 1, '3', '1', '1', 1 );
+INSERT INTO Cliente ( nombre, devolucion, numeroDocumento, renovacion, aceptacion, toleranciaFalta, idTipoCliente, idEstadoCliente, idTipoDocumento, prioridadReposicion ) VALUES ( 'CD Independencia', 'N', '20100165687', 'N', 0, 1, '3', '1', '1', 2 );
+INSERT INTO Cliente ( nombre, devolucion, numeroDocumento, renovacion, aceptacion, toleranciaFalta, idTipoCliente, idEstadoCliente, idTipoDocumento, prioridadReposicion ) VALUES ( 'CD San Juan de Lurigancho', 'N', '20100165687', 'N', 0, 1, '3', '1', '1', 3 );
+
+--Direcciòn Cliente
+INSERT INTO Direccion ( nombre, descripcion, idTipoDireccion, idCliente, idZonaDespacho, idUbigeo ) VALUES ( 'Av. Alfredo Mendiola 3047', 'Local Principal', '1', '1', '1', '150135' );
+INSERT INTO Direccion ( nombre, descripcion, idTipoDireccion, idCliente, idZonaDespacho, idUbigeo ) VALUES ( 'Carretera Central 4501', 'Local Principal', '1', '2', '2', '150103' );
+INSERT INTO Direccion ( nombre, descripcion, idTipoDireccion, idCliente, idZonaDespacho, idUbigeo ) VALUES ( 'Av. Angamos Este Nro. 1805 Int. 2 (Oficina 2)', 'Oficina Principal', '1', '3', '5', '150122' );
+INSERT INTO Direccion ( nombre, descripcion, idTipoDireccion, idCliente, idZonaDespacho, idUbigeo ) VALUES ( 'Av. Circunvalación 1801', 'Sodimac Atocongo', '2', '3', '5', '150133' );
+INSERT INTO Direccion ( nombre, descripcion, idTipoDireccion, idCliente, idZonaDespacho, idUbigeo ) VALUES ( 'Av. Javier Prado Este 1059', 'Sodima Javier Prado', '2', '3', '3', '150115' );
+INSERT INTO Direccion ( nombre, descripcion, idTipoDireccion, idCliente, idZonaDespacho, idUbigeo ) VALUES ( 'Calle Torre Ugarte 983', 'Local Principal', '1', '4', '5', '150122' );
+INSERT INTO Direccion ( nombre, descripcion, idTipoDireccion, idCliente, idZonaDespacho, idUbigeo ) VALUES ( 'Av, Gran Chimú 3290', 'Local Principal (Tienda Zárate)', '2', '5', '2', '150132' );
+INSERT INTO Direccion ( nombre, descripcion, idTipoDireccion, idCliente, idZonaDespacho, idUbigeo ) VALUES ( 'Av. Brasil 1783', 'Tienda Brasil', '2', '5', '3', '150113' );
+INSERT INTO Direccion ( nombre, descripcion, idTipoDireccion, idCliente, idZonaDespacho, idUbigeo ) VALUES ( 'Calle Tulipanes 983', 'Local Principal', '1', '6', '5', '150140' );
+INSERT INTO Direccion ( nombre, descripcion, idTipoDireccion, idCliente, idZonaDespacho, idUbigeo ) VALUES ( 'Av. Túpac Amaru 3282', 'CD Comas', '2', '7', '1', '150110' );
+INSERT INTO Direccion ( nombre, descripcion, idTipoDireccion, idCliente, idZonaDespacho, idUbigeo ) VALUES ( 'Av. Alfredo Mendiola 4082', 'CD Independencia', '2', '8', '1', '150112' );
+INSERT INTO Direccion ( nombre, descripcion, idTipoDireccion, idCliente, idZonaDespacho, idUbigeo ) VALUES ( 'Av. Gran Chimú 5019', 'CD Zárate', '2', '9', '1', '150132' );
+
+--Estado Factura
+INSERT INTO ESTADOFACTURA(nombre, abreviatura) VALUES('Generada', 'GEN');
+INSERT INTO ESTADOFACTURA(nombre, abreviatura) VALUES('Anulada', 'ANU');
+INSERT INTO ESTADOFACTURA(nombre, abreviatura) VALUES('Emitida', 'EMI');
+INSERT INTO ESTADOFACTURA(nombre, abreviatura) VALUES('Aprobada', 'APR');
+INSERT INTO ESTADOFACTURA(nombre, abreviatura) VALUES('Rechazada', 'REJ');
+INSERT INTO ESTADOFACTURA(nombre, abreviatura) VALUES('Pendiente Despacho', 'PDS');
+
+--Estado Pedido
+INSERT INTO ESTADOPEDIDO(nombre, abreviatura) VALUES ('Generado', 'GEN');
+INSERT INTO ESTADOPEDIDO(nombre, abreviatura) VALUES ('Atendido', 'ATE');
+INSERT INTO ESTADOPEDIDO(nombre, abreviatura) VALUES ('No Atendido', 'NAT');
+INSERT INTO ESTADOPEDIDO(nombre, abreviatura) VALUES ('Anulado', 'ANU');
+
+--TipoPedido
+INSERT INTO TIPOPEDIDO(descripcion, abreviatura) VALUES ('Pedido de Reposición', 'PRE');
+INSERT INTO TIPOPEDIDO(descripcion, abreviatura) VALUES ('Hoja de Renovación', 'HDE');
+
+--Factura
+INSERT INTO FACTURA(numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoFactura, idDireccion) VALUES ('FA-000-001', '2015-02-19', 847, 0, 1000, 153, 1000, 1, 6, 2);
+INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-02-20', 1, 2, 200, 400, 400, 1, 1);
+INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-02-20', 2, 3, 200, 600, 600, 1, 2);
+INSERT INTO FACTURA(numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoFactura, idDireccion) VALUES ('FA-000-002', '2015-02-18', 410, 0, 500, 90, 500, 2, 6, 4);
+INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-02-20', 1, 10, 25, 250, 250, 2, 3);
+INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-02-20', 2, 10, 25, 250, 250, 2, 4);
+INSERT INTO FACTURA(numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoFactura, idDireccion) VALUES ('FA-000-003', '2015-02-17', 1230, 0, 1500, 270, 1500, 4, 6, 6);
+INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-02-20', 1, 2, 375, 750, 750, 3, 5);
+INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-02-20', 2, 2, 375, 750, 750, 3, 6);
+
+--Pedido de Reposición
+INSERT INTO Pedido ( numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoPedido, idTipoPedido, idDireccion ) VALUES ( 'PR-000-001', '2015-02-09', 1016.95 ,0, 1016.95, 183.05, 1200, 8, 3, 1, 11 );
+INSERT INTO Pedido ( numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoPedido, idTipoPedido, idDireccion ) VALUES ( 'PR-000-002', '2015-02-10', 593.22 ,0, 593.22, 106.78, 700, 9, 3, 1, 12 );
+
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 10, '2015-02-20', 1, 4 );
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 2, 20, '2015-02-20', 1, 5 );
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 14, '2015-02-20', 2, 2 );
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 2, 23, '2015-02-20', 2, 3 );
+
+--Hoja de Renovación
+INSERT INTO Pedido ( numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoPedido, idTipoPedido, idDireccion ) VALUES ( 'HR-000-001', '2015-02-11', 0 ,0, 0, 0, 0, 4, 1, 2, 6 );
+INSERT INTO Pedido ( numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoPedido, idTipoPedido, idDireccion ) VALUES ( 'HR-000-002', '2015-02-11', 0 ,0, 0, 0, 0, 5, 1, 2, 7 );
+INSERT INTO Pedido ( numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoPedido, idTipoPedido, idDireccion ) VALUES ( 'HR-000-003', '2015-02-11', 0 ,0, 0, 0, 0, 1, 1, 2, 1 );
+
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 5, '2015-02-20', 3, 2 );
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 10, '2015-02-20', 4, 5 );
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 5, '2015-02-20', 5, 6 );
+
+--Parámetros
+INSERT INTO parametro ( idparametro, prioridadSede, plazoMaxDespacho, tipoDistribucionStock, redondeoCubicaje ) 
+VALUES ( 1, 0, 2, '1', 2 ) ;
+
+--Transporte
+INSERT INTO tipoTransporte ( nombre, abreviatura ) VALUES ( 'Transporte X', 'X' ) ;
+INSERT INTO marca ( descripcion ) VALUES ( 'Marca X' ) ;
+
+INSERT INTO transporte ( pesoBruto, unidadPeso, cubicaje, unidadCubicaje, placa, idTipoTransporte, idMarca ) 
+VALUES ( 40, 'TN', 13.86, 'm', 'BQM-757', 1, 1 ) ;
+
+INSERT INTO transporte ( pesoBruto, unidadPeso, cubicaje, unidadCubicaje, placa, idTipoTransporte, idMarca ) 
+VALUES ( 40, 'TN', 15.40, 'm', 'AIV-616', 1, 1 ) ;
+
+INSERT INTO transporte ( pesoBruto, unidadPeso, cubicaje, unidadCubicaje, placa, idTipoTransporte, idMarca ) 
+VALUES ( 40, 'TN', 17.50, 'm', 'DMA-982', 1, 1 ) ;
+
+INSERT INTO transporte ( pesoBruto, unidadPeso, cubicaje, unidadCubicaje, placa, idTipoTransporte, idMarca ) 
+VALUES ( 40, 'TN', 18.25, 'm', 'RZC-537', 1, 1 ) ;
+
+INSERT INTO transporte ( pesoBruto, unidadPeso, cubicaje, unidadCubicaje, placa, idTipoTransporte, idMarca ) 
+VALUES ( 40, 'TN', 18.00, 'm', 'JPL-752', 1, 1 ) ;
+
+insert into estadoHojaRuta ( descripcion, abreviatura ) values ('Generada', 'GEN') ;
+insert into estadoHojaRuta ( descripcion, abreviatura ) values ('Con entrega asignada', 'ENTR') ;
+insert into estadoHojaRuta ( descripcion, abreviatura ) values ('Despachada', 'DESP') ;
+insert into estadoHojaRuta ( descripcion, abreviatura ) values ('Rechazada', 'RECH') ;
+insert into estadoHojaRuta ( descripcion, abreviatura ) values ('Eliminada', 'DEL') ;
+
+insert into estadoHojaRutaDetalle ( descripcion, abreviatura ) values ('Generada', 'GEN') ;
+insert into estadoHojaRutaDetalle ( descripcion, abreviatura ) values ('Con entrega asignada', 'ENTR') ;
+insert into estadoHojaRutaDetalle ( descripcion, abreviatura ) values ('Despachada', 'DESP') ;
+insert into estadoHojaRutaDetalle ( descripcion, abreviatura ) values ('Rechazada', 'RECH') ;
+insert into estadoHojaRutaDetalle ( descripcion, abreviatura ) values ('Eliminada', 'DEL') ;
+
 
 
 
