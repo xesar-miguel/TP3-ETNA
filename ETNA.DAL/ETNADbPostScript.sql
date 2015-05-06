@@ -124,6 +124,78 @@ VALUES ('MALLA METALICA','','',20,30, 0);
 INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
 VALUES ('ANIONES','','',30,40, 0);
 
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 1, 100,  'PASILLO A, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 2, 100,  'PASILLO A, FILA 02, COLUMNA 04');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 3, 100,  'PASILLO A, FILA 03, COLUMNA 03');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 4, 100,  'PASILLO A, FILA 04, COLUMNA 02');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 5, 100,  'PASILLO A, FILA 05, COLUMNA 01');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 6, 100,  'PASILLO B, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 7, 100,  'PASILLO B, FILA 02, COLUMNA 04');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 8, 100,  'PASILLO B, FILA 03, COLUMNA 03');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 9, 100,  'PASILLO B, FILA 04, COLUMNA 02');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 10, 100, 'PASILLO B, FILA 05, COLUMNA 01');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 11, 100, 'PASILLO C, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 12, 100, 'PASILLO C, FILA 02, COLUMNA 04');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 13, 100, 'PASILLO C, FILA 03, COLUMNA 03');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 14, 100, 'PASILLO C, FILA 04, COLUMNA 02');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 15, 100, 'PASILLO C, FILA 05, COLUMNA 01');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 16, 100, 'PASILLO D, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 17, 100, 'PASILLO D, FILA 02, COLUMNA 04');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 18, 100, 'PASILLO D, FILA 03, COLUMNA 03');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 19, 100, 'PASILLO D, FILA 04, COLUMNA 02');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 20, 100, 'PASILLO D, FILA 05, COLUMNA 01');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 21, 100, 'PASILLO E, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 22, 100, 'PASILLO E, FILA 02, COLUMNA 04');
+
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 1, 100,  'PASILLO A, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 2, 100,  'PASILLO A, FILA 02, COLUMNA 04');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 3, 100,  'PASILLO A, FILA 03, COLUMNA 03');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 4, 100,  'PASILLO A, FILA 04, COLUMNA 02');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 5, 100,  'PASILLO A, FILA 05, COLUMNA 01');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 6, 100,  'PASILLO B, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 7, 100,  'PASILLO B, FILA 02, COLUMNA 04');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 8, 100,  'PASILLO B, FILA 03, COLUMNA 03');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 9, 100,  'PASILLO B, FILA 04, COLUMNA 02');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 10, 100, 'PASILLO B, FILA 05, COLUMNA 01');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 11, 100, 'PASILLO C, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 12, 100, 'PASILLO C, FILA 02, COLUMNA 04');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 13, 100, 'PASILLO C, FILA 03, COLUMNA 03');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 14, 100, 'PASILLO C, FILA 04, COLUMNA 02');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 15, 100, 'PASILLO C, FILA 05, COLUMNA 01');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 16, 100, 'PASILLO D, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 17, 100, 'PASILLO D, FILA 02, COLUMNA 04');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 18, 100, 'PASILLO D, FILA 03, COLUMNA 03');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 19, 100, 'PASILLO D, FILA 04, COLUMNA 02');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 20, 100, 'PASILLO D, FILA 05, COLUMNA 01');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 21, 100, 'PASILLO E, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(2, 22, 100, 'PASILLO E, FILA 02, COLUMNA 04');
+
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 1, 100,  'PASILLO A, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 2, 100,  'PASILLO A, FILA 02, COLUMNA 04');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 3, 100,  'PASILLO A, FILA 03, COLUMNA 03');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 4, 100,  'PASILLO A, FILA 04, COLUMNA 02');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 5, 100,  'PASILLO A, FILA 05, COLUMNA 01');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 6, 100,  'PASILLO B, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 7, 100,  'PASILLO B, FILA 02, COLUMNA 04');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 8, 100,  'PASILLO B, FILA 03, COLUMNA 03');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 9, 100,  'PASILLO B, FILA 04, COLUMNA 02');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 10, 100, 'PASILLO B, FILA 05, COLUMNA 01');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 11, 100, 'PASILLO C, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 12, 100, 'PASILLO C, FILA 02, COLUMNA 04');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 13, 100, 'PASILLO C, FILA 03, COLUMNA 03');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 14, 100, 'PASILLO C, FILA 04, COLUMNA 02');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 15, 100, 'PASILLO C, FILA 05, COLUMNA 01');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 16, 100, 'PASILLO D, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 17, 100, 'PASILLO D, FILA 02, COLUMNA 04');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 18, 100, 'PASILLO D, FILA 03, COLUMNA 03');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 19, 100, 'PASILLO D, FILA 04, COLUMNA 02');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 20, 100, 'PASILLO D, FILA 05, COLUMNA 01');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 21, 100, 'PASILLO E, FILA 01, COLUMNA 05');
+INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(3, 22, 100, 'PASILLO E, FILA 02, COLUMNA 04');
+
+
+
+
 -- Año - mes - día
 INSERT INTO SOLICITUDESENTRADA (FECHAELABORACION, TIPOENTRADA, ESTADO, EMPLEADO_ID)
 VALUES ('2015-03-01',1,2,6)
