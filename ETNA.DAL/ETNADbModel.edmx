@@ -73,10 +73,14 @@
     <EntitySet Name="Transporte" EntityType="ETNADbModel.Store.Transporte" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Ubigeo" EntityType="ETNADbModel.Store.Ubigeo" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ZonaDespacho" EntityType="ETNADbModel.Store.ZonaDespacho" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StockProductos" EntityType="ETNADbModel.Store.StockProductos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Inventarios" EntityType="ETNADbModel.Store.Inventarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleInventario" EntityType="ETNADbModel.Store.DetalleInventario" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DocumentosReferencia_GuiaEntrada" EntityType="ETNADbModel.Store.DocumentosReferencia_GuiaEntrada" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DocumentosReferencia_GuiaSalida" EntityType="ETNADbModel.Store.DocumentosReferencia_GuiaSalida" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="webpages_UsersInRoles" EntityType="ETNADbModel.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="EmpleadoAlmacen" EntityType="ETNADbModel.Store.EmpleadoAlmacen" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InventarioEmpleado" EntityType="ETNADbModel.Store.InventarioEmpleado" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="DocumentoReferenciaAlmacen" Association="ETNADbModel.Store.DocumentoReferenciaAlmacen">
       <End Role="DocumentoReferencia" EntitySet="DocumentosReferencia" />
       <End Role="Almacen" EntitySet="Almacenes" />
@@ -413,6 +417,34 @@
       <End Role="TipoTransporte" EntitySet="TipoTransporte" />
       <End Role="Transporte" EntitySet="Transporte" />
     </AssociationSet>
+    <AssociationSet Name="StockProductoAlmacen" Association="ETNADbModel.Store.StockProductoAlmacen">
+      <End Role="StockProducto" EntitySet="StockProductos" />
+      <End Role="Almacen" EntitySet="Almacenes" />
+    </AssociationSet>
+    <AssociationSet Name="StockProductoProducto" Association="ETNADbModel.Store.StockProductoProducto">
+      <End Role="StockProducto" EntitySet="StockProductos" />
+      <End Role="Producto" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InventarioEmpleado_Inventario" Association="ETNADbModel.Store.FK_InventarioEmpleado_Inventario">
+      <End Role="Inventario" EntitySet="Inventarios" />
+      <End Role="InventarioEmpleado" EntitySet="InventarioEmpleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InventarioEmpleado_Empleado" Association="ETNADbModel.Store.FK_InventarioEmpleado_Empleado">
+      <End Role="Empleado" EntitySet="Empleados" />
+      <End Role="InventarioEmpleado" EntitySet="InventarioEmpleado" />
+    </AssociationSet>
+    <AssociationSet Name="InventarioAlmacen" Association="ETNADbModel.Store.InventarioAlmacen">
+      <End Role="Inventario" EntitySet="Inventarios" />
+      <End Role="Almacen" EntitySet="Almacenes" />
+    </AssociationSet>
+    <AssociationSet Name="DetalleInventarioInventario" Association="ETNADbModel.Store.DetalleInventarioInventario">
+      <End Role="DetalleInventario" EntitySet="DetalleInventario" />
+      <End Role="Inventario" EntitySet="Inventarios" />
+    </AssociationSet>
+    <AssociationSet Name="ProductoDetalleInventario" Association="ETNADbModel.Store.ProductoDetalleInventario">
+      <End Role="Producto" EntitySet="Productos" />
+      <End Role="DetalleInventario" EntitySet="DetalleInventario" />
+    </AssociationSet>
     <AssociationSet Name="FK_GuiaEntrada_inherits_DocumentoReferencia" Association="ETNADbModel.Store.FK_GuiaEntrada_inherits_DocumentoReferencia">
       <End Role="DocumentoReferencia" EntitySet="DocumentosReferencia" />
       <End Role="GuiaEntrada" EntitySet="DocumentosReferencia_GuiaEntrada" />
@@ -490,7 +522,6 @@
     <Property Name="Nombres" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Apellidos" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Direccion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Cargo" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Dni" Type="varchar" Nullable="true" MaxLength="45" />
     <Property Name="Correo" Type="varchar" Nullable="true" MaxLength="45" />
     <Property Name="Telefono" Type="varchar" Nullable="true" MaxLength="45" />
@@ -1071,6 +1102,36 @@
     <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="45" />
     <Property Name="Abreviatura" Type="varchar" Nullable="true" MaxLength="10" />
   </EntityType>
+  <EntityType Name="StockProductos">
+    <Key>
+      <PropertyRef Name="IdAlmacen" />
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdAlmacen" Type="int" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+    <Property Name="CantidadDisponible" Type="int" Nullable="false" />
+    <Property Name="Ubicacion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Inventarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaProgramacion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TipoInventario" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EstadoInventario" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Almacen_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleInventario">
+    <Key>
+      <PropertyRef Name="IdInventario" />
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdInventario" Type="int" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+    <Property Name="CantidadInventariada" Type="int" Nullable="false" />
+    <Property Name="CantidadEsperada" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="DocumentosReferencia_GuiaEntrada">
     <Key>
       <PropertyRef Name="Id" />
@@ -1100,6 +1161,14 @@
     </Key>
     <Property Name="Empleado_Id" Type="int" Nullable="false" />
     <Property Name="Almacen_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InventarioEmpleado">
+    <Key>
+      <PropertyRef Name="Inventario_Id" />
+      <PropertyRef Name="Empleado_Id" />
+    </Key>
+    <Property Name="Inventario_Id" Type="int" Nullable="false" />
+    <Property Name="Empleado_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="DocumentoReferenciaAlmacen">
     <End Role="DocumentoReferencia" Type="ETNADbModel.Store.DocumentosReferencia" Multiplicity="*" />
@@ -2061,6 +2130,66 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="StockProductoAlmacen">
+    <End Role="StockProducto" Type="ETNADbModel.Store.StockProductos" Multiplicity="*" />
+    <End Role="Almacen" Type="ETNADbModel.Store.Almacenes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Almacen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StockProducto">
+        <PropertyRef Name="IdAlmacen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StockProductoProducto">
+    <End Role="StockProducto" Type="ETNADbModel.Store.StockProductos" Multiplicity="*" />
+    <End Role="Producto" Type="ETNADbModel.Store.Productos" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StockProducto">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InventarioAlmacen">
+    <End Role="Inventario" Type="ETNADbModel.Store.Inventarios" Multiplicity="*" />
+    <End Role="Almacen" Type="ETNADbModel.Store.Almacenes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Almacen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Inventario">
+        <PropertyRef Name="Almacen_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DetalleInventarioInventario">
+    <End Role="DetalleInventario" Type="ETNADbModel.Store.DetalleInventario" Multiplicity="*" />
+    <End Role="Inventario" Type="ETNADbModel.Store.Inventarios" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Inventario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleInventario">
+        <PropertyRef Name="IdInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductoDetalleInventario">
+    <End Role="Producto" Type="ETNADbModel.Store.Productos" Multiplicity="1" />
+    <End Role="DetalleInventario" Type="ETNADbModel.Store.DetalleInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleInventario">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_webpages_UsersInRoles_webpages_Roles">
     <End Role="webpages_Roles" Type="ETNADbModel.Store.webpages_Roles" Multiplicity="1" />
     <End Role="webpages_UsersInRoles" Type="ETNADbModel.Store.webpages_UsersInRoles" Multiplicity="*" />
@@ -2106,6 +2235,30 @@
       </Principal>
       <Dependent Role="EmpleadoAlmacen">
         <PropertyRef Name="Almacen_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InventarioEmpleado_Inventario">
+    <End Role="Inventario" Type="ETNADbModel.Store.Inventarios" Multiplicity="1" />
+    <End Role="InventarioEmpleado" Type="ETNADbModel.Store.InventarioEmpleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InventarioEmpleado">
+        <PropertyRef Name="Inventario_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InventarioEmpleado_Empleado">
+    <End Role="InventarioEmpleado" Type="ETNADbModel.Store.InventarioEmpleado" Multiplicity="*" />
+    <End Role="Empleado" Type="ETNADbModel.Store.Empleados" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InventarioEmpleado">
+        <PropertyRef Name="Empleado_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2426,8 +2579,8 @@
             <End Role="Pedido" EntitySet="Pedido" />
           </AssociationSet>
           <AssociationSet Name="fk_DisponibilidadRecurso_Empleado1" Association="ETNADbModel.fk_DisponibilidadRecurso_Empleado1">
-            <End Role="Empleado" EntitySet="Empleados" />
-            <End Role="DisponibilidadRecurso" EntitySet="DisponibilidadRecurso" />
+            <End EntitySet="Empleados" Role="Empleado" />
+            <End EntitySet="DisponibilidadRecurso" Role="DisponibilidadRecurso" />
           </AssociationSet>
           <AssociationSet Name="fk_DisponibilidadTransporte_Transporte1" Association="ETNADbModel.fk_DisponibilidadTransporte_Transporte1">
             <End Role="Transporte" EntitySet="Transporte" />
@@ -2537,6 +2690,33 @@
             <End Role="TipoTransporte" EntitySet="TipoTransporte" />
             <End Role="Transporte" EntitySet="Transporte" />
           </AssociationSet>
+          <EntitySet Name="StockProductos" EntityType="ETNADbModel.StockProducto" />
+          <AssociationSet Name="StockProductoAlmacen" Association="ETNADbModel.StockProductoAlmacen">
+            <End Role="StockProducto" EntitySet="StockProductos" />
+            <End Role="Almacen" EntitySet="Almacenes" />
+          </AssociationSet>
+          <AssociationSet Name="StockProductoProducto" Association="ETNADbModel.StockProductoProducto">
+            <End Role="StockProducto" EntitySet="StockProductos" />
+            <End Role="Producto" EntitySet="Productos" />
+          </AssociationSet>
+          <EntitySet Name="Inventarios" EntityType="ETNADbModel.Inventario" />
+          <AssociationSet Name="InventarioEmpleado" Association="ETNADbModel.InventarioEmpleado">
+            <End Role="Inventario" EntitySet="Inventarios" />
+            <End Role="Empleado" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="InventarioAlmacen" Association="ETNADbModel.InventarioAlmacen">
+            <End Role="Inventario" EntitySet="Inventarios" />
+            <End Role="Almacen" EntitySet="Almacenes" />
+          </AssociationSet>
+          <EntitySet Name="DetalleInventario" EntityType="ETNADbModel.DetalleInventario" />
+          <AssociationSet Name="DetalleInventarioInventario" Association="ETNADbModel.DetalleInventarioInventario">
+            <End Role="DetalleInventario" EntitySet="DetalleInventario" />
+            <End Role="Inventario" EntitySet="Inventarios" />
+          </AssociationSet>
+          <AssociationSet Name="ProductoDetalleInventario" Association="ETNADbModel.ProductoDetalleInventario">
+            <End Role="Producto" EntitySet="Productos" />
+            <End Role="DetalleInventario" EntitySet="DetalleInventario" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="DocumentoReferencia">
           <Key>
@@ -2569,6 +2749,8 @@
           <NavigationProperty Name="DocumentoReferencia" Relationship="ETNADbModel.DocumentoReferenciaAlmacen" FromRole="Almacen" ToRole="DocumentoReferencia" />
           <NavigationProperty Name="Empleado" Relationship="ETNADbModel.EmpleadoAlmacen" FromRole="Almacen" ToRole="Empleado" />
           <NavigationProperty Name="Kardex" Relationship="ETNADbModel.AlmacenKardex" FromRole="Almacen" ToRole="Kardex" />
+          <NavigationProperty Name="StockProducto" Relationship="ETNADbModel.StockProductoAlmacen" FromRole="Almacen" ToRole="StockProducto" />
+          <NavigationProperty Name="Inventario" Relationship="ETNADbModel.InventarioAlmacen" FromRole="Almacen" ToRole="Inventario" />
         </EntityType>
         <Association Name="DocumentoReferenciaAlmacen">
           <End Type="ETNADbModel.DocumentoReferencia" Role="DocumentoReferencia" Multiplicity="*" />
@@ -2630,7 +2812,6 @@
           <Property Type="String" Name="Nombres" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Type="String" Name="Apellidos" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Type="String" Name="Direccion" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Type="String" Name="Cargo" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="DocumentoReferencia" Relationship="ETNADbModel.EmpleadoDocumentoReferencia" FromRole="Empleado" ToRole="DocumentoReferencia" />
           <NavigationProperty Name="SolicitudEntrada" Relationship="ETNADbModel.EmpleadoSolicitudEntrada" FromRole="Empleado" ToRole="SolicitudEntrada" />
           <NavigationProperty Name="SolicitudSalida" Relationship="ETNADbModel.SolicitudSalidaEmpleado" FromRole="Empleado" ToRole="SolicitudSalida" />
@@ -2638,9 +2819,10 @@
           <Property Name="Correo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Telefono" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="idCargo" Type="Int32" />
-          <NavigationProperty Name="Cargo1" Relationship="ETNADbModel.FK__Empleados__Cargo" FromRole="Empleado" ToRole="Cargo" />
+          <NavigationProperty Name="Cargo" Relationship="ETNADbModel.FK__Empleados__Cargo" FromRole="Empleado" ToRole="Cargo" />
           <NavigationProperty Name="DisponibilidadRecurso" Relationship="ETNADbModel.fk_DisponibilidadRecurso_Empleado1" FromRole="Empleado" ToRole="DisponibilidadRecurso" />
           <NavigationProperty Name="HojaRutaRecurso" Relationship="ETNADbModel.fk_HojaRutaRecurso_Recurso1" FromRole="Empleado" ToRole="HojaRutaRecurso" />
+          <NavigationProperty Name="Inventario" Relationship="ETNADbModel.InventarioEmpleado" FromRole="Empleado" ToRole="Inventario" />
         </EntityType>
         <Association Name="EmpleadoUserProfile">
           <End Type="ETNADbModel.Empleado" Role="Empleado" Multiplicity="1" />
@@ -2682,6 +2864,8 @@
           <NavigationProperty Name="FacturaDetalle" Relationship="ETNADbModel.fk_FacturaDetalle_Producto1" FromRole="Producto" ToRole="FacturaDetalle" />
           <NavigationProperty Name="PedidoDetalle" Relationship="ETNADbModel.fk_PedidoDetalle_Producto1" FromRole="Producto" ToRole="PedidoDetalle" />
           <NavigationProperty Name="ProductoBackOrder" Relationship="ETNADbModel.fk_ProductoBackOrder_Producto1" FromRole="Producto" ToRole="ProductoBackOrder" />
+          <NavigationProperty Name="StockProducto" Relationship="ETNADbModel.StockProductoProducto" FromRole="Producto" ToRole="StockProducto" />
+          <NavigationProperty Name="DetalleInventario" Relationship="ETNADbModel.ProductoDetalleInventario" FromRole="Producto" ToRole="DetalleInventario" />
         </EntityType>
         <EntityType Name="SolicitudEntrada">
           <Key>
@@ -3765,8 +3949,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_DisponibilidadRecurso_Empleado1">
-          <End Type="ETNADbModel.Empleado" Role="Empleado" Multiplicity="1" />
-          <End Type="ETNADbModel.DisponibilidadRecurso" Role="DisponibilidadRecurso" Multiplicity="*" />
+          <End Type="ETNADbModel.Empleado" Multiplicity="1" Role="Empleado" />
+          <End Type="ETNADbModel.DisponibilidadRecurso" Multiplicity="*" Role="DisponibilidadRecurso" />
           <ReferentialConstraint>
             <Principal Role="Empleado">
               <PropertyRef Name="Id" />
@@ -4100,6 +4284,98 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="StockProducto" >
+          <Key>
+            <PropertyRef Name="IdAlmacen" />
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdAlmacen" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Almacen" Relationship="ETNADbModel.StockProductoAlmacen" FromRole="StockProducto" ToRole="Almacen" />
+          <NavigationProperty Name="Producto" Relationship="ETNADbModel.StockProductoProducto" FromRole="StockProducto" ToRole="Producto" />
+          <Property Name="CantidadDisponible" Type="Int32" Nullable="false" />
+          <Property Name="Ubicacion" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="StockProductoAlmacen">
+          <End Type="ETNADbModel.StockProducto" Role="StockProducto" Multiplicity="*" />
+          <End Type="ETNADbModel.Almacen" Role="Almacen" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StockProducto">
+              <PropertyRef Name="IdAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StockProductoProducto">
+          <End Type="ETNADbModel.StockProducto" Role="StockProducto" Multiplicity="*" />
+          <End Type="ETNADbModel.Producto" Role="Producto" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StockProducto">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Inventario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaProgramacion" Type="String" Nullable="false" />
+          <Property Name="TipoInventario" Type="String" Nullable="false" />
+          <Property Name="EstadoInventario" Type="String" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="ETNADbModel.InventarioEmpleado" FromRole="Inventario" ToRole="Empleado" />
+          <NavigationProperty Name="Almacen" Relationship="ETNADbModel.InventarioAlmacen" FromRole="Inventario" ToRole="Almacen" />
+          <NavigationProperty Name="DetalleInventario" Relationship="ETNADbModel.DetalleInventarioInventario" FromRole="Inventario" ToRole="DetalleInventario" />
+        </EntityType>
+        <Association Name="InventarioEmpleado">
+          <End Type="ETNADbModel.Inventario" Role="Inventario" Multiplicity="*" />
+          <End Type="ETNADbModel.Empleado" Role="Empleado" Multiplicity="*" />
+        </Association>
+        <Association Name="InventarioAlmacen">
+          <End Type="ETNADbModel.Inventario" Role="Inventario" Multiplicity="*" />
+          <End Type="ETNADbModel.Almacen" Role="Almacen" Multiplicity="1" />
+        </Association>
+        <EntityType Name="DetalleInventario" >
+          <Key>
+            <PropertyRef Name="IdInventario" />
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdInventario" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="CantidadInventariada" Type="Int32" Nullable="false" />
+          <Property Name="CantidadEsperada" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Inventario" Relationship="ETNADbModel.DetalleInventarioInventario" FromRole="DetalleInventario" ToRole="Inventario" />
+          <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoDetalleInventario" FromRole="DetalleInventario" ToRole="Producto" />
+        </EntityType>
+        <Association Name="DetalleInventarioInventario">
+          <End Type="ETNADbModel.DetalleInventario" Role="DetalleInventario" Multiplicity="*" />
+          <End Type="ETNADbModel.Inventario" Role="Inventario" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Inventario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleInventario">
+              <PropertyRef Name="IdInventario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductoDetalleInventario">
+          <End Type="ETNADbModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="ETNADbModel.DetalleInventario" Role="DetalleInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleInventario">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4186,7 +4462,6 @@
           <ScalarProperty Name="Nombres" ColumnName="Nombres" />
           <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
           <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
           <ScalarProperty Name="Dni" ColumnName="Dni" />
           <ScalarProperty Name="Correo" ColumnName="Correo" />
           <ScalarProperty Name="Telefono" ColumnName="Telefono" />
@@ -4798,6 +5073,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="StockProductos">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.StockProducto)">
+        <MappingFragment StoreEntitySet="StockProductos">
+          <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="CantidadDisponible" ColumnName="CantidadDisponible" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inventarios">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.Inventario)">
+        <MappingFragment StoreEntitySet="Inventarios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FechaProgramacion" ColumnName="FechaProgramacion" />
+          <ScalarProperty Name="TipoInventario" ColumnName="TipoInventario" />
+          <ScalarProperty Name="EstadoInventario" ColumnName="EstadoInventario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleInventario">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleInventario)">
+        <MappingFragment StoreEntitySet="DetalleInventario">
+          <ScalarProperty Name="IdInventario" ColumnName="IdInventario" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="CantidadInventariada" ColumnName="CantidadInventariada" />
+          <ScalarProperty Name="CantidadEsperada" ColumnName="CantidadEsperada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="DocumentoReferenciaAlmacen" TypeName="ETNADbModel.DocumentoReferenciaAlmacen" StoreEntitySet="DocumentosReferencia">
       <EndProperty Name="Almacen">
         <ScalarProperty Name="Id" ColumnName="Almacen_Id" />
@@ -5011,6 +5316,22 @@
         <ScalarProperty Name="Id" ColumnName="Maquinaria_Id" />
       </EndProperty>
       <EndProperty Name="DetalleOrdenTrabajoMaquinaria">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="InventarioEmpleado" TypeName="ETNADbModel.InventarioEmpleado" StoreEntitySet="InventarioEmpleado">
+      <EndProperty Name="Inventario">
+        <ScalarProperty Name="Id" ColumnName="Inventario_Id" />
+      </EndProperty>
+      <EndProperty Name="Empleado">
+        <ScalarProperty Name="Id" ColumnName="Empleado_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="InventarioAlmacen" TypeName="ETNADbModel.InventarioAlmacen" StoreEntitySet="Inventarios">
+      <EndProperty Name="Almacen">
+        <ScalarProperty Name="Id" ColumnName="Almacen_Id" />
+      </EndProperty>
+      <EndProperty Name="Inventario">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

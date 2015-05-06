@@ -68,6 +68,9 @@
     <Compile Include="DetalleGuiaSalida.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DetalleInventario.cs">
+      <DependentUpon>ETNADbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DetalleOrdenTrabajoInsumo.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
@@ -163,6 +166,9 @@
     <Compile Include="HojaRutaRecurso.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Inventario.cs">
+      <DependentUpon>ETNADbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Kardex.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
@@ -219,6 +225,9 @@
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SolicitudSalida.cs">
+      <DependentUpon>ETNADbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockProducto.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TipoCliente.cs">

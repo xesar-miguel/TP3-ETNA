@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/05/2015 21:32:13
--- Generated from EDMX file: D:\Proyectos\TP3\Etna\TP3-ETNA\ETNA.DAL\ETNADbModel.edmx
+-- Date Created: 05/05/2015 22:32:18
+-- Generated from EDMX file: C:\Users\DiegoMartín\Documents\Visual Studio 2012\Projects\ETNA-GIT\ETNA.DAL\ETNADbModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -563,7 +563,6 @@ CREATE TABLE [dbo].[Empleados] (
     [Nombres] nvarchar(max)  NOT NULL,
     [Apellidos] nvarchar(max)  NOT NULL,
     [Direccion] nvarchar(max)  NOT NULL,
-    [Cargo] nvarchar(max)  NOT NULL,
     [Dni] varchar(45)  NULL,
     [Correo] varchar(45)  NULL,
     [Telefono] varchar(45)  NULL,
@@ -1136,6 +1135,34 @@ CREATE TABLE [dbo].[ZonaDespacho] (
 );
 GO
 
+-- Creating table 'StockProductos'
+CREATE TABLE [dbo].[StockProductos] (
+    [IdAlmacen] int  NOT NULL,
+    [IdProducto] int  NOT NULL,
+    [CantidadDisponible] int  NOT NULL,
+    [Ubicacion] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Inventarios'
+CREATE TABLE [dbo].[Inventarios] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [FechaProgramacion] nvarchar(max)  NOT NULL,
+    [TipoInventario] nvarchar(max)  NOT NULL,
+    [EstadoInventario] nvarchar(max)  NOT NULL,
+    [Almacen_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'DetalleInventario'
+CREATE TABLE [dbo].[DetalleInventario] (
+    [IdInventario] int  NOT NULL,
+    [IdProducto] int  NOT NULL,
+    [CantidadInventariada] int  NOT NULL,
+    [CantidadEsperada] int  NOT NULL
+);
+GO
+
 -- Creating table 'DocumentosReferencia_GuiaEntrada'
 CREATE TABLE [dbo].[DocumentosReferencia_GuiaEntrada] (
     [Id] int  NOT NULL,
@@ -1161,6 +1188,13 @@ GO
 CREATE TABLE [dbo].[EmpleadoAlmacen] (
     [Empleado_Id] int  NOT NULL,
     [Almacen_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'InventarioEmpleado'
+CREATE TABLE [dbo].[InventarioEmpleado] (
+    [Inventario_Id] int  NOT NULL,
+    [Empleado_Id] int  NOT NULL
 );
 GO
 
@@ -1570,6 +1604,24 @@ ADD CONSTRAINT [PK_ZonaDespacho]
     PRIMARY KEY CLUSTERED ([Codigo] ASC);
 GO
 
+-- Creating primary key on [IdAlmacen], [IdProducto] in table 'StockProductos'
+ALTER TABLE [dbo].[StockProductos]
+ADD CONSTRAINT [PK_StockProductos]
+    PRIMARY KEY CLUSTERED ([IdAlmacen], [IdProducto] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Inventarios'
+ALTER TABLE [dbo].[Inventarios]
+ADD CONSTRAINT [PK_Inventarios]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [IdInventario], [IdProducto] in table 'DetalleInventario'
+ALTER TABLE [dbo].[DetalleInventario]
+ADD CONSTRAINT [PK_DetalleInventario]
+    PRIMARY KEY CLUSTERED ([IdInventario], [IdProducto] ASC);
+GO
+
 -- Creating primary key on [Id] in table 'DocumentosReferencia_GuiaEntrada'
 ALTER TABLE [dbo].[DocumentosReferencia_GuiaEntrada]
 ADD CONSTRAINT [PK_DocumentosReferencia_GuiaEntrada]
@@ -1592,6 +1644,12 @@ GO
 ALTER TABLE [dbo].[EmpleadoAlmacen]
 ADD CONSTRAINT [PK_EmpleadoAlmacen]
     PRIMARY KEY CLUSTERED ([Empleado_Id], [Almacen_Id] ASC);
+GO
+
+-- Creating primary key on [Inventario_Id], [Empleado_Id] in table 'InventarioEmpleado'
+ALTER TABLE [dbo].[InventarioEmpleado]
+ADD CONSTRAINT [PK_InventarioEmpleado]
+    PRIMARY KEY CLUSTERED ([Inventario_Id], [Empleado_Id] ASC);
 GO
 
 -- --------------------------------------------------
@@ -2717,6 +2775,89 @@ ADD CONSTRAINT [fk_Transporte_TipoTransporte1]
 CREATE INDEX [IX_fk_Transporte_TipoTransporte1]
 ON [dbo].[Transporte]
     ([idTipoTransporte]);
+GO
+
+-- Creating foreign key on [IdAlmacen] in table 'StockProductos'
+ALTER TABLE [dbo].[StockProductos]
+ADD CONSTRAINT [FK_StockProductoAlmacen]
+    FOREIGN KEY ([IdAlmacen])
+    REFERENCES [dbo].[Almacenes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [IdProducto] in table 'StockProductos'
+ALTER TABLE [dbo].[StockProductos]
+ADD CONSTRAINT [FK_StockProductoProducto]
+    FOREIGN KEY ([IdProducto])
+    REFERENCES [dbo].[Productos]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_StockProductoProducto'
+CREATE INDEX [IX_FK_StockProductoProducto]
+ON [dbo].[StockProductos]
+    ([IdProducto]);
+GO
+
+-- Creating foreign key on [Inventario_Id] in table 'InventarioEmpleado'
+ALTER TABLE [dbo].[InventarioEmpleado]
+ADD CONSTRAINT [FK_InventarioEmpleado_Inventario]
+    FOREIGN KEY ([Inventario_Id])
+    REFERENCES [dbo].[Inventarios]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Empleado_Id] in table 'InventarioEmpleado'
+ALTER TABLE [dbo].[InventarioEmpleado]
+ADD CONSTRAINT [FK_InventarioEmpleado_Empleado]
+    FOREIGN KEY ([Empleado_Id])
+    REFERENCES [dbo].[Empleados]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_InventarioEmpleado_Empleado'
+CREATE INDEX [IX_FK_InventarioEmpleado_Empleado]
+ON [dbo].[InventarioEmpleado]
+    ([Empleado_Id]);
+GO
+
+-- Creating foreign key on [Almacen_Id] in table 'Inventarios'
+ALTER TABLE [dbo].[Inventarios]
+ADD CONSTRAINT [FK_InventarioAlmacen]
+    FOREIGN KEY ([Almacen_Id])
+    REFERENCES [dbo].[Almacenes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_InventarioAlmacen'
+CREATE INDEX [IX_FK_InventarioAlmacen]
+ON [dbo].[Inventarios]
+    ([Almacen_Id]);
+GO
+
+-- Creating foreign key on [IdInventario] in table 'DetalleInventario'
+ALTER TABLE [dbo].[DetalleInventario]
+ADD CONSTRAINT [FK_DetalleInventarioInventario]
+    FOREIGN KEY ([IdInventario])
+    REFERENCES [dbo].[Inventarios]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [IdProducto] in table 'DetalleInventario'
+ALTER TABLE [dbo].[DetalleInventario]
+ADD CONSTRAINT [FK_ProductoDetalleInventario]
+    FOREIGN KEY ([IdProducto])
+    REFERENCES [dbo].[Productos]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductoDetalleInventario'
+CREATE INDEX [IX_FK_ProductoDetalleInventario]
+ON [dbo].[DetalleInventario]
+    ([IdProducto]);
 GO
 
 -- Creating foreign key on [Id] in table 'DocumentosReferencia_GuiaEntrada'

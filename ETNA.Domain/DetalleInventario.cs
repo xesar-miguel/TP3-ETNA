@@ -12,12 +12,14 @@ namespace ETNA.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Parametro
+    public partial class DetalleInventario
     {
-        public int idParametro { get; set; }
-        public Nullable<int> PrioridadSede { get; set; }
-        public Nullable<int> PlazoMaxDespacho { get; set; }
-        public string TipoDistribucionStock { get; set; }
-        public Nullable<int> RedondeoCubicaje { get; set; }
+        public int IdInventario { get; set; }
+        public int IdProducto { get; set; }
+        public int CantidadInventariada { get; set; }
+        public int CantidadEsperada { get; set; }
+    
+        public virtual Inventario Inventario { get; set; }
+        public virtual Producto Producto { get; set; }
     }
 }
