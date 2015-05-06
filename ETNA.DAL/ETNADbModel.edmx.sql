@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/05/2015 22:32:18
+-- Date Created: 05/05/2015 22:38:33
 -- Generated from EDMX file: C:\Users\DiegoMartín\Documents\Visual Studio 2012\Projects\ETNA-GIT\ETNA.DAL\ETNADbModel.edmx
 -- --------------------------------------------------
 
@@ -269,6 +269,27 @@ GO
 IF OBJECT_ID(N'[dbo].[fk_Transporte_TipoTransporte1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Transporte] DROP CONSTRAINT [fk_Transporte_TipoTransporte1];
 GO
+IF OBJECT_ID(N'[dbo].[FK_StockProductoAlmacen]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[StockProductos] DROP CONSTRAINT [FK_StockProductoAlmacen];
+GO
+IF OBJECT_ID(N'[dbo].[FK_StockProductoProducto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[StockProductos] DROP CONSTRAINT [FK_StockProductoProducto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_InventarioEmpleado_Inventario]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[InventarioEmpleado] DROP CONSTRAINT [FK_InventarioEmpleado_Inventario];
+GO
+IF OBJECT_ID(N'[dbo].[FK_InventarioEmpleado_Empleado]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[InventarioEmpleado] DROP CONSTRAINT [FK_InventarioEmpleado_Empleado];
+GO
+IF OBJECT_ID(N'[dbo].[FK_InventarioAlmacen]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Inventarios] DROP CONSTRAINT [FK_InventarioAlmacen];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DetalleInventarioInventario]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleInventario] DROP CONSTRAINT [FK_DetalleInventarioInventario];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProductoDetalleInventario]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleInventario] DROP CONSTRAINT [FK_ProductoDetalleInventario];
+GO
 IF OBJECT_ID(N'[dbo].[FK_GuiaEntrada_inherits_DocumentoReferencia]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DocumentosReferencia_GuiaEntrada] DROP CONSTRAINT [FK_GuiaEntrada_inherits_DocumentoReferencia];
 GO
@@ -481,6 +502,15 @@ GO
 IF OBJECT_ID(N'[dbo].[ZonaDespacho]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ZonaDespacho];
 GO
+IF OBJECT_ID(N'[dbo].[StockProductos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[StockProductos];
+GO
+IF OBJECT_ID(N'[dbo].[Inventarios]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Inventarios];
+GO
+IF OBJECT_ID(N'[dbo].[DetalleInventario]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetalleInventario];
+GO
 IF OBJECT_ID(N'[dbo].[DocumentosReferencia_GuiaEntrada]', 'U') IS NOT NULL
     DROP TABLE [dbo].[DocumentosReferencia_GuiaEntrada];
 GO
@@ -492,6 +522,9 @@ IF OBJECT_ID(N'[dbo].[webpages_UsersInRoles]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[EmpleadoAlmacen]', 'U') IS NOT NULL
     DROP TABLE [dbo].[EmpleadoAlmacen];
+GO
+IF OBJECT_ID(N'[dbo].[InventarioEmpleado]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[InventarioEmpleado];
 GO
 
 -- --------------------------------------------------
