@@ -55,12 +55,15 @@ namespace ETNA.MVC
             Mapper.CreateMap<Entrega, ListaEntregaViewModel>()
                 .ForMember(s => s.Cliente, opts => opts.MapFrom(src => src.Cliente.Nombre))
                 .ForMember(s => s.ZonaDespacho, opts => opts.MapFrom(src => src.ZonaDespacho.Descripcion));
-               
+
             Mapper.CreateMap<Entrega, EntregaViewModel>()
                 .ForMember(s => s.Cliente, opts => opts.MapFrom(src => src.Cliente.Nombre))
                 .ForMember(s => s.ZonaDespacho, opts => opts.MapFrom(src => src.ZonaDespacho.Descripcion))
-                .ForMember(s => s.Detalle,
-                    opts => opts.MapFrom(src => src.EntregaDetalle));
+                 .ForMember(s => s.EstadoEntrega, opts => opts.MapFrom(src => src.EstadoEntrega.Descripcion));
+
+            Mapper.CreateMap<EntregaDetalle, DetalleEntregaViewModel>()
+                .ForMember(s => s.NombreProducto, opts => opts.MapFrom(src => src.Productos.Nombre));
+                
         }
     }
 }

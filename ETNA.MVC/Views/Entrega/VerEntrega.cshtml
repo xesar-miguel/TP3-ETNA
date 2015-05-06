@@ -1,5 +1,55 @@
-﻿@{
-    ViewBag.Title = "VerEntrega";
+﻿@model ETNA.MVC.Models.DI.EntregaViewModel
+
+@{
+    ViewBag.Title = "Detalle de Entrega (Consultar)";
 }
 
-<h2>VerEntrega</h2>
+<h2>Detalle de Entrega (Consultar)</h2>
+
+<fieldset>
+    <legend>EntregaViewModel</legend>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "filtradoForm" }))
+    {
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Numero)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Numero, new { disabled = "disabled", @readonly = "readonly" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FechaEntrega)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.FechaEntrega, "{0:dd/MM/yyyy}", new { disabled = "disabled", @readonly = "readonly" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Cliente)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Cliente, new { disabled = "disabled", @readonly = "readonly" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EstadoEntrega)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.EstadoEntrega, new { disabled = "disabled", @readonly = "readonly" })
+        </div>
+       
+       
+    }
+</fieldset>
+
+
+<div id="targetDiv">
+    @Html.Partial("_ListaDetalle", Model.ListaDetalle)
+</div>
+
+<div class="editor-field" style="padding-top: 10px;">
+    
+</div>
+
+
+
+
+

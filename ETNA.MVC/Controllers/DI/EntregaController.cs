@@ -76,9 +76,13 @@ namespace ETNA.MVC.Controllers.DI
             //Mapeamos el DTO a nuestro modelo (de forma automática o a mano, dependiendo de nuestra necesidad)
             var entrega = Mapper.Map<EntregaViewModel>(entregaDto);
 
-            var resultado = "";
+            var detallesDto = service.ObtenerEntregaDetalles(id);
 
-            return View();
+            var listaDetalles = Mapper.Map<List<DetalleEntregaViewModel>>(detallesDto);
+
+            entrega.ListaDetalle = listaDetalles;
+
+            return View(entrega);
         }
             
 

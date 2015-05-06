@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ETNA.MVC.Models.DI.DetalleEntregaViewModel>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NroItem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadEntregaProg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadEntregada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadRechazada)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NroItem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadEntregaProg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadEntregada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadRechazada)
+            </td>
+            
+        </tr>
+    }
+</table>

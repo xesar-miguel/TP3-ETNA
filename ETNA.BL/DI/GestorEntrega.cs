@@ -34,5 +34,13 @@ namespace ETNA.BL.DI
             return context.Entrega.Find(codigo);
         }
 
+        public List<EntregaDetalle> ObtenerEntregaDetalles(int idEntrega)
+        {
+            var context = new ETNADbModelContainer();
+            return context.EntregaDetalle.Where(s =>
+                (idEntrega == 0 || s.idEntrega == idEntrega)
+                 ).ToList();
+        }
+
     }
 }

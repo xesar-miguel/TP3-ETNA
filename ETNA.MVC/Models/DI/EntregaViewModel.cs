@@ -15,23 +15,28 @@ namespace ETNA.MVC.Models.DI
         public int Codigo { get; set; }
 
         [Key]
-        [DisplayName("Nro. de Entrega")]
+        [DisplayName("Nro. de Entrega:")]
         public string Numero { get; set; }
 
-        [DisplayName("Fecha Emisión")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayName("Fecha Emisión:")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime FechaGeneracion { get; set; }
 
-        [DisplayName("Fecha Entrega")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayName("Fecha Entrega:")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime FechaEntrega { get; set; }
 
-        [DisplayName("Cliente")]
+        [DisplayName("Cliente:")]
         public string Cliente { get; set; }
 
-        [DisplayName("Zona Despacho")]
+        [DisplayName("Zona Despacho:")]
         public string ZonaDespacho { get; set; }
 
-        public List<DetalleEntregaViewModel> Detalle { get; set; }
+        [DisplayName("Estado:")]
+        public string EstadoEntrega { get; set; }
+
+        public List<DetalleEntregaViewModel> ListaDetalle { get; set; }
+
+      
     }
 }
