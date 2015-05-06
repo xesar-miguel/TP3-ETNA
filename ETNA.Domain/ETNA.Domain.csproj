@@ -47,9 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AjusteInventario.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Almacen.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
@@ -57,12 +54,6 @@
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Bateria.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Bateria1.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Bateria2.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Calendario.cs">
@@ -80,52 +71,22 @@
     <Compile Include="DetalleOrdenTrabajoInsumo.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DetalleOrdenTrabajoInsumo1.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DetalleOrdenTrabajoInsumo2.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DetalleOrdenTrabajoMaquinaria.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DetalleOrdenTrabajoPersonal.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DetalleOrdenTrabajoPersonal1.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DetalleOrdenTrabajoPersonal2.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DetalleParteProduccionBateria.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DetalleParteProduccionBateria1.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DetalleParteProduccionBateria2.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DetalleParteProduccionInsumo.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DetalleParteProduccionInsumo1.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DetalleParteProduccionInsumo2.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DetalleSolicitudEntrada.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DetalleSolicitudInsumo.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DetalleSolicitudInsumo1.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DetalleSolicitudInsumo2.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DetalleSolicitudProduccion.cs">
@@ -202,9 +163,6 @@
     <Compile Include="HojaRutaRecurso.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Insumo.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Kardex.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
@@ -226,22 +184,10 @@
     <Compile Include="OrdenTrabajo.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="OrdenTrabajo1.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrdenTrabajo2.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Parametro.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ParteProduccion.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ParteProduccion1.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ParteProduccion2.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pedido.cs">
@@ -270,12 +216,6 @@
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SolicitudInsumo.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SolicitudInsumo1.cs">
-      <DependentUpon>ETNADbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SolicitudInsumo2.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SolicitudProduccion.cs">
