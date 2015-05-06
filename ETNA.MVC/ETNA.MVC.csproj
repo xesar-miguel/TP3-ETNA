@@ -181,8 +181,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DI\DistribucionController.cs" />
     <Compile Include="Controllers\DI\EntregaController.cs" />
-    <Compile Include="Controllers\DI\VehiculosController.cs" />
-    <Compile Include="Controllers\FB\LoteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LO\GuiaEntradaController.cs" />
     <Compile Include="Controllers\LO\GuiaSalidaController.cs" />
@@ -197,8 +195,6 @@
     <Compile Include="Models\DI\EntregaViewModel.cs" />
     <Compile Include="Models\DI\ListaEntregaViewModel.cs" />
     <Compile Include="Models\DI\FiltradoEntregasViewModel.cs" />
-    <Compile Include="Models\DI\VehiculoViewModel.cs" />
-    <Compile Include="Models\FB\LoteViewModel.cs" />
     <Compile Include="Models\LO\AlmacenViewModel.cs" />
     <Compile Include="Models\LO\AltaGuiaEntradaModel.cs" />
     <Compile Include="Models\LO\AltaGuiaSalidaModel.cs" />
@@ -332,18 +328,11 @@
     <Content Include="Views\GuiaEntrada\Almacenes.cshtml" />
     <Content Include="Views\GuiaEntrada\Solicitudes.cshtml" />
     <Content Include="Views\GuiaEntrada\Atender.cshtml" />
-    <Content Include="Views\Lote\Index.cshtml" />
-    <Content Include="Views\Lote\Details.cshtml" />
-    <Content Include="Views\Lote\Create.cshtml" />
-    <Content Include="Views\Lote\Edit.cshtml" />
-    <Content Include="Views\Lote\Delete.cshtml" />
     <Content Include="Views\GuiaEntrada\_ListaSolicitudEntrada.cshtml" />
     <Content Include="Views\GuiaSalida\Almacenes.cshtml" />
     <Content Include="Views\GuiaSalida\Solicitudes.cshtml" />
     <Content Include="Views\GuiaSalida\Atender.cshtml" />
     <Content Include="Views\GuiaSalida\_ListaSolicitudSalida.cshtml" />
-    <Content Include="Views\Vehiculos\Index.cshtml" />
-    <Content Include="Views\Vehiculos\Create.cshtml" />
     <Content Include="Views\Distribucion\Index.cshtml" />
     <Content Include="Views\Entrega\Index.cshtml" />
     <Content Include="Views\Entrega\_ListaEntrega.cshtml" />
@@ -352,7 +341,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\themes\base\minified\images\" />
+    <Folder Include="Controllers\FB\" />
     <Folder Include="Controllers\PV\" />
+    <Folder Include="Models\FB\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

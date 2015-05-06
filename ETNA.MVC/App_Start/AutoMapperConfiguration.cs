@@ -21,7 +21,7 @@ namespace ETNA.MVC
         protected override void Configure()
         {
             Mapper.CreateMap<Almacen, AlmacenViewModel>();
-            Mapper.CreateMap<Vehiculo, VehiculoViewModel>();
+            
             Mapper.CreateMap<SolicitudEntrada, ListaSolicitudEntradaViewModel>()
                 .ForMember(s => s.TipoEntrada, opts => opts.MapFrom(src => Enums.GetEnumDescription((Enums.TipoEntrada)src.TipoEntrada)))
                 .ForMember(s => s.NombreEmpleado, opts => opts.MapFrom(src => src.Empleado.Nombres + ' ' + src.Empleado.Apellidos));

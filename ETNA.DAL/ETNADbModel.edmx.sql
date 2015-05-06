@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/05/2015 12:49:07
--- Generated from EDMX file: C:\Users\Martin\Source\Repos\TP3-ETNA\ETNA.DAL\ETNADbModel.edmx
+-- Date Created: 05/05/2015 21:17:39
+-- Generated from EDMX file: C:\Users\DiegoMartín\Documents\Visual Studio 2012\Projects\ETNA-GIT\ETNA.DAL\ETNADbModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,17 +17,128 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK__Empleados__Cargo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Empleados] DROP CONSTRAINT [FK__Empleados__Cargo];
+IF OBJECT_ID(N'[dbo].[FK_DocumentoReferenciaAlmacen]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DocumentosReferencia] DROP CONSTRAINT [FK_DocumentoReferenciaAlmacen];
 GO
-IF OBJECT_ID(N'[dbo].[FK_AjusteInventario_inherits_DocumentoReferencia]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DocumentosReferencia_AjusteInventario] DROP CONSTRAINT [FK_AjusteInventario_inherits_DocumentoReferencia];
+IF OBJECT_ID(N'[dbo].[FK_webpages_UsersInRoles_webpages_Roles]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[webpages_UsersInRoles] DROP CONSTRAINT [FK_webpages_UsersInRoles_webpages_Roles];
+GO
+IF OBJECT_ID(N'[dbo].[FK_webpages_UsersInRoles_UserProfile]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[webpages_UsersInRoles] DROP CONSTRAINT [FK_webpages_UsersInRoles_UserProfile];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmpleadoUserProfile]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Empleados] DROP CONSTRAINT [FK_EmpleadoUserProfile];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmpleadoAlmacen_Empleado]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EmpleadoAlmacen] DROP CONSTRAINT [FK_EmpleadoAlmacen_Empleado];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmpleadoAlmacen_Almacen]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EmpleadoAlmacen] DROP CONSTRAINT [FK_EmpleadoAlmacen_Almacen];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmpleadoDocumentoReferencia]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DocumentosReferencia] DROP CONSTRAINT [FK_EmpleadoDocumentoReferencia];
+GO
+IF OBJECT_ID(N'[dbo].[FK_GuiaEntradaSolicitudEntrada]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DocumentosReferencia_GuiaEntrada] DROP CONSTRAINT [FK_GuiaEntradaSolicitudEntrada];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SolicitudEntradaSolicitudEntradaProducto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleSolicitudEntrada] DROP CONSTRAINT [FK_SolicitudEntradaSolicitudEntradaProducto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProductoSolicitudEntradaProducto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleSolicitudEntrada] DROP CONSTRAINT [FK_ProductoSolicitudEntradaProducto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DocumentoReferenciaKardex]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Kardex] DROP CONSTRAINT [FK_DocumentoReferenciaKardex];
 GO
 IF OBJECT_ID(N'[dbo].[FK_AlmacenKardex]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Kardex] DROP CONSTRAINT [FK_AlmacenKardex];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ProductoKardex]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Kardex] DROP CONSTRAINT [FK_ProductoKardex];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmpleadoSolicitudEntrada]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SolicitudesEntrada] DROP CONSTRAINT [FK_EmpleadoSolicitudEntrada];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SolicitudSalidaEmpleado]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SolicitudSalidaConjunto] DROP CONSTRAINT [FK_SolicitudSalidaEmpleado];
+GO
+IF OBJECT_ID(N'[dbo].[FK_GuiaSalidaSolicitudSalida]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DocumentosReferencia_GuiaSalida] DROP CONSTRAINT [FK_GuiaSalidaSolicitudSalida];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DetalleSolicitudSalidaProducto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleSolicitudSalidaConjunto] DROP CONSTRAINT [FK_DetalleSolicitudSalidaProducto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DetalleSolicitudSalidaSolicitudSalida]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleSolicitudSalidaConjunto] DROP CONSTRAINT [FK_DetalleSolicitudSalidaSolicitudSalida];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DetalleGuiaSalidaGuiaSalida]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleGuiaSalidaConjunto] DROP CONSTRAINT [FK_DetalleGuiaSalidaGuiaSalida];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DetalleGuiaSalidaProducto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleGuiaSalidaConjunto] DROP CONSTRAINT [FK_DetalleGuiaSalidaProducto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SolicitudProduccionDetalleSolicitudProduccion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleSolicitudProduccionSet] DROP CONSTRAINT [FK_SolicitudProduccionDetalleSolicitudProduccion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_OrdenTrabajoDetalleSolicitudProduccion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleSolicitudProduccionSet] DROP CONSTRAINT [FK_OrdenTrabajoDetalleSolicitudProduccion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SolicitudInsumoDetalleSolicitudInsumo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleSolicitudInsumoSet] DROP CONSTRAINT [FK_SolicitudInsumoDetalleSolicitudInsumo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ParteProduccionDetalleParteProduccionInsumo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleParteProduccionInsumoSet] DROP CONSTRAINT [FK_ParteProduccionDetalleParteProduccionInsumo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ParteProduccionDetalleParteProduccionBateria]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleParteProduccionBateriaSet] DROP CONSTRAINT [FK_ParteProduccionDetalleParteProduccionBateria];
+GO
+IF OBJECT_ID(N'[dbo].[FK_BateriaDetalleParteProduccionBateria]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleParteProduccionBateriaSet] DROP CONSTRAINT [FK_BateriaDetalleParteProduccionBateria];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PlanProduccionProgramacionProduccion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProgramacionProduccionSet] DROP CONSTRAINT [FK_PlanProduccionProgramacionProduccion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SolicitudProduccionPlanProduccion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SolicitudProduccionSet] DROP CONSTRAINT [FK_SolicitudProduccionPlanProduccion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_OrdenTrabajoDetalleOrdenTrabajoPersonal]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleOrdenTrabajoPersonalSet] DROP CONSTRAINT [FK_OrdenTrabajoDetalleOrdenTrabajoPersonal];
+GO
+IF OBJECT_ID(N'[dbo].[FK_OrdenTrabajoDetalleOrdenTrabajoInsumo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleOrdenTrabajoInsumoSet] DROP CONSTRAINT [FK_OrdenTrabajoDetalleOrdenTrabajoInsumo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SolicitudProduccionLote]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[LoteSet] DROP CONSTRAINT [FK_SolicitudProduccionLote];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LoteOrdenTrabajo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[OrdenTrabajoSet] DROP CONSTRAINT [FK_LoteOrdenTrabajo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_OrdenTrabajoDetalleOrdenTrabajoMaquinaria]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleOrdenTrabajoMaquinariaSet] DROP CONSTRAINT [FK_OrdenTrabajoDetalleOrdenTrabajoMaquinaria];
+GO
+IF OBJECT_ID(N'[dbo].[FK_OrdenTrabajoSolicitudInsumo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SolicitudInsumoSet] DROP CONSTRAINT [FK_OrdenTrabajoSolicitudInsumo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_MaquinariaDetalleOrdenTrabajoMaquinaria]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetalleOrdenTrabajoMaquinariaSet] DROP CONSTRAINT [FK_MaquinariaDetalleOrdenTrabajoMaquinaria];
+GO
 IF OBJECT_ID(N'[dbo].[fk_Backorder_Entrega1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Backorder] DROP CONSTRAINT [fk_Backorder_Entrega1];
+GO
+IF OBJECT_ID(N'[dbo].[fk_ProductoBackOrder_Backorder1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProductoBackOrder] DROP CONSTRAINT [fk_ProductoBackOrder_Backorder1];
+GO
+IF OBJECT_ID(N'[dbo].[fk_DisponibilidadRecurso_Calendario1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DisponibilidadRecurso] DROP CONSTRAINT [fk_DisponibilidadRecurso_Calendario1];
+GO
+IF OBJECT_ID(N'[dbo].[fk_DisponibilidadTransporte_Calendario1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DisponibilidadTransporte] DROP CONSTRAINT [fk_DisponibilidadTransporte_Calendario1];
+GO
+IF OBJECT_ID(N'[dbo].[fk_HojaRutaRecurso_Calendario1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HojaRutaRecurso] DROP CONSTRAINT [fk_HojaRutaRecurso_Calendario1];
+GO
+IF OBJECT_ID(N'[dbo].[FK__Empleados__Cargo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Empleados] DROP CONSTRAINT [FK__Empleados__Cargo];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Cliente_EstadoCliente1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Cliente] DROP CONSTRAINT [FK_Cliente_EstadoCliente1];
@@ -38,23 +149,20 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_Cliente_TipoDocumento1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Cliente] DROP CONSTRAINT [FK_Cliente_TipoDocumento1];
 GO
-IF OBJECT_ID(N'[dbo].[FK_DetalleGuiaSalidaGuiaSalida]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleGuiaSalidaConjunto] DROP CONSTRAINT [FK_DetalleGuiaSalidaGuiaSalida];
-GO
-IF OBJECT_ID(N'[dbo].[FK_DetalleGuiaSalidaProducto]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleGuiaSalidaConjunto] DROP CONSTRAINT [FK_DetalleGuiaSalidaProducto];
-GO
-IF OBJECT_ID(N'[dbo].[FK_DetalleParteProduccionBateriaBateria]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleParteProduccionBateria] DROP CONSTRAINT [FK_DetalleParteProduccionBateriaBateria];
-GO
-IF OBJECT_ID(N'[dbo].[FK_DetalleSolicitudSalidaProducto]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleSolicitudSalidaConjunto] DROP CONSTRAINT [FK_DetalleSolicitudSalidaProducto];
-GO
-IF OBJECT_ID(N'[dbo].[FK_DetalleSolicitudSalidaSolicitudSalida]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleSolicitudSalidaConjunto] DROP CONSTRAINT [FK_DetalleSolicitudSalidaSolicitudSalida];
-GO
 IF OBJECT_ID(N'[dbo].[FK_Direccion_Cliente1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Direccion] DROP CONSTRAINT [FK_Direccion_Cliente1];
+GO
+IF OBJECT_ID(N'[dbo].[fk_Entrega_Cliente1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Entrega] DROP CONSTRAINT [fk_Entrega_Cliente1];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Factura_Cliente1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Factura] DROP CONSTRAINT [FK_Factura_Cliente1];
+GO
+IF OBJECT_ID(N'[dbo].[fk_HojaRutaDetalle_Cliente1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HojaRutaDetalle] DROP CONSTRAINT [fk_HojaRutaDetalle_Cliente1];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Pedido_Cliente1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pedido] DROP CONSTRAINT [FK_Pedido_Cliente1];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Direccion_TipoDireccion1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Direccion] DROP CONSTRAINT [FK_Direccion_TipoDireccion1];
@@ -65,47 +173,26 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_Direccion_ZonaDespacho1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Direccion] DROP CONSTRAINT [FK_Direccion_ZonaDespacho1];
 GO
-IF OBJECT_ID(N'[dbo].[fk_DisponibilidadRecurso_Calendario1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DisponibilidadRecurso] DROP CONSTRAINT [fk_DisponibilidadRecurso_Calendario1];
+IF OBJECT_ID(N'[dbo].[fk_Entrega_Direccion1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Entrega] DROP CONSTRAINT [fk_Entrega_Direccion1];
+GO
+IF OBJECT_ID(N'[dbo].[fk_Factura_Direccion1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Factura] DROP CONSTRAINT [fk_Factura_Direccion1];
+GO
+IF OBJECT_ID(N'[dbo].[fk_HojaRutaDetalle_Direccion1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HojaRutaDetalle] DROP CONSTRAINT [fk_HojaRutaDetalle_Direccion1];
+GO
+IF OBJECT_ID(N'[dbo].[fk_Pedido_Direccion1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pedido] DROP CONSTRAINT [fk_Pedido_Direccion1];
 GO
 IF OBJECT_ID(N'[dbo].[fk_DisponibilidadRecurso_Empleado1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DisponibilidadRecurso] DROP CONSTRAINT [fk_DisponibilidadRecurso_Empleado1];
 GO
-IF OBJECT_ID(N'[dbo].[fk_DisponibilidadTransporte_Calendario1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DisponibilidadTransporte] DROP CONSTRAINT [fk_DisponibilidadTransporte_Calendario1];
-GO
 IF OBJECT_ID(N'[dbo].[fk_DisponibilidadTransporte_Transporte1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DisponibilidadTransporte] DROP CONSTRAINT [fk_DisponibilidadTransporte_Transporte1];
 GO
-IF OBJECT_ID(N'[dbo].[FK_DocumentoReferenciaAlmacen]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DocumentosReferencia] DROP CONSTRAINT [FK_DocumentoReferenciaAlmacen];
-GO
-IF OBJECT_ID(N'[dbo].[FK_DocumentoReferenciaKardex]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Kardex] DROP CONSTRAINT [FK_DocumentoReferenciaKardex];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EmpleadoAlmacen_Almacen]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[EmpleadoAlmacen] DROP CONSTRAINT [FK_EmpleadoAlmacen_Almacen];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EmpleadoAlmacen_Empleado]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[EmpleadoAlmacen] DROP CONSTRAINT [FK_EmpleadoAlmacen_Empleado];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EmpleadoDetalleOrdenTrabajoRecurso]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleOrdenTrabajoPersonal] DROP CONSTRAINT [FK_EmpleadoDetalleOrdenTrabajoRecurso];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EmpleadoDocumentoReferencia]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DocumentosReferencia] DROP CONSTRAINT [FK_EmpleadoDocumentoReferencia];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EmpleadoSolicitudEntrada]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SolicitudesEntrada] DROP CONSTRAINT [FK_EmpleadoSolicitudEntrada];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EmpleadoUserProfile]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Empleados] DROP CONSTRAINT [FK_EmpleadoUserProfile];
-GO
-IF OBJECT_ID(N'[dbo].[fk_Entrega_Cliente1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Entrega] DROP CONSTRAINT [fk_Entrega_Cliente1];
-GO
-IF OBJECT_ID(N'[dbo].[fk_Entrega_Direccion1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Entrega] DROP CONSTRAINT [fk_Entrega_Direccion1];
+IF OBJECT_ID(N'[dbo].[fk_HojaRutaRecurso_Recurso1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HojaRutaRecurso] DROP CONSTRAINT [fk_HojaRutaRecurso_Recurso1];
 GO
 IF OBJECT_ID(N'[dbo].[fk_Entrega_EstadoEntrega1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Entrega] DROP CONSTRAINT [fk_Entrega_EstadoEntrega1];
@@ -122,14 +209,23 @@ GO
 IF OBJECT_ID(N'[dbo].[fk_EntregaDetalle_Producto1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[EntregaDetalle] DROP CONSTRAINT [fk_EntregaDetalle_Producto1];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Factura_Cliente1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Factura] DROP CONSTRAINT [FK_Factura_Cliente1];
+IF OBJECT_ID(N'[dbo].[fk_FacturaEntrega_EntregaDetalle1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FacturaEntrega] DROP CONSTRAINT [fk_FacturaEntrega_EntregaDetalle1];
 GO
-IF OBJECT_ID(N'[dbo].[fk_Factura_Direccion1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Factura] DROP CONSTRAINT [fk_Factura_Direccion1];
+IF OBJECT_ID(N'[dbo].[fk_PedidoEntrega_EntregaDetalle1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PedidoEntrega] DROP CONSTRAINT [fk_PedidoEntrega_EntregaDetalle1];
 GO
 IF OBJECT_ID(N'[dbo].[fk_Factura_EstadoFactura1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Factura] DROP CONSTRAINT [fk_Factura_EstadoFactura1];
+GO
+IF OBJECT_ID(N'[dbo].[fk_HojaRuta_EstadoHojaRuta1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HojaRuta] DROP CONSTRAINT [fk_HojaRuta_EstadoHojaRuta1];
+GO
+IF OBJECT_ID(N'[dbo].[fk_temHojaRutaDetalle_EstadoHojaRutaDetalle1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HojaRutaDetalle] DROP CONSTRAINT [fk_temHojaRutaDetalle_EstadoHojaRutaDetalle1];
+GO
+IF OBJECT_ID(N'[dbo].[fk_Pedido_EstadoPedido1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pedido] DROP CONSTRAINT [fk_Pedido_EstadoPedido1];
 GO
 IF OBJECT_ID(N'[dbo].[fk_FacturaDetalle_Factura1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[FacturaDetalle] DROP CONSTRAINT [fk_FacturaDetalle_Factura1];
@@ -137,26 +233,8 @@ GO
 IF OBJECT_ID(N'[dbo].[fk_FacturaDetalle_Producto1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[FacturaDetalle] DROP CONSTRAINT [fk_FacturaDetalle_Producto1];
 GO
-IF OBJECT_ID(N'[dbo].[fk_FacturaEntrega_EntregaDetalle1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[FacturaEntrega] DROP CONSTRAINT [fk_FacturaEntrega_EntregaDetalle1];
-GO
 IF OBJECT_ID(N'[dbo].[fk_FacturaEntrega_FacturaDetalle1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[FacturaEntrega] DROP CONSTRAINT [fk_FacturaEntrega_FacturaDetalle1];
-GO
-IF OBJECT_ID(N'[dbo].[FK_GuiaEntrada_inherits_DocumentoReferencia]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DocumentosReferencia_GuiaEntrada] DROP CONSTRAINT [FK_GuiaEntrada_inherits_DocumentoReferencia];
-GO
-IF OBJECT_ID(N'[dbo].[FK_GuiaEntradaSolicitudEntrada]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DocumentosReferencia_GuiaEntrada] DROP CONSTRAINT [FK_GuiaEntradaSolicitudEntrada];
-GO
-IF OBJECT_ID(N'[dbo].[FK_GuiaSalida_inherits_DocumentoReferencia]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DocumentosReferencia_GuiaSalida] DROP CONSTRAINT [FK_GuiaSalida_inherits_DocumentoReferencia];
-GO
-IF OBJECT_ID(N'[dbo].[FK_GuiaSalidaSolicitudSalida]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DocumentosReferencia_GuiaSalida] DROP CONSTRAINT [FK_GuiaSalidaSolicitudSalida];
-GO
-IF OBJECT_ID(N'[dbo].[fk_HojaRuta_EstadoHojaRuta1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HojaRuta] DROP CONSTRAINT [fk_HojaRuta_EstadoHojaRuta1];
 GO
 IF OBJECT_ID(N'[dbo].[fk_HojaRuta_Transporte1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HojaRuta] DROP CONSTRAINT [fk_HojaRuta_Transporte1];
@@ -164,59 +242,14 @@ GO
 IF OBJECT_ID(N'[dbo].[fk_HojaRuta_ZonaDespacho1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HojaRuta] DROP CONSTRAINT [fk_HojaRuta_ZonaDespacho1];
 GO
-IF OBJECT_ID(N'[dbo].[fk_HojaRutaDetalle_Cliente1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HojaRutaDetalle] DROP CONSTRAINT [fk_HojaRutaDetalle_Cliente1];
-GO
-IF OBJECT_ID(N'[dbo].[fk_HojaRutaDetalle_Direccion1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HojaRutaDetalle] DROP CONSTRAINT [fk_HojaRutaDetalle_Direccion1];
-GO
 IF OBJECT_ID(N'[dbo].[fk_HojaRutaDetalle_HojaRuta1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HojaRutaDetalle] DROP CONSTRAINT [fk_HojaRutaDetalle_HojaRuta1];
-GO
-IF OBJECT_ID(N'[dbo].[fk_HojaRutaRecurso_Calendario1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HojaRutaRecurso] DROP CONSTRAINT [fk_HojaRutaRecurso_Calendario1];
 GO
 IF OBJECT_ID(N'[dbo].[fk_HojaRutaRecurso_HojaRuta1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HojaRutaRecurso] DROP CONSTRAINT [fk_HojaRutaRecurso_HojaRuta1];
 GO
-IF OBJECT_ID(N'[dbo].[fk_HojaRutaRecurso_Recurso1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HojaRutaRecurso] DROP CONSTRAINT [fk_HojaRutaRecurso_Recurso1];
-GO
-IF OBJECT_ID(N'[dbo].[FK_InsumoDetalleOrdenTrabajoInsumo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleOrdenTrabajoInsumo] DROP CONSTRAINT [FK_InsumoDetalleOrdenTrabajoInsumo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_InsumoDetalleParteProduccionInsumo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleParteProduccionInsumo] DROP CONSTRAINT [FK_InsumoDetalleParteProduccionInsumo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_InsumoDetalleSolicitudInsumo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleSolicitudInsumo] DROP CONSTRAINT [FK_InsumoDetalleSolicitudInsumo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_LoteTipoLote]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Lotes] DROP CONSTRAINT [FK_LoteTipoLote];
-GO
-IF OBJECT_ID(N'[dbo].[FK_OrdenTrabajoDetalleOrdenTrabajoInsumo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleOrdenTrabajoInsumo] DROP CONSTRAINT [FK_OrdenTrabajoDetalleOrdenTrabajoInsumo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_OrdenTrabajoDetalleOrdenTrabajoRecurso]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleOrdenTrabajoPersonal] DROP CONSTRAINT [FK_OrdenTrabajoDetalleOrdenTrabajoRecurso];
-GO
-IF OBJECT_ID(N'[dbo].[FK_OrdenTrabajoParteProduccion]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ParteProduccion] DROP CONSTRAINT [FK_OrdenTrabajoParteProduccion];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ParteProduccionDetalleParteProduccionBateria]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleParteProduccionBateria] DROP CONSTRAINT [FK_ParteProduccionDetalleParteProduccionBateria];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ParteProduccionDetalleParteProduccionInsumo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleParteProduccionInsumo] DROP CONSTRAINT [FK_ParteProduccionDetalleParteProduccionInsumo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Pedido_Cliente1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Pedido] DROP CONSTRAINT [FK_Pedido_Cliente1];
-GO
-IF OBJECT_ID(N'[dbo].[fk_Pedido_Direccion1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Pedido] DROP CONSTRAINT [fk_Pedido_Direccion1];
-GO
-IF OBJECT_ID(N'[dbo].[fk_Pedido_EstadoPedido1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Pedido] DROP CONSTRAINT [fk_Pedido_EstadoPedido1];
+IF OBJECT_ID(N'[dbo].[fk_Transporte_Marca1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Transporte] DROP CONSTRAINT [fk_Transporte_Marca1];
 GO
 IF OBJECT_ID(N'[dbo].[fk_Pedido_tipoPedido1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Pedido] DROP CONSTRAINT [fk_Pedido_tipoPedido1];
@@ -227,64 +260,121 @@ GO
 IF OBJECT_ID(N'[dbo].[fk_PedidoDetalle_Producto1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PedidoDetalle] DROP CONSTRAINT [fk_PedidoDetalle_Producto1];
 GO
-IF OBJECT_ID(N'[dbo].[fk_PedidoEntrega_EntregaDetalle1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[PedidoEntrega] DROP CONSTRAINT [fk_PedidoEntrega_EntregaDetalle1];
-GO
 IF OBJECT_ID(N'[dbo].[fk_PedidoEntrega_PedidoDetalle1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PedidoEntrega] DROP CONSTRAINT [fk_PedidoEntrega_PedidoDetalle1];
-GO
-IF OBJECT_ID(N'[dbo].[fk_ProductoBackOrder_Backorder1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ProductoBackOrder] DROP CONSTRAINT [fk_ProductoBackOrder_Backorder1];
 GO
 IF OBJECT_ID(N'[dbo].[fk_ProductoBackOrder_Producto1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProductoBackOrder] DROP CONSTRAINT [fk_ProductoBackOrder_Producto1];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ProductoKardex]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Kardex] DROP CONSTRAINT [FK_ProductoKardex];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ProductoSolicitudEntradaProducto]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleSolicitudEntrada] DROP CONSTRAINT [FK_ProductoSolicitudEntradaProducto];
-GO
-IF OBJECT_ID(N'[dbo].[FK_SolicitudEntradaSolicitudEntradaProducto]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleSolicitudEntrada] DROP CONSTRAINT [FK_SolicitudEntradaSolicitudEntradaProducto];
-GO
-IF OBJECT_ID(N'[dbo].[FK_SolicitudInsumoDetalleSolicitudInsumo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleSolicitudInsumo] DROP CONSTRAINT [FK_SolicitudInsumoDetalleSolicitudInsumo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_SolicitudInsumoOrdenTrabajo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SolicitudInsumo] DROP CONSTRAINT [FK_SolicitudInsumoOrdenTrabajo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_SolicitudSalidaEmpleado]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SolicitudSalidaConjunto] DROP CONSTRAINT [FK_SolicitudSalidaEmpleado];
-GO
-IF OBJECT_ID(N'[dbo].[fk_temHojaRutaDetalle_EstadoHojaRutaDetalle1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[HojaRutaDetalle] DROP CONSTRAINT [fk_temHojaRutaDetalle_EstadoHojaRutaDetalle1];
-GO
-IF OBJECT_ID(N'[dbo].[fk_Transporte_Marca1]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Transporte] DROP CONSTRAINT [fk_Transporte_Marca1];
-GO
 IF OBJECT_ID(N'[dbo].[fk_Transporte_TipoTransporte1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Transporte] DROP CONSTRAINT [fk_Transporte_TipoTransporte1];
 GO
-IF OBJECT_ID(N'[dbo].[FK_webpages_UsersInRoles_UserProfile]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[webpages_UsersInRoles] DROP CONSTRAINT [FK_webpages_UsersInRoles_UserProfile];
+IF OBJECT_ID(N'[dbo].[FK_GuiaEntrada_inherits_DocumentoReferencia]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DocumentosReferencia_GuiaEntrada] DROP CONSTRAINT [FK_GuiaEntrada_inherits_DocumentoReferencia];
 GO
-IF OBJECT_ID(N'[dbo].[FK_webpages_UsersInRoles_webpages_Roles]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[webpages_UsersInRoles] DROP CONSTRAINT [FK_webpages_UsersInRoles_webpages_Roles];
+IF OBJECT_ID(N'[dbo].[FK_GuiaSalida_inherits_DocumentoReferencia]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DocumentosReferencia_GuiaSalida] DROP CONSTRAINT [FK_GuiaSalida_inherits_DocumentoReferencia];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[DocumentosReferencia]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DocumentosReferencia];
+GO
 IF OBJECT_ID(N'[dbo].[Almacenes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Almacenes];
 GO
+IF OBJECT_ID(N'[dbo].[UserProfile]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserProfile];
+GO
+IF OBJECT_ID(N'[dbo].[webpages_Membership]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[webpages_Membership];
+GO
+IF OBJECT_ID(N'[dbo].[webpages_OAuthMembership]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[webpages_OAuthMembership];
+GO
+IF OBJECT_ID(N'[dbo].[webpages_Roles]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[webpages_Roles];
+GO
+IF OBJECT_ID(N'[dbo].[Empleados]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Empleados];
+GO
+IF OBJECT_ID(N'[dbo].[Productos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Productos];
+GO
+IF OBJECT_ID(N'[dbo].[SolicitudesEntrada]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SolicitudesEntrada];
+GO
+IF OBJECT_ID(N'[dbo].[DetalleSolicitudEntrada]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetalleSolicitudEntrada];
+GO
+IF OBJECT_ID(N'[dbo].[Kardex]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Kardex];
+GO
+IF OBJECT_ID(N'[dbo].[LoteSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[LoteSet];
+GO
+IF OBJECT_ID(N'[dbo].[TipoLoteSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TipoLoteSet];
+GO
+IF OBJECT_ID(N'[dbo].[SolicitudSalidaConjunto]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SolicitudSalidaConjunto];
+GO
+IF OBJECT_ID(N'[dbo].[DetalleSolicitudSalidaConjunto]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetalleSolicitudSalidaConjunto];
+GO
+IF OBJECT_ID(N'[dbo].[DetalleGuiaSalidaConjunto]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetalleGuiaSalidaConjunto];
+GO
+IF OBJECT_ID(N'[dbo].[SolicitudInsumoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SolicitudInsumoSet];
+GO
+IF OBJECT_ID(N'[dbo].[DetalleSolicitudInsumoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetalleSolicitudInsumoSet];
+GO
+IF OBJECT_ID(N'[dbo].[DetalleParteProduccionBateriaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetalleParteProduccionBateriaSet];
+GO
+IF OBJECT_ID(N'[dbo].[BateriaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[BateriaSet];
+GO
+IF OBJECT_ID(N'[dbo].[DetalleOrdenTrabajoInsumoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetalleOrdenTrabajoInsumoSet];
+GO
+IF OBJECT_ID(N'[dbo].[ParteProduccionSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ParteProduccionSet];
+GO
+IF OBJECT_ID(N'[dbo].[DetalleParteProduccionInsumoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetalleParteProduccionInsumoSet];
+GO
+IF OBJECT_ID(N'[dbo].[OrdenTrabajoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[OrdenTrabajoSet];
+GO
+IF OBJECT_ID(N'[dbo].[DetalleOrdenTrabajoPersonalSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetalleOrdenTrabajoPersonalSet];
+GO
+IF OBJECT_ID(N'[dbo].[SolicitudProduccionSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SolicitudProduccionSet];
+GO
+IF OBJECT_ID(N'[dbo].[PlanProduccionSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PlanProduccionSet];
+GO
+IF OBJECT_ID(N'[dbo].[ProgramacionProduccionSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ProgramacionProduccionSet];
+GO
+IF OBJECT_ID(N'[dbo].[DetalleSolicitudProduccionSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetalleSolicitudProduccionSet];
+GO
+IF OBJECT_ID(N'[dbo].[DetalleOrdenTrabajoMaquinariaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetalleOrdenTrabajoMaquinariaSet];
+GO
+IF OBJECT_ID(N'[dbo].[MaquinariaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MaquinariaSet];
+GO
 IF OBJECT_ID(N'[dbo].[Backorder]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Backorder];
-GO
-IF OBJECT_ID(N'[dbo].[Bateria]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Bateria];
 GO
 IF OBJECT_ID(N'[dbo].[Calendario]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Calendario];
@@ -295,30 +385,6 @@ GO
 IF OBJECT_ID(N'[dbo].[Cliente]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Cliente];
 GO
-IF OBJECT_ID(N'[dbo].[DetalleGuiaSalidaConjunto]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DetalleGuiaSalidaConjunto];
-GO
-IF OBJECT_ID(N'[dbo].[DetalleOrdenTrabajoInsumo]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DetalleOrdenTrabajoInsumo];
-GO
-IF OBJECT_ID(N'[dbo].[DetalleOrdenTrabajoPersonal]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DetalleOrdenTrabajoPersonal];
-GO
-IF OBJECT_ID(N'[dbo].[DetalleParteProduccionBateria]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DetalleParteProduccionBateria];
-GO
-IF OBJECT_ID(N'[dbo].[DetalleParteProduccionInsumo]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DetalleParteProduccionInsumo];
-GO
-IF OBJECT_ID(N'[dbo].[DetalleSolicitudEntrada]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DetalleSolicitudEntrada];
-GO
-IF OBJECT_ID(N'[dbo].[DetalleSolicitudInsumo]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DetalleSolicitudInsumo];
-GO
-IF OBJECT_ID(N'[dbo].[DetalleSolicitudSalidaConjunto]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DetalleSolicitudSalidaConjunto];
-GO
 IF OBJECT_ID(N'[dbo].[Direccion]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Direccion];
 GO
@@ -327,24 +393,6 @@ IF OBJECT_ID(N'[dbo].[DisponibilidadRecurso]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[DisponibilidadTransporte]', 'U') IS NOT NULL
     DROP TABLE [dbo].[DisponibilidadTransporte];
-GO
-IF OBJECT_ID(N'[dbo].[DocumentosReferencia]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DocumentosReferencia];
-GO
-IF OBJECT_ID(N'[dbo].[DocumentosReferencia_AjusteInventario]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DocumentosReferencia_AjusteInventario];
-GO
-IF OBJECT_ID(N'[dbo].[DocumentosReferencia_GuiaEntrada]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DocumentosReferencia_GuiaEntrada];
-GO
-IF OBJECT_ID(N'[dbo].[DocumentosReferencia_GuiaSalida]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DocumentosReferencia_GuiaSalida];
-GO
-IF OBJECT_ID(N'[dbo].[EmpleadoAlmacen]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[EmpleadoAlmacen];
-GO
-IF OBJECT_ID(N'[dbo].[Empleados]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Empleados];
 GO
 IF OBJECT_ID(N'[dbo].[Entrega]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Entrega];
@@ -388,29 +436,14 @@ GO
 IF OBJECT_ID(N'[dbo].[HojaRutaRecurso]', 'U') IS NOT NULL
     DROP TABLE [dbo].[HojaRutaRecurso];
 GO
-IF OBJECT_ID(N'[dbo].[Insumo]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Insumo];
-GO
-IF OBJECT_ID(N'[dbo].[Kardex]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Kardex];
-GO
-IF OBJECT_ID(N'[dbo].[Lotes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Lotes];
-GO
 IF OBJECT_ID(N'[dbo].[Marca]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Marca];
 GO
 IF OBJECT_ID(N'[dbo].[MotivoTraslado]', 'U') IS NOT NULL
     DROP TABLE [dbo].[MotivoTraslado];
 GO
-IF OBJECT_ID(N'[dbo].[OrdenTrabajo]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[OrdenTrabajo];
-GO
 IF OBJECT_ID(N'[dbo].[Parametro]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Parametro];
-GO
-IF OBJECT_ID(N'[dbo].[ParteProduccion]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ParteProduccion];
 GO
 IF OBJECT_ID(N'[dbo].[Pedido]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Pedido];
@@ -424,18 +457,6 @@ GO
 IF OBJECT_ID(N'[dbo].[ProductoBackOrder]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ProductoBackOrder];
 GO
-IF OBJECT_ID(N'[dbo].[Productos]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Productos];
-GO
-IF OBJECT_ID(N'[dbo].[SolicitudesEntrada]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SolicitudesEntrada];
-GO
-IF OBJECT_ID(N'[dbo].[SolicitudInsumo]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SolicitudInsumo];
-GO
-IF OBJECT_ID(N'[dbo].[SolicitudSalidaConjunto]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SolicitudSalidaConjunto];
-GO
 IF OBJECT_ID(N'[dbo].[TipoCliente]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TipoCliente];
 GO
@@ -444,9 +465,6 @@ IF OBJECT_ID(N'[dbo].[TipoDireccion]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[TipoDocumento]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TipoDocumento];
-GO
-IF OBJECT_ID(N'[dbo].[TipoLotes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[TipoLotes];
 GO
 IF OBJECT_ID(N'[dbo].[TipoPedido]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TipoPedido];
@@ -460,23 +478,20 @@ GO
 IF OBJECT_ID(N'[dbo].[Ubigeo]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Ubigeo];
 GO
-IF OBJECT_ID(N'[dbo].[UserProfile]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[UserProfile];
+IF OBJECT_ID(N'[dbo].[ZonaDespacho]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ZonaDespacho];
 GO
-IF OBJECT_ID(N'[dbo].[webpages_Membership]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[webpages_Membership];
+IF OBJECT_ID(N'[dbo].[DocumentosReferencia_GuiaEntrada]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DocumentosReferencia_GuiaEntrada];
 GO
-IF OBJECT_ID(N'[dbo].[webpages_OAuthMembership]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[webpages_OAuthMembership];
-GO
-IF OBJECT_ID(N'[dbo].[webpages_Roles]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[webpages_Roles];
+IF OBJECT_ID(N'[dbo].[DocumentosReferencia_GuiaSalida]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DocumentosReferencia_GuiaSalida];
 GO
 IF OBJECT_ID(N'[dbo].[webpages_UsersInRoles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[webpages_UsersInRoles];
 GO
-IF OBJECT_ID(N'[dbo].[ZonaDespacho]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ZonaDespacho];
+IF OBJECT_ID(N'[dbo].[EmpleadoAlmacen]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[EmpleadoAlmacen];
 GO
 
 -- --------------------------------------------------
@@ -655,14 +670,6 @@ CREATE TABLE [dbo].[DetalleGuiaSalidaConjunto] (
 );
 GO
 
--- Creating table 'Vehiculos'
-CREATE TABLE [dbo].[Vehiculos] (
-    [id] int IDENTITY(1,1) NOT NULL,
-    [marca] varchar(50)  NULL,
-    [placa] nvarchar(max)  NOT NULL
-);
-GO
-
 -- Creating table 'SolicitudInsumoSet'
 CREATE TABLE [dbo].[SolicitudInsumoSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
@@ -775,14 +782,6 @@ CREATE TABLE [dbo].[Backorder] (
 );
 GO
 
--- Creating table 'Bateria1Set'
-CREATE TABLE [dbo].[Bateria1Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [numeroSerie] nvarchar(max)  NOT NULL,
-    [tipo] nvarchar(max)  NOT NULL
-);
-GO
-
 -- Creating table 'Calendario'
 CREATE TABLE [dbo].[Calendario] (
     [Codigo] int IDENTITY(1,1) NOT NULL,
@@ -813,53 +812,6 @@ CREATE TABLE [dbo].[Cliente] (
     [IdTipoCliente] int  NOT NULL,
     [idEstadoCliente] int  NOT NULL,
     [idTipoDocumento] int  NOT NULL
-);
-GO
-
--- Creating table 'DetalleOrdenTrabajoInsumo1Set'
-CREATE TABLE [dbo].[DetalleOrdenTrabajoInsumo1Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Cantidad] int  NOT NULL,
-    [OrdenTrabajo_Id] int  NOT NULL,
-    [Insumo_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'DetalleOrdenTrabajoPersonal1Set'
-CREATE TABLE [dbo].[DetalleOrdenTrabajoPersonal1Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Cantidad] int  NOT NULL,
-    [OrdenTrabajo_Id] int  NOT NULL,
-    [Empleado_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'DetalleParteProduccionBateria1Set'
-CREATE TABLE [dbo].[DetalleParteProduccionBateria1Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [cantidadPropuesta] int  NOT NULL,
-    [cantidadReal] int  NOT NULL,
-    [ParteProduccion_Id] int  NOT NULL,
-    [Bateria_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'DetalleParteProduccionInsumo1Set'
-CREATE TABLE [dbo].[DetalleParteProduccionInsumo1Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [CantidadPropuesta] int  NOT NULL,
-    [CantidadReal] int  NOT NULL,
-    [Insumo_Id] int  NOT NULL,
-    [ParteProduccion_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'DetalleSolicitudInsumo1Set'
-CREATE TABLE [dbo].[DetalleSolicitudInsumo1Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Cantidad] int  NOT NULL,
-    [InsumoId] int  NOT NULL,
-    [SolicitudInsumo_Id] int  NOT NULL
 );
 GO
 
@@ -1043,29 +995,6 @@ CREATE TABLE [dbo].[HojaRutaRecurso] (
 );
 GO
 
--- Creating table 'Insumo'
-CREATE TABLE [dbo].[Insumo] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Descripcion] nvarchar(max)  NOT NULL,
-    [StockDisponible] int  NOT NULL,
-    [StockReservado] int  NOT NULL,
-    [Comentario] nvarchar(max)  NOT NULL
-);
-GO
-
--- Creating table 'Lotes'
-CREATE TABLE [dbo].[Lotes] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [NroLote] nvarchar(max)  NOT NULL,
-    [FechaCreacion] datetime  NOT NULL,
-    [TipoLote_Id] int  NOT NULL,
-    [CantidadFabricada] int  NULL,
-    [FechaIngreso] datetime  NULL,
-    [Observacion] nvarchar(max)  NULL,
-    [FechaVencimiento] datetime  NULL
-);
-GO
-
 -- Creating table 'Marca'
 CREATE TABLE [dbo].[Marca] (
     [Codigo] int IDENTITY(1,1) NOT NULL,
@@ -1081,20 +1010,6 @@ CREATE TABLE [dbo].[MotivoTraslado] (
 );
 GO
 
--- Creating table 'OrdenTrabajo1Set'
-CREATE TABLE [dbo].[OrdenTrabajo1Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Glosa] nvarchar(max)  NOT NULL,
-    [FechaExpedicion] datetime  NULL,
-    [FechaInicio] datetime  NULL,
-    [FechaTermino] datetime  NULL,
-    [CantidadSolicitada] int  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
-    [Empleado_Id] int  NOT NULL,
-    [Lote_Id] int  NOT NULL
-);
-GO
-
 -- Creating table 'Parametro'
 CREATE TABLE [dbo].[Parametro] (
     [idParametro] int  NOT NULL,
@@ -1102,18 +1017,6 @@ CREATE TABLE [dbo].[Parametro] (
     [PlazoMaxDespacho] int  NULL,
     [TipoDistribucionStock] varchar(45)  NULL,
     [RedondeoCubicaje] int  NULL
-);
-GO
-
--- Creating table 'ParteProduccion1Set'
-CREATE TABLE [dbo].[ParteProduccion1Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Glosa] nvarchar(max)  NOT NULL,
-    [FechaFabricacion] datetime  NULL,
-    [CantidadProducida] int  NOT NULL,
-    [Comentario] nvarchar(max)  NOT NULL,
-    [Empleado_Id] int  NOT NULL,
-    [OrdenTrabajo_Id] int  NOT NULL
 );
 GO
 
@@ -1163,19 +1066,6 @@ CREATE TABLE [dbo].[ProductoBackOrder] (
 );
 GO
 
--- Creating table 'SolicitudInsumo1Set'
-CREATE TABLE [dbo].[SolicitudInsumo1Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Glosa] nvarchar(max)  NOT NULL,
-    [FechaSolicitud] datetime  NULL,
-    [FechaEntrega] datetime  NULL,
-    [Comentario] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
-    [Empleado_Id] int  NOT NULL,
-    [OrdenTrabajo_Id] int  NOT NULL
-);
-GO
-
 -- Creating table 'TipoCliente'
 CREATE TABLE [dbo].[TipoCliente] (
     [Codigo] int IDENTITY(1,1) NOT NULL,
@@ -1197,13 +1087,6 @@ CREATE TABLE [dbo].[TipoDocumento] (
     [Codigo] int IDENTITY(1,1) NOT NULL,
     [Descripcion] varchar(45)  NULL,
     [Abreviatura] varchar(10)  NULL
-);
-GO
-
--- Creating table 'TipoLotes'
-CREATE TABLE [dbo].[TipoLotes] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Descripcion] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -1254,100 +1137,6 @@ CREATE TABLE [dbo].[ZonaDespacho] (
 );
 GO
 
--- Creating table 'Bateria2Set'
-CREATE TABLE [dbo].[Bateria2Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [numeroSerie] nvarchar(max)  NOT NULL,
-    [tipo] nvarchar(max)  NOT NULL
-);
-GO
-
--- Creating table 'DetalleOrdenTrabajoInsumo2Set'
-CREATE TABLE [dbo].[DetalleOrdenTrabajoInsumo2Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Cantidad] int  NOT NULL,
-    [OrdenTrabajo_Id] int  NOT NULL,
-    [Insumo_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'DetalleOrdenTrabajoPersonal2Set'
-CREATE TABLE [dbo].[DetalleOrdenTrabajoPersonal2Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Cantidad] int  NOT NULL,
-    [OrdenTrabajo_Id] int  NOT NULL,
-    [Empleado_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'DetalleParteProduccionBateria2Set'
-CREATE TABLE [dbo].[DetalleParteProduccionBateria2Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [cantidadPropuesta] int  NOT NULL,
-    [cantidadReal] int  NOT NULL,
-    [ParteProduccion_Id] int  NOT NULL,
-    [Bateria_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'DetalleParteProduccionInsumo2Set'
-CREATE TABLE [dbo].[DetalleParteProduccionInsumo2Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [CantidadPropuesta] int  NOT NULL,
-    [CantidadReal] int  NOT NULL,
-    [Insumo_Id] int  NOT NULL,
-    [ParteProduccion_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'DetalleSolicitudInsumo2Set'
-CREATE TABLE [dbo].[DetalleSolicitudInsumo2Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Cantidad] int  NOT NULL,
-    [InsumoId] int  NOT NULL,
-    [SolicitudInsumo_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'OrdenTrabajo2Set'
-CREATE TABLE [dbo].[OrdenTrabajo2Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Glosa] nvarchar(max)  NOT NULL,
-    [FechaExpedicion] datetime  NULL,
-    [FechaInicio] datetime  NULL,
-    [FechaTermino] datetime  NULL,
-    [CantidadSolicitada] int  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
-    [Empleado_Id] int  NOT NULL,
-    [Lote_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'ParteProduccion2Set'
-CREATE TABLE [dbo].[ParteProduccion2Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Glosa] nvarchar(max)  NOT NULL,
-    [FechaFabricacion] datetime  NULL,
-    [CantidadProducida] int  NOT NULL,
-    [Comentario] nvarchar(max)  NOT NULL,
-    [Empleado_Id] int  NOT NULL,
-    [OrdenTrabajo_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'SolicitudInsumo2Set'
-CREATE TABLE [dbo].[SolicitudInsumo2Set] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Glosa] nvarchar(max)  NOT NULL,
-    [FechaSolicitud] datetime  NULL,
-    [FechaEntrega] datetime  NULL,
-    [Comentario] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
-    [Empleado_Id] int  NOT NULL,
-    [OrdenTrabajo_Id] int  NOT NULL
-);
-GO
-
 -- Creating table 'DocumentosReferencia_GuiaEntrada'
 CREATE TABLE [dbo].[DocumentosReferencia_GuiaEntrada] (
     [Id] int  NOT NULL,
@@ -1359,13 +1148,6 @@ GO
 CREATE TABLE [dbo].[DocumentosReferencia_GuiaSalida] (
     [Id] int  NOT NULL,
     [SolicitudSalida_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'DocumentosReferencia_AjusteInventario'
-CREATE TABLE [dbo].[DocumentosReferencia_AjusteInventario] (
-    [Estado] int  NOT NULL,
-    [Id] int  NOT NULL
 );
 GO
 
@@ -1483,12 +1265,6 @@ ADD CONSTRAINT [PK_DetalleGuiaSalidaConjunto]
     PRIMARY KEY CLUSTERED ([IdGuiaSalida], [IdProducto] ASC);
 GO
 
--- Creating primary key on [id] in table 'Vehiculos'
-ALTER TABLE [dbo].[Vehiculos]
-ADD CONSTRAINT [PK_Vehiculos]
-    PRIMARY KEY CLUSTERED ([id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'SolicitudInsumoSet'
 ALTER TABLE [dbo].[SolicitudInsumoSet]
 ADD CONSTRAINT [PK_SolicitudInsumoSet]
@@ -1585,12 +1361,6 @@ ADD CONSTRAINT [PK_Backorder]
     PRIMARY KEY CLUSTERED ([Codigo] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Bateria1Set'
-ALTER TABLE [dbo].[Bateria1Set]
-ADD CONSTRAINT [PK_Bateria1Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Codigo] in table 'Calendario'
 ALTER TABLE [dbo].[Calendario]
 ADD CONSTRAINT [PK_Calendario]
@@ -1607,36 +1377,6 @@ GO
 ALTER TABLE [dbo].[Cliente]
 ADD CONSTRAINT [PK_Cliente]
     PRIMARY KEY CLUSTERED ([Codigo] ASC);
-GO
-
--- Creating primary key on [Id] in table 'DetalleOrdenTrabajoInsumo1Set'
-ALTER TABLE [dbo].[DetalleOrdenTrabajoInsumo1Set]
-ADD CONSTRAINT [PK_DetalleOrdenTrabajoInsumo1Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'DetalleOrdenTrabajoPersonal1Set'
-ALTER TABLE [dbo].[DetalleOrdenTrabajoPersonal1Set]
-ADD CONSTRAINT [PK_DetalleOrdenTrabajoPersonal1Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'DetalleParteProduccionBateria1Set'
-ALTER TABLE [dbo].[DetalleParteProduccionBateria1Set]
-ADD CONSTRAINT [PK_DetalleParteProduccionBateria1Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'DetalleParteProduccionInsumo1Set'
-ALTER TABLE [dbo].[DetalleParteProduccionInsumo1Set]
-ADD CONSTRAINT [PK_DetalleParteProduccionInsumo1Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'DetalleSolicitudInsumo1Set'
-ALTER TABLE [dbo].[DetalleSolicitudInsumo1Set]
-ADD CONSTRAINT [PK_DetalleSolicitudInsumo1Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Codigo] in table 'Direccion'
@@ -1741,18 +1481,6 @@ ADD CONSTRAINT [PK_HojaRutaRecurso]
     PRIMARY KEY CLUSTERED ([idRecurso], [idHojaRuta], [idCalendario] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Insumo'
-ALTER TABLE [dbo].[Insumo]
-ADD CONSTRAINT [PK_Insumo]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'Lotes'
-ALTER TABLE [dbo].[Lotes]
-ADD CONSTRAINT [PK_Lotes]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Codigo] in table 'Marca'
 ALTER TABLE [dbo].[Marca]
 ADD CONSTRAINT [PK_Marca]
@@ -1765,22 +1493,10 @@ ADD CONSTRAINT [PK_MotivoTraslado]
     PRIMARY KEY CLUSTERED ([Codigo] ASC);
 GO
 
--- Creating primary key on [Id] in table 'OrdenTrabajo1Set'
-ALTER TABLE [dbo].[OrdenTrabajo1Set]
-ADD CONSTRAINT [PK_OrdenTrabajo1Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [idParametro] in table 'Parametro'
 ALTER TABLE [dbo].[Parametro]
 ADD CONSTRAINT [PK_Parametro]
     PRIMARY KEY CLUSTERED ([idParametro] ASC);
-GO
-
--- Creating primary key on [Id] in table 'ParteProduccion1Set'
-ALTER TABLE [dbo].[ParteProduccion1Set]
-ADD CONSTRAINT [PK_ParteProduccion1Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Codigo] in table 'Pedido'
@@ -1807,12 +1523,6 @@ ADD CONSTRAINT [PK_ProductoBackOrder]
     PRIMARY KEY CLUSTERED ([idProducto], [idBackorder] ASC);
 GO
 
--- Creating primary key on [Id] in table 'SolicitudInsumo1Set'
-ALTER TABLE [dbo].[SolicitudInsumo1Set]
-ADD CONSTRAINT [PK_SolicitudInsumo1Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Codigo] in table 'TipoCliente'
 ALTER TABLE [dbo].[TipoCliente]
 ADD CONSTRAINT [PK_TipoCliente]
@@ -1829,12 +1539,6 @@ GO
 ALTER TABLE [dbo].[TipoDocumento]
 ADD CONSTRAINT [PK_TipoDocumento]
     PRIMARY KEY CLUSTERED ([Codigo] ASC);
-GO
-
--- Creating primary key on [Id] in table 'TipoLotes'
-ALTER TABLE [dbo].[TipoLotes]
-ADD CONSTRAINT [PK_TipoLotes]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Codigo] in table 'TipoPedido'
@@ -1867,60 +1571,6 @@ ADD CONSTRAINT [PK_ZonaDespacho]
     PRIMARY KEY CLUSTERED ([Codigo] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Bateria2Set'
-ALTER TABLE [dbo].[Bateria2Set]
-ADD CONSTRAINT [PK_Bateria2Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'DetalleOrdenTrabajoInsumo2Set'
-ALTER TABLE [dbo].[DetalleOrdenTrabajoInsumo2Set]
-ADD CONSTRAINT [PK_DetalleOrdenTrabajoInsumo2Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'DetalleOrdenTrabajoPersonal2Set'
-ALTER TABLE [dbo].[DetalleOrdenTrabajoPersonal2Set]
-ADD CONSTRAINT [PK_DetalleOrdenTrabajoPersonal2Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'DetalleParteProduccionBateria2Set'
-ALTER TABLE [dbo].[DetalleParteProduccionBateria2Set]
-ADD CONSTRAINT [PK_DetalleParteProduccionBateria2Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'DetalleParteProduccionInsumo2Set'
-ALTER TABLE [dbo].[DetalleParteProduccionInsumo2Set]
-ADD CONSTRAINT [PK_DetalleParteProduccionInsumo2Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'DetalleSolicitudInsumo2Set'
-ALTER TABLE [dbo].[DetalleSolicitudInsumo2Set]
-ADD CONSTRAINT [PK_DetalleSolicitudInsumo2Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'OrdenTrabajo2Set'
-ALTER TABLE [dbo].[OrdenTrabajo2Set]
-ADD CONSTRAINT [PK_OrdenTrabajo2Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'ParteProduccion2Set'
-ALTER TABLE [dbo].[ParteProduccion2Set]
-ADD CONSTRAINT [PK_ParteProduccion2Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'SolicitudInsumo2Set'
-ALTER TABLE [dbo].[SolicitudInsumo2Set]
-ADD CONSTRAINT [PK_SolicitudInsumo2Set]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'DocumentosReferencia_GuiaEntrada'
 ALTER TABLE [dbo].[DocumentosReferencia_GuiaEntrada]
 ADD CONSTRAINT [PK_DocumentosReferencia_GuiaEntrada]
@@ -1930,12 +1580,6 @@ GO
 -- Creating primary key on [Id] in table 'DocumentosReferencia_GuiaSalida'
 ALTER TABLE [dbo].[DocumentosReferencia_GuiaSalida]
 ADD CONSTRAINT [PK_DocumentosReferencia_GuiaSalida]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'DocumentosReferencia_AjusteInventario'
-ALTER TABLE [dbo].[DocumentosReferencia_AjusteInventario]
-ADD CONSTRAINT [PK_DocumentosReferencia_AjusteInventario]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -2448,20 +2092,6 @@ ON [dbo].[ProductoBackOrder]
     ([idBackorder]);
 GO
 
--- Creating foreign key on [Bateria_Id] in table 'DetalleParteProduccionBateria1Set'
-ALTER TABLE [dbo].[DetalleParteProduccionBateria1Set]
-ADD CONSTRAINT [FK_DetalleParteProduccionBateriaBateria]
-    FOREIGN KEY ([Bateria_Id])
-    REFERENCES [dbo].[Bateria1Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_DetalleParteProduccionBateriaBateria'
-CREATE INDEX [IX_FK_DetalleParteProduccionBateriaBateria]
-ON [dbo].[DetalleParteProduccionBateria1Set]
-    ([Bateria_Id]);
-GO
-
 -- Creating foreign key on [idCalendario] in table 'DisponibilidadRecurso'
 ALTER TABLE [dbo].[DisponibilidadRecurso]
 ADD CONSTRAINT [fk_DisponibilidadRecurso_Calendario1]
@@ -2618,132 +2248,6 @@ ADD CONSTRAINT [FK_Pedido_Cliente1]
 CREATE INDEX [IX_FK_Pedido_Cliente1]
 ON [dbo].[Pedido]
     ([idCliente]);
-GO
-
--- Creating foreign key on [Insumo_Id] in table 'DetalleOrdenTrabajoInsumo1Set'
-ALTER TABLE [dbo].[DetalleOrdenTrabajoInsumo1Set]
-ADD CONSTRAINT [FK_InsumoDetalleOrdenTrabajoInsumo]
-    FOREIGN KEY ([Insumo_Id])
-    REFERENCES [dbo].[Insumo]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_InsumoDetalleOrdenTrabajoInsumo'
-CREATE INDEX [IX_FK_InsumoDetalleOrdenTrabajoInsumo]
-ON [dbo].[DetalleOrdenTrabajoInsumo1Set]
-    ([Insumo_Id]);
-GO
-
--- Creating foreign key on [OrdenTrabajo_Id] in table 'DetalleOrdenTrabajoInsumo1Set'
-ALTER TABLE [dbo].[DetalleOrdenTrabajoInsumo1Set]
-ADD CONSTRAINT [FK_OrdenTrabajoDetalleOrdenTrabajoInsumo]
-    FOREIGN KEY ([OrdenTrabajo_Id])
-    REFERENCES [dbo].[OrdenTrabajo1Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_OrdenTrabajoDetalleOrdenTrabajoInsumo'
-CREATE INDEX [IX_FK_OrdenTrabajoDetalleOrdenTrabajoInsumo]
-ON [dbo].[DetalleOrdenTrabajoInsumo1Set]
-    ([OrdenTrabajo_Id]);
-GO
-
--- Creating foreign key on [Empleado_Id] in table 'DetalleOrdenTrabajoPersonal1Set'
-ALTER TABLE [dbo].[DetalleOrdenTrabajoPersonal1Set]
-ADD CONSTRAINT [FK_EmpleadoDetalleOrdenTrabajoRecurso]
-    FOREIGN KEY ([Empleado_Id])
-    REFERENCES [dbo].[Empleados]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_EmpleadoDetalleOrdenTrabajoRecurso'
-CREATE INDEX [IX_FK_EmpleadoDetalleOrdenTrabajoRecurso]
-ON [dbo].[DetalleOrdenTrabajoPersonal1Set]
-    ([Empleado_Id]);
-GO
-
--- Creating foreign key on [OrdenTrabajo_Id] in table 'DetalleOrdenTrabajoPersonal1Set'
-ALTER TABLE [dbo].[DetalleOrdenTrabajoPersonal1Set]
-ADD CONSTRAINT [FK_OrdenTrabajoDetalleOrdenTrabajoRecurso]
-    FOREIGN KEY ([OrdenTrabajo_Id])
-    REFERENCES [dbo].[OrdenTrabajo1Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_OrdenTrabajoDetalleOrdenTrabajoRecurso'
-CREATE INDEX [IX_FK_OrdenTrabajoDetalleOrdenTrabajoRecurso]
-ON [dbo].[DetalleOrdenTrabajoPersonal1Set]
-    ([OrdenTrabajo_Id]);
-GO
-
--- Creating foreign key on [ParteProduccion_Id] in table 'DetalleParteProduccionBateria1Set'
-ALTER TABLE [dbo].[DetalleParteProduccionBateria1Set]
-ADD CONSTRAINT [FK_ParteProduccionDetalleParteProduccionBateria]
-    FOREIGN KEY ([ParteProduccion_Id])
-    REFERENCES [dbo].[ParteProduccion1Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ParteProduccionDetalleParteProduccionBateria'
-CREATE INDEX [IX_FK_ParteProduccionDetalleParteProduccionBateria]
-ON [dbo].[DetalleParteProduccionBateria1Set]
-    ([ParteProduccion_Id]);
-GO
-
--- Creating foreign key on [Insumo_Id] in table 'DetalleParteProduccionInsumo1Set'
-ALTER TABLE [dbo].[DetalleParteProduccionInsumo1Set]
-ADD CONSTRAINT [FK_InsumoDetalleParteProduccionInsumo]
-    FOREIGN KEY ([Insumo_Id])
-    REFERENCES [dbo].[Insumo]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_InsumoDetalleParteProduccionInsumo'
-CREATE INDEX [IX_FK_InsumoDetalleParteProduccionInsumo]
-ON [dbo].[DetalleParteProduccionInsumo1Set]
-    ([Insumo_Id]);
-GO
-
--- Creating foreign key on [ParteProduccion_Id] in table 'DetalleParteProduccionInsumo1Set'
-ALTER TABLE [dbo].[DetalleParteProduccionInsumo1Set]
-ADD CONSTRAINT [FK_ParteProduccionDetalleParteProduccionInsumo]
-    FOREIGN KEY ([ParteProduccion_Id])
-    REFERENCES [dbo].[ParteProduccion1Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ParteProduccionDetalleParteProduccionInsumo'
-CREATE INDEX [IX_FK_ParteProduccionDetalleParteProduccionInsumo]
-ON [dbo].[DetalleParteProduccionInsumo1Set]
-    ([ParteProduccion_Id]);
-GO
-
--- Creating foreign key on [InsumoId] in table 'DetalleSolicitudInsumo1Set'
-ALTER TABLE [dbo].[DetalleSolicitudInsumo1Set]
-ADD CONSTRAINT [FK_InsumoDetalleSolicitudInsumo]
-    FOREIGN KEY ([InsumoId])
-    REFERENCES [dbo].[Insumo]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_InsumoDetalleSolicitudInsumo'
-CREATE INDEX [IX_FK_InsumoDetalleSolicitudInsumo]
-ON [dbo].[DetalleSolicitudInsumo1Set]
-    ([InsumoId]);
-GO
-
--- Creating foreign key on [SolicitudInsumo_Id] in table 'DetalleSolicitudInsumo1Set'
-ALTER TABLE [dbo].[DetalleSolicitudInsumo1Set]
-ADD CONSTRAINT [FK_SolicitudInsumoDetalleSolicitudInsumo]
-    FOREIGN KEY ([SolicitudInsumo_Id])
-    REFERENCES [dbo].[SolicitudInsumo1Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_SolicitudInsumoDetalleSolicitudInsumo'
-CREATE INDEX [IX_FK_SolicitudInsumoDetalleSolicitudInsumo]
-ON [dbo].[DetalleSolicitudInsumo1Set]
-    ([SolicitudInsumo_Id]);
 GO
 
 -- Creating foreign key on [idTipoDireccion] in table 'Direccion'
@@ -3123,20 +2627,6 @@ ON [dbo].[HojaRutaRecurso]
     ([idHojaRuta]);
 GO
 
--- Creating foreign key on [TipoLote_Id] in table 'Lotes'
-ALTER TABLE [dbo].[Lotes]
-ADD CONSTRAINT [FK_LoteTipoLote]
-    FOREIGN KEY ([TipoLote_Id])
-    REFERENCES [dbo].[TipoLotes]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_LoteTipoLote'
-CREATE INDEX [IX_FK_LoteTipoLote]
-ON [dbo].[Lotes]
-    ([TipoLote_Id]);
-GO
-
 -- Creating foreign key on [idMarca] in table 'Transporte'
 ALTER TABLE [dbo].[Transporte]
 ADD CONSTRAINT [fk_Transporte_Marca1]
@@ -3149,34 +2639,6 @@ ADD CONSTRAINT [fk_Transporte_Marca1]
 CREATE INDEX [IX_fk_Transporte_Marca1]
 ON [dbo].[Transporte]
     ([idMarca]);
-GO
-
--- Creating foreign key on [OrdenTrabajo_Id] in table 'ParteProduccion1Set'
-ALTER TABLE [dbo].[ParteProduccion1Set]
-ADD CONSTRAINT [FK_OrdenTrabajoParteProduccion]
-    FOREIGN KEY ([OrdenTrabajo_Id])
-    REFERENCES [dbo].[OrdenTrabajo1Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_OrdenTrabajoParteProduccion'
-CREATE INDEX [IX_FK_OrdenTrabajoParteProduccion]
-ON [dbo].[ParteProduccion1Set]
-    ([OrdenTrabajo_Id]);
-GO
-
--- Creating foreign key on [OrdenTrabajo_Id] in table 'SolicitudInsumo1Set'
-ALTER TABLE [dbo].[SolicitudInsumo1Set]
-ADD CONSTRAINT [FK_SolicitudInsumoOrdenTrabajo]
-    FOREIGN KEY ([OrdenTrabajo_Id])
-    REFERENCES [dbo].[OrdenTrabajo1Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_SolicitudInsumoOrdenTrabajo'
-CREATE INDEX [IX_FK_SolicitudInsumoOrdenTrabajo]
-ON [dbo].[SolicitudInsumo1Set]
-    ([OrdenTrabajo_Id]);
 GO
 
 -- Creating foreign key on [idTipoPedido] in table 'Pedido'
@@ -3258,174 +2720,6 @@ ON [dbo].[Transporte]
     ([idTipoTransporte]);
 GO
 
--- Creating foreign key on [Bateria_Id] in table 'DetalleParteProduccionBateria2Set'
-ALTER TABLE [dbo].[DetalleParteProduccionBateria2Set]
-ADD CONSTRAINT [FK_DetalleParteProduccionBateriaBateria1]
-    FOREIGN KEY ([Bateria_Id])
-    REFERENCES [dbo].[Bateria2Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_DetalleParteProduccionBateriaBateria1'
-CREATE INDEX [IX_FK_DetalleParteProduccionBateriaBateria1]
-ON [dbo].[DetalleParteProduccionBateria2Set]
-    ([Bateria_Id]);
-GO
-
--- Creating foreign key on [Insumo_Id] in table 'DetalleOrdenTrabajoInsumo2Set'
-ALTER TABLE [dbo].[DetalleOrdenTrabajoInsumo2Set]
-ADD CONSTRAINT [FK_InsumoDetalleOrdenTrabajoInsumo1]
-    FOREIGN KEY ([Insumo_Id])
-    REFERENCES [dbo].[Insumo]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_InsumoDetalleOrdenTrabajoInsumo1'
-CREATE INDEX [IX_FK_InsumoDetalleOrdenTrabajoInsumo1]
-ON [dbo].[DetalleOrdenTrabajoInsumo2Set]
-    ([Insumo_Id]);
-GO
-
--- Creating foreign key on [OrdenTrabajo_Id] in table 'DetalleOrdenTrabajoInsumo2Set'
-ALTER TABLE [dbo].[DetalleOrdenTrabajoInsumo2Set]
-ADD CONSTRAINT [FK_OrdenTrabajoDetalleOrdenTrabajoInsumo1]
-    FOREIGN KEY ([OrdenTrabajo_Id])
-    REFERENCES [dbo].[OrdenTrabajo2Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_OrdenTrabajoDetalleOrdenTrabajoInsumo1'
-CREATE INDEX [IX_FK_OrdenTrabajoDetalleOrdenTrabajoInsumo1]
-ON [dbo].[DetalleOrdenTrabajoInsumo2Set]
-    ([OrdenTrabajo_Id]);
-GO
-
--- Creating foreign key on [Empleado_Id] in table 'DetalleOrdenTrabajoPersonal2Set'
-ALTER TABLE [dbo].[DetalleOrdenTrabajoPersonal2Set]
-ADD CONSTRAINT [FK_EmpleadoDetalleOrdenTrabajoRecurso1]
-    FOREIGN KEY ([Empleado_Id])
-    REFERENCES [dbo].[Empleados]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_EmpleadoDetalleOrdenTrabajoRecurso1'
-CREATE INDEX [IX_FK_EmpleadoDetalleOrdenTrabajoRecurso1]
-ON [dbo].[DetalleOrdenTrabajoPersonal2Set]
-    ([Empleado_Id]);
-GO
-
--- Creating foreign key on [OrdenTrabajo_Id] in table 'DetalleOrdenTrabajoPersonal2Set'
-ALTER TABLE [dbo].[DetalleOrdenTrabajoPersonal2Set]
-ADD CONSTRAINT [FK_OrdenTrabajoDetalleOrdenTrabajoRecurso1]
-    FOREIGN KEY ([OrdenTrabajo_Id])
-    REFERENCES [dbo].[OrdenTrabajo2Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_OrdenTrabajoDetalleOrdenTrabajoRecurso1'
-CREATE INDEX [IX_FK_OrdenTrabajoDetalleOrdenTrabajoRecurso1]
-ON [dbo].[DetalleOrdenTrabajoPersonal2Set]
-    ([OrdenTrabajo_Id]);
-GO
-
--- Creating foreign key on [ParteProduccion_Id] in table 'DetalleParteProduccionBateria2Set'
-ALTER TABLE [dbo].[DetalleParteProduccionBateria2Set]
-ADD CONSTRAINT [FK_ParteProduccionDetalleParteProduccionBateria1]
-    FOREIGN KEY ([ParteProduccion_Id])
-    REFERENCES [dbo].[ParteProduccion2Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ParteProduccionDetalleParteProduccionBateria1'
-CREATE INDEX [IX_FK_ParteProduccionDetalleParteProduccionBateria1]
-ON [dbo].[DetalleParteProduccionBateria2Set]
-    ([ParteProduccion_Id]);
-GO
-
--- Creating foreign key on [Insumo_Id] in table 'DetalleParteProduccionInsumo2Set'
-ALTER TABLE [dbo].[DetalleParteProduccionInsumo2Set]
-ADD CONSTRAINT [FK_InsumoDetalleParteProduccionInsumo1]
-    FOREIGN KEY ([Insumo_Id])
-    REFERENCES [dbo].[Insumo]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_InsumoDetalleParteProduccionInsumo1'
-CREATE INDEX [IX_FK_InsumoDetalleParteProduccionInsumo1]
-ON [dbo].[DetalleParteProduccionInsumo2Set]
-    ([Insumo_Id]);
-GO
-
--- Creating foreign key on [ParteProduccion_Id] in table 'DetalleParteProduccionInsumo2Set'
-ALTER TABLE [dbo].[DetalleParteProduccionInsumo2Set]
-ADD CONSTRAINT [FK_ParteProduccionDetalleParteProduccionInsumo1]
-    FOREIGN KEY ([ParteProduccion_Id])
-    REFERENCES [dbo].[ParteProduccion2Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ParteProduccionDetalleParteProduccionInsumo1'
-CREATE INDEX [IX_FK_ParteProduccionDetalleParteProduccionInsumo1]
-ON [dbo].[DetalleParteProduccionInsumo2Set]
-    ([ParteProduccion_Id]);
-GO
-
--- Creating foreign key on [InsumoId] in table 'DetalleSolicitudInsumo2Set'
-ALTER TABLE [dbo].[DetalleSolicitudInsumo2Set]
-ADD CONSTRAINT [FK_InsumoDetalleSolicitudInsumo1]
-    FOREIGN KEY ([InsumoId])
-    REFERENCES [dbo].[Insumo]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_InsumoDetalleSolicitudInsumo1'
-CREATE INDEX [IX_FK_InsumoDetalleSolicitudInsumo1]
-ON [dbo].[DetalleSolicitudInsumo2Set]
-    ([InsumoId]);
-GO
-
--- Creating foreign key on [SolicitudInsumo_Id] in table 'DetalleSolicitudInsumo2Set'
-ALTER TABLE [dbo].[DetalleSolicitudInsumo2Set]
-ADD CONSTRAINT [FK_SolicitudInsumoDetalleSolicitudInsumo1]
-    FOREIGN KEY ([SolicitudInsumo_Id])
-    REFERENCES [dbo].[SolicitudInsumo2Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_SolicitudInsumoDetalleSolicitudInsumo1'
-CREATE INDEX [IX_FK_SolicitudInsumoDetalleSolicitudInsumo1]
-ON [dbo].[DetalleSolicitudInsumo2Set]
-    ([SolicitudInsumo_Id]);
-GO
-
--- Creating foreign key on [OrdenTrabajo_Id] in table 'ParteProduccion2Set'
-ALTER TABLE [dbo].[ParteProduccion2Set]
-ADD CONSTRAINT [FK_OrdenTrabajoParteProduccion1]
-    FOREIGN KEY ([OrdenTrabajo_Id])
-    REFERENCES [dbo].[OrdenTrabajo2Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_OrdenTrabajoParteProduccion1'
-CREATE INDEX [IX_FK_OrdenTrabajoParteProduccion1]
-ON [dbo].[ParteProduccion2Set]
-    ([OrdenTrabajo_Id]);
-GO
-
--- Creating foreign key on [OrdenTrabajo_Id] in table 'SolicitudInsumo2Set'
-ALTER TABLE [dbo].[SolicitudInsumo2Set]
-ADD CONSTRAINT [FK_SolicitudInsumoOrdenTrabajo1]
-    FOREIGN KEY ([OrdenTrabajo_Id])
-    REFERENCES [dbo].[OrdenTrabajo2Set]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_SolicitudInsumoOrdenTrabajo1'
-CREATE INDEX [IX_FK_SolicitudInsumoOrdenTrabajo1]
-ON [dbo].[SolicitudInsumo2Set]
-    ([OrdenTrabajo_Id]);
-GO
-
 -- Creating foreign key on [Id] in table 'DocumentosReferencia_GuiaEntrada'
 ALTER TABLE [dbo].[DocumentosReferencia_GuiaEntrada]
 ADD CONSTRAINT [FK_GuiaEntrada_inherits_DocumentoReferencia]
@@ -3438,15 +2732,6 @@ GO
 -- Creating foreign key on [Id] in table 'DocumentosReferencia_GuiaSalida'
 ALTER TABLE [dbo].[DocumentosReferencia_GuiaSalida]
 ADD CONSTRAINT [FK_GuiaSalida_inherits_DocumentoReferencia]
-    FOREIGN KEY ([Id])
-    REFERENCES [dbo].[DocumentosReferencia]
-        ([Id])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
-GO
-
--- Creating foreign key on [Id] in table 'DocumentosReferencia_AjusteInventario'
-ALTER TABLE [dbo].[DocumentosReferencia_AjusteInventario]
-ADD CONSTRAINT [FK_AjusteInventario_inherits_DocumentoReferencia]
     FOREIGN KEY ([Id])
     REFERENCES [dbo].[DocumentosReferencia]
         ([Id])
