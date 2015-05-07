@@ -41,7 +41,6 @@ namespace ETNA.DAL
         public DbSet<SolicitudSalida> SolicitudesSalida { get; set; }
         public DbSet<DetalleSolicitudSalida> DetalleSolicitudSalida { get; set; }
         public DbSet<DetalleGuiaSalida> DetalleGuiaSalida { get; set; }
-        public DbSet<ParteProduccionBateria> ParteProduccionBateriaSet { get; set; }
         public DbSet<DetalleOrdenTrabajo> DetalleOrdenTrabajoSet { get; set; }
         public DbSet<OrdenTrabajoInsumo> OrdenTrabajoInsumoSet { get; set; }
         public DbSet<ParteProduccion> ParteProduccionSet { get; set; }
@@ -97,5 +96,6 @@ namespace ETNA.DAL
         public DbSet<SolicitudReprogramacion> SolicitudReprogramacionSet { get; set; }
         public DbSet<TipoProducto> TipoProductoSet { get; set; }
         public DbSet<LineaProduccion> LineaProduccionSet { get; set; }
+        public DbSet<DetallePlanProduccion> DetallePlanProduccionSet { get; set; }
     }
 }

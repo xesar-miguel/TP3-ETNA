@@ -21,7 +21,6 @@
     <EntitySet Name="SolicitudesSalida" EntityType="ETNADbModel.Store.SolicitudesSalida" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetalleSolicitudSalida" EntityType="ETNADbModel.Store.DetalleSolicitudSalida" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetalleGuiaSalida" EntityType="ETNADbModel.Store.DetalleGuiaSalida" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ParteProduccionBateriaSet" EntityType="ETNADbModel.Store.ParteProduccionBateriaSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetalleOrdenTrabajoSet" EntityType="ETNADbModel.Store.DetalleOrdenTrabajoSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="OrdenTrabajoInsumoSet" EntityType="ETNADbModel.Store.OrdenTrabajoInsumoSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ParteProduccionSet" EntityType="ETNADbModel.Store.ParteProduccionSet" store:Type="Tables" Schema="dbo" />
@@ -77,6 +76,7 @@
     <EntitySet Name="SolicitudReprogramacionSet" EntityType="ETNADbModel.Store.SolicitudReprogramacionSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TipoProductoSet" EntityType="ETNADbModel.Store.TipoProductoSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="LineaProduccionSet" EntityType="ETNADbModel.Store.LineaProduccionSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetallePlanProduccionSet" EntityType="ETNADbModel.Store.DetallePlanProduccionSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DocumentosReferencia_GuiaEntrada" EntityType="ETNADbModel.Store.DocumentosReferencia_GuiaEntrada" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DocumentosReferencia_GuiaSalida" EntityType="ETNADbModel.Store.DocumentosReferencia_GuiaSalida" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="webpages_UsersInRoles" EntityType="ETNADbModel.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
@@ -434,10 +434,6 @@
       <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
       <End Role="OrdenTrabajoPersonal" EntitySet="OrdenTrabajoPersonalSet" />
     </AssociationSet>
-    <AssociationSet Name="ParteProduccionParteProduccionBateria" Association="ETNADbModel.Store.ParteProduccionParteProduccionBateria">
-      <End Role="ParteProduccion" EntitySet="ParteProduccionSet" />
-      <End Role="ParteProduccionBateria" EntitySet="ParteProduccionBateriaSet" />
-    </AssociationSet>
     <AssociationSet Name="OrdenTrabajoParteProduccion" Association="ETNADbModel.Store.OrdenTrabajoParteProduccion">
       <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
       <End Role="ParteProduccion" EntitySet="ParteProduccionSet" />
@@ -474,10 +470,6 @@
       <End Role="Empleado" EntitySet="Empleados" />
       <End Role="OrdenTrabajoPersonal" EntitySet="OrdenTrabajoPersonalSet" />
     </AssociationSet>
-    <AssociationSet Name="ProductoParteProduccionBateria" Association="ETNADbModel.Store.ProductoParteProduccionBateria">
-      <End Role="Producto" EntitySet="Productos" />
-      <End Role="ParteProduccionBateria" EntitySet="ParteProduccionBateriaSet" />
-    </AssociationSet>
     <AssociationSet Name="LineaProduccionPlanProduccionPersonal" Association="ETNADbModel.Store.LineaProduccionPlanProduccionPersonal">
       <End Role="LineaProduccion" EntitySet="LineaProduccionSet" />
       <End Role="PlanProduccionPersonal" EntitySet="PlanProduccionPersonalSet" />
@@ -489,6 +481,30 @@
     <AssociationSet Name="LineaProduccionPlanProduccionMaquinaria" Association="ETNADbModel.Store.LineaProduccionPlanProduccionMaquinaria">
       <End Role="LineaProduccion" EntitySet="LineaProduccionSet" />
       <End Role="PlanProduccionMaquinaria" EntitySet="PlanProduccionMaquinariaSet" />
+    </AssociationSet>
+    <AssociationSet Name="ProductoParteProduccion" Association="ETNADbModel.Store.ProductoParteProduccion">
+      <End Role="Producto" EntitySet="Productos" />
+      <End Role="ParteProduccion" EntitySet="ParteProduccionSet" />
+    </AssociationSet>
+    <AssociationSet Name="PlanProduccionProducto" Association="ETNADbModel.Store.PlanProduccionProducto">
+      <End Role="PlanProduccion" EntitySet="PlanProduccionSet" />
+      <End Role="Producto" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="LineaProduccionOrdenTrabajo" Association="ETNADbModel.Store.LineaProduccionOrdenTrabajo">
+      <End Role="LineaProduccion" EntitySet="LineaProduccionSet" />
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+    </AssociationSet>
+    <AssociationSet Name="PlanProduccionDetallePlanProduccion" Association="ETNADbModel.Store.PlanProduccionDetallePlanProduccion">
+      <End Role="PlanProduccion" EntitySet="PlanProduccionSet" />
+      <End Role="DetallePlanProduccion" EntitySet="DetallePlanProduccionSet" />
+    </AssociationSet>
+    <AssociationSet Name="LineaProduccionDetallePlanProduccion" Association="ETNADbModel.Store.LineaProduccionDetallePlanProduccion">
+      <End Role="LineaProduccion" EntitySet="LineaProduccionSet" />
+      <End Role="DetallePlanProduccion" EntitySet="DetallePlanProduccionSet" />
+    </AssociationSet>
+    <AssociationSet Name="ProductoDetallePlanProduccion" Association="ETNADbModel.Store.ProductoDetallePlanProduccion">
+      <End Role="Producto" EntitySet="Productos" />
+      <End Role="DetallePlanProduccion" EntitySet="DetallePlanProduccionSet" />
     </AssociationSet>
     <AssociationSet Name="FK_GuiaEntrada_inherits_DocumentoReferencia" Association="ETNADbModel.Store.FK_GuiaEntrada_inherits_DocumentoReferencia">
       <End Role="DocumentoReferencia" EntitySet="DocumentosReferencia" />
@@ -642,6 +658,7 @@
     <Property Name="SolicitudProduccion_IdSolicitud" Type="int" Nullable="false" />
     <Property Name="SolicitudProduccion_IdPlan" Type="nvarchar(max)" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="SolicitudesSalida">
     <Key>
@@ -675,19 +692,6 @@
     <Property Name="IdGuiaSalida" Type="int" Nullable="false" />
     <Property Name="IdProducto" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="ParteProduccionBateriaSet">
-    <Key>
-      <PropertyRef Name="IdParte" />
-      <PropertyRef Name="IdProducto" />
-    </Key>
-    <Property Name="IdParte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdProducto" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CantidadPropuesta" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CantidadReal" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ParteProduccion_IdParte" Type="int" Nullable="false" />
-    <Property Name="ParteProduccion_IdOrden" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Producto_Id" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="DetalleOrdenTrabajoSet">
     <Key>
       <PropertyRef Name="IdOrden" />
@@ -696,35 +700,50 @@
     <Property Name="IdOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdSolicitud" Type="nvarchar(max)" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SolicitudSalida_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OrdenTrabajoInsumoSet">
     <Key>
       <PropertyRef Name="IdOrden" />
+      <PropertyRef Name="IdLinea" />
+      <PropertyRef Name="IdProducto" />
     </Key>
     <Property Name="IdOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdLinea" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdProducto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaEntrega" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cantidad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Producto_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ParteProduccionSet">
     <Key>
       <PropertyRef Name="IdParte" />
       <PropertyRef Name="IdOrden" />
+      <PropertyRef Name="IdProducto" />
     </Key>
     <Property Name="IdParte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdOrden" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdProducto" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Glosa" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FechaFabricacion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CantidadProducida" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Comentario" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Producto_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OrdenTrabajoSet">
     <Key>
       <PropertyRef Name="IdOrden" />
+      <PropertyRef Name="IdLinea" />
     </Key>
     <Property Name="IdOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdLinea" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Glosa" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FechaExpedicion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FechaInicio" Type="nvarchar(max)" Nullable="false" />
@@ -733,13 +752,22 @@
     <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DetalleSolicitudProduccion_IdSolicitud" Type="int" Nullable="false" />
     <Property Name="DetalleSolicitudProduccion_IdOrden" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LineaProduccion_IdLinea" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OrdenTrabajoPersonalSet">
     <Key>
       <PropertyRef Name="IdOrden" />
+      <PropertyRef Name="IdLinea" />
+      <PropertyRef Name="IdPersonal" />
     </Key>
     <Property Name="IdOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdLinea" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdPersonal" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaInicio" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaTermino" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Empleado_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SolicitudProduccionSet">
@@ -754,12 +782,15 @@
     <Property Name="Observacion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PlanProduccion_IdPlan" Type="int" Nullable="false" />
+    <Property Name="PlanProduccion_IdProducto" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="PlanProduccionSet">
     <Key>
       <PropertyRef Name="IdPlan" />
+      <PropertyRef Name="IdProducto" />
     </Key>
     <Property Name="IdPlan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProducto" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Glosa" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FechaPlan" Type="nvarchar(max)" Nullable="false" />
@@ -767,6 +798,7 @@
     <Property Name="TotalHorasMaquinaria" Type="nvarchar(max)" Nullable="false" />
     <Property Name="TotalCantidadMaquinaria" Type="nvarchar(max)" Nullable="false" />
     <Property Name="TotalCantidadInsumo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Producto_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PlanProduccionMaquinariaSet">
     <Key>
@@ -784,6 +816,7 @@
     <Property Name="Cantidad" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PlanProduccion_IdPlan" Type="int" Nullable="false" />
+    <Property Name="PlanProduccion_IdProducto" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Maquinaria_IdMaquinaria" Type="int" Nullable="false" />
     <Property Name="LineaProduccion_IdLinea" Type="int" Nullable="false" />
   </EntityType>
@@ -800,9 +833,18 @@
   <EntityType Name="OrdenTrabajoMaquinariaSet">
     <Key>
       <PropertyRef Name="IdOrden" />
+      <PropertyRef Name="IdLinea" />
+      <PropertyRef Name="IdMaquinaria" />
     </Key>
     <Property Name="IdOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdLinea" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdMaquinaria" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaInicio" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaTermino" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cantidad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Maquinaria_IdMaquinaria" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="MaquinariaSet">
@@ -1228,6 +1270,7 @@
     <Property Name="Cantidad" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PlanProduccion_IdPlan" Type="int" Nullable="false" />
+    <Property Name="PlanProduccion_IdProducto" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Producto_Id" Type="int" Nullable="false" />
     <Property Name="LineaProduccion_IdLinea" Type="int" Nullable="false" />
   </EntityType>
@@ -1246,6 +1289,7 @@
     <Property Name="FechaTermino" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PlanProduccion_IdPlan" Type="int" Nullable="false" />
+    <Property Name="PlanProduccion_IdProducto" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Empleado_Id" Type="int" Nullable="false" />
     <Property Name="LineaProduccion_IdLinea" Type="int" Nullable="false" />
   </EntityType>
@@ -1259,6 +1303,7 @@
     <Property Name="Motivo" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="TipoProductoSet">
     <Key>
@@ -1275,6 +1320,22 @@
     <Property Name="IdLinea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetallePlanProduccionSet">
+    <Key>
+      <PropertyRef Name="IdPlan" />
+      <PropertyRef Name="IdLinea" />
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdPlan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdLinea" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdProducto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CantidaRequerida" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PlanProduccion_IdPlan" Type="int" Nullable="false" />
+    <Property Name="PlanProduccion_IdProducto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LineaProduccion_IdLinea" Type="int" Nullable="false" />
+    <Property Name="Producto_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="DocumentosReferencia_GuiaEntrada">
     <Key>
@@ -2148,9 +2209,11 @@
     <ReferentialConstraint>
       <Principal Role="PlanProduccion">
         <PropertyRef Name="IdPlan" />
+        <PropertyRef Name="IdProducto" />
       </Principal>
       <Dependent Role="PlanProduccionMaquinaria">
         <PropertyRef Name="PlanProduccion_IdPlan" />
+        <PropertyRef Name="PlanProduccion_IdProducto" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2160,9 +2223,11 @@
     <ReferentialConstraint>
       <Principal Role="PlanProduccion">
         <PropertyRef Name="IdPlan" />
+        <PropertyRef Name="IdProducto" />
       </Principal>
       <Dependent Role="PlanProduccionInsumo">
         <PropertyRef Name="PlanProduccion_IdPlan" />
+        <PropertyRef Name="PlanProduccion_IdProducto" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2172,9 +2237,11 @@
     <ReferentialConstraint>
       <Principal Role="PlanProduccion">
         <PropertyRef Name="IdPlan" />
+        <PropertyRef Name="IdProducto" />
       </Principal>
       <Dependent Role="PlanProduccionPersonal">
         <PropertyRef Name="PlanProduccion_IdPlan" />
+        <PropertyRef Name="PlanProduccion_IdProducto" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2184,9 +2251,11 @@
     <ReferentialConstraint>
       <Principal Role="PlanProduccion">
         <PropertyRef Name="IdPlan" />
+        <PropertyRef Name="IdProducto" />
       </Principal>
       <Dependent Role="SolicitudProduccion">
         <PropertyRef Name="PlanProduccion_IdPlan" />
+        <PropertyRef Name="PlanProduccion_IdProducto" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2210,9 +2279,11 @@
     <ReferentialConstraint>
       <Principal Role="OrdenTrabajo">
         <PropertyRef Name="IdOrden" />
+        <PropertyRef Name="IdLinea" />
       </Principal>
       <Dependent Role="LoteProduccion">
         <PropertyRef Name="OrdenTrabajo_IdOrden" />
+        <PropertyRef Name="OrdenTrabajo_IdLinea" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2250,9 +2321,11 @@
     <ReferentialConstraint>
       <Principal Role="OrdenTrabajo">
         <PropertyRef Name="IdOrden" />
+        <PropertyRef Name="IdLinea" />
       </Principal>
       <Dependent Role="DetalleOrdenTrabajo">
         <PropertyRef Name="OrdenTrabajo_IdOrden" />
+        <PropertyRef Name="OrdenTrabajo_IdLinea" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2262,9 +2335,11 @@
     <ReferentialConstraint>
       <Principal Role="OrdenTrabajo">
         <PropertyRef Name="IdOrden" />
+        <PropertyRef Name="IdLinea" />
       </Principal>
       <Dependent Role="SolicitudReprogramacion">
         <PropertyRef Name="OrdenTrabajo_IdOrden" />
+        <PropertyRef Name="OrdenTrabajo_IdLinea" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2274,9 +2349,11 @@
     <ReferentialConstraint>
       <Principal Role="OrdenTrabajo">
         <PropertyRef Name="IdOrden" />
+        <PropertyRef Name="IdLinea" />
       </Principal>
       <Dependent Role="OrdenTrabajoInsumo">
         <PropertyRef Name="OrdenTrabajo_IdOrden" />
+        <PropertyRef Name="OrdenTrabajo_IdLinea" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2286,9 +2363,11 @@
     <ReferentialConstraint>
       <Principal Role="OrdenTrabajo">
         <PropertyRef Name="IdOrden" />
+        <PropertyRef Name="IdLinea" />
       </Principal>
       <Dependent Role="OrdenTrabajoMaquinaria">
         <PropertyRef Name="OrdenTrabajo_IdOrden" />
+        <PropertyRef Name="OrdenTrabajo_IdLinea" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2298,23 +2377,11 @@
     <ReferentialConstraint>
       <Principal Role="OrdenTrabajo">
         <PropertyRef Name="IdOrden" />
+        <PropertyRef Name="IdLinea" />
       </Principal>
       <Dependent Role="OrdenTrabajoPersonal">
         <PropertyRef Name="OrdenTrabajo_IdOrden" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ParteProduccionParteProduccionBateria">
-    <End Role="ParteProduccion" Type="ETNADbModel.Store.ParteProduccionSet" Multiplicity="1" />
-    <End Role="ParteProduccionBateria" Type="ETNADbModel.Store.ParteProduccionBateriaSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ParteProduccion">
-        <PropertyRef Name="IdParte" />
-        <PropertyRef Name="IdOrden" />
-      </Principal>
-      <Dependent Role="ParteProduccionBateria">
-        <PropertyRef Name="ParteProduccion_IdParte" />
-        <PropertyRef Name="ParteProduccion_IdOrden" />
+        <PropertyRef Name="OrdenTrabajo_IdLinea" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2324,9 +2391,11 @@
     <ReferentialConstraint>
       <Principal Role="OrdenTrabajo">
         <PropertyRef Name="IdOrden" />
+        <PropertyRef Name="IdLinea" />
       </Principal>
       <Dependent Role="ParteProduccion">
         <PropertyRef Name="OrdenTrabajo_IdOrden" />
+        <PropertyRef Name="OrdenTrabajo_IdLinea" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2426,18 +2495,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ProductoParteProduccionBateria">
-    <End Role="Producto" Type="ETNADbModel.Store.Productos" Multiplicity="1" />
-    <End Role="ParteProduccionBateria" Type="ETNADbModel.Store.ParteProduccionBateriaSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Producto">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ParteProduccionBateria">
-        <PropertyRef Name="Producto_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="LineaProduccionPlanProduccionPersonal">
     <End Role="LineaProduccion" Type="ETNADbModel.Store.LineaProduccionSet" Multiplicity="1" />
     <End Role="PlanProduccionPersonal" Type="ETNADbModel.Store.PlanProduccionPersonalSet" Multiplicity="*" />
@@ -2471,6 +2528,80 @@
       </Principal>
       <Dependent Role="PlanProduccionMaquinaria">
         <PropertyRef Name="LineaProduccion_IdLinea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductoParteProduccion">
+    <End Role="Producto" Type="ETNADbModel.Store.Productos" Multiplicity="1" />
+    <End Role="ParteProduccion" Type="ETNADbModel.Store.ParteProduccionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ParteProduccion">
+        <PropertyRef Name="Producto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlanProduccionProducto">
+    <End Role="PlanProduccion" Type="ETNADbModel.Store.PlanProduccionSet" Multiplicity="*" />
+    <End Role="Producto" Type="ETNADbModel.Store.Productos" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PlanProduccion">
+        <PropertyRef Name="Producto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LineaProduccionOrdenTrabajo">
+    <End Role="LineaProduccion" Type="ETNADbModel.Store.LineaProduccionSet" Multiplicity="1" />
+    <End Role="OrdenTrabajo" Type="ETNADbModel.Store.OrdenTrabajoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LineaProduccion">
+        <PropertyRef Name="IdLinea" />
+      </Principal>
+      <Dependent Role="OrdenTrabajo">
+        <PropertyRef Name="LineaProduccion_IdLinea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlanProduccionDetallePlanProduccion">
+    <End Role="PlanProduccion" Type="ETNADbModel.Store.PlanProduccionSet" Multiplicity="1" />
+    <End Role="DetallePlanProduccion" Type="ETNADbModel.Store.DetallePlanProduccionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanProduccion">
+        <PropertyRef Name="IdPlan" />
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="DetallePlanProduccion">
+        <PropertyRef Name="PlanProduccion_IdPlan" />
+        <PropertyRef Name="PlanProduccion_IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LineaProduccionDetallePlanProduccion">
+    <End Role="LineaProduccion" Type="ETNADbModel.Store.LineaProduccionSet" Multiplicity="1" />
+    <End Role="DetallePlanProduccion" Type="ETNADbModel.Store.DetallePlanProduccionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LineaProduccion">
+        <PropertyRef Name="IdLinea" />
+      </Principal>
+      <Dependent Role="DetallePlanProduccion">
+        <PropertyRef Name="LineaProduccion_IdLinea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductoDetallePlanProduccion">
+    <End Role="Producto" Type="ETNADbModel.Store.Productos" Multiplicity="1" />
+    <End Role="DetallePlanProduccion" Type="ETNADbModel.Store.DetallePlanProduccionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetallePlanProduccion">
+        <PropertyRef Name="Producto_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2666,7 +2797,6 @@
             <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalida" />
             <End Role="Producto" EntitySet="Productos" />
           </AssociationSet>
-          <EntitySet Name="ParteProduccionBateriaSet" EntityType="ETNADbModel.ParteProduccionBateria" />
           <EntitySet Name="DetalleOrdenTrabajoSet" EntityType="ETNADbModel.DetalleOrdenTrabajo" />
           <EntitySet Name="OrdenTrabajoInsumoSet" EntityType="ETNADbModel.OrdenTrabajoInsumo" />
           <EntitySet Name="ParteProduccionSet" EntityType="ETNADbModel.ParteProduccion" />
@@ -2989,10 +3119,6 @@
             <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
             <End Role="OrdenTrabajoPersonal" EntitySet="OrdenTrabajoPersonalSet" />
           </AssociationSet>
-          <AssociationSet Name="ParteProduccionParteProduccionBateria" Association="ETNADbModel.ParteProduccionParteProduccionBateria">
-            <End Role="ParteProduccion" EntitySet="ParteProduccionSet" />
-            <End Role="ParteProduccionBateria" EntitySet="ParteProduccionBateriaSet" />
-          </AssociationSet>
           <AssociationSet Name="OrdenTrabajoParteProduccion" Association="ETNADbModel.OrdenTrabajoParteProduccion">
             <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
             <End Role="ParteProduccion" EntitySet="ParteProduccionSet" />
@@ -3029,10 +3155,6 @@
             <End Role="Empleado" EntitySet="Empleados" />
             <End Role="OrdenTrabajoPersonal" EntitySet="OrdenTrabajoPersonalSet" />
           </AssociationSet>
-          <AssociationSet Name="ProductoParteProduccionBateria" Association="ETNADbModel.ProductoParteProduccionBateria">
-            <End Role="Producto" EntitySet="Productos" />
-            <End Role="ParteProduccionBateria" EntitySet="ParteProduccionBateriaSet" />
-          </AssociationSet>
           <EntitySet Name="LineaProduccionSet" EntityType="ETNADbModel.LineaProduccion" />
           <AssociationSet Name="LineaProduccionPlanProduccionPersonal" Association="ETNADbModel.LineaProduccionPlanProduccionPersonal">
             <End Role="LineaProduccion" EntitySet="LineaProduccionSet" />
@@ -3045,6 +3167,31 @@
           <AssociationSet Name="LineaProduccionPlanProduccionMaquinaria" Association="ETNADbModel.LineaProduccionPlanProduccionMaquinaria">
             <End Role="LineaProduccion" EntitySet="LineaProduccionSet" />
             <End Role="PlanProduccionMaquinaria" EntitySet="PlanProduccionMaquinariaSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProductoParteProduccion" Association="ETNADbModel.ProductoParteProduccion">
+            <End Role="Producto" EntitySet="Productos" />
+            <End Role="ParteProduccion" EntitySet="ParteProduccionSet" />
+          </AssociationSet>
+          <AssociationSet Name="PlanProduccionProducto" Association="ETNADbModel.PlanProduccionProducto">
+            <End Role="PlanProduccion" EntitySet="PlanProduccionSet" />
+            <End Role="Producto" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="LineaProduccionOrdenTrabajo" Association="ETNADbModel.LineaProduccionOrdenTrabajo">
+            <End Role="LineaProduccion" EntitySet="LineaProduccionSet" />
+            <End Role="OrdenTrabajo" EntitySet="OrdenTrabajoSet" />
+          </AssociationSet>
+          <EntitySet Name="DetallePlanProduccionSet" EntityType="ETNADbModel.DetallePlanProduccion" />
+          <AssociationSet Name="PlanProduccionDetallePlanProduccion" Association="ETNADbModel.PlanProduccionDetallePlanProduccion">
+            <End Role="PlanProduccion" EntitySet="PlanProduccionSet" />
+            <End Role="DetallePlanProduccion" EntitySet="DetallePlanProduccionSet" />
+          </AssociationSet>
+          <AssociationSet Name="LineaProduccionDetallePlanProduccion" Association="ETNADbModel.LineaProduccionDetallePlanProduccion">
+            <End Role="LineaProduccion" EntitySet="LineaProduccionSet" />
+            <End Role="DetallePlanProduccion" EntitySet="DetallePlanProduccionSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProductoDetallePlanProduccion" Association="ETNADbModel.ProductoDetallePlanProduccion">
+            <End Role="Producto" EntitySet="Productos" />
+            <End Role="DetallePlanProduccion" EntitySet="DetallePlanProduccionSet" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="DocumentoReferencia">
@@ -3199,7 +3346,9 @@
           <NavigationProperty Name="PlanProduccionInsumo" Relationship="ETNADbModel.ProductoPlanProduccionInsumo" FromRole="Producto" ToRole="PlanProduccionInsumo" />
           <NavigationProperty Name="TipoProducto" Relationship="ETNADbModel.ProductoTipoProducto" FromRole="Producto" ToRole="TipoProducto" />
           <NavigationProperty Name="OrdenTrabajoInsumo" Relationship="ETNADbModel.ProductoOrdenTrabajoInsumo" FromRole="Producto" ToRole="OrdenTrabajoInsumo" />
-          <NavigationProperty Name="ParteProduccionBateria" Relationship="ETNADbModel.ProductoParteProduccionBateria" FromRole="Producto" ToRole="ParteProduccionBateria" />
+          <NavigationProperty Name="ParteProduccion" Relationship="ETNADbModel.ProductoParteProduccion" FromRole="Producto" ToRole="ParteProduccion" />
+          <NavigationProperty Name="PlanProduccion" Relationship="ETNADbModel.PlanProduccionProducto" FromRole="Producto" ToRole="PlanProduccion" />
+          <NavigationProperty Name="DetallePlanProduccion" Relationship="ETNADbModel.ProductoDetallePlanProduccion" FromRole="Producto" ToRole="DetallePlanProduccion" />
         </EntityType>
         <EntityType Name="SolicitudEntrada">
           <Key>
@@ -3391,18 +3540,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="ParteProduccionBateria">
-          <Key>
-            <PropertyRef Name="IdParte" />
-            <PropertyRef Name="IdProducto" />
-          </Key>
-          <Property Name="IdParte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="ParteProduccion" Relationship="ETNADbModel.ParteProduccionParteProduccionBateria" FromRole="ParteProduccionBateria" ToRole="ParteProduccion" />
-          <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoParteProduccionBateria" FromRole="ParteProduccionBateria" ToRole="Producto" />
-          <Property Name="IdProducto" Type="String" Nullable="false" />
-          <Property Name="CantidadPropuesta" Type="String" Nullable="false" />
-          <Property Name="CantidadReal" Type="String" Nullable="false" />
-        </EntityType>
         <EntityType Name="DetalleOrdenTrabajo">
           <Key>
             <PropertyRef Name="IdOrden" />
@@ -3416,31 +3553,42 @@
         <EntityType Name="OrdenTrabajoInsumo">
           <Key>
             <PropertyRef Name="IdOrden" />
+            <PropertyRef Name="IdLinea" />
+            <PropertyRef Name="IdProducto" />
           </Key>
           <Property Name="IdOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoOrdenTrabajoInsumo" FromRole="OrdenTrabajoInsumo" ToRole="OrdenTrabajo" />
           <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoOrdenTrabajoInsumo" FromRole="OrdenTrabajoInsumo" ToRole="Producto" />
+          <Property Name="IdLinea" Type="String" Nullable="false" />
+          <Property Name="IdProducto" Type="String" Nullable="false" />
+          <Property Name="FechaEntrega" Type="String" Nullable="false" />
+          <Property Name="Cantidad" Type="String" Nullable="false" />
+          <Property Name="Estado" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="ParteProduccion">
           <Key>
             <PropertyRef Name="IdParte" />
             <PropertyRef Name="IdOrden" />
+            <PropertyRef Name="IdProducto" />
           </Key>
           <Property Name="IdParte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="ParteProduccionBateria" Relationship="ETNADbModel.ParteProduccionParteProduccionBateria" FromRole="ParteProduccion" ToRole="ParteProduccionBateria" />
           <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoParteProduccion" FromRole="ParteProduccion" ToRole="OrdenTrabajo" />
           <Property Name="IdOrden" Type="String" Nullable="false" />
+          <Property Name="IdProducto" Type="String" Nullable="false" />
           <Property Name="Glosa" Type="String" Nullable="false" />
           <Property Name="FechaFabricacion" Type="String" Nullable="false" />
           <Property Name="CantidadProducida" Type="String" Nullable="false" />
           <Property Name="Comentario" Type="String" Nullable="false" />
           <Property Name="Estado" Type="String" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoParteProduccion" FromRole="ParteProduccion" ToRole="Producto" />
         </EntityType>
         <EntityType Name="OrdenTrabajo">
           <Key>
             <PropertyRef Name="IdOrden" />
+            <PropertyRef Name="IdLinea" />
           </Key>
           <Property Name="IdOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdLinea" Type="String" Nullable="false" />
           <NavigationProperty Name="LoteProduccion" Relationship="ETNADbModel.LoteProduccionOrdenTrabajo" FromRole="OrdenTrabajo" ToRole="LoteProduccion" />
           <NavigationProperty Name="DetalleSolicitudProduccion" Relationship="ETNADbModel.DetalleSolicitudProduccionOrdenTrabajo" FromRole="OrdenTrabajo" ToRole="DetalleSolicitudProduccion" />
           <NavigationProperty Name="DetalleOrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajo" FromRole="OrdenTrabajo" ToRole="DetalleOrdenTrabajo" />
@@ -3455,14 +3603,22 @@
           <Property Name="FechaTermino" Type="String" Nullable="false" />
           <Property Name="CantidadSolicitada" Type="String" Nullable="false" />
           <Property Name="Estado" Type="String" Nullable="false" />
+          <NavigationProperty Name="LineaProduccion" Relationship="ETNADbModel.LineaProduccionOrdenTrabajo" FromRole="OrdenTrabajo" ToRole="LineaProduccion" />
         </EntityType>
         <EntityType Name="OrdenTrabajoPersonal">
           <Key>
             <PropertyRef Name="IdOrden" />
+            <PropertyRef Name="IdLinea" />
+            <PropertyRef Name="IdPersonal" />
           </Key>
           <Property Name="IdOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoOrdenTrabajoPersonal" FromRole="OrdenTrabajoPersonal" ToRole="OrdenTrabajo" />
           <NavigationProperty Name="Empleado" Relationship="ETNADbModel.EmpleadoOrdenTrabajoPersonal" FromRole="OrdenTrabajoPersonal" ToRole="Empleado" />
+          <Property Name="IdLinea" Type="String" Nullable="false" />
+          <Property Name="IdPersonal" Type="String" Nullable="false" />
+          <Property Name="FechaInicio" Type="String" Nullable="false" />
+          <Property Name="FechaTermino" Type="String" Nullable="false" />
+          <Property Name="Estado" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="SolicitudProduccion">
           <Key>
@@ -3482,8 +3638,10 @@
         <EntityType Name="PlanProduccion">
           <Key>
             <PropertyRef Name="IdPlan" />
+            <PropertyRef Name="IdProducto" />
           </Key>
           <Property Name="IdPlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProducto" Type="String" Nullable="false" />
           <NavigationProperty Name="PlanProduccionMaquinaria" Relationship="ETNADbModel.PlanProduccionPlanProduccionMaquinaria" FromRole="PlanProduccion" ToRole="PlanProduccionMaquinaria" />
           <NavigationProperty Name="PlanProduccionInsumo" Relationship="ETNADbModel.PlanProduccionPlanProduccionInsumo" FromRole="PlanProduccion" ToRole="PlanProduccionInsumo" />
           <NavigationProperty Name="PlanProduccionPersonal" Relationship="ETNADbModel.PlanProduccionPlanProduccionPersonal" FromRole="PlanProduccion" ToRole="PlanProduccionPersonal" />
@@ -3495,6 +3653,8 @@
           <Property Name="TotalHorasMaquinaria" Type="String" Nullable="false" />
           <Property Name="TotalCantidadMaquinaria" Type="String" Nullable="false" />
           <Property Name="TotalCantidadInsumo" Type="String" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="ETNADbModel.PlanProduccionProducto" FromRole="PlanProduccion" ToRole="Producto" />
+          <NavigationProperty Name="DetallePlanProduccion" Relationship="ETNADbModel.PlanProduccionDetallePlanProduccion" FromRole="PlanProduccion" ToRole="DetallePlanProduccion" />
         </EntityType>
         <EntityType Name="PlanProduccionMaquinaria">
           <Key>
@@ -3528,10 +3688,18 @@
         <EntityType Name="OrdenTrabajoMaquinaria">
           <Key>
             <PropertyRef Name="IdOrden" />
+            <PropertyRef Name="IdLinea" />
+            <PropertyRef Name="IdMaquinaria" />
           </Key>
           <Property Name="IdOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoOrdenTrabajoMaquinaria" FromRole="OrdenTrabajoMaquinaria" ToRole="OrdenTrabajo" />
           <NavigationProperty Name="Maquinaria" Relationship="ETNADbModel.MaquinariaOrdenTrabajoMaquinaria" FromRole="OrdenTrabajoMaquinaria" ToRole="Maquinaria" />
+          <Property Name="IdLinea" Type="String" Nullable="false" />
+          <Property Name="IdMaquinaria" Type="String" Nullable="false" />
+          <Property Name="FechaInicio" Type="String" Nullable="false" />
+          <Property Name="FechaTermino" Type="String" Nullable="false" />
+          <Property Name="Cantidad" Type="String" Nullable="false" />
+          <Property Name="Estado" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Maquinaria">
           <Key>
@@ -4779,10 +4947,6 @@
           <End Type="ETNADbModel.OrdenTrabajo" Role="OrdenTrabajo" Multiplicity="1" />
           <End Type="ETNADbModel.OrdenTrabajoPersonal" Role="OrdenTrabajoPersonal" Multiplicity="*" />
         </Association>
-        <Association Name="ParteProduccionParteProduccionBateria">
-          <End Type="ETNADbModel.ParteProduccion" Role="ParteProduccion" Multiplicity="1" />
-          <End Type="ETNADbModel.ParteProduccionBateria" Role="ParteProduccionBateria" Multiplicity="*" />
-        </Association>
         <Association Name="OrdenTrabajoParteProduccion">
           <End Type="ETNADbModel.OrdenTrabajo" Role="OrdenTrabajo" Multiplicity="1" />
           <End Type="ETNADbModel.ParteProduccion" Role="ParteProduccion" Multiplicity="0..1" />
@@ -4819,10 +4983,6 @@
           <End Type="ETNADbModel.Empleado" Role="Empleado" Multiplicity="1" />
           <End Type="ETNADbModel.OrdenTrabajoPersonal" Role="OrdenTrabajoPersonal" Multiplicity="*" />
         </Association>
-        <Association Name="ProductoParteProduccionBateria">
-          <End Type="ETNADbModel.Producto" Role="Producto" Multiplicity="1" />
-          <End Type="ETNADbModel.ParteProduccionBateria" Role="ParteProduccionBateria" Multiplicity="*" />
-        </Association>
         <EntityType Name="LineaProduccion">
           <Key>
             <PropertyRef Name="IdLinea" />
@@ -4833,6 +4993,8 @@
           <Property Name="Estado" Type="String" Nullable="false" />
           <NavigationProperty Name="PlanProduccionInsumo" Relationship="ETNADbModel.LineaProduccionPlanProduccionInsumo" FromRole="LineaProduccion" ToRole="PlanProduccionInsumo" />
           <NavigationProperty Name="PlanProduccionMaquinaria" Relationship="ETNADbModel.LineaProduccionPlanProduccionMaquinaria" FromRole="LineaProduccion" ToRole="PlanProduccionMaquinaria" />
+          <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.LineaProduccionOrdenTrabajo" FromRole="LineaProduccion" ToRole="OrdenTrabajo" />
+          <NavigationProperty Name="DetallePlanProduccion" Relationship="ETNADbModel.LineaProduccionDetallePlanProduccion" FromRole="LineaProduccion" ToRole="DetallePlanProduccion" />
         </EntityType>
         <Association Name="LineaProduccionPlanProduccionPersonal">
           <End Type="ETNADbModel.LineaProduccion" Role="LineaProduccion" Multiplicity="1" />
@@ -4845,6 +5007,45 @@
         <Association Name="LineaProduccionPlanProduccionMaquinaria">
           <End Type="ETNADbModel.LineaProduccion" Role="LineaProduccion" Multiplicity="1" />
           <End Type="ETNADbModel.PlanProduccionMaquinaria" Role="PlanProduccionMaquinaria" Multiplicity="*" />
+        </Association>
+        <Association Name="ProductoParteProduccion">
+          <End Type="ETNADbModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="ETNADbModel.ParteProduccion" Role="ParteProduccion" Multiplicity="*" />
+        </Association>
+        <Association Name="PlanProduccionProducto">
+          <End Type="ETNADbModel.PlanProduccion" Role="PlanProduccion" Multiplicity="1" />
+          <End Type="ETNADbModel.Producto" Role="Producto" Multiplicity="1" />
+        </Association>
+        <Association Name="LineaProduccionOrdenTrabajo">
+          <End Type="ETNADbModel.LineaProduccion" Role="LineaProduccion" Multiplicity="1" />
+          <End Type="ETNADbModel.OrdenTrabajo" Role="OrdenTrabajo" Multiplicity="*" />
+        </Association>
+        <EntityType Name="DetallePlanProduccion">
+          <Key>
+            <PropertyRef Name="IdPlan" />
+            <PropertyRef Name="IdLinea" />
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdPlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdLinea" Type="String" Nullable="false" />
+          <Property Name="IdProducto" Type="String" Nullable="false" />
+          <Property Name="CantidaRequerida" Type="String" Nullable="false" />
+          <Property Name="Estado" Type="String" Nullable="false" />
+          <NavigationProperty Name="PlanProduccion" Relationship="ETNADbModel.PlanProduccionDetallePlanProduccion" FromRole="DetallePlanProduccion" ToRole="PlanProduccion" />
+          <NavigationProperty Name="LineaProduccion" Relationship="ETNADbModel.LineaProduccionDetallePlanProduccion" FromRole="DetallePlanProduccion" ToRole="LineaProduccion" />
+          <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoDetallePlanProduccion" FromRole="DetallePlanProduccion" ToRole="Producto" />
+        </EntityType>
+        <Association Name="PlanProduccionDetallePlanProduccion">
+          <End Type="ETNADbModel.PlanProduccion" Role="PlanProduccion" Multiplicity="1" />
+          <End Type="ETNADbModel.DetallePlanProduccion" Role="DetallePlanProduccion" Multiplicity="*" />
+        </Association>
+        <Association Name="LineaProduccionDetallePlanProduccion">
+          <End Type="ETNADbModel.LineaProduccion" Role="LineaProduccion" Multiplicity="1" />
+          <End Type="ETNADbModel.DetallePlanProduccion" Role="DetallePlanProduccion" Multiplicity="*" />
+        </Association>
+        <Association Name="ProductoDetallePlanProduccion">
+          <End Type="ETNADbModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="ETNADbModel.DetallePlanProduccion" Role="DetallePlanProduccion" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -5036,16 +5237,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ParteProduccionBateriaSet">
-      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.ParteProduccionBateria)">
-        <MappingFragment StoreEntitySet="ParteProduccionBateriaSet">
-          <ScalarProperty Name="IdParte" ColumnName="IdParte" />
-          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-          <ScalarProperty Name="CantidadPropuesta" ColumnName="CantidadPropuesta" />
-          <ScalarProperty Name="CantidadReal" ColumnName="CantidadReal" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="DetalleOrdenTrabajoSet">
       <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleOrdenTrabajo)">
         <MappingFragment StoreEntitySet="DetalleOrdenTrabajoSet">
@@ -5058,6 +5249,11 @@
       <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.OrdenTrabajoInsumo)">
         <MappingFragment StoreEntitySet="OrdenTrabajoInsumoSet">
           <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+          <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -5066,6 +5262,7 @@
         <MappingFragment StoreEntitySet="ParteProduccionSet">
           <ScalarProperty Name="IdParte" ColumnName="IdParte" />
           <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
           <ScalarProperty Name="Glosa" ColumnName="Glosa" />
           <ScalarProperty Name="FechaFabricacion" ColumnName="FechaFabricacion" />
           <ScalarProperty Name="CantidadProducida" ColumnName="CantidadProducida" />
@@ -5078,6 +5275,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.OrdenTrabajo)">
         <MappingFragment StoreEntitySet="OrdenTrabajoSet">
           <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+          <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
           <ScalarProperty Name="Glosa" ColumnName="Glosa" />
           <ScalarProperty Name="FechaExpedicion" ColumnName="FechaExpedicion" />
           <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
@@ -5091,6 +5289,11 @@
       <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.OrdenTrabajoPersonal)">
         <MappingFragment StoreEntitySet="OrdenTrabajoPersonalSet">
           <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+          <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+          <ScalarProperty Name="IdPersonal" ColumnName="IdPersonal" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaTermino" ColumnName="FechaTermino" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -5110,6 +5313,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.PlanProduccion)">
         <MappingFragment StoreEntitySet="PlanProduccionSet">
           <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
           <ScalarProperty Name="Glosa" ColumnName="Glosa" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="FechaPlan" ColumnName="FechaPlan" />
@@ -5146,6 +5350,12 @@
       <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.OrdenTrabajoMaquinaria)">
         <MappingFragment StoreEntitySet="OrdenTrabajoMaquinariaSet">
           <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+          <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+          <ScalarProperty Name="IdMaquinaria" ColumnName="IdMaquinaria" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaTermino" ColumnName="FechaTermino" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -5641,6 +5851,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="DetallePlanProduccionSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetallePlanProduccion)">
+        <MappingFragment StoreEntitySet="DetallePlanProduccionSet">
+          <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+          <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="CantidaRequerida" ColumnName="CantidaRequerida" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="DocumentoReferenciaAlmacen" TypeName="ETNADbModel.DocumentoReferenciaAlmacen" StoreEntitySet="DocumentosReferencia">
       <EndProperty Name="Almacen">
         <ScalarProperty Name="Id" ColumnName="Almacen_Id" />
@@ -5756,6 +5977,7 @@
     <AssociationSetMapping Name="PlanProduccionPlanProduccionMaquinaria" TypeName="ETNADbModel.PlanProduccionPlanProduccionMaquinaria" StoreEntitySet="PlanProduccionMaquinariaSet">
       <EndProperty Name="PlanProduccion">
         <ScalarProperty Name="IdPlan" ColumnName="PlanProduccion_IdPlan" />
+        <ScalarProperty Name="IdProducto" ColumnName="PlanProduccion_IdProducto" />
       </EndProperty>
       <EndProperty Name="PlanProduccionMaquinaria">
         <ScalarProperty Name="IdProgramacion" ColumnName="IdProgramacion" />
@@ -5767,6 +5989,7 @@
     <AssociationSetMapping Name="PlanProduccionPlanProduccionInsumo" TypeName="ETNADbModel.PlanProduccionPlanProduccionInsumo" StoreEntitySet="PlanProduccionInsumoSet">
       <EndProperty Name="PlanProduccion">
         <ScalarProperty Name="IdPlan" ColumnName="PlanProduccion_IdPlan" />
+        <ScalarProperty Name="IdProducto" ColumnName="PlanProduccion_IdProducto" />
       </EndProperty>
       <EndProperty Name="PlanProduccionInsumo">
         <ScalarProperty Name="IdProgramacion" ColumnName="IdProgramacion" />
@@ -5778,6 +6001,7 @@
     <AssociationSetMapping Name="PlanProduccionPlanProduccionPersonal" TypeName="ETNADbModel.PlanProduccionPlanProduccionPersonal" StoreEntitySet="PlanProduccionPersonalSet">
       <EndProperty Name="PlanProduccion">
         <ScalarProperty Name="IdPlan" ColumnName="PlanProduccion_IdPlan" />
+        <ScalarProperty Name="IdProducto" ColumnName="PlanProduccion_IdProducto" />
       </EndProperty>
       <EndProperty Name="PlanProduccionPersonal">
         <ScalarProperty Name="IdProgramacion" ColumnName="IdProgramacion" />
@@ -5789,6 +6013,7 @@
     <AssociationSetMapping Name="SolicitudProduccionPlanProduccion" TypeName="ETNADbModel.SolicitudProduccionPlanProduccion" StoreEntitySet="SolicitudProduccionSet">
       <EndProperty Name="PlanProduccion">
         <ScalarProperty Name="IdPlan" ColumnName="PlanProduccion_IdPlan" />
+        <ScalarProperty Name="IdProducto" ColumnName="PlanProduccion_IdProducto" />
       </EndProperty>
       <EndProperty Name="SolicitudProduccion">
         <ScalarProperty Name="IdSolicitud" ColumnName="IdSolicitud" />
@@ -5808,6 +6033,7 @@
     <AssociationSetMapping Name="LoteProduccionOrdenTrabajo" TypeName="ETNADbModel.LoteProduccionOrdenTrabajo" StoreEntitySet="LoteProduccionSet">
       <EndProperty Name="OrdenTrabajo">
         <ScalarProperty Name="IdOrden" ColumnName="OrdenTrabajo_IdOrden" />
+        <ScalarProperty Name="IdLinea" ColumnName="OrdenTrabajo_IdLinea" />
       </EndProperty>
       <EndProperty Name="LoteProduccion">
         <ScalarProperty Name="IdLote" ColumnName="IdLote" />
@@ -5821,6 +6047,7 @@
       </EndProperty>
       <EndProperty Name="OrdenTrabajo">
         <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+        <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="SolicitudProduccionDetalleSolicitudProduccion" TypeName="ETNADbModel.SolicitudProduccionDetalleSolicitudProduccion" StoreEntitySet="DetalleSolicitudProduccionSet">
@@ -5836,6 +6063,7 @@
     <AssociationSetMapping Name="OrdenTrabajoDetalleOrdenTrabajo" TypeName="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajo" StoreEntitySet="DetalleOrdenTrabajoSet">
       <EndProperty Name="OrdenTrabajo">
         <ScalarProperty Name="IdOrden" ColumnName="OrdenTrabajo_IdOrden" />
+        <ScalarProperty Name="IdLinea" ColumnName="OrdenTrabajo_IdLinea" />
       </EndProperty>
       <EndProperty Name="DetalleOrdenTrabajo">
         <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
@@ -5845,6 +6073,7 @@
     <AssociationSetMapping Name="OrdenTrabajoSolicitudReprogramacion" TypeName="ETNADbModel.OrdenTrabajoSolicitudReprogramacion" StoreEntitySet="SolicitudReprogramacionSet">
       <EndProperty Name="OrdenTrabajo">
         <ScalarProperty Name="IdOrden" ColumnName="OrdenTrabajo_IdOrden" />
+        <ScalarProperty Name="IdLinea" ColumnName="OrdenTrabajo_IdLinea" />
       </EndProperty>
       <EndProperty Name="SolicitudReprogramacion">
         <ScalarProperty Name="IdReprogramacion" ColumnName="IdReprogramacion" />
@@ -5854,44 +6083,45 @@
     <AssociationSetMapping Name="OrdenTrabajoOrdenTrabajoInsumo" TypeName="ETNADbModel.OrdenTrabajoOrdenTrabajoInsumo" StoreEntitySet="OrdenTrabajoInsumoSet">
       <EndProperty Name="OrdenTrabajo">
         <ScalarProperty Name="IdOrden" ColumnName="OrdenTrabajo_IdOrden" />
+        <ScalarProperty Name="IdLinea" ColumnName="OrdenTrabajo_IdLinea" />
       </EndProperty>
       <EndProperty Name="OrdenTrabajoInsumo">
         <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+        <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+        <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="OrdenTrabajoOrdenTrabajoMaquinaria" TypeName="ETNADbModel.OrdenTrabajoOrdenTrabajoMaquinaria" StoreEntitySet="OrdenTrabajoMaquinariaSet">
       <EndProperty Name="OrdenTrabajo">
         <ScalarProperty Name="IdOrden" ColumnName="OrdenTrabajo_IdOrden" />
+        <ScalarProperty Name="IdLinea" ColumnName="OrdenTrabajo_IdLinea" />
       </EndProperty>
       <EndProperty Name="OrdenTrabajoMaquinaria">
         <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+        <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+        <ScalarProperty Name="IdMaquinaria" ColumnName="IdMaquinaria" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="OrdenTrabajoOrdenTrabajoPersonal" TypeName="ETNADbModel.OrdenTrabajoOrdenTrabajoPersonal" StoreEntitySet="OrdenTrabajoPersonalSet">
       <EndProperty Name="OrdenTrabajo">
         <ScalarProperty Name="IdOrden" ColumnName="OrdenTrabajo_IdOrden" />
+        <ScalarProperty Name="IdLinea" ColumnName="OrdenTrabajo_IdLinea" />
       </EndProperty>
       <EndProperty Name="OrdenTrabajoPersonal">
         <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="ParteProduccionParteProduccionBateria" TypeName="ETNADbModel.ParteProduccionParteProduccionBateria" StoreEntitySet="ParteProduccionBateriaSet">
-      <EndProperty Name="ParteProduccion">
-        <ScalarProperty Name="IdParte" ColumnName="ParteProduccion_IdParte" />
-        <ScalarProperty Name="IdOrden" ColumnName="ParteProduccion_IdOrden" />
-      </EndProperty>
-      <EndProperty Name="ParteProduccionBateria">
-        <ScalarProperty Name="IdParte" ColumnName="IdParte" />
-        <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+        <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+        <ScalarProperty Name="IdPersonal" ColumnName="IdPersonal" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="OrdenTrabajoParteProduccion" TypeName="ETNADbModel.OrdenTrabajoParteProduccion" StoreEntitySet="ParteProduccionSet">
       <EndProperty Name="OrdenTrabajo">
         <ScalarProperty Name="IdOrden" ColumnName="OrdenTrabajo_IdOrden" />
+        <ScalarProperty Name="IdLinea" ColumnName="OrdenTrabajo_IdLinea" />
       </EndProperty>
       <EndProperty Name="ParteProduccion">
         <ScalarProperty Name="IdParte" ColumnName="IdParte" />
         <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+        <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="MaquinariaPlanProduccionMaquinaria" TypeName="ETNADbModel.MaquinariaPlanProduccionMaquinaria" StoreEntitySet="PlanProduccionMaquinariaSet">
@@ -5950,6 +6180,8 @@
       </EndProperty>
       <EndProperty Name="OrdenTrabajoMaquinaria">
         <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+        <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+        <ScalarProperty Name="IdMaquinaria" ColumnName="IdMaquinaria" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="ProductoOrdenTrabajoInsumo" TypeName="ETNADbModel.ProductoOrdenTrabajoInsumo" StoreEntitySet="OrdenTrabajoInsumoSet">
@@ -5958,6 +6190,8 @@
       </EndProperty>
       <EndProperty Name="OrdenTrabajoInsumo">
         <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+        <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+        <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="EmpleadoOrdenTrabajoPersonal" TypeName="ETNADbModel.EmpleadoOrdenTrabajoPersonal" StoreEntitySet="OrdenTrabajoPersonalSet">
@@ -5966,15 +6200,8 @@
       </EndProperty>
       <EndProperty Name="OrdenTrabajoPersonal">
         <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="ProductoParteProduccionBateria" TypeName="ETNADbModel.ProductoParteProduccionBateria" StoreEntitySet="ParteProduccionBateriaSet">
-      <EndProperty Name="Producto">
-        <ScalarProperty Name="Id" ColumnName="Producto_Id" />
-      </EndProperty>
-      <EndProperty Name="ParteProduccionBateria">
-        <ScalarProperty Name="IdParte" ColumnName="IdParte" />
-        <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+        <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+        <ScalarProperty Name="IdPersonal" ColumnName="IdPersonal" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="LineaProduccionPlanProduccionPersonal" TypeName="ETNADbModel.LineaProduccionPlanProduccionPersonal" StoreEntitySet="PlanProduccionPersonalSet">
@@ -6008,6 +6235,65 @@
         <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
         <ScalarProperty Name="IdMaquinaria" ColumnName="IdMaquinaria" />
         <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductoParteProduccion" TypeName="ETNADbModel.ProductoParteProduccion" StoreEntitySet="ParteProduccionSet">
+      <EndProperty Name="Producto">
+        <ScalarProperty Name="Id" ColumnName="Producto_Id" />
+      </EndProperty>
+      <EndProperty Name="ParteProduccion">
+        <ScalarProperty Name="IdParte" ColumnName="IdParte" />
+        <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+        <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlanProduccionProducto" TypeName="ETNADbModel.PlanProduccionProducto" StoreEntitySet="PlanProduccionSet">
+      <EndProperty Name="Producto">
+        <ScalarProperty Name="Id" ColumnName="Producto_Id" />
+      </EndProperty>
+      <EndProperty Name="PlanProduccion">
+        <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+        <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LineaProduccionOrdenTrabajo" TypeName="ETNADbModel.LineaProduccionOrdenTrabajo" StoreEntitySet="OrdenTrabajoSet">
+      <EndProperty Name="LineaProduccion">
+        <ScalarProperty Name="IdLinea" ColumnName="LineaProduccion_IdLinea" />
+      </EndProperty>
+      <EndProperty Name="OrdenTrabajo">
+        <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
+        <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlanProduccionDetallePlanProduccion" TypeName="ETNADbModel.PlanProduccionDetallePlanProduccion" StoreEntitySet="DetallePlanProduccionSet">
+      <EndProperty Name="PlanProduccion">
+        <ScalarProperty Name="IdPlan" ColumnName="PlanProduccion_IdPlan" />
+        <ScalarProperty Name="IdProducto" ColumnName="PlanProduccion_IdProducto" />
+      </EndProperty>
+      <EndProperty Name="DetallePlanProduccion">
+        <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+        <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+        <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LineaProduccionDetallePlanProduccion" TypeName="ETNADbModel.LineaProduccionDetallePlanProduccion" StoreEntitySet="DetallePlanProduccionSet">
+      <EndProperty Name="LineaProduccion">
+        <ScalarProperty Name="IdLinea" ColumnName="LineaProduccion_IdLinea" />
+      </EndProperty>
+      <EndProperty Name="DetallePlanProduccion">
+        <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+        <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+        <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductoDetallePlanProduccion" TypeName="ETNADbModel.ProductoDetallePlanProduccion" StoreEntitySet="DetallePlanProduccionSet">
+      <EndProperty Name="Producto">
+        <ScalarProperty Name="Id" ColumnName="Producto_Id" />
+      </EndProperty>
+      <EndProperty Name="DetallePlanProduccion">
+        <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+        <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+        <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

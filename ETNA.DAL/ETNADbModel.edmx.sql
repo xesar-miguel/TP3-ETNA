@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/06/2015 22:01:54
+-- Date Created: 05/06/2015 23:41:35
 -- Generated from EDMX file: E:\TP3-ETNA\ETNA.DAL\ETNADbModel.edmx
 -- --------------------------------------------------
 
@@ -281,9 +281,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_OrdenTrabajoOrdenTrabajoPersonal]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[OrdenTrabajoPersonalSet] DROP CONSTRAINT [FK_OrdenTrabajoOrdenTrabajoPersonal];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ParteProduccionParteProduccionBateria]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ParteProduccionBateriaSet] DROP CONSTRAINT [FK_ParteProduccionParteProduccionBateria];
-GO
 IF OBJECT_ID(N'[dbo].[FK_OrdenTrabajoParteProduccion]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ParteProduccionSet] DROP CONSTRAINT [FK_OrdenTrabajoParteProduccion];
 GO
@@ -311,8 +308,14 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_EmpleadoOrdenTrabajoPersonal]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[OrdenTrabajoPersonalSet] DROP CONSTRAINT [FK_EmpleadoOrdenTrabajoPersonal];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ProductoParteProduccionBateria]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ParteProduccionBateriaSet] DROP CONSTRAINT [FK_ProductoParteProduccionBateria];
+IF OBJECT_ID(N'[dbo].[FK_LineaProduccionPlanProduccionPersonal]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PlanProduccionPersonalSet] DROP CONSTRAINT [FK_LineaProduccionPlanProduccionPersonal];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LineaProduccionPlanProduccionInsumo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PlanProduccionInsumoSet] DROP CONSTRAINT [FK_LineaProduccionPlanProduccionInsumo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LineaProduccionPlanProduccionMaquinaria]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PlanProduccionMaquinariaSet] DROP CONSTRAINT [FK_LineaProduccionPlanProduccionMaquinaria];
 GO
 IF OBJECT_ID(N'[dbo].[FK_GuiaEntrada_inherits_DocumentoReferencia]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DocumentosReferencia_GuiaEntrada] DROP CONSTRAINT [FK_GuiaEntrada_inherits_DocumentoReferencia];
@@ -369,9 +372,6 @@ IF OBJECT_ID(N'[dbo].[DetalleSolicitudSalida]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[DetalleGuiaSalida]', 'U') IS NOT NULL
     DROP TABLE [dbo].[DetalleGuiaSalida];
-GO
-IF OBJECT_ID(N'[dbo].[ParteProduccionBateriaSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ParteProduccionBateriaSet];
 GO
 IF OBJECT_ID(N'[dbo].[DetalleOrdenTrabajoSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[DetalleOrdenTrabajoSet];
@@ -535,6 +535,9 @@ GO
 IF OBJECT_ID(N'[dbo].[TipoProductoSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TipoProductoSet];
 GO
+IF OBJECT_ID(N'[dbo].[LineaProduccionSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[LineaProduccionSet];
+GO
 IF OBJECT_ID(N'[dbo].[DocumentosReferencia_GuiaEntrada]', 'U') IS NOT NULL
     DROP TABLE [dbo].[DocumentosReferencia_GuiaEntrada];
 GO
@@ -692,7 +695,8 @@ CREATE TABLE [dbo].[LoteProduccionSet] (
     [Estado] nvarchar(max)  NOT NULL,
     [SolicitudProduccion_IdSolicitud] int  NOT NULL,
     [SolicitudProduccion_IdPlan] nvarchar(max)  NOT NULL,
-    [OrdenTrabajo_IdOrden] int  NOT NULL
+    [OrdenTrabajo_IdOrden] int  NOT NULL,
+    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -726,23 +730,12 @@ CREATE TABLE [dbo].[DetalleGuiaSalida] (
 );
 GO
 
--- Creating table 'ParteProduccionBateriaSet'
-CREATE TABLE [dbo].[ParteProduccionBateriaSet] (
-    [IdParte] int IDENTITY(1,1) NOT NULL,
-    [IdProducto] nvarchar(max)  NOT NULL,
-    [CantidadPropuesta] nvarchar(max)  NOT NULL,
-    [CantidadReal] nvarchar(max)  NOT NULL,
-    [ParteProduccion_IdParte] int  NOT NULL,
-    [ParteProduccion_IdOrden] nvarchar(max)  NOT NULL,
-    [Producto_Id] int  NOT NULL
-);
-GO
-
 -- Creating table 'DetalleOrdenTrabajoSet'
 CREATE TABLE [dbo].[DetalleOrdenTrabajoSet] (
     [IdOrden] int IDENTITY(1,1) NOT NULL,
     [IdSolicitud] nvarchar(max)  NOT NULL,
     [OrdenTrabajo_IdOrden] int  NOT NULL,
+    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL,
     [SolicitudSalida_Id] int  NOT NULL
 );
 GO
@@ -750,7 +743,13 @@ GO
 -- Creating table 'OrdenTrabajoInsumoSet'
 CREATE TABLE [dbo].[OrdenTrabajoInsumoSet] (
     [IdOrden] int IDENTITY(1,1) NOT NULL,
+    [IdLinea] nvarchar(max)  NOT NULL,
+    [IdProducto] nvarchar(max)  NOT NULL,
+    [FechaEntrega] nvarchar(max)  NOT NULL,
+    [Cantidad] nvarchar(max)  NOT NULL,
+    [Estado] nvarchar(max)  NOT NULL,
     [OrdenTrabajo_IdOrden] int  NOT NULL,
+    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL,
     [Producto_Id] int  NOT NULL
 );
 GO
@@ -759,18 +758,22 @@ GO
 CREATE TABLE [dbo].[ParteProduccionSet] (
     [IdParte] int IDENTITY(1,1) NOT NULL,
     [IdOrden] nvarchar(max)  NOT NULL,
+    [IdProducto] nvarchar(max)  NOT NULL,
     [Glosa] nvarchar(max)  NOT NULL,
     [FechaFabricacion] nvarchar(max)  NOT NULL,
     [CantidadProducida] nvarchar(max)  NOT NULL,
     [Comentario] nvarchar(max)  NOT NULL,
     [Estado] nvarchar(max)  NOT NULL,
-    [OrdenTrabajo_IdOrden] int  NOT NULL
+    [OrdenTrabajo_IdOrden] int  NOT NULL,
+    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL,
+    [Producto_Id] int  NOT NULL
 );
 GO
 
 -- Creating table 'OrdenTrabajoSet'
 CREATE TABLE [dbo].[OrdenTrabajoSet] (
     [IdOrden] int IDENTITY(1,1) NOT NULL,
+    [IdLinea] nvarchar(max)  NOT NULL,
     [Glosa] nvarchar(max)  NOT NULL,
     [FechaExpedicion] nvarchar(max)  NOT NULL,
     [FechaInicio] nvarchar(max)  NOT NULL,
@@ -778,14 +781,21 @@ CREATE TABLE [dbo].[OrdenTrabajoSet] (
     [CantidadSolicitada] nvarchar(max)  NOT NULL,
     [Estado] nvarchar(max)  NOT NULL,
     [DetalleSolicitudProduccion_IdSolicitud] int  NOT NULL,
-    [DetalleSolicitudProduccion_IdOrden] nvarchar(max)  NOT NULL
+    [DetalleSolicitudProduccion_IdOrden] nvarchar(max)  NOT NULL,
+    [LineaProduccion_IdLinea] int  NOT NULL
 );
 GO
 
 -- Creating table 'OrdenTrabajoPersonalSet'
 CREATE TABLE [dbo].[OrdenTrabajoPersonalSet] (
     [IdOrden] int IDENTITY(1,1) NOT NULL,
+    [IdLinea] nvarchar(max)  NOT NULL,
+    [IdPersonal] nvarchar(max)  NOT NULL,
+    [FechaInicio] nvarchar(max)  NOT NULL,
+    [FechaTermino] nvarchar(max)  NOT NULL,
+    [Estado] nvarchar(max)  NOT NULL,
     [OrdenTrabajo_IdOrden] int  NOT NULL,
+    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL,
     [Empleado_Id] int  NOT NULL
 );
 GO
@@ -798,20 +808,23 @@ CREATE TABLE [dbo].[SolicitudProduccionSet] (
     [FechaSolicitud] nvarchar(max)  NOT NULL,
     [Observacion] nvarchar(max)  NOT NULL,
     [Estado] nvarchar(max)  NOT NULL,
-    [PlanProduccion_IdPlan] int  NOT NULL
+    [PlanProduccion_IdPlan] int  NOT NULL,
+    [PlanProduccion_IdProducto] nvarchar(max)  NOT NULL
 );
 GO
 
 -- Creating table 'PlanProduccionSet'
 CREATE TABLE [dbo].[PlanProduccionSet] (
     [IdPlan] int IDENTITY(1,1) NOT NULL,
+    [IdProducto] nvarchar(max)  NOT NULL,
     [Glosa] nvarchar(max)  NOT NULL,
     [Descripcion] nvarchar(max)  NOT NULL,
     [FechaPlan] nvarchar(max)  NOT NULL,
     [UnidadesProducir] nvarchar(max)  NOT NULL,
     [TotalHorasMaquinaria] nvarchar(max)  NOT NULL,
     [TotalCantidadMaquinaria] nvarchar(max)  NOT NULL,
-    [TotalCantidadInsumo] nvarchar(max)  NOT NULL
+    [TotalCantidadInsumo] nvarchar(max)  NOT NULL,
+    [Producto_Id] int  NOT NULL
 );
 GO
 
@@ -826,6 +839,7 @@ CREATE TABLE [dbo].[PlanProduccionMaquinariaSet] (
     [Cantidad] nvarchar(max)  NOT NULL,
     [Estado] nvarchar(max)  NOT NULL,
     [PlanProduccion_IdPlan] int  NOT NULL,
+    [PlanProduccion_IdProducto] nvarchar(max)  NOT NULL,
     [Maquinaria_IdMaquinaria] int  NOT NULL,
     [LineaProduccion_IdLinea] int  NOT NULL
 );
@@ -843,7 +857,14 @@ GO
 -- Creating table 'OrdenTrabajoMaquinariaSet'
 CREATE TABLE [dbo].[OrdenTrabajoMaquinariaSet] (
     [IdOrden] int IDENTITY(1,1) NOT NULL,
+    [IdLinea] nvarchar(max)  NOT NULL,
+    [IdMaquinaria] nvarchar(max)  NOT NULL,
+    [FechaInicio] nvarchar(max)  NOT NULL,
+    [FechaTermino] nvarchar(max)  NOT NULL,
+    [Cantidad] nvarchar(max)  NOT NULL,
+    [Estado] nvarchar(max)  NOT NULL,
     [OrdenTrabajo_IdOrden] int  NOT NULL,
+    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL,
     [Maquinaria_IdMaquinaria] int  NOT NULL
 );
 GO
@@ -1257,6 +1278,7 @@ CREATE TABLE [dbo].[PlanProduccionInsumoSet] (
     [Cantidad] nvarchar(max)  NOT NULL,
     [Estado] nvarchar(max)  NOT NULL,
     [PlanProduccion_IdPlan] int  NOT NULL,
+    [PlanProduccion_IdProducto] nvarchar(max)  NOT NULL,
     [Producto_Id] int  NOT NULL,
     [LineaProduccion_IdLinea] int  NOT NULL
 );
@@ -1272,6 +1294,7 @@ CREATE TABLE [dbo].[PlanProduccionPersonalSet] (
     [FechaTermino] nvarchar(max)  NOT NULL,
     [Estado] nvarchar(max)  NOT NULL,
     [PlanProduccion_IdPlan] int  NOT NULL,
+    [PlanProduccion_IdProducto] nvarchar(max)  NOT NULL,
     [Empleado_Id] int  NOT NULL,
     [LineaProduccion_IdLinea] int  NOT NULL
 );
@@ -1283,7 +1306,8 @@ CREATE TABLE [dbo].[SolicitudReprogramacionSet] (
     [IdOrden] nvarchar(max)  NOT NULL,
     [Motivo] nvarchar(max)  NOT NULL,
     [Estado] nvarchar(max)  NOT NULL,
-    [OrdenTrabajo_IdOrden] int  NOT NULL
+    [OrdenTrabajo_IdOrden] int  NOT NULL,
+    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -1300,6 +1324,20 @@ CREATE TABLE [dbo].[LineaProduccionSet] (
     [IdLinea] int IDENTITY(1,1) NOT NULL,
     [Descripcion] nvarchar(max)  NOT NULL,
     [Estado] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'DetallePlanProduccionSet'
+CREATE TABLE [dbo].[DetallePlanProduccionSet] (
+    [IdPlan] int IDENTITY(1,1) NOT NULL,
+    [IdLinea] nvarchar(max)  NOT NULL,
+    [IdProducto] nvarchar(max)  NOT NULL,
+    [CantidaRequerida] nvarchar(max)  NOT NULL,
+    [Estado] nvarchar(max)  NOT NULL,
+    [PlanProduccion_IdPlan] int  NOT NULL,
+    [PlanProduccion_IdProducto] nvarchar(max)  NOT NULL,
+    [LineaProduccion_IdLinea] int  NOT NULL,
+    [Producto_Id] int  NOT NULL
 );
 GO
 
@@ -1432,40 +1470,34 @@ ADD CONSTRAINT [PK_DetalleGuiaSalida]
     PRIMARY KEY CLUSTERED ([IdGuiaSalida], [IdProducto] ASC);
 GO
 
--- Creating primary key on [IdParte], [IdProducto] in table 'ParteProduccionBateriaSet'
-ALTER TABLE [dbo].[ParteProduccionBateriaSet]
-ADD CONSTRAINT [PK_ParteProduccionBateriaSet]
-    PRIMARY KEY CLUSTERED ([IdParte], [IdProducto] ASC);
-GO
-
 -- Creating primary key on [IdOrden], [IdSolicitud] in table 'DetalleOrdenTrabajoSet'
 ALTER TABLE [dbo].[DetalleOrdenTrabajoSet]
 ADD CONSTRAINT [PK_DetalleOrdenTrabajoSet]
     PRIMARY KEY CLUSTERED ([IdOrden], [IdSolicitud] ASC);
 GO
 
--- Creating primary key on [IdOrden] in table 'OrdenTrabajoInsumoSet'
+-- Creating primary key on [IdOrden], [IdLinea], [IdProducto] in table 'OrdenTrabajoInsumoSet'
 ALTER TABLE [dbo].[OrdenTrabajoInsumoSet]
 ADD CONSTRAINT [PK_OrdenTrabajoInsumoSet]
-    PRIMARY KEY CLUSTERED ([IdOrden] ASC);
+    PRIMARY KEY CLUSTERED ([IdOrden], [IdLinea], [IdProducto] ASC);
 GO
 
--- Creating primary key on [IdParte], [IdOrden] in table 'ParteProduccionSet'
+-- Creating primary key on [IdParte], [IdOrden], [IdProducto] in table 'ParteProduccionSet'
 ALTER TABLE [dbo].[ParteProduccionSet]
 ADD CONSTRAINT [PK_ParteProduccionSet]
-    PRIMARY KEY CLUSTERED ([IdParte], [IdOrden] ASC);
+    PRIMARY KEY CLUSTERED ([IdParte], [IdOrden], [IdProducto] ASC);
 GO
 
--- Creating primary key on [IdOrden] in table 'OrdenTrabajoSet'
+-- Creating primary key on [IdOrden], [IdLinea] in table 'OrdenTrabajoSet'
 ALTER TABLE [dbo].[OrdenTrabajoSet]
 ADD CONSTRAINT [PK_OrdenTrabajoSet]
-    PRIMARY KEY CLUSTERED ([IdOrden] ASC);
+    PRIMARY KEY CLUSTERED ([IdOrden], [IdLinea] ASC);
 GO
 
--- Creating primary key on [IdOrden] in table 'OrdenTrabajoPersonalSet'
+-- Creating primary key on [IdOrden], [IdLinea], [IdPersonal] in table 'OrdenTrabajoPersonalSet'
 ALTER TABLE [dbo].[OrdenTrabajoPersonalSet]
 ADD CONSTRAINT [PK_OrdenTrabajoPersonalSet]
-    PRIMARY KEY CLUSTERED ([IdOrden] ASC);
+    PRIMARY KEY CLUSTERED ([IdOrden], [IdLinea], [IdPersonal] ASC);
 GO
 
 -- Creating primary key on [IdSolicitud], [IdPlan] in table 'SolicitudProduccionSet'
@@ -1474,10 +1506,10 @@ ADD CONSTRAINT [PK_SolicitudProduccionSet]
     PRIMARY KEY CLUSTERED ([IdSolicitud], [IdPlan] ASC);
 GO
 
--- Creating primary key on [IdPlan] in table 'PlanProduccionSet'
+-- Creating primary key on [IdPlan], [IdProducto] in table 'PlanProduccionSet'
 ALTER TABLE [dbo].[PlanProduccionSet]
 ADD CONSTRAINT [PK_PlanProduccionSet]
-    PRIMARY KEY CLUSTERED ([IdPlan] ASC);
+    PRIMARY KEY CLUSTERED ([IdPlan], [IdProducto] ASC);
 GO
 
 -- Creating primary key on [IdProgramacion], [IdPlan], [IdMaquinaria], [IdLinea] in table 'PlanProduccionMaquinariaSet'
@@ -1492,10 +1524,10 @@ ADD CONSTRAINT [PK_DetalleSolicitudProduccionSet]
     PRIMARY KEY CLUSTERED ([IdSolicitud], [IdOrden] ASC);
 GO
 
--- Creating primary key on [IdOrden] in table 'OrdenTrabajoMaquinariaSet'
+-- Creating primary key on [IdOrden], [IdLinea], [IdMaquinaria] in table 'OrdenTrabajoMaquinariaSet'
 ALTER TABLE [dbo].[OrdenTrabajoMaquinariaSet]
 ADD CONSTRAINT [PK_OrdenTrabajoMaquinariaSet]
-    PRIMARY KEY CLUSTERED ([IdOrden] ASC);
+    PRIMARY KEY CLUSTERED ([IdOrden], [IdLinea], [IdMaquinaria] ASC);
 GO
 
 -- Creating primary key on [IdMaquinaria] in table 'MaquinariaSet'
@@ -1766,6 +1798,12 @@ GO
 ALTER TABLE [dbo].[LineaProduccionSet]
 ADD CONSTRAINT [PK_LineaProduccionSet]
     PRIMARY KEY CLUSTERED ([IdLinea] ASC);
+GO
+
+-- Creating primary key on [IdPlan], [IdLinea], [IdProducto] in table 'DetallePlanProduccionSet'
+ALTER TABLE [dbo].[DetallePlanProduccionSet]
+ADD CONSTRAINT [PK_DetallePlanProduccionSet]
+    PRIMARY KEY CLUSTERED ([IdPlan], [IdLinea], [IdProducto] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'DocumentosReferencia_GuiaEntrada'
@@ -2787,60 +2825,60 @@ ON [dbo].[DetalleInventario]
     ([IdProducto]);
 GO
 
--- Creating foreign key on [PlanProduccion_IdPlan] in table 'PlanProduccionMaquinariaSet'
+-- Creating foreign key on [PlanProduccion_IdPlan], [PlanProduccion_IdProducto] in table 'PlanProduccionMaquinariaSet'
 ALTER TABLE [dbo].[PlanProduccionMaquinariaSet]
 ADD CONSTRAINT [FK_PlanProduccionPlanProduccionMaquinaria]
-    FOREIGN KEY ([PlanProduccion_IdPlan])
+    FOREIGN KEY ([PlanProduccion_IdPlan], [PlanProduccion_IdProducto])
     REFERENCES [dbo].[PlanProduccionSet]
-        ([IdPlan])
+        ([IdPlan], [IdProducto])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PlanProduccionPlanProduccionMaquinaria'
 CREATE INDEX [IX_FK_PlanProduccionPlanProduccionMaquinaria]
 ON [dbo].[PlanProduccionMaquinariaSet]
-    ([PlanProduccion_IdPlan]);
+    ([PlanProduccion_IdPlan], [PlanProduccion_IdProducto]);
 GO
 
--- Creating foreign key on [PlanProduccion_IdPlan] in table 'PlanProduccionInsumoSet'
+-- Creating foreign key on [PlanProduccion_IdPlan], [PlanProduccion_IdProducto] in table 'PlanProduccionInsumoSet'
 ALTER TABLE [dbo].[PlanProduccionInsumoSet]
 ADD CONSTRAINT [FK_PlanProduccionPlanProduccionInsumo]
-    FOREIGN KEY ([PlanProduccion_IdPlan])
+    FOREIGN KEY ([PlanProduccion_IdPlan], [PlanProduccion_IdProducto])
     REFERENCES [dbo].[PlanProduccionSet]
-        ([IdPlan])
+        ([IdPlan], [IdProducto])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PlanProduccionPlanProduccionInsumo'
 CREATE INDEX [IX_FK_PlanProduccionPlanProduccionInsumo]
 ON [dbo].[PlanProduccionInsumoSet]
-    ([PlanProduccion_IdPlan]);
+    ([PlanProduccion_IdPlan], [PlanProduccion_IdProducto]);
 GO
 
--- Creating foreign key on [PlanProduccion_IdPlan] in table 'PlanProduccionPersonalSet'
+-- Creating foreign key on [PlanProduccion_IdPlan], [PlanProduccion_IdProducto] in table 'PlanProduccionPersonalSet'
 ALTER TABLE [dbo].[PlanProduccionPersonalSet]
 ADD CONSTRAINT [FK_PlanProduccionPlanProduccionPersonal]
-    FOREIGN KEY ([PlanProduccion_IdPlan])
+    FOREIGN KEY ([PlanProduccion_IdPlan], [PlanProduccion_IdProducto])
     REFERENCES [dbo].[PlanProduccionSet]
-        ([IdPlan])
+        ([IdPlan], [IdProducto])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PlanProduccionPlanProduccionPersonal'
 CREATE INDEX [IX_FK_PlanProduccionPlanProduccionPersonal]
 ON [dbo].[PlanProduccionPersonalSet]
-    ([PlanProduccion_IdPlan]);
+    ([PlanProduccion_IdPlan], [PlanProduccion_IdProducto]);
 GO
 
--- Creating foreign key on [PlanProduccion_IdPlan] in table 'SolicitudProduccionSet'
+-- Creating foreign key on [PlanProduccion_IdPlan], [PlanProduccion_IdProducto] in table 'SolicitudProduccionSet'
 ALTER TABLE [dbo].[SolicitudProduccionSet]
 ADD CONSTRAINT [FK_SolicitudProduccionPlanProduccion]
-    FOREIGN KEY ([PlanProduccion_IdPlan])
+    FOREIGN KEY ([PlanProduccion_IdPlan], [PlanProduccion_IdProducto])
     REFERENCES [dbo].[PlanProduccionSet]
-        ([IdPlan])
+        ([IdPlan], [IdProducto])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_SolicitudProduccionPlanProduccion'
 CREATE INDEX [IX_FK_SolicitudProduccionPlanProduccion]
 ON [dbo].[SolicitudProduccionSet]
-    ([PlanProduccion_IdPlan]);
+    ([PlanProduccion_IdPlan], [PlanProduccion_IdProducto]);
 GO
 
 -- Creating foreign key on [SolicitudProduccion_IdSolicitud], [SolicitudProduccion_IdPlan] in table 'LoteProduccionSet'
@@ -2857,18 +2895,18 @@ ON [dbo].[LoteProduccionSet]
     ([SolicitudProduccion_IdSolicitud], [SolicitudProduccion_IdPlan]);
 GO
 
--- Creating foreign key on [OrdenTrabajo_IdOrden] in table 'LoteProduccionSet'
+-- Creating foreign key on [OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea] in table 'LoteProduccionSet'
 ALTER TABLE [dbo].[LoteProduccionSet]
 ADD CONSTRAINT [FK_LoteProduccionOrdenTrabajo]
-    FOREIGN KEY ([OrdenTrabajo_IdOrden])
+    FOREIGN KEY ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea])
     REFERENCES [dbo].[OrdenTrabajoSet]
-        ([IdOrden])
+        ([IdOrden], [IdLinea])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_LoteProduccionOrdenTrabajo'
 CREATE INDEX [IX_FK_LoteProduccionOrdenTrabajo]
 ON [dbo].[LoteProduccionSet]
-    ([OrdenTrabajo_IdOrden]);
+    ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea]);
 GO
 
 -- Creating foreign key on [DetalleSolicitudProduccion_IdSolicitud], [DetalleSolicitudProduccion_IdOrden] in table 'OrdenTrabajoSet'
@@ -2899,102 +2937,88 @@ ON [dbo].[DetalleSolicitudProduccionSet]
     ([SolicitudProduccion_IdSolicitud], [SolicitudProduccion_IdPlan]);
 GO
 
--- Creating foreign key on [OrdenTrabajo_IdOrden] in table 'DetalleOrdenTrabajoSet'
+-- Creating foreign key on [OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea] in table 'DetalleOrdenTrabajoSet'
 ALTER TABLE [dbo].[DetalleOrdenTrabajoSet]
 ADD CONSTRAINT [FK_OrdenTrabajoDetalleOrdenTrabajo]
-    FOREIGN KEY ([OrdenTrabajo_IdOrden])
+    FOREIGN KEY ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea])
     REFERENCES [dbo].[OrdenTrabajoSet]
-        ([IdOrden])
+        ([IdOrden], [IdLinea])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_OrdenTrabajoDetalleOrdenTrabajo'
 CREATE INDEX [IX_FK_OrdenTrabajoDetalleOrdenTrabajo]
 ON [dbo].[DetalleOrdenTrabajoSet]
-    ([OrdenTrabajo_IdOrden]);
+    ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea]);
 GO
 
--- Creating foreign key on [OrdenTrabajo_IdOrden] in table 'SolicitudReprogramacionSet'
+-- Creating foreign key on [OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea] in table 'SolicitudReprogramacionSet'
 ALTER TABLE [dbo].[SolicitudReprogramacionSet]
 ADD CONSTRAINT [FK_OrdenTrabajoSolicitudReprogramacion]
-    FOREIGN KEY ([OrdenTrabajo_IdOrden])
+    FOREIGN KEY ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea])
     REFERENCES [dbo].[OrdenTrabajoSet]
-        ([IdOrden])
+        ([IdOrden], [IdLinea])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_OrdenTrabajoSolicitudReprogramacion'
 CREATE INDEX [IX_FK_OrdenTrabajoSolicitudReprogramacion]
 ON [dbo].[SolicitudReprogramacionSet]
-    ([OrdenTrabajo_IdOrden]);
+    ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea]);
 GO
 
--- Creating foreign key on [OrdenTrabajo_IdOrden] in table 'OrdenTrabajoInsumoSet'
+-- Creating foreign key on [OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea] in table 'OrdenTrabajoInsumoSet'
 ALTER TABLE [dbo].[OrdenTrabajoInsumoSet]
 ADD CONSTRAINT [FK_OrdenTrabajoOrdenTrabajoInsumo]
-    FOREIGN KEY ([OrdenTrabajo_IdOrden])
+    FOREIGN KEY ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea])
     REFERENCES [dbo].[OrdenTrabajoSet]
-        ([IdOrden])
+        ([IdOrden], [IdLinea])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_OrdenTrabajoOrdenTrabajoInsumo'
 CREATE INDEX [IX_FK_OrdenTrabajoOrdenTrabajoInsumo]
 ON [dbo].[OrdenTrabajoInsumoSet]
-    ([OrdenTrabajo_IdOrden]);
+    ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea]);
 GO
 
--- Creating foreign key on [OrdenTrabajo_IdOrden] in table 'OrdenTrabajoMaquinariaSet'
+-- Creating foreign key on [OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea] in table 'OrdenTrabajoMaquinariaSet'
 ALTER TABLE [dbo].[OrdenTrabajoMaquinariaSet]
 ADD CONSTRAINT [FK_OrdenTrabajoOrdenTrabajoMaquinaria]
-    FOREIGN KEY ([OrdenTrabajo_IdOrden])
+    FOREIGN KEY ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea])
     REFERENCES [dbo].[OrdenTrabajoSet]
-        ([IdOrden])
+        ([IdOrden], [IdLinea])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_OrdenTrabajoOrdenTrabajoMaquinaria'
 CREATE INDEX [IX_FK_OrdenTrabajoOrdenTrabajoMaquinaria]
 ON [dbo].[OrdenTrabajoMaquinariaSet]
-    ([OrdenTrabajo_IdOrden]);
+    ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea]);
 GO
 
--- Creating foreign key on [OrdenTrabajo_IdOrden] in table 'OrdenTrabajoPersonalSet'
+-- Creating foreign key on [OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea] in table 'OrdenTrabajoPersonalSet'
 ALTER TABLE [dbo].[OrdenTrabajoPersonalSet]
 ADD CONSTRAINT [FK_OrdenTrabajoOrdenTrabajoPersonal]
-    FOREIGN KEY ([OrdenTrabajo_IdOrden])
+    FOREIGN KEY ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea])
     REFERENCES [dbo].[OrdenTrabajoSet]
-        ([IdOrden])
+        ([IdOrden], [IdLinea])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_OrdenTrabajoOrdenTrabajoPersonal'
 CREATE INDEX [IX_FK_OrdenTrabajoOrdenTrabajoPersonal]
 ON [dbo].[OrdenTrabajoPersonalSet]
-    ([OrdenTrabajo_IdOrden]);
+    ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea]);
 GO
 
--- Creating foreign key on [ParteProduccion_IdParte], [ParteProduccion_IdOrden] in table 'ParteProduccionBateriaSet'
-ALTER TABLE [dbo].[ParteProduccionBateriaSet]
-ADD CONSTRAINT [FK_ParteProduccionParteProduccionBateria]
-    FOREIGN KEY ([ParteProduccion_IdParte], [ParteProduccion_IdOrden])
-    REFERENCES [dbo].[ParteProduccionSet]
-        ([IdParte], [IdOrden])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ParteProduccionParteProduccionBateria'
-CREATE INDEX [IX_FK_ParteProduccionParteProduccionBateria]
-ON [dbo].[ParteProduccionBateriaSet]
-    ([ParteProduccion_IdParte], [ParteProduccion_IdOrden]);
-GO
-
--- Creating foreign key on [OrdenTrabajo_IdOrden] in table 'ParteProduccionSet'
+-- Creating foreign key on [OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea] in table 'ParteProduccionSet'
 ALTER TABLE [dbo].[ParteProduccionSet]
 ADD CONSTRAINT [FK_OrdenTrabajoParteProduccion]
-    FOREIGN KEY ([OrdenTrabajo_IdOrden])
+    FOREIGN KEY ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea])
     REFERENCES [dbo].[OrdenTrabajoSet]
-        ([IdOrden])
+        ([IdOrden], [IdLinea])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_OrdenTrabajoParteProduccion'
 CREATE INDEX [IX_FK_OrdenTrabajoParteProduccion]
 ON [dbo].[ParteProduccionSet]
-    ([OrdenTrabajo_IdOrden]);
+    ([OrdenTrabajo_IdOrden], [OrdenTrabajo_IdLinea]);
 GO
 
 -- Creating foreign key on [Maquinaria_IdMaquinaria] in table 'PlanProduccionMaquinariaSet'
@@ -3109,20 +3133,6 @@ ON [dbo].[OrdenTrabajoPersonalSet]
     ([Empleado_Id]);
 GO
 
--- Creating foreign key on [Producto_Id] in table 'ParteProduccionBateriaSet'
-ALTER TABLE [dbo].[ParteProduccionBateriaSet]
-ADD CONSTRAINT [FK_ProductoParteProduccionBateria]
-    FOREIGN KEY ([Producto_Id])
-    REFERENCES [dbo].[Productos]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ProductoParteProduccionBateria'
-CREATE INDEX [IX_FK_ProductoParteProduccionBateria]
-ON [dbo].[ParteProduccionBateriaSet]
-    ([Producto_Id]);
-GO
-
 -- Creating foreign key on [LineaProduccion_IdLinea] in table 'PlanProduccionPersonalSet'
 ALTER TABLE [dbo].[PlanProduccionPersonalSet]
 ADD CONSTRAINT [FK_LineaProduccionPlanProduccionPersonal]
@@ -3163,6 +3173,90 @@ ADD CONSTRAINT [FK_LineaProduccionPlanProduccionMaquinaria]
 CREATE INDEX [IX_FK_LineaProduccionPlanProduccionMaquinaria]
 ON [dbo].[PlanProduccionMaquinariaSet]
     ([LineaProduccion_IdLinea]);
+GO
+
+-- Creating foreign key on [Producto_Id] in table 'ParteProduccionSet'
+ALTER TABLE [dbo].[ParteProduccionSet]
+ADD CONSTRAINT [FK_ProductoParteProduccion]
+    FOREIGN KEY ([Producto_Id])
+    REFERENCES [dbo].[Productos]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductoParteProduccion'
+CREATE INDEX [IX_FK_ProductoParteProduccion]
+ON [dbo].[ParteProduccionSet]
+    ([Producto_Id]);
+GO
+
+-- Creating foreign key on [Producto_Id] in table 'PlanProduccionSet'
+ALTER TABLE [dbo].[PlanProduccionSet]
+ADD CONSTRAINT [FK_PlanProduccionProducto]
+    FOREIGN KEY ([Producto_Id])
+    REFERENCES [dbo].[Productos]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PlanProduccionProducto'
+CREATE INDEX [IX_FK_PlanProduccionProducto]
+ON [dbo].[PlanProduccionSet]
+    ([Producto_Id]);
+GO
+
+-- Creating foreign key on [LineaProduccion_IdLinea] in table 'OrdenTrabajoSet'
+ALTER TABLE [dbo].[OrdenTrabajoSet]
+ADD CONSTRAINT [FK_LineaProduccionOrdenTrabajo]
+    FOREIGN KEY ([LineaProduccion_IdLinea])
+    REFERENCES [dbo].[LineaProduccionSet]
+        ([IdLinea])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LineaProduccionOrdenTrabajo'
+CREATE INDEX [IX_FK_LineaProduccionOrdenTrabajo]
+ON [dbo].[OrdenTrabajoSet]
+    ([LineaProduccion_IdLinea]);
+GO
+
+-- Creating foreign key on [PlanProduccion_IdPlan], [PlanProduccion_IdProducto] in table 'DetallePlanProduccionSet'
+ALTER TABLE [dbo].[DetallePlanProduccionSet]
+ADD CONSTRAINT [FK_PlanProduccionDetallePlanProduccion]
+    FOREIGN KEY ([PlanProduccion_IdPlan], [PlanProduccion_IdProducto])
+    REFERENCES [dbo].[PlanProduccionSet]
+        ([IdPlan], [IdProducto])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PlanProduccionDetallePlanProduccion'
+CREATE INDEX [IX_FK_PlanProduccionDetallePlanProduccion]
+ON [dbo].[DetallePlanProduccionSet]
+    ([PlanProduccion_IdPlan], [PlanProduccion_IdProducto]);
+GO
+
+-- Creating foreign key on [LineaProduccion_IdLinea] in table 'DetallePlanProduccionSet'
+ALTER TABLE [dbo].[DetallePlanProduccionSet]
+ADD CONSTRAINT [FK_LineaProduccionDetallePlanProduccion]
+    FOREIGN KEY ([LineaProduccion_IdLinea])
+    REFERENCES [dbo].[LineaProduccionSet]
+        ([IdLinea])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LineaProduccionDetallePlanProduccion'
+CREATE INDEX [IX_FK_LineaProduccionDetallePlanProduccion]
+ON [dbo].[DetallePlanProduccionSet]
+    ([LineaProduccion_IdLinea]);
+GO
+
+-- Creating foreign key on [Producto_Id] in table 'DetallePlanProduccionSet'
+ALTER TABLE [dbo].[DetallePlanProduccionSet]
+ADD CONSTRAINT [FK_ProductoDetallePlanProduccion]
+    FOREIGN KEY ([Producto_Id])
+    REFERENCES [dbo].[Productos]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductoDetallePlanProduccion'
+CREATE INDEX [IX_FK_ProductoDetallePlanProduccion]
+ON [dbo].[DetallePlanProduccionSet]
+    ([Producto_Id]);
 GO
 
 -- Creating foreign key on [Id] in table 'DocumentosReferencia_GuiaEntrada'

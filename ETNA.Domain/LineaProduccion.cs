@@ -19,6 +19,8 @@ namespace ETNA.Domain
             this.PlanProduccionPersonal = new HashSet<PlanProduccionPersonal>();
             this.PlanProduccionInsumo = new HashSet<PlanProduccionInsumo>();
             this.PlanProduccionMaquinaria = new HashSet<PlanProduccionMaquinaria>();
+            this.OrdenTrabajo = new HashSet<OrdenTrabajo>();
+            this.DetallePlanProduccion = new HashSet<DetallePlanProduccion>();
         }
     
         public int IdLinea { get; set; }
@@ -28,5 +30,7 @@ namespace ETNA.Domain
         public virtual ICollection<PlanProduccionPersonal> PlanProduccionPersonal { get; set; }
         public virtual ICollection<PlanProduccionInsumo> PlanProduccionInsumo { get; set; }
         public virtual ICollection<PlanProduccionMaquinaria> PlanProduccionMaquinaria { get; set; }
+        public virtual ICollection<OrdenTrabajo> OrdenTrabajo { get; set; }
+        public virtual ICollection<DetallePlanProduccion> DetallePlanProduccion { get; set; }
     }
 }

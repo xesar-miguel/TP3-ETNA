@@ -14,20 +14,16 @@ namespace ETNA.Domain
     
     public partial class ParteProduccion
     {
-        public ParteProduccion()
-        {
-            this.ParteProduccionBateria = new HashSet<ParteProduccionBateria>();
-        }
-    
         public int IdParte { get; set; }
         public string IdOrden { get; set; }
+        public string IdProducto { get; set; }
         public string Glosa { get; set; }
         public string FechaFabricacion { get; set; }
         public string CantidadProducida { get; set; }
         public string Comentario { get; set; }
         public string Estado { get; set; }
     
-        public virtual ICollection<ParteProduccionBateria> ParteProduccionBateria { get; set; }
         public virtual OrdenTrabajo OrdenTrabajo { get; set; }
+        public virtual Producto Producto { get; set; }
     }
 }

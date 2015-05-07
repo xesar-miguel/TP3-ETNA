@@ -15,6 +15,11 @@ namespace ETNA.Domain
     public partial class OrdenTrabajoPersonal
     {
         public int IdOrden { get; set; }
+        public string IdLinea { get; set; }
+        public string IdPersonal { get; set; }
+        public string FechaInicio { get; set; }
+        public string FechaTermino { get; set; }
+        public string Estado { get; set; }
     
         public virtual OrdenTrabajo OrdenTrabajo { get; set; }
         public virtual Empleado Empleado { get; set; }

@@ -23,6 +23,7 @@ namespace ETNA.Domain
         }
     
         public int IdOrden { get; set; }
+        public string IdLinea { get; set; }
         public string Glosa { get; set; }
         public string FechaExpedicion { get; set; }
         public string FechaInicio { get; set; }
@@ -38,5 +39,6 @@ namespace ETNA.Domain
         public virtual ICollection<OrdenTrabajoMaquinaria> OrdenTrabajoMaquinaria { get; set; }
         public virtual ICollection<OrdenTrabajoPersonal> OrdenTrabajoPersonal { get; set; }
         public virtual ParteProduccion ParteProduccion { get; set; }
+        public virtual LineaProduccion LineaProduccion { get; set; }
     }
 }
