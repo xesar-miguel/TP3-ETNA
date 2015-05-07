@@ -558,32 +558,32 @@ INSERT INTO TIPOPEDIDO(descripcion, abreviatura) VALUES ('Hoja de Renovación', 
 
 --Factura
 INSERT INTO FACTURA(numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoFactura, idDireccion) VALUES ('FA-000-001', '2015-02-19', 847, 0, 1000, 153, 1000, 1, 6, 2);
-INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-02-20', 1, 2, 200, 400, 400, 1, 1);
-INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-02-20', 2, 3, 200, 600, 600, 1, 2);
+INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-05-07', 1, 2, 200, 400, 400, 1, 1);
+INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-05-07', 2, 3, 200, 600, 600, 1, 2);
 INSERT INTO FACTURA(numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoFactura, idDireccion) VALUES ('FA-000-002', '2015-02-18', 410, 0, 500, 90, 500, 2, 6, 4);
-INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-02-20', 1, 10, 25, 250, 250, 2, 3);
-INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-02-20', 2, 10, 25, 250, 250, 2, 4);
+INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-05-07', 1, 10, 25, 250, 250, 2, 3);
+INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-05-07', 2, 10, 25, 250, 250, 2, 4);
 INSERT INTO FACTURA(numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoFactura, idDireccion) VALUES ('FA-000-003', '2015-02-17', 1230, 0, 1500, 270, 1500, 4, 6, 6);
-INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-02-20', 1, 2, 375, 750, 750, 3, 5);
-INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-02-20', 2, 2, 375, 750, 750, 3, 6);
+INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-05-07', 1, 2, 375, 750, 750, 3, 5);
+INSERT INTO FACTURADETALLE(fechaEntrega, nroItem, cantidad, precioUnitario, valorNeto, importeTotal, idFactura, idProducto) VALUES ('2015-05-07', 2, 2, 375, 750, 750, 3, 6);
 
 --Pedido de Reposición
 INSERT INTO Pedido ( numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoPedido, idTipoPedido, idDireccion ) VALUES ( 'PR-000-001', '2015-02-09', 1016.95 ,0, 1016.95, 183.05, 1200, 8, 3, 1, 11 );
 INSERT INTO Pedido ( numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoPedido, idTipoPedido, idDireccion ) VALUES ( 'PR-000-002', '2015-02-10', 593.22 ,0, 593.22, 106.78, 700, 9, 3, 1, 12 );
 
-INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 10, '2015-02-20', 1, 4 );
-INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 2, 20, '2015-02-20', 1, 5 );
-INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 14, '2015-02-20', 2, 2 );
-INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 2, 23, '2015-02-20', 2, 3 );
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 10, '2015-05-07', 1, 4 );
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 2, 20, '2015-05-07', 1, 5 );
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 14, '2015-05-07', 2, 2 );
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 2, 23, '2015-05-07', 2, 3 );
 
 --Hoja de Renovación
 INSERT INTO Pedido ( numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoPedido, idTipoPedido, idDireccion ) VALUES ( 'HR-000-001', '2015-02-11', 0 ,0, 0, 0, 0, 4, 1, 2, 6 );
 INSERT INTO Pedido ( numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoPedido, idTipoPedido, idDireccion ) VALUES ( 'HR-000-002', '2015-02-11', 0 ,0, 0, 0, 0, 5, 1, 2, 7 );
 INSERT INTO Pedido ( numero, fechaEmision, valorBruto, montoDescuento, valorNeto, valorIGV, importeTotal, idCliente, idEstadoPedido, idTipoPedido, idDireccion ) VALUES ( 'HR-000-003', '2015-02-11', 0 ,0, 0, 0, 0, 1, 1, 2, 1 );
 
-INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 5, '2015-02-20', 3, 2 );
-INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 10, '2015-02-20', 4, 5 );
-INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 5, '2015-02-20', 5, 6 );
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 5, '2015-05-07', 3, 2 );
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 10, '2015-05-07', 4, 5 );
+INSERT INTO PedidoDetalle ( nroitem, cantidad, fechaEntrega, idPedido, idProducto ) VALUES ( 1, 5, '2015-05-07', 5, 6 );
 
 --Parámetros
 INSERT INTO parametro ( idparametro, prioridadSede, plazoMaxDespacho, tipoDistribucionStock, redondeoCubicaje ) 
