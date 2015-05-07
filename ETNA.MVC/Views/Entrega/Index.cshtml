@@ -46,6 +46,13 @@
     @Html.Partial("_ListaEntrega", Model.ListaInicial)
 </div>
 
+@if (Model.GenerarEntrega)
+{ 
+<div class="editor-field" style="padding-top: 10px;">
+            <input type="button" value="Generar" onclick="filtrar();" />
+      </div>
+}
+
 @section Scripts {
     <script type="text/javascript">
         $(document).ready(function () {

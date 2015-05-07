@@ -28,5 +28,7 @@ namespace ETNA.MVC.Models.DI
 
         public IEnumerable<SelectListItem> Clientes { get; set; }
         public IEnumerable<SelectListItem> EstadosEntrega { get; set; }
+
+        public bool GenerarEntrega { get; set; }
     }
 }

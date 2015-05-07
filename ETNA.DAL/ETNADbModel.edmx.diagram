@@ -166,7 +166,7 @@
         <AssociationConnector Association="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajo" />
         <EntityTypeShape EntityType="ETNADbModel.SolicitudReprogramacion" Width="2.375" PointX="27.125" PointY="18.75" FillColor="192, 0, 0" />
         <AssociationConnector Association="ETNADbModel.OrdenTrabajoSolicitudReprogramacion" />
-        <EntityTypeShape EntityType="ETNADbModel.TipoProducto" Width="2" PointX="15.75" PointY="13.75" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="ETNADbModel.TipoProducto" Width="2" PointX="15.625" PointY="14.5" FillColor="128, 255, 128" />
         <AssociationConnector Association="ETNADbModel.OrdenTrabajoOrdenTrabajoInsumo" />
         <AssociationConnector Association="ETNADbModel.OrdenTrabajoOrdenTrabajoMaquinaria" />
         <AssociationConnector Association="ETNADbModel.OrdenTrabajoOrdenTrabajoPersonal" />
@@ -174,7 +174,6 @@
         <AssociationConnector Association="ETNADbModel.MaquinariaPlanProduccionMaquinaria" />
         <AssociationConnector Association="ETNADbModel.EmpleadoPlanProduccionPersonal" />
         <AssociationConnector Association="ETNADbModel.ProductoPlanProduccionInsumo" />
-        <AssociationConnector Association="ETNADbModel.ProductoTipoProducto" />
         <AssociationConnector Association="ETNADbModel.SolicitudSalidaDetalleOrdenTrabajo" />
         <AssociationConnector Association="ETNADbModel.MaquinariaOrdenTrabajoMaquinaria" ManuallyRouted="false" >
         </AssociationConnector>
@@ -185,21 +184,13 @@
         <AssociationConnector Association="ETNADbModel.LineaProduccionPlanProduccionInsumo" />
         <AssociationConnector Association="ETNADbModel.LineaProduccionPlanProduccionMaquinaria" />
         <AssociationConnector Association="ETNADbModel.ProductoParteProduccion" ManuallyRouted="true" >
-          <ConnectorPoint PointX="13" PointY="10.806244303385416" />
-          <ConnectorPoint PointX="13.166664166666665" PointY="10.806244303385416" />
-          <ConnectorPoint PointX="13.333330833333333" PointY="10.806244303385416" />
-          <ConnectorPoint PointX="14.510416666666666" PointY="10.806244303385416" />
-          <ConnectorPoint PointX="14.677083333333334" PointY="10.806244303385416" />
-          <ConnectorPoint PointX="19.244791666666668" PointY="10.806244303385416" />
-          <ConnectorPoint PointX="19.411458333333332" PointY="10.806244303385416" />
-          <ConnectorPoint PointX="20.184898333333336" PointY="10.806244303385416" />
-          <ConnectorPoint PointX="20.351565" PointY="10.806244303385416" />
-          <ConnectorPoint PointX="20.380208333333336" PointY="10.806244303385416" />
+          <ConnectorPoint PointX="13" PointY="15.672425130208332" />
+          <ConnectorPoint PointX="13.620094612468435" PointY="26.188402847079274" />
+          <ConnectorPoint PointX="13.629905387531565" PointY="26.354780509253132" />
+          <ConnectorPoint PointX="20.380208333333336" PointY="140.83091678401092" />
           <ConnectorPoint PointX="20.380208333333336" PointY="11.3744921875" />
-          <ConnectorPoint PointX="21.791666666666668" PointY="11.3744921875" />
-          <ConnectorPoint PointX="21.958333333333332" PointY="11.3744921875" />
-          <ConnectorPoint PointX="22.322919166666669" PointY="11.3744921875" />
-          <ConnectorPoint PointX="22.489585833333333" PointY="11.3744921875" />
+          <ConnectorPoint PointX="20.541666666666668" PointY="11.3744921875" />
+          <ConnectorPoint PointX="20.708333333333332" PointY="11.3744921875" />
           <ConnectorPoint PointX="27.166666666666668" PointY="11.3744921875" />
           <ConnectorPoint PointX="27.333333333333332" PointY="11.3744921875" />
           <ConnectorPoint PointX="28.072916666666668" PointY="11.3744921875" />

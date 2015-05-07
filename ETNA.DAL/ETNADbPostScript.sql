@@ -468,11 +468,11 @@ INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151032', 'VIÑAC' );
 INSERT INTO ubigeo (  codigo, descripcion ) VALUES (  '151033', 'VITIS' );
 
 --Zona de Despacho
-INSERT INTO ZonaDespacho ( descripcion, abreviatura ) VALUES ( 'Lima Norte', 'LIM-NOR' );
-INSERT INTO ZonaDespacho ( descripcion, abreviatura ) VALUES ( 'Lima Este', 'LIM-EST' );
-INSERT INTO ZonaDespacho ( descripcion, abreviatura ) VALUES ( 'Lima Centro', 'LIM-CEN' );
-INSERT INTO ZonaDespacho ( descripcion, abreviatura ) VALUES ( 'Lima Sur', 'LIM-SUR' );
-INSERT INTO ZonaDespacho ( descripcion, abreviatura ) VALUES ( 'Lima Oeste', 'LIM-OES' );
+INSERT INTO ZonaDespacho ( descripcion, abreviatura, Estado ) VALUES ( 'Lima Norte', 'LIM-NOR', 'A');
+INSERT INTO ZonaDespacho ( descripcion, abreviatura, Estado ) VALUES ( 'Lima Este', 'LIM-EST', 'A' );
+INSERT INTO ZonaDespacho ( descripcion, abreviatura, Estado ) VALUES ( 'Lima Centro', 'LIM-CEN', 'A');
+INSERT INTO ZonaDespacho ( descripcion, abreviatura, Estado ) VALUES ( 'Lima Sur', 'LIM-SUR', 'A');
+INSERT INTO ZonaDespacho ( descripcion, abreviatura, Estado ) VALUES ( 'Lima Oeste', 'LIM-OES', 'A');
 
 --Estado de Entrega
 INSERT INTO ESTADOENTREGA(descripcion, abreviatura) VALUES('Generada', 'GEN');

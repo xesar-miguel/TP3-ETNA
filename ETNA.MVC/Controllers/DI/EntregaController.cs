@@ -34,6 +34,13 @@ namespace ETNA.MVC.Controllers.DI
 
             var model = new FiltradoEntregasViewModel();
 
+            model.GenerarEntrega = false;
+
+            if (listaEntregas != null && listaEntregas.Count() == 0)
+            {
+                model.GenerarEntrega = true;
+            }
+
             model.ListaInicial = listaEntregas;
             model.FechaInicio = DateTime.Today;
             model.FechaFin = DateTime.Now;

@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/07/2015 01:18:16
--- Generated from EDMX file: E:\TP3-ETNA\ETNA.DAL\ETNADbModel.edmx
+-- Date Created: 05/07/2015 10:40:21
+-- Generated from EDMX file: C:\Users\Martin\Source\Repos\TP3-ETNA\ETNA.DAL\ETNADbModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -669,8 +669,7 @@ CREATE TABLE [dbo].[Productos] (
     [Ancho] decimal(16,4)  NULL,
     [UnidadDimensiones] varchar(3)  NULL,
     [Peso] decimal(16,4)  NULL,
-    [UnidadPeso] varchar(3)  NULL,
-    [TipoProducto_IdTipo] int  NOT NULL
+    [UnidadPeso] varchar(3)  NULL
 );
 GO
 
@@ -1257,7 +1256,8 @@ GO
 CREATE TABLE [dbo].[ZonaDespacho] (
     [Codigo] int IDENTITY(1,1) NOT NULL,
     [Descripcion] varchar(45)  NULL,
-    [Abreviatura] varchar(10)  NULL
+    [Abreviatura] varchar(10)  NULL,
+    [Estado] varchar(1)  NOT NULL
 );
 GO
 
@@ -3082,20 +3082,6 @@ ADD CONSTRAINT [FK_ProductoPlanProduccionInsumo]
 CREATE INDEX [IX_FK_ProductoPlanProduccionInsumo]
 ON [dbo].[PlanProduccionInsumoSet]
     ([Producto_Id]);
-GO
-
--- Creating foreign key on [TipoProducto_IdTipo] in table 'Productos'
-ALTER TABLE [dbo].[Productos]
-ADD CONSTRAINT [FK_ProductoTipoProducto]
-    FOREIGN KEY ([TipoProducto_IdTipo])
-    REFERENCES [dbo].[TipoProductoSet]
-        ([IdTipo])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ProductoTipoProducto'
-CREATE INDEX [IX_FK_ProductoTipoProducto]
-ON [dbo].[Productos]
-    ([TipoProducto_IdTipo]);
 GO
 
 -- Creating foreign key on [SolicitudSalida_Id] in table 'DetalleOrdenTrabajoSet'
