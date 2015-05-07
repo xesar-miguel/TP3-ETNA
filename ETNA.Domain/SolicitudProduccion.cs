@@ -16,13 +16,14 @@ namespace ETNA.Domain
     {
         public SolicitudProduccion()
         {
+            this.LoteProduccion = new HashSet<LoteProduccion>();
             this.DetalleSolicitudProduccion = new HashSet<DetalleSolicitudProduccion>();
         }
     
-        public int Id { get; set; }
+        public int IdSolicitud { get; set; }
     
-        public virtual ICollection<DetalleSolicitudProduccion> DetalleSolicitudProduccion { get; set; }
         public virtual PlanProduccion PlanProduccion { get; set; }
-        public virtual Lote Lote { get; set; }
+        public virtual ICollection<LoteProduccion> LoteProduccion { get; set; }
+        public virtual ICollection<DetalleSolicitudProduccion> DetalleSolicitudProduccion { get; set; }
     }
 }

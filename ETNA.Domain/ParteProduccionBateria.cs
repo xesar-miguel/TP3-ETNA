@@ -12,10 +12,11 @@ namespace ETNA.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class DetalleSolicitudInsumo
+    public partial class ParteProduccionBateria
     {
         public int Id { get; set; }
     
-        public virtual SolicitudInsumo SolicitudInsumo { get; set; }
+        public virtual ParteProduccion ParteProduccion { get; set; }
+        public virtual Producto Producto { get; set; }
     }
 }

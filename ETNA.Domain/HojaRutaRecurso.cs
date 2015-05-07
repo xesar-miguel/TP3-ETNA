@@ -20,7 +20,6 @@ namespace ETNA.Domain
         public string Disponibilidad { get; set; }
     
         public virtual Calendario Calendario { get; set; }
-        public virtual Empleado Empleados { get; set; }
         public virtual HojaRuta HojaRuta { get; set; }
     }
 }

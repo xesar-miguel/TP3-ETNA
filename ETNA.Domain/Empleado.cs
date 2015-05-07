@@ -21,8 +21,9 @@ namespace ETNA.Domain
             this.SolicitudEntrada = new HashSet<SolicitudEntrada>();
             this.SolicitudSalida = new HashSet<SolicitudSalida>();
             this.DisponibilidadRecurso = new HashSet<DisponibilidadRecurso>();
-            this.HojaRutaRecurso = new HashSet<HojaRutaRecurso>();
             this.Inventario = new HashSet<Inventario>();
+            this.PlanProduccionPersonal = new HashSet<PlanProduccionPersonal>();
+            this.OrdenTrabajoPersonal = new HashSet<OrdenTrabajoPersonal>();
         }
     
         public int Id { get; set; }
@@ -41,7 +42,8 @@ namespace ETNA.Domain
         public virtual ICollection<SolicitudSalida> SolicitudSalida { get; set; }
         public virtual Cargo Cargo { get; set; }
         public virtual ICollection<DisponibilidadRecurso> DisponibilidadRecurso { get; set; }
-        public virtual ICollection<HojaRutaRecurso> HojaRutaRecurso { get; set; }
         public virtual ICollection<Inventario> Inventario { get; set; }
+        public virtual ICollection<PlanProduccionPersonal> PlanProduccionPersonal { get; set; }
+        public virtual ICollection<OrdenTrabajoPersonal> OrdenTrabajoPersonal { get; set; }
     }
 }

@@ -16,11 +16,13 @@ namespace ETNA.Domain
     {
         public Maquinaria()
         {
-            this.DetalleOrdenTrabajoMaquinaria = new HashSet<DetalleOrdenTrabajoMaquinaria>();
+            this.PlanProduccionMaquinaria = new HashSet<PlanProduccionMaquinaria>();
+            this.OrdenTrabajoMaquinaria = new HashSet<OrdenTrabajoMaquinaria>();
         }
     
-        public int Id { get; set; }
+        public int IdMaquinaria { get; set; }
     
-        public virtual ICollection<DetalleOrdenTrabajoMaquinaria> DetalleOrdenTrabajoMaquinaria { get; set; }
+        public virtual ICollection<PlanProduccionMaquinaria> PlanProduccionMaquinaria { get; set; }
+        public virtual ICollection<OrdenTrabajoMaquinaria> OrdenTrabajoMaquinaria { get; set; }
     }
 }

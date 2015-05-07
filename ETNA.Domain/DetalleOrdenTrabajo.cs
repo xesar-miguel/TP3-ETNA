@@ -12,11 +12,11 @@ namespace ETNA.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class DetalleOrdenTrabajoMaquinaria
+    public partial class DetalleOrdenTrabajo
     {
         public int Id { get; set; }
     
         public virtual OrdenTrabajo OrdenTrabajo { get; set; }
-        public virtual Maquinaria Maquinaria { get; set; }
+        public virtual SolicitudSalida SolicitudSalida { get; set; }
     }
 }

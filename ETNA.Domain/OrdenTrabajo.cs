@@ -16,19 +16,21 @@ namespace ETNA.Domain
     {
         public OrdenTrabajo()
         {
-            this.DetalleSolicitudProduccion = new HashSet<DetalleSolicitudProduccion>();
-            this.DetalleOrdenTrabajoPersonal = new HashSet<DetalleOrdenTrabajoPersonal>();
-            this.DetalleOrdenTrabajoInsumo = new HashSet<DetalleOrdenTrabajoInsumo>();
-            this.DetalleOrdenTrabajoMaquinaria = new HashSet<DetalleOrdenTrabajoMaquinaria>();
+            this.DetalleOrdenTrabajo = new HashSet<DetalleOrdenTrabajo>();
+            this.OrdenTrabajoInsumo = new HashSet<OrdenTrabajoInsumo>();
+            this.OrdenTrabajoMaquinaria = new HashSet<OrdenTrabajoMaquinaria>();
+            this.OrdenTrabajoPersonal = new HashSet<OrdenTrabajoPersonal>();
         }
     
-        public int Id { get; set; }
+        public int IdOrden { get; set; }
     
-        public virtual ICollection<DetalleSolicitudProduccion> DetalleSolicitudProduccion { get; set; }
-        public virtual ICollection<DetalleOrdenTrabajoPersonal> DetalleOrdenTrabajoPersonal { get; set; }
-        public virtual ICollection<DetalleOrdenTrabajoInsumo> DetalleOrdenTrabajoInsumo { get; set; }
-        public virtual Lote Lote { get; set; }
-        public virtual ICollection<DetalleOrdenTrabajoMaquinaria> DetalleOrdenTrabajoMaquinaria { get; set; }
-        public virtual SolicitudInsumo SolicitudInsumo { get; set; }
+        public virtual LoteProduccion LoteProduccion { get; set; }
+        public virtual DetalleSolicitudProduccion DetalleSolicitudProduccion { get; set; }
+        public virtual ICollection<DetalleOrdenTrabajo> DetalleOrdenTrabajo { get; set; }
+        public virtual SolicitudReprogramacion SolicitudReprogramacion { get; set; }
+        public virtual ICollection<OrdenTrabajoInsumo> OrdenTrabajoInsumo { get; set; }
+        public virtual ICollection<OrdenTrabajoMaquinaria> OrdenTrabajoMaquinaria { get; set; }
+        public virtual ICollection<OrdenTrabajoPersonal> OrdenTrabajoPersonal { get; set; }
+        public virtual ParteProduccion ParteProduccion { get; set; }
     }
 }

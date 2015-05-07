@@ -18,6 +18,7 @@ namespace ETNA.Domain
         {
             this.GuiaSalida = new HashSet<GuiaSalida>();
             this.DetalleSolicitudSalida = new HashSet<DetalleSolicitudSalida>();
+            this.DetalleOrdenTrabajo = new HashSet<DetalleOrdenTrabajo>();
         }
     
         public int Id { get; set; }
@@ -31,5 +32,6 @@ namespace ETNA.Domain
         public virtual Empleado Empleado { get; set; }
         public virtual ICollection<GuiaSalida> GuiaSalida { get; set; }
         public virtual ICollection<DetalleSolicitudSalida> DetalleSolicitudSalida { get; set; }
+        public virtual ICollection<DetalleOrdenTrabajo> DetalleOrdenTrabajo { get; set; }
     }
 }

@@ -26,6 +26,9 @@ namespace ETNA.Domain
             this.ProductoBackOrder = new HashSet<ProductoBackOrder>();
             this.StockProducto = new HashSet<StockProducto>();
             this.DetalleInventario = new HashSet<DetalleInventario>();
+            this.PlanProduccionInsumo = new HashSet<PlanProduccionInsumo>();
+            this.OrdenTrabajoInsumo = new HashSet<OrdenTrabajoInsumo>();
+            this.ParteProduccionBateria = new HashSet<ParteProduccionBateria>();
         }
     
         public int Id { get; set; }
@@ -55,5 +58,9 @@ namespace ETNA.Domain
         public virtual ICollection<ProductoBackOrder> ProductoBackOrder { get; set; }
         public virtual ICollection<StockProducto> StockProducto { get; set; }
         public virtual ICollection<DetalleInventario> DetalleInventario { get; set; }
+        public virtual ICollection<PlanProduccionInsumo> PlanProduccionInsumo { get; set; }
+        public virtual TipoProducto TipoProducto { get; set; }
+        public virtual ICollection<OrdenTrabajoInsumo> OrdenTrabajoInsumo { get; set; }
+        public virtual ICollection<ParteProduccionBateria> ParteProduccionBateria { get; set; }
     }
 }

@@ -14,9 +14,18 @@ namespace ETNA.Domain
     
     public partial class PlanProduccion
     {
-        public int Id { get; set; }
+        public PlanProduccion()
+        {
+            this.PlanProduccionMaquinaria = new HashSet<PlanProduccionMaquinaria>();
+            this.PlanProduccionInsumo = new HashSet<PlanProduccionInsumo>();
+            this.PlanProduccionPersonal = new HashSet<PlanProduccionPersonal>();
+        }
     
-        public virtual ProgramacionProduccion ProgramacionProduccion { get; set; }
+        public int IdPlan { get; set; }
+    
+        public virtual ICollection<PlanProduccionMaquinaria> PlanProduccionMaquinaria { get; set; }
+        public virtual ICollection<PlanProduccionInsumo> PlanProduccionInsumo { get; set; }
+        public virtual ICollection<PlanProduccionPersonal> PlanProduccionPersonal { get; set; }
         public virtual SolicitudProduccion SolicitudProduccion { get; set; }
     }
 }

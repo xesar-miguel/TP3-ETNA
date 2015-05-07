@@ -12,9 +12,13 @@ namespace ETNA.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class TipoLote
+    public partial class LoteProduccion
     {
-        public int Id { get; set; }
-        public string Descripcion { get; set; }
+        public int IdLote { get; set; }
+        public string NroLote { get; set; }
+        public System.DateTime FechaCreacion { get; set; }
+    
+        public virtual SolicitudProduccion SolicitudProduccion { get; set; }
+        public virtual OrdenTrabajo OrdenTrabajo { get; set; }
     }
 }

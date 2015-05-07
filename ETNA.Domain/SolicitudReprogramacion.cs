@@ -12,15 +12,10 @@ namespace ETNA.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Bateria
+    public partial class SolicitudReprogramacion
     {
-        public Bateria()
-        {
-            this.DetalleParteProduccionBateria = new HashSet<DetalleParteProduccionBateria>();
-        }
-    
         public int Id { get; set; }
     
-        public virtual ICollection<DetalleParteProduccionBateria> DetalleParteProduccionBateria { get; set; }
+        public virtual OrdenTrabajo OrdenTrabajo { get; set; }
     }
 }

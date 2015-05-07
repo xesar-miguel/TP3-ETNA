@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\DiegoMartín\Documents\Visual Studio 2012\Projects\ETNA-GIT\ETNA.DAL\ETNADbModel.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'E:\TP3-ETNA\ETNA.DAL\ETNADbModel.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

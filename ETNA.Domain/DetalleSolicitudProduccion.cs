@@ -14,9 +14,14 @@ namespace ETNA.Domain
     
     public partial class DetalleSolicitudProduccion
     {
+        public DetalleSolicitudProduccion()
+        {
+            this.OrdenTrabajo = new HashSet<OrdenTrabajo>();
+        }
+    
         public int Id { get; set; }
     
+        public virtual ICollection<OrdenTrabajo> OrdenTrabajo { get; set; }
         public virtual SolicitudProduccion SolicitudProduccion { get; set; }
-        public virtual OrdenTrabajo OrdenTrabajo { get; set; }
     }
 }

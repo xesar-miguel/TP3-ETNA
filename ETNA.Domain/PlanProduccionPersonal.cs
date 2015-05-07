@@ -12,16 +12,11 @@ namespace ETNA.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class SolicitudInsumo
+    public partial class PlanProduccionPersonal
     {
-        public SolicitudInsumo()
-        {
-            this.DetalleSolicitudInsumo = new HashSet<DetalleSolicitudInsumo>();
-        }
+        public int IdProgramacion { get; set; }
     
-        public int Id { get; set; }
-    
-        public virtual ICollection<DetalleSolicitudInsumo> DetalleSolicitudInsumo { get; set; }
-        public virtual OrdenTrabajo OrdenTrabajo { get; set; }
+        public virtual PlanProduccion PlanProduccion { get; set; }
+        public virtual Empleado Empleado { get; set; }
     }
 }

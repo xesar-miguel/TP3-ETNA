@@ -37,25 +37,21 @@ namespace ETNA.DAL
         public DbSet<SolicitudEntrada> SolicitudesEntrada { get; set; }
         public DbSet<DetalleSolicitudEntrada> DetalleSolicitudEntrada { get; set; }
         public DbSet<Kardex> Kardex { get; set; }
-        public DbSet<Lote> LoteSet { get; set; }
-        public DbSet<TipoLote> TipoLoteSet { get; set; }
+        public DbSet<LoteProduccion> LoteProduccionSet { get; set; }
         public DbSet<SolicitudSalida> SolicitudesSalida { get; set; }
         public DbSet<DetalleSolicitudSalida> DetalleSolicitudSalida { get; set; }
         public DbSet<DetalleGuiaSalida> DetalleGuiaSalida { get; set; }
-        public DbSet<SolicitudInsumo> SolicitudInsumoSet { get; set; }
-        public DbSet<DetalleSolicitudInsumo> DetalleSolicitudInsumoSet { get; set; }
-        public DbSet<DetalleParteProduccionBateria> DetalleParteProduccionBateriaSet { get; set; }
-        public DbSet<Bateria> BateriaSet { get; set; }
-        public DbSet<DetalleOrdenTrabajoInsumo> DetalleOrdenTrabajoInsumoSet { get; set; }
+        public DbSet<ParteProduccionBateria> ParteProduccionBateriaSet { get; set; }
+        public DbSet<DetalleOrdenTrabajo> DetalleOrdenTrabajoSet { get; set; }
+        public DbSet<OrdenTrabajoInsumo> OrdenTrabajoInsumoSet { get; set; }
         public DbSet<ParteProduccion> ParteProduccionSet { get; set; }
-        public DbSet<DetalleParteProduccionInsumo> DetalleParteProduccionInsumoSet { get; set; }
         public DbSet<OrdenTrabajo> OrdenTrabajoSet { get; set; }
-        public DbSet<DetalleOrdenTrabajoPersonal> DetalleOrdenTrabajoPersonalSet { get; set; }
+        public DbSet<OrdenTrabajoPersonal> OrdenTrabajoPersonalSet { get; set; }
         public DbSet<SolicitudProduccion> SolicitudProduccionSet { get; set; }
         public DbSet<PlanProduccion> PlanProduccionSet { get; set; }
-        public DbSet<ProgramacionProduccion> ProgramacionProduccionSet { get; set; }
+        public DbSet<PlanProduccionMaquinaria> PlanProduccionMaquinariaSet { get; set; }
         public DbSet<DetalleSolicitudProduccion> DetalleSolicitudProduccionSet { get; set; }
-        public DbSet<DetalleOrdenTrabajoMaquinaria> DetalleOrdenTrabajoMaquinariaSet { get; set; }
+        public DbSet<OrdenTrabajoMaquinaria> OrdenTrabajoMaquinariaSet { get; set; }
         public DbSet<Maquinaria> MaquinariaSet { get; set; }
         public DbSet<Backorder> Backorder { get; set; }
         public DbSet<Calendario> Calendario { get; set; }
@@ -96,5 +92,9 @@ namespace ETNA.DAL
         public DbSet<StockProducto> StockProductos { get; set; }
         public DbSet<Inventario> Inventarios { get; set; }
         public DbSet<DetalleInventario> DetalleInventario { get; set; }
+        public DbSet<PlanProduccionInsumo> PlanProduccionInsumoSet { get; set; }
+        public DbSet<PlanProduccionPersonal> PlanProduccionPersonalSet { get; set; }
+        public DbSet<SolicitudReprogramacion> SolicitudReprogramacionSet { get; set; }
+        public DbSet<TipoProducto> TipoProductoSet { get; set; }
     }
 }
