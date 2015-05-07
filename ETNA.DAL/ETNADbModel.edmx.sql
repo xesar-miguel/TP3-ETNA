@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/06/2015 19:27:19
+-- Date Created: 05/06/2015 19:51:46
 -- Generated from EDMX file: C:\Users\DiegoMartín\Documents\Visual Studio 2012\Projects\ETNA-GIT\ETNA.DAL\ETNADbModel.edmx
 -- --------------------------------------------------
 
@@ -60,22 +60,22 @@ IF OBJECT_ID(N'[dbo].[FK_EmpleadoSolicitudEntrada]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SolicitudesEntrada] DROP CONSTRAINT [FK_EmpleadoSolicitudEntrada];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SolicitudSalidaEmpleado]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SolicitudSalidaConjunto] DROP CONSTRAINT [FK_SolicitudSalidaEmpleado];
+    ALTER TABLE [dbo].[SolicitudesSalida] DROP CONSTRAINT [FK_SolicitudSalidaEmpleado];
 GO
 IF OBJECT_ID(N'[dbo].[FK_GuiaSalidaSolicitudSalida]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DocumentosReferencia_GuiaSalida] DROP CONSTRAINT [FK_GuiaSalidaSolicitudSalida];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DetalleSolicitudSalidaProducto]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleSolicitudSalidaConjunto] DROP CONSTRAINT [FK_DetalleSolicitudSalidaProducto];
+    ALTER TABLE [dbo].[DetalleSolicitudSalida] DROP CONSTRAINT [FK_DetalleSolicitudSalidaProducto];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DetalleSolicitudSalidaSolicitudSalida]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleSolicitudSalidaConjunto] DROP CONSTRAINT [FK_DetalleSolicitudSalidaSolicitudSalida];
+    ALTER TABLE [dbo].[DetalleSolicitudSalida] DROP CONSTRAINT [FK_DetalleSolicitudSalidaSolicitudSalida];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DetalleGuiaSalidaGuiaSalida]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleGuiaSalidaConjunto] DROP CONSTRAINT [FK_DetalleGuiaSalidaGuiaSalida];
+    ALTER TABLE [dbo].[DetalleGuiaSalida] DROP CONSTRAINT [FK_DetalleGuiaSalidaGuiaSalida];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DetalleGuiaSalidaProducto]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DetalleGuiaSalidaConjunto] DROP CONSTRAINT [FK_DetalleGuiaSalidaProducto];
+    ALTER TABLE [dbo].[DetalleGuiaSalida] DROP CONSTRAINT [FK_DetalleGuiaSalidaProducto];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SolicitudProduccionDetalleSolicitudProduccion]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DetalleSolicitudProduccionSet] DROP CONSTRAINT [FK_SolicitudProduccionDetalleSolicitudProduccion];
@@ -340,14 +340,14 @@ GO
 IF OBJECT_ID(N'[dbo].[TipoLoteSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TipoLoteSet];
 GO
-IF OBJECT_ID(N'[dbo].[SolicitudSalidaConjunto]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SolicitudSalidaConjunto];
+IF OBJECT_ID(N'[dbo].[SolicitudesSalida]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SolicitudesSalida];
 GO
-IF OBJECT_ID(N'[dbo].[DetalleSolicitudSalidaConjunto]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DetalleSolicitudSalidaConjunto];
+IF OBJECT_ID(N'[dbo].[DetalleSolicitudSalida]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetalleSolicitudSalida];
 GO
-IF OBJECT_ID(N'[dbo].[DetalleGuiaSalidaConjunto]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[DetalleGuiaSalidaConjunto];
+IF OBJECT_ID(N'[dbo].[DetalleGuiaSalida]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetalleGuiaSalida];
 GO
 IF OBJECT_ID(N'[dbo].[SolicitudInsumoSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SolicitudInsumoSet];
@@ -672,8 +672,8 @@ CREATE TABLE [dbo].[TipoLoteSet] (
 );
 GO
 
--- Creating table 'SolicitudSalidaConjunto'
-CREATE TABLE [dbo].[SolicitudSalidaConjunto] (
+-- Creating table 'SolicitudesSalida'
+CREATE TABLE [dbo].[SolicitudesSalida] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [FechaElaboracion] datetime  NOT NULL,
     [DireccionEntrega] nvarchar(max)  NOT NULL,
@@ -685,8 +685,8 @@ CREATE TABLE [dbo].[SolicitudSalidaConjunto] (
 );
 GO
 
--- Creating table 'DetalleSolicitudSalidaConjunto'
-CREATE TABLE [dbo].[DetalleSolicitudSalidaConjunto] (
+-- Creating table 'DetalleSolicitudSalida'
+CREATE TABLE [dbo].[DetalleSolicitudSalida] (
     [Cantidad] int  NOT NULL,
     [IdProducto] int  NOT NULL,
     [IdSolicitudSalida] int  NOT NULL,
@@ -694,8 +694,8 @@ CREATE TABLE [dbo].[DetalleSolicitudSalidaConjunto] (
 );
 GO
 
--- Creating table 'DetalleGuiaSalidaConjunto'
-CREATE TABLE [dbo].[DetalleGuiaSalidaConjunto] (
+-- Creating table 'DetalleGuiaSalida'
+CREATE TABLE [dbo].[DetalleGuiaSalida] (
     [Cantidad] int  NOT NULL,
     [IdGuiaSalida] int  NOT NULL,
     [IdProducto] int  NOT NULL
@@ -1313,21 +1313,21 @@ ADD CONSTRAINT [PK_TipoLoteSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'SolicitudSalidaConjunto'
-ALTER TABLE [dbo].[SolicitudSalidaConjunto]
-ADD CONSTRAINT [PK_SolicitudSalidaConjunto]
+-- Creating primary key on [Id] in table 'SolicitudesSalida'
+ALTER TABLE [dbo].[SolicitudesSalida]
+ADD CONSTRAINT [PK_SolicitudesSalida]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [IdProducto], [IdSolicitudSalida] in table 'DetalleSolicitudSalidaConjunto'
-ALTER TABLE [dbo].[DetalleSolicitudSalidaConjunto]
-ADD CONSTRAINT [PK_DetalleSolicitudSalidaConjunto]
+-- Creating primary key on [IdProducto], [IdSolicitudSalida] in table 'DetalleSolicitudSalida'
+ALTER TABLE [dbo].[DetalleSolicitudSalida]
+ADD CONSTRAINT [PK_DetalleSolicitudSalida]
     PRIMARY KEY CLUSTERED ([IdProducto], [IdSolicitudSalida] ASC);
 GO
 
--- Creating primary key on [IdGuiaSalida], [IdProducto] in table 'DetalleGuiaSalidaConjunto'
-ALTER TABLE [dbo].[DetalleGuiaSalidaConjunto]
-ADD CONSTRAINT [PK_DetalleGuiaSalidaConjunto]
+-- Creating primary key on [IdGuiaSalida], [IdProducto] in table 'DetalleGuiaSalida'
+ALTER TABLE [dbo].[DetalleGuiaSalida]
+ADD CONSTRAINT [PK_DetalleGuiaSalida]
     PRIMARY KEY CLUSTERED ([IdGuiaSalida], [IdProducto] ASC);
 GO
 
@@ -1870,8 +1870,8 @@ ON [dbo].[SolicitudesEntrada]
     ([Empleado_Id]);
 GO
 
--- Creating foreign key on [Empleado_Id] in table 'SolicitudSalidaConjunto'
-ALTER TABLE [dbo].[SolicitudSalidaConjunto]
+-- Creating foreign key on [Empleado_Id] in table 'SolicitudesSalida'
+ALTER TABLE [dbo].[SolicitudesSalida]
 ADD CONSTRAINT [FK_SolicitudSalidaEmpleado]
     FOREIGN KEY ([Empleado_Id])
     REFERENCES [dbo].[Empleados]
@@ -1880,7 +1880,7 @@ ADD CONSTRAINT [FK_SolicitudSalidaEmpleado]
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_SolicitudSalidaEmpleado'
 CREATE INDEX [IX_FK_SolicitudSalidaEmpleado]
-ON [dbo].[SolicitudSalidaConjunto]
+ON [dbo].[SolicitudesSalida]
     ([Empleado_Id]);
 GO
 
@@ -1888,7 +1888,7 @@ GO
 ALTER TABLE [dbo].[DocumentosReferencia_GuiaSalida]
 ADD CONSTRAINT [FK_GuiaSalidaSolicitudSalida]
     FOREIGN KEY ([SolicitudSalida_Id])
-    REFERENCES [dbo].[SolicitudSalidaConjunto]
+    REFERENCES [dbo].[SolicitudesSalida]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
@@ -1898,8 +1898,8 @@ ON [dbo].[DocumentosReferencia_GuiaSalida]
     ([SolicitudSalida_Id]);
 GO
 
--- Creating foreign key on [IdProducto] in table 'DetalleSolicitudSalidaConjunto'
-ALTER TABLE [dbo].[DetalleSolicitudSalidaConjunto]
+-- Creating foreign key on [IdProducto] in table 'DetalleSolicitudSalida'
+ALTER TABLE [dbo].[DetalleSolicitudSalida]
 ADD CONSTRAINT [FK_DetalleSolicitudSalidaProducto]
     FOREIGN KEY ([IdProducto])
     REFERENCES [dbo].[Productos]
@@ -1907,22 +1907,22 @@ ADD CONSTRAINT [FK_DetalleSolicitudSalidaProducto]
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [IdSolicitudSalida] in table 'DetalleSolicitudSalidaConjunto'
-ALTER TABLE [dbo].[DetalleSolicitudSalidaConjunto]
+-- Creating foreign key on [IdSolicitudSalida] in table 'DetalleSolicitudSalida'
+ALTER TABLE [dbo].[DetalleSolicitudSalida]
 ADD CONSTRAINT [FK_DetalleSolicitudSalidaSolicitudSalida]
     FOREIGN KEY ([IdSolicitudSalida])
-    REFERENCES [dbo].[SolicitudSalidaConjunto]
+    REFERENCES [dbo].[SolicitudesSalida]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_DetalleSolicitudSalidaSolicitudSalida'
 CREATE INDEX [IX_FK_DetalleSolicitudSalidaSolicitudSalida]
-ON [dbo].[DetalleSolicitudSalidaConjunto]
+ON [dbo].[DetalleSolicitudSalida]
     ([IdSolicitudSalida]);
 GO
 
--- Creating foreign key on [IdGuiaSalida] in table 'DetalleGuiaSalidaConjunto'
-ALTER TABLE [dbo].[DetalleGuiaSalidaConjunto]
+-- Creating foreign key on [IdGuiaSalida] in table 'DetalleGuiaSalida'
+ALTER TABLE [dbo].[DetalleGuiaSalida]
 ADD CONSTRAINT [FK_DetalleGuiaSalidaGuiaSalida]
     FOREIGN KEY ([IdGuiaSalida])
     REFERENCES [dbo].[DocumentosReferencia_GuiaSalida]
@@ -1930,8 +1930,8 @@ ADD CONSTRAINT [FK_DetalleGuiaSalidaGuiaSalida]
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [IdProducto] in table 'DetalleGuiaSalidaConjunto'
-ALTER TABLE [dbo].[DetalleGuiaSalidaConjunto]
+-- Creating foreign key on [IdProducto] in table 'DetalleGuiaSalida'
+ALTER TABLE [dbo].[DetalleGuiaSalida]
 ADD CONSTRAINT [FK_DetalleGuiaSalidaProducto]
     FOREIGN KEY ([IdProducto])
     REFERENCES [dbo].[Productos]
@@ -1940,7 +1940,7 @@ ADD CONSTRAINT [FK_DetalleGuiaSalidaProducto]
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_DetalleGuiaSalidaProducto'
 CREATE INDEX [IX_FK_DetalleGuiaSalidaProducto]
-ON [dbo].[DetalleGuiaSalidaConjunto]
+ON [dbo].[DetalleGuiaSalida]
     ([IdProducto]);
 GO
 

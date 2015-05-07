@@ -39,9 +39,9 @@ namespace ETNA.DAL
         public DbSet<Kardex> Kardex { get; set; }
         public DbSet<Lote> LoteSet { get; set; }
         public DbSet<TipoLote> TipoLoteSet { get; set; }
-        public DbSet<SolicitudSalida> SolicitudSalidaConjunto { get; set; }
-        public DbSet<DetalleSolicitudSalida> DetalleSolicitudSalidaConjunto { get; set; }
-        public DbSet<DetalleGuiaSalida> DetalleGuiaSalidaConjunto { get; set; }
+        public DbSet<SolicitudSalida> SolicitudesSalida { get; set; }
+        public DbSet<DetalleSolicitudSalida> DetalleSolicitudSalida { get; set; }
+        public DbSet<DetalleGuiaSalida> DetalleGuiaSalida { get; set; }
         public DbSet<SolicitudInsumo> SolicitudInsumoSet { get; set; }
         public DbSet<DetalleSolicitudInsumo> DetalleSolicitudInsumoSet { get; set; }
         public DbSet<DetalleParteProduccionBateria> DetalleParteProduccionBateriaSet { get; set; }

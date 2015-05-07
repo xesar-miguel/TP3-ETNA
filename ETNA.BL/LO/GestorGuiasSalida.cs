@@ -22,7 +22,7 @@ namespace ETNA.BL.LO
                 var guiaSalida = new GuiaSalida();
                 guiaSalida.FechaElaboracion = DateTime.Now;
                 guiaSalida.IdentificadorDocumento = "GS-" + guiaSalida.FechaElaboracion.ToString("MMddyyHmmss");
-                guiaSalida.SolicitudSalida = context.SolicitudSalidaConjunto.Find(idSolicitud);
+                guiaSalida.SolicitudSalida = context.SolicitudesSalida.Find(idSolicitud);
                 guiaSalida.Almacen = context.Almacenes.Find(idAlmacen);
                 guiaSalida.Empleado = context.Empleados.Find(idEmpleado);
                 context.DocumentosReferencia.Add(guiaSalida);
@@ -30,7 +30,7 @@ namespace ETNA.BL.LO
                 guiaSalida.SolicitudSalida.Estado = (int)Enums.EstadoSolicitudSalida.Atendida;
 
                 //Generar Kardex por cada producto
-                var detalleSolicitud = context.DetalleSolicitudSalidaConjunto.Where(d => d.IdSolicitudSalida == idSolicitud).ToList();
+                var detalleSolicitud = context.DetalleSolicitudSalida.Where(d => d.IdSolicitudSalida == idSolicitud).ToList();
 
                 
                 foreach (var detalle in detalleSolicitud)
@@ -52,7 +52,7 @@ namespace ETNA.BL.LO
                     detalleGuiaSalida.GuiaSalida = guiaSalida;
                     detalleGuiaSalida.IdProducto = detalle.IdProducto;
                     detalleGuiaSalida.Cantidad = detalle.CantidadFinal;
-                    context.DetalleGuiaSalidaConjunto.Add(detalleGuiaSalida);
+                    context.DetalleGuiaSalida.Add(detalleGuiaSalida);
                 }
 
                 context.SaveChanges();
@@ -84,12 +84,12 @@ namespace ETNA.BL.LO
                 var guiaSalida = new GuiaSalida();
                 guiaSalida.FechaElaboracion = DateTime.Now;
                 guiaSalida.IdentificadorDocumento = "GS-" + guiaSalida.FechaElaboracion.ToString("MMddyyHmmss");
-                guiaSalida.SolicitudSalida = context.SolicitudSalidaConjunto.Find(idSolicitud);
+                guiaSalida.SolicitudSalida = context.SolicitudesSalida.Find(idSolicitud);
                 guiaSalida.Almacen = context.Almacenes.Find(idAlmacen);
                 guiaSalida.Empleado = context.Empleados.Find(idEmpleado);
                 context.DocumentosReferencia.Add(guiaSalida);
                 
-                var detalleSolicitud = context.DetalleSolicitudSalidaConjunto.Where(d => d.IdSolicitudSalida == idSolicitud).ToList();
+                var detalleSolicitud = context.DetalleSolicitudSalida.Where(d => d.IdSolicitudSalida == idSolicitud).ToList();
                 bool parcial = false;
                 // Actualizar estado de la solicitud
 
@@ -144,7 +144,7 @@ namespace ETNA.BL.LO
                     detalleGuiaSalida.GuiaSalida = guiaSalida;
                     detalleGuiaSalida.IdProducto = detalle.IdProducto;
                     detalleGuiaSalida.Cantidad = detalle.CantidadFinal;
-                    context.DetalleGuiaSalidaConjunto.Add(detalleGuiaSalida);
+                    context.DetalleGuiaSalida.Add(detalleGuiaSalida);
                 }
 
                 context.SaveChanges();

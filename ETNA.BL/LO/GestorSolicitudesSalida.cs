@@ -16,7 +16,7 @@ namespace ETNA.BL.LO
             string razonSocialDestinatario)
         {
             var context = new ETNADbModelContainer();
-            return context.SolicitudSalidaConjunto.Where(s =>
+            return context.SolicitudesSalida.Where(s =>
                 (idSolicitud == 0 || s.Id == idSolicitud) &&
                 //Aprobada o parcial.
                 (s.Estado == 2 || s.Estado == 3) &&
@@ -32,7 +32,7 @@ namespace ETNA.BL.LO
         public SolicitudSalida ObtenerSolicitudSalida(int idSolicitud)
         {
             var context = new ETNADbModelContainer();
-            return context.SolicitudSalidaConjunto.Find(idSolicitud);
+            return context.SolicitudesSalida.Find(idSolicitud);
         }
     }
 }

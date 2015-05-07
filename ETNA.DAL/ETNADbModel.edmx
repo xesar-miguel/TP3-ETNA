@@ -19,9 +19,9 @@
     <EntitySet Name="Kardex" EntityType="ETNADbModel.Store.Kardex" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="LoteSet" EntityType="ETNADbModel.Store.LoteSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TipoLoteSet" EntityType="ETNADbModel.Store.TipoLoteSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SolicitudSalidaConjunto" EntityType="ETNADbModel.Store.SolicitudSalidaConjunto" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="DetalleSolicitudSalidaConjunto" EntityType="ETNADbModel.Store.DetalleSolicitudSalidaConjunto" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="DetalleGuiaSalidaConjunto" EntityType="ETNADbModel.Store.DetalleGuiaSalidaConjunto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SolicitudesSalida" EntityType="ETNADbModel.Store.SolicitudesSalida" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleSolicitudSalida" EntityType="ETNADbModel.Store.DetalleSolicitudSalida" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleGuiaSalida" EntityType="ETNADbModel.Store.DetalleGuiaSalida" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SolicitudInsumoSet" EntityType="ETNADbModel.Store.SolicitudInsumoSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetalleSolicitudInsumoSet" EntityType="ETNADbModel.Store.DetalleSolicitudInsumoSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DetalleParteProduccionBateriaSet" EntityType="ETNADbModel.Store.DetalleParteProduccionBateriaSet" store:Type="Tables" Schema="dbo" />
@@ -138,27 +138,27 @@
       <End Role="SolicitudEntrada" EntitySet="SolicitudesEntrada" />
     </AssociationSet>
     <AssociationSet Name="SolicitudSalidaEmpleado" Association="ETNADbModel.Store.SolicitudSalidaEmpleado">
-      <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
+      <End Role="SolicitudSalida" EntitySet="SolicitudesSalida" />
       <End Role="Empleado" EntitySet="Empleados" />
     </AssociationSet>
     <AssociationSet Name="GuiaSalidaSolicitudSalida" Association="ETNADbModel.Store.GuiaSalidaSolicitudSalida">
       <End Role="GuiaSalida" EntitySet="DocumentosReferencia_GuiaSalida" />
-      <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
+      <End Role="SolicitudSalida" EntitySet="SolicitudesSalida" />
     </AssociationSet>
     <AssociationSet Name="DetalleSolicitudSalidaProducto" Association="ETNADbModel.Store.DetalleSolicitudSalidaProducto">
-      <End Role="DetalleSolicitudSalida" EntitySet="DetalleSolicitudSalidaConjunto" />
+      <End Role="DetalleSolicitudSalida" EntitySet="DetalleSolicitudSalida" />
       <End Role="Producto" EntitySet="Productos" />
     </AssociationSet>
     <AssociationSet Name="DetalleSolicitudSalidaSolicitudSalida" Association="ETNADbModel.Store.DetalleSolicitudSalidaSolicitudSalida">
-      <End Role="DetalleSolicitudSalida" EntitySet="DetalleSolicitudSalidaConjunto" />
-      <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
+      <End Role="DetalleSolicitudSalida" EntitySet="DetalleSolicitudSalida" />
+      <End Role="SolicitudSalida" EntitySet="SolicitudesSalida" />
     </AssociationSet>
     <AssociationSet Name="DetalleGuiaSalidaGuiaSalida" Association="ETNADbModel.Store.DetalleGuiaSalidaGuiaSalida">
-      <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalidaConjunto" />
+      <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalida" />
       <End Role="GuiaSalida" EntitySet="DocumentosReferencia_GuiaSalida" />
     </AssociationSet>
     <AssociationSet Name="DetalleGuiaSalidaProducto" Association="ETNADbModel.Store.DetalleGuiaSalidaProducto">
-      <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalidaConjunto" />
+      <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalida" />
       <End Role="Producto" EntitySet="Productos" />
     </AssociationSet>
     <AssociationSet Name="SolicitudProduccionDetalleSolicitudProduccion" Association="ETNADbModel.Store.SolicitudProduccionDetalleSolicitudProduccion">
@@ -597,7 +597,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="SolicitudSalidaConjunto">
+  <EntityType Name="SolicitudesSalida">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -610,7 +610,7 @@
     <Property Name="Observaciones" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Empleado_Id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="DetalleSolicitudSalidaConjunto">
+  <EntityType Name="DetalleSolicitudSalida">
     <Key>
       <PropertyRef Name="IdProducto" />
       <PropertyRef Name="IdSolicitudSalida" />
@@ -620,7 +620,7 @@
     <Property Name="IdSolicitudSalida" Type="int" Nullable="false" />
     <Property Name="CantidadFinal" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="DetalleGuiaSalidaConjunto">
+  <EntityType Name="DetalleGuiaSalida">
     <Key>
       <PropertyRef Name="IdGuiaSalida" />
       <PropertyRef Name="IdProducto" />
@@ -1291,7 +1291,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="SolicitudSalidaEmpleado">
-    <End Role="SolicitudSalida" Type="ETNADbModel.Store.SolicitudSalidaConjunto" Multiplicity="*" />
+    <End Role="SolicitudSalida" Type="ETNADbModel.Store.SolicitudesSalida" Multiplicity="*" />
     <End Role="Empleado" Type="ETNADbModel.Store.Empleados" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="Empleado">
@@ -1304,7 +1304,7 @@
   </Association>
   <Association Name="GuiaSalidaSolicitudSalida">
     <End Role="GuiaSalida" Type="ETNADbModel.Store.DocumentosReferencia_GuiaSalida" Multiplicity="*" />
-    <End Role="SolicitudSalida" Type="ETNADbModel.Store.SolicitudSalidaConjunto" Multiplicity="1" />
+    <End Role="SolicitudSalida" Type="ETNADbModel.Store.SolicitudesSalida" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="SolicitudSalida">
         <PropertyRef Name="Id" />
@@ -1315,7 +1315,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DetalleSolicitudSalidaProducto">
-    <End Role="DetalleSolicitudSalida" Type="ETNADbModel.Store.DetalleSolicitudSalidaConjunto" Multiplicity="*" />
+    <End Role="DetalleSolicitudSalida" Type="ETNADbModel.Store.DetalleSolicitudSalida" Multiplicity="*" />
     <End Role="Producto" Type="ETNADbModel.Store.Productos" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="Producto">
@@ -1327,8 +1327,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DetalleSolicitudSalidaSolicitudSalida">
-    <End Role="DetalleSolicitudSalida" Type="ETNADbModel.Store.DetalleSolicitudSalidaConjunto" Multiplicity="*" />
-    <End Role="SolicitudSalida" Type="ETNADbModel.Store.SolicitudSalidaConjunto" Multiplicity="1" />
+    <End Role="DetalleSolicitudSalida" Type="ETNADbModel.Store.DetalleSolicitudSalida" Multiplicity="*" />
+    <End Role="SolicitudSalida" Type="ETNADbModel.Store.SolicitudesSalida" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="SolicitudSalida">
         <PropertyRef Name="Id" />
@@ -1339,7 +1339,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DetalleGuiaSalidaGuiaSalida">
-    <End Role="DetalleGuiaSalida" Type="ETNADbModel.Store.DetalleGuiaSalidaConjunto" Multiplicity="*" />
+    <End Role="DetalleGuiaSalida" Type="ETNADbModel.Store.DetalleGuiaSalida" Multiplicity="*" />
     <End Role="GuiaSalida" Type="ETNADbModel.Store.DocumentosReferencia_GuiaSalida" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="GuiaSalida">
@@ -1351,7 +1351,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DetalleGuiaSalidaProducto">
-    <End Role="DetalleGuiaSalida" Type="ETNADbModel.Store.DetalleGuiaSalidaConjunto" Multiplicity="*" />
+    <End Role="DetalleGuiaSalida" Type="ETNADbModel.Store.DetalleGuiaSalida" Multiplicity="*" />
     <End Role="Producto" Type="ETNADbModel.Store.Productos" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="Producto">
@@ -2356,31 +2356,31 @@
           </AssociationSet>
           <EntitySet Name="LoteSet" EntityType="ETNADbModel.Lote" />
           <EntitySet Name="TipoLoteSet" EntityType="ETNADbModel.TipoLote" />
-          <EntitySet Name="SolicitudSalidaConjunto" EntityType="ETNADbModel.SolicitudSalida" />
-          <EntitySet Name="DetalleSolicitudSalidaConjunto" EntityType="ETNADbModel.DetalleSolicitudSalida" />
+          <EntitySet Name="SolicitudesSalida" EntityType="ETNADbModel.SolicitudSalida" />
+          <EntitySet Name="DetalleSolicitudSalida" EntityType="ETNADbModel.DetalleSolicitudSalida" />
           <AssociationSet Name="SolicitudSalidaEmpleado" Association="ETNADbModel.SolicitudSalidaEmpleado">
-            <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
+            <End Role="SolicitudSalida" EntitySet="SolicitudesSalida" />
             <End Role="Empleado" EntitySet="Empleados" />
           </AssociationSet>
           <AssociationSet Name="GuiaSalidaSolicitudSalida" Association="ETNADbModel.GuiaSalidaSolicitudSalida">
             <End Role="GuiaSalida" EntitySet="DocumentosReferencia" />
-            <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
+            <End Role="SolicitudSalida" EntitySet="SolicitudesSalida" />
           </AssociationSet>
           <AssociationSet Name="DetalleSolicitudSalidaProducto" Association="ETNADbModel.DetalleSolicitudSalidaProducto">
-            <End Role="DetalleSolicitudSalida" EntitySet="DetalleSolicitudSalidaConjunto" />
+            <End Role="DetalleSolicitudSalida" EntitySet="DetalleSolicitudSalida" />
             <End Role="Producto" EntitySet="Productos" />
           </AssociationSet>
           <AssociationSet Name="DetalleSolicitudSalidaSolicitudSalida" Association="ETNADbModel.DetalleSolicitudSalidaSolicitudSalida">
-            <End Role="DetalleSolicitudSalida" EntitySet="DetalleSolicitudSalidaConjunto" />
-            <End Role="SolicitudSalida" EntitySet="SolicitudSalidaConjunto" />
+            <End Role="DetalleSolicitudSalida" EntitySet="DetalleSolicitudSalida" />
+            <End Role="SolicitudSalida" EntitySet="SolicitudesSalida" />
           </AssociationSet>
-          <EntitySet Name="DetalleGuiaSalidaConjunto" EntityType="ETNADbModel.DetalleGuiaSalida" />
+          <EntitySet Name="DetalleGuiaSalida" EntityType="ETNADbModel.DetalleGuiaSalida" />
           <AssociationSet Name="DetalleGuiaSalidaGuiaSalida" Association="ETNADbModel.DetalleGuiaSalidaGuiaSalida">
-            <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalidaConjunto" />
+            <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalida" />
             <End Role="GuiaSalida" EntitySet="DocumentosReferencia" />
           </AssociationSet>
           <AssociationSet Name="DetalleGuiaSalidaProducto" Association="ETNADbModel.DetalleGuiaSalidaProducto">
-            <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalidaConjunto" />
+            <End Role="DetalleGuiaSalida" EntitySet="DetalleGuiaSalida" />
             <End Role="Producto" EntitySet="Productos" />
           </AssociationSet>
           <EntitySet Name="SolicitudInsumoSet" EntityType="ETNADbModel.SolicitudInsumo" />
@@ -4538,9 +4538,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SolicitudSalidaConjunto">
+    <EntitySetMapping Name="SolicitudesSalida">
       <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.SolicitudSalida)">
-        <MappingFragment StoreEntitySet="SolicitudSalidaConjunto">
+        <MappingFragment StoreEntitySet="SolicitudesSalida">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FechaElaboracion" ColumnName="FechaElaboracion" />
           <ScalarProperty Name="DireccionEntrega" ColumnName="DireccionEntrega" />
@@ -4551,9 +4551,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DetalleSolicitudSalidaConjunto">
+    <EntitySetMapping Name="DetalleSolicitudSalida">
       <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleSolicitudSalida)">
-        <MappingFragment StoreEntitySet="DetalleSolicitudSalidaConjunto">
+        <MappingFragment StoreEntitySet="DetalleSolicitudSalida">
           <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
           <ScalarProperty Name="IdSolicitudSalida" ColumnName="IdSolicitudSalida" />
           <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
@@ -4561,9 +4561,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DetalleGuiaSalidaConjunto">
+    <EntitySetMapping Name="DetalleGuiaSalida">
       <EntityTypeMapping TypeName="IsTypeOf(ETNADbModel.DetalleGuiaSalida)">
-        <MappingFragment StoreEntitySet="DetalleGuiaSalidaConjunto">
+        <MappingFragment StoreEntitySet="DetalleGuiaSalida">
           <ScalarProperty Name="IdGuiaSalida" ColumnName="IdGuiaSalida" />
           <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
           <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
@@ -5183,7 +5183,7 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="SolicitudSalidaEmpleado" TypeName="ETNADbModel.SolicitudSalidaEmpleado" StoreEntitySet="SolicitudSalidaConjunto">
+    <AssociationSetMapping Name="SolicitudSalidaEmpleado" TypeName="ETNADbModel.SolicitudSalidaEmpleado" StoreEntitySet="SolicitudesSalida">
       <EndProperty Name="Empleado">
         <ScalarProperty Name="Id" ColumnName="Empleado_Id" />
       </EndProperty>
