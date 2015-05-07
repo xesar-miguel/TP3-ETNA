@@ -9,20 +9,23 @@
 <fieldset>
     <legend>FiltradoEntregasViewModel</legend>
     @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "filtradoForm" }))
-    {
-      
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FechaInicio)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.FechaInicio)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FechaFin)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.FechaFin)
-        </div>
+{
+
+    <div class="editor-label"><h3>
+    Fechas de Emisión</h3>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.FechaInicio)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.FechaInicio)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.FechaFin)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.FechaFin)
+    </div>
+</div>
         <div class="editor-label">
             @Html.LabelFor(model => model.IdCliente)
         </div>
@@ -51,6 +54,9 @@
     <div class="editor-field" style="padding-top: 10px;">
         <a href="@Url.Action("GenerarEntrega", "Entrega")">
         <input type="button" value="Generar" />
+        </a>
+        <a href="@Url.Action("Index", "Distribucion")">
+            <input type="button" value="Cerrar" />
         </a>
 
     </div>

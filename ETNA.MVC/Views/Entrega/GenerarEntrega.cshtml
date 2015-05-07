@@ -22,7 +22,7 @@
     <div class="editor-field" style="padding-top: 10px;">
         <input type="button" value="Aceptar" onclick="aceptar();" />
         <a href="@Url.Action("Index", "Entrega")">
-            <input type="button" value="Cerrar"/>
+            <input type="button" value="Cancelar"/>
         </a>
 </div>
 
@@ -52,6 +52,7 @@
                 success: function (data) {
                     if (data.Message == 1) {
                         alert('Entregas generadas satisfactoriamente.');
+                        window.location.href = '@Url.Action("Index", "Entrega")';
                     }
                     else {  
                         alert('Error, no se pudo culminar el proceso');
