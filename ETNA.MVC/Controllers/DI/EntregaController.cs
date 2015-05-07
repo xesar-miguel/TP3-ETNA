@@ -39,9 +39,7 @@ namespace ETNA.MVC.Controllers.DI
             if (listaEntregas != null && listaEntregas.Count() == 0)
             {
                 model.GenerarEntrega = true;
-                service.generarEntregasFactura(DateTime.Today, DateTime.Now);
-                service.generarEntregasPedido(DateTime.Today, DateTime.Now);
-
+               
             }
 
             model.ListaInicial = listaEntregas;
@@ -93,6 +91,31 @@ namespace ETNA.MVC.Controllers.DI
             entrega.ListaDetalle = listaDetalles;
 
             return View(entrega);
+        }
+
+        public ViewResult GenerarEntrega()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult ProcesarEntrega()
+        {
+            int message = 0;
+
+            //Invocamos al servicio
+            var service = new GestorEntrega();
+
+            service.generarEntregasFactura(DateTime.Today, DateTime.Now);
+            service.generarEntregasPedido(DateTime.Today, DateTime.Now);
+
+            message = 1;
+
+            return Json(new
+            {
+                Message = message
+            }, JsonRequestBehavior.AllowGet);
         }
             
 

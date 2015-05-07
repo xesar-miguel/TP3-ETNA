@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<ETNA.MVC.Models.DI.DetalleEntregaViewModel>
-<table>
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.NroItem)
@@ -37,7 +37,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CantidadRechazada)
             </td>
-            
+
         </tr>
     }
 </table>
