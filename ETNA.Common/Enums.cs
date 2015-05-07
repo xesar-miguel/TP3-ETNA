@@ -78,6 +78,45 @@ namespace ETNA.Common
             AjusteInventario = 3
         }
 
+
+        public enum PlanProduccion
+        {
+            [Description("Libre")]
+            Generado = 1,
+            [Description("Asociado")]
+            Pendiente = 2,
+            [Description("Finalizado")]
+            Finalizado = 3
+        }
+
+        public enum SolicitudProduccion
+        {
+            [Description("Registrado")]
+            Generado = 1,
+            [Description("Pendiente")]
+            Pendiente = 2,
+            [Description("Aprobado")]
+            Aprobado = 3,
+            [Description("Aprobado Forzado")]
+            AprobadoForzado = 4,
+            [Description("En Atención")]
+            EnAtencion = 5,
+            [Description("Finalizado")]
+            Finalizado = 6
+        }
+
+        public enum OrdenTrabajo
+        {
+            [Description("Generado")]
+            Generado = 1,
+            [Description("Pendiente")]
+            Pendiente = 2,
+            [Description("En Atención")]
+            EnAtencion = 3,
+            [Description("Finalizado")]
+            Finalizado = 4
+        }
+
         #endregion
 
         public static string GetEnumDescription(Enum value)
