@@ -620,7 +620,107 @@ insert into estadoHojaRutaDetalle ( descripcion, abreviatura ) values ('Despacha
 insert into estadoHojaRutaDetalle ( descripcion, abreviatura ) values ('Rechazada', 'RECH') ;
 insert into estadoHojaRutaDetalle ( descripcion, abreviatura ) values ('Eliminada', 'DEL') ;
 
+--SPU generarFactura
+/****** Object:  StoredProcedure [dbo].[generarEntregasFactura]    Script Date: 07/05/2015 12:18:34 ******/
+SET ANSI_NULLS ON
+GO
 
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[generarEntregasFactura]
+	@p_fechaInicio DATETIME = '2015-05-06 11:39:07.850'
+	,@p_FechaFin DATETIME = '2015-05-07 11:39:07.850'
+AS
+BEGIN
+	-- Declarar variables
+	declare @v_codigo int;
+	declare @v_idCliente int;
+	declare @v_idDireccion int;
+	declare @v_idMotivoTraslado int;
+	declare @v_fechaEntrega date;
+	declare @rownum int;
+
+	set @rownum = 0;
+
+	-- Cursor: Lectura de entregas generadas
+	declare entregasFactura_cursor cursor for
+	 select codigo, idCliente, idDireccion, idMotivoTraslado, fechaEntrega
+	   from entrega
+	  where numero is null
+		and idMotivoTraslado = 1;
+
+	-- 1. Listado de facturas: Cabecera entrega
+	insert into entrega ( fechaGeneracion, fechaEntrega, idEstadoEntrega, 
+						idZonaDespacho, idMotivoTraslado, idCliente, idDireccion )
+	select GETDATE(), -- fechaGeneracion
+			b.fechaEntrega,
+			1, -- estadoEntrega
+			( select x.idZonaDespacho from direccion as x where x.codigo = a.idDireccion ), -- zonaDespacho
+			1, -- motivoTraslado,
+			a.idCliente, 
+			a.idDireccion
+	  from factura a
+	 inner join facturadetalle b
+		on ( a.codigo = b.idfactura )
+	 where b.fechaEntrega between @p_fechaInicio and @p_FechaFin
+	   and ISNULL(b.cantidad,0) > ISNULL(b.cantidadEntregada,0)
+	   and a.idEstadoFactura = 6 -- Pendiente Despacho
+	 group by a.idcliente, a.idDireccion, b.fechaEntrega ;
+
+	-- Abrir cursor: Lectura de entregas generadas
+	open entregasFactura_cursor;
+	
+	FETCH NEXT FROM entregasFactura_cursor into @v_codigo, @v_idCliente, @v_idDireccion, @v_idMotivoTraslado, @v_fechaEntrega ;
+	
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+
+	-- Asignar número de entrega
+	update entrega
+	   set numero = concat('ENT-', FORMAT (codigo, '000')) 
+	 where codigo = @v_codigo ;
+
+	-- Generar detalle por entrega
+	insert into entregaDetalle ( idEntrega, nroItem, cantidadEntregaProg, idProducto )
+	select x.idEntrega,
+			@rownum+1 AS nroItem,
+			x.cantidad, 
+			x.idProducto
+	  from 	( select @v_codigo as idEntrega,
+					sum(ISNULL(b.cantidad,0) - ISNULL(b.cantidadEntregada,0)) as cantidad,
+					b.idProducto
+			  from factura a
+			 inner join facturadetalle b
+				on ( a.codigo = b.idfactura )
+			 where b.fechaEntrega between @p_fechaInicio and @p_FechaFin
+			   and ISNULL(b.cantidad,0) > ISNULL(b.cantidadEntregada,0)
+			   and a.idEstadoFactura = 6 -- Pendiente Despacho
+			   and a.idCliente = @v_idCliente
+			   and b.fechaEntrega = @v_fechaEntrega
+			   and a.idDireccion = @v_idDireccion
+			 group by b.idProducto) x;
+
+			 FETCH NEXT FROM entregasFactura_cursor into @v_codigo, @v_idCliente, @v_idDireccion, @v_idMotivoTraslado, @v_fechaEntrega ;
+
+	END
+	close entregasFactura_cursor;
+	DEALLOCATE entregasFactura_cursor;
+
+	-- Actualizar cantidades en entrega
+	update facturadetalle
+	   set cantidadEntregada = cantidad
+	 where idFactura in ( select distinct x.codigo
+						   from factura x
+						  where x.idEstadoFactura = 6 )
+	  and fechaEntrega between @p_fechaInicio and @p_FechaFin
+      and idFacturaDetalle between 1 and 10000 ;
+
+END
+
+
+GO
 
 
 

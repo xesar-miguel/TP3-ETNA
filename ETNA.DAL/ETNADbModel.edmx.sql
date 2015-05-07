@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/07/2015 10:40:21
+-- Date Created: 05/07/2015 12:16:13
 -- Generated from EDMX file: C:\Users\Martin\Source\Repos\TP3-ETNA\ETNA.DAL\ETNADbModel.edmx
 -- --------------------------------------------------
 
@@ -292,9 +292,6 @@ IF OBJECT_ID(N'[dbo].[FK_EmpleadoPlanProduccionPersonal]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProductoPlanProduccionInsumo]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PlanProduccionInsumoSet] DROP CONSTRAINT [FK_ProductoPlanProduccionInsumo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ProductoTipoProducto]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Productos] DROP CONSTRAINT [FK_ProductoTipoProducto];
 GO
 IF OBJECT_ID(N'[dbo].[FK_SolicitudSalidaDetalleOrdenTrabajo]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DetalleOrdenTrabajoSet] DROP CONSTRAINT [FK_SolicitudSalidaDetalleOrdenTrabajo];
