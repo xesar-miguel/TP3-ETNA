@@ -333,11 +333,11 @@
     <Content Include="Views\GuiaSalida\Solicitudes.cshtml" />
     <Content Include="Views\GuiaSalida\Atender.cshtml" />
     <Content Include="Views\GuiaSalida\_ListaSolicitudSalida.cshtml" />
-    <Content Include="Views\Distribucion\Index.cshtml" />
     <Content Include="Views\Entrega\Index.cshtml" />
     <Content Include="Views\Entrega\_ListaEntrega.cshtml" />
     <Content Include="Views\Entrega\VerEntrega.cshtml" />
     <Content Include="Views\Entrega\_ListaDetalle.cshtml" />
+    <Content Include="Views\Distribucion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -345,6 +345,7 @@
     <Folder Include="Controllers\FB\" />
     <Folder Include="Controllers\PV\" />
     <Folder Include="Models\FB\" />
+    <Folder Include="Views\GuiaEntrada\Distribucion\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
