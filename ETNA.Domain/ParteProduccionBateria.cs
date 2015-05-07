@@ -14,7 +14,10 @@ namespace ETNA.Domain
     
     public partial class ParteProduccionBateria
     {
-        public int Id { get; set; }
+        public int IdParte { get; set; }
+        public string IdProducto { get; set; }
+        public string CantidadPropuesta { get; set; }
+        public string CantidadReal { get; set; }
     
         public virtual ParteProduccion ParteProduccion { get; set; }
         public virtual Producto Producto { get; set; }

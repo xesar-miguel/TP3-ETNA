@@ -154,6 +154,9 @@
     <Compile Include="Kardex.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="LineaProduccion.cs">
+      <DependentUpon>ETNADbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="LoteProduccion.cs">
       <DependentUpon>ETNADbModel.tt</DependentUpon>
     </Compile>

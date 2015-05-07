@@ -23,6 +23,12 @@ namespace ETNA.Domain
         }
     
         public int IdOrden { get; set; }
+        public string Glosa { get; set; }
+        public string FechaExpedicion { get; set; }
+        public string FechaInicio { get; set; }
+        public string FechaTermino { get; set; }
+        public string CantidadSolicitada { get; set; }
+        public string Estado { get; set; }
     
         public virtual LoteProduccion LoteProduccion { get; set; }
         public virtual DetalleSolicitudProduccion DetalleSolicitudProduccion { get; set; }

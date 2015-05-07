@@ -15,8 +15,12 @@ namespace ETNA.Domain
     public partial class LoteProduccion
     {
         public int IdLote { get; set; }
-        public string NroLote { get; set; }
-        public System.DateTime FechaCreacion { get; set; }
+        public string IdOrden { get; set; }
+        public string FechaInicio { get; set; }
+        public string FechaTermino { get; set; }
+        public string CantidadSolicitada { get; set; }
+        public string CantidadFabricada { get; set; }
+        public string Estado { get; set; }
     
         public virtual SolicitudProduccion SolicitudProduccion { get; set; }
         public virtual OrdenTrabajo OrdenTrabajo { get; set; }

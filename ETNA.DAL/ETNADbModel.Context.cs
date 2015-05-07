@@ -96,5 +96,6 @@ namespace ETNA.DAL
         public DbSet<PlanProduccionPersonal> PlanProduccionPersonalSet { get; set; }
         public DbSet<SolicitudReprogramacion> SolicitudReprogramacionSet { get; set; }
         public DbSet<TipoProducto> TipoProductoSet { get; set; }
+        public DbSet<LineaProduccion> LineaProduccionSet { get; set; }
     }
 }

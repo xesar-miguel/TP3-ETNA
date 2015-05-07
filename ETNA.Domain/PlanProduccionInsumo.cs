@@ -15,8 +15,15 @@ namespace ETNA.Domain
     public partial class PlanProduccionInsumo
     {
         public int IdProgramacion { get; set; }
+        public string IdPlan { get; set; }
+        public string IdLinea { get; set; }
+        public string IdProducto { get; set; }
+        public string FechaEntrega { get; set; }
+        public string Cantidad { get; set; }
+        public string Estado { get; set; }
     
         public virtual PlanProduccion PlanProduccion { get; set; }
         public virtual Producto Producto { get; set; }
+        public virtual LineaProduccion LineaProduccion { get; set; }
     }
 }

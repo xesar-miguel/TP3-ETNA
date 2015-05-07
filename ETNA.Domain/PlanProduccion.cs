@@ -22,6 +22,13 @@ namespace ETNA.Domain
         }
     
         public int IdPlan { get; set; }
+        public string Glosa { get; set; }
+        public string Descripcion { get; set; }
+        public string FechaPlan { get; set; }
+        public string UnidadesProducir { get; set; }
+        public string TotalHorasMaquinaria { get; set; }
+        public string TotalCantidadMaquinaria { get; set; }
+        public string TotalCantidadInsumo { get; set; }
     
         public virtual ICollection<PlanProduccionMaquinaria> PlanProduccionMaquinaria { get; set; }
         public virtual ICollection<PlanProduccionInsumo> PlanProduccionInsumo { get; set; }

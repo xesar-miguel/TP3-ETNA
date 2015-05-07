@@ -19,7 +19,8 @@ namespace ETNA.Domain
             this.OrdenTrabajo = new HashSet<OrdenTrabajo>();
         }
     
-        public int Id { get; set; }
+        public int IdSolicitud { get; set; }
+        public string IdOrden { get; set; }
     
         public virtual ICollection<OrdenTrabajo> OrdenTrabajo { get; set; }
         public virtual SolicitudProduccion SolicitudProduccion { get; set; }

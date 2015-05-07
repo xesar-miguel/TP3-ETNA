@@ -21,6 +21,11 @@ namespace ETNA.Domain
         }
     
         public int IdSolicitud { get; set; }
+        public string IdPlan { get; set; }
+        public string Glosa { get; set; }
+        public string FechaSolicitud { get; set; }
+        public string Observacion { get; set; }
+        public string Estado { get; set; }
     
         public virtual PlanProduccion PlanProduccion { get; set; }
         public virtual ICollection<LoteProduccion> LoteProduccion { get; set; }

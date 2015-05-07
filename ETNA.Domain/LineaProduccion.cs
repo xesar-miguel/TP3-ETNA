@@ -12,20 +12,21 @@ namespace ETNA.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Maquinaria
+    public partial class LineaProduccion
     {
-        public Maquinaria()
+        public LineaProduccion()
         {
+            this.PlanProduccionPersonal = new HashSet<PlanProduccionPersonal>();
+            this.PlanProduccionInsumo = new HashSet<PlanProduccionInsumo>();
             this.PlanProduccionMaquinaria = new HashSet<PlanProduccionMaquinaria>();
-            this.OrdenTrabajoMaquinaria = new HashSet<OrdenTrabajoMaquinaria>();
         }
     
-        public int IdMaquinaria { get; set; }
+        public int IdLinea { get; set; }
         public string Descripcion { get; set; }
-        public string Tipo { get; set; }
         public string Estado { get; set; }
     
+        public virtual ICollection<PlanProduccionPersonal> PlanProduccionPersonal { get; set; }
+        public virtual ICollection<PlanProduccionInsumo> PlanProduccionInsumo { get; set; }
         public virtual ICollection<PlanProduccionMaquinaria> PlanProduccionMaquinaria { get; set; }
-        public virtual ICollection<OrdenTrabajoMaquinaria> OrdenTrabajoMaquinaria { get; set; }
     }
 }

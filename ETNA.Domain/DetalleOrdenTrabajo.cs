@@ -14,7 +14,8 @@ namespace ETNA.Domain
     
     public partial class DetalleOrdenTrabajo
     {
-        public int Id { get; set; }
+        public int IdOrden { get; set; }
+        public string IdSolicitud { get; set; }
     
         public virtual OrdenTrabajo OrdenTrabajo { get; set; }
         public virtual SolicitudSalida SolicitudSalida { get; set; }
