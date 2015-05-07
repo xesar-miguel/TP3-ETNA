@@ -25,7 +25,7 @@ namespace ETNA.Domain
     
         public int IdLinea { get; set; }
         public string Descripcion { get; set; }
-        public string Estado { get; set; }
+        public int Estado { get; set; }
     
         public virtual ICollection<PlanProduccionPersonal> PlanProduccionPersonal { get; set; }
         public virtual ICollection<PlanProduccionInsumo> PlanProduccionInsumo { get; set; }

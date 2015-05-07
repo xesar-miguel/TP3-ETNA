@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/06/2015 23:41:35
+-- Date Created: 05/07/2015 01:18:16
 -- Generated from EDMX file: E:\TP3-ETNA\ETNA.DAL\ETNADbModel.edmx
 -- --------------------------------------------------
 
@@ -317,6 +317,24 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_LineaProduccionPlanProduccionMaquinaria]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PlanProduccionMaquinariaSet] DROP CONSTRAINT [FK_LineaProduccionPlanProduccionMaquinaria];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ProductoParteProduccion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ParteProduccionSet] DROP CONSTRAINT [FK_ProductoParteProduccion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PlanProduccionProducto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PlanProduccionSet] DROP CONSTRAINT [FK_PlanProduccionProducto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LineaProduccionOrdenTrabajo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[OrdenTrabajoSet] DROP CONSTRAINT [FK_LineaProduccionOrdenTrabajo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PlanProduccionDetallePlanProduccion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetallePlanProduccionSet] DROP CONSTRAINT [FK_PlanProduccionDetallePlanProduccion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LineaProduccionDetallePlanProduccion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetallePlanProduccionSet] DROP CONSTRAINT [FK_LineaProduccionDetallePlanProduccion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProductoDetallePlanProduccion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DetallePlanProduccionSet] DROP CONSTRAINT [FK_ProductoDetallePlanProduccion];
+GO
 IF OBJECT_ID(N'[dbo].[FK_GuiaEntrada_inherits_DocumentoReferencia]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DocumentosReferencia_GuiaEntrada] DROP CONSTRAINT [FK_GuiaEntrada_inherits_DocumentoReferencia];
 GO
@@ -538,6 +556,9 @@ GO
 IF OBJECT_ID(N'[dbo].[LineaProduccionSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[LineaProduccionSet];
 GO
+IF OBJECT_ID(N'[dbo].[DetallePlanProduccionSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DetallePlanProduccionSet];
+GO
 IF OBJECT_ID(N'[dbo].[DocumentosReferencia_GuiaEntrada]', 'U') IS NOT NULL
     DROP TABLE [dbo].[DocumentosReferencia_GuiaEntrada];
 GO
@@ -687,16 +708,16 @@ GO
 -- Creating table 'LoteProduccionSet'
 CREATE TABLE [dbo].[LoteProduccionSet] (
     [IdLote] int IDENTITY(1,1) NOT NULL,
-    [IdOrden] nvarchar(max)  NOT NULL,
-    [FechaInicio] nvarchar(max)  NOT NULL,
-    [FechaTermino] nvarchar(max)  NOT NULL,
-    [CantidadSolicitada] nvarchar(max)  NOT NULL,
-    [CantidadFabricada] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
+    [IdOrden] int  NOT NULL,
+    [FechaInicio] datetime  NOT NULL,
+    [FechaTermino] datetime  NOT NULL,
+    [CantidadSolicitada] int  NOT NULL,
+    [CantidadFabricada] int  NOT NULL,
+    [Estado] int  NOT NULL,
     [SolicitudProduccion_IdSolicitud] int  NOT NULL,
-    [SolicitudProduccion_IdPlan] nvarchar(max)  NOT NULL,
+    [SolicitudProduccion_IdPlan] int  NOT NULL,
     [OrdenTrabajo_IdOrden] int  NOT NULL,
-    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL
+    [OrdenTrabajo_IdLinea] int  NOT NULL
 );
 GO
 
@@ -733,9 +754,9 @@ GO
 -- Creating table 'DetalleOrdenTrabajoSet'
 CREATE TABLE [dbo].[DetalleOrdenTrabajoSet] (
     [IdOrden] int IDENTITY(1,1) NOT NULL,
-    [IdSolicitud] nvarchar(max)  NOT NULL,
+    [IdSolicitud] int  NOT NULL,
     [OrdenTrabajo_IdOrden] int  NOT NULL,
-    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL,
+    [OrdenTrabajo_IdLinea] int  NOT NULL,
     [SolicitudSalida_Id] int  NOT NULL
 );
 GO
@@ -743,13 +764,13 @@ GO
 -- Creating table 'OrdenTrabajoInsumoSet'
 CREATE TABLE [dbo].[OrdenTrabajoInsumoSet] (
     [IdOrden] int IDENTITY(1,1) NOT NULL,
-    [IdLinea] nvarchar(max)  NOT NULL,
-    [IdProducto] nvarchar(max)  NOT NULL,
-    [FechaEntrega] nvarchar(max)  NOT NULL,
-    [Cantidad] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
+    [IdLinea] int  NOT NULL,
+    [IdProducto] int  NOT NULL,
+    [FechaEntrega] datetime  NOT NULL,
+    [Cantidad] int  NOT NULL,
+    [Estado] int  NOT NULL,
     [OrdenTrabajo_IdOrden] int  NOT NULL,
-    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL,
+    [OrdenTrabajo_IdLinea] int  NOT NULL,
     [Producto_Id] int  NOT NULL
 );
 GO
@@ -757,15 +778,15 @@ GO
 -- Creating table 'ParteProduccionSet'
 CREATE TABLE [dbo].[ParteProduccionSet] (
     [IdParte] int IDENTITY(1,1) NOT NULL,
-    [IdOrden] nvarchar(max)  NOT NULL,
-    [IdProducto] nvarchar(max)  NOT NULL,
+    [IdOrden] int  NOT NULL,
+    [IdProducto] int  NOT NULL,
     [Glosa] nvarchar(max)  NOT NULL,
-    [FechaFabricacion] nvarchar(max)  NOT NULL,
-    [CantidadProducida] nvarchar(max)  NOT NULL,
+    [FechaFabricacion] datetime  NOT NULL,
+    [CantidadProducida] int  NOT NULL,
     [Comentario] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
+    [Estado] int  NOT NULL,
     [OrdenTrabajo_IdOrden] int  NOT NULL,
-    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL,
+    [OrdenTrabajo_IdLinea] int  NOT NULL,
     [Producto_Id] int  NOT NULL
 );
 GO
@@ -773,15 +794,15 @@ GO
 -- Creating table 'OrdenTrabajoSet'
 CREATE TABLE [dbo].[OrdenTrabajoSet] (
     [IdOrden] int IDENTITY(1,1) NOT NULL,
-    [IdLinea] nvarchar(max)  NOT NULL,
+    [IdLinea] int  NOT NULL,
     [Glosa] nvarchar(max)  NOT NULL,
-    [FechaExpedicion] nvarchar(max)  NOT NULL,
-    [FechaInicio] nvarchar(max)  NOT NULL,
-    [FechaTermino] nvarchar(max)  NOT NULL,
-    [CantidadSolicitada] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
+    [FechaExpedicion] datetime  NOT NULL,
+    [FechaInicio] datetime  NOT NULL,
+    [FechaTermino] datetime  NOT NULL,
+    [CantidadSolicitada] int  NOT NULL,
+    [Estado] int  NOT NULL,
     [DetalleSolicitudProduccion_IdSolicitud] int  NOT NULL,
-    [DetalleSolicitudProduccion_IdOrden] nvarchar(max)  NOT NULL,
+    [DetalleSolicitudProduccion_IdOrden] int  NOT NULL,
     [LineaProduccion_IdLinea] int  NOT NULL
 );
 GO
@@ -789,13 +810,13 @@ GO
 -- Creating table 'OrdenTrabajoPersonalSet'
 CREATE TABLE [dbo].[OrdenTrabajoPersonalSet] (
     [IdOrden] int IDENTITY(1,1) NOT NULL,
-    [IdLinea] nvarchar(max)  NOT NULL,
-    [IdPersonal] nvarchar(max)  NOT NULL,
-    [FechaInicio] nvarchar(max)  NOT NULL,
-    [FechaTermino] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
+    [IdLinea] int  NOT NULL,
+    [IdPersonal] int  NOT NULL,
+    [FechaInicio] datetime  NOT NULL,
+    [FechaTermino] datetime  NOT NULL,
+    [Estado] int  NOT NULL,
     [OrdenTrabajo_IdOrden] int  NOT NULL,
-    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL,
+    [OrdenTrabajo_IdLinea] int  NOT NULL,
     [Empleado_Id] int  NOT NULL
 );
 GO
@@ -803,27 +824,27 @@ GO
 -- Creating table 'SolicitudProduccionSet'
 CREATE TABLE [dbo].[SolicitudProduccionSet] (
     [IdSolicitud] int IDENTITY(1,1) NOT NULL,
-    [IdPlan] nvarchar(max)  NOT NULL,
+    [IdPlan] int  NOT NULL,
     [Glosa] nvarchar(max)  NOT NULL,
-    [FechaSolicitud] nvarchar(max)  NOT NULL,
+    [FechaSolicitud] datetime  NOT NULL,
     [Observacion] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
+    [Estado] int  NOT NULL,
     [PlanProduccion_IdPlan] int  NOT NULL,
-    [PlanProduccion_IdProducto] nvarchar(max)  NOT NULL
+    [PlanProduccion_IdProducto] int  NOT NULL
 );
 GO
 
 -- Creating table 'PlanProduccionSet'
 CREATE TABLE [dbo].[PlanProduccionSet] (
     [IdPlan] int IDENTITY(1,1) NOT NULL,
-    [IdProducto] nvarchar(max)  NOT NULL,
+    [IdProducto] int  NOT NULL,
     [Glosa] nvarchar(max)  NOT NULL,
     [Descripcion] nvarchar(max)  NOT NULL,
-    [FechaPlan] nvarchar(max)  NOT NULL,
-    [UnidadesProducir] nvarchar(max)  NOT NULL,
-    [TotalHorasMaquinaria] nvarchar(max)  NOT NULL,
-    [TotalCantidadMaquinaria] nvarchar(max)  NOT NULL,
-    [TotalCantidadInsumo] nvarchar(max)  NOT NULL,
+    [FechaPlan] datetime  NOT NULL,
+    [UnidadesProducir] int  NOT NULL,
+    [TotalHorasMaquinaria] int  NOT NULL,
+    [TotalCantidadMaquinaria] int  NOT NULL,
+    [TotalCantidadInsumo] int  NOT NULL,
     [Producto_Id] int  NOT NULL
 );
 GO
@@ -831,15 +852,15 @@ GO
 -- Creating table 'PlanProduccionMaquinariaSet'
 CREATE TABLE [dbo].[PlanProduccionMaquinariaSet] (
     [IdProgramacion] int IDENTITY(1,1) NOT NULL,
-    [IdPlan] nvarchar(max)  NOT NULL,
-    [IdLinea] nvarchar(max)  NOT NULL,
-    [IdMaquinaria] nvarchar(max)  NOT NULL,
-    [FechaInicio] nvarchar(max)  NOT NULL,
-    [FechaTermino] nvarchar(max)  NOT NULL,
-    [Cantidad] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
+    [IdPlan] int  NOT NULL,
+    [IdLinea] int  NOT NULL,
+    [IdMaquinaria] int  NOT NULL,
+    [FechaInicio] datetime  NOT NULL,
+    [FechaTermino] datetime  NOT NULL,
+    [Cantidad] int  NOT NULL,
+    [Estado] int  NOT NULL,
     [PlanProduccion_IdPlan] int  NOT NULL,
-    [PlanProduccion_IdProducto] nvarchar(max)  NOT NULL,
+    [PlanProduccion_IdProducto] int  NOT NULL,
     [Maquinaria_IdMaquinaria] int  NOT NULL,
     [LineaProduccion_IdLinea] int  NOT NULL
 );
@@ -848,23 +869,23 @@ GO
 -- Creating table 'DetalleSolicitudProduccionSet'
 CREATE TABLE [dbo].[DetalleSolicitudProduccionSet] (
     [IdSolicitud] int IDENTITY(1,1) NOT NULL,
-    [IdOrden] nvarchar(max)  NOT NULL,
+    [IdOrden] int  NOT NULL,
     [SolicitudProduccion_IdSolicitud] int  NOT NULL,
-    [SolicitudProduccion_IdPlan] nvarchar(max)  NOT NULL
+    [SolicitudProduccion_IdPlan] int  NOT NULL
 );
 GO
 
 -- Creating table 'OrdenTrabajoMaquinariaSet'
 CREATE TABLE [dbo].[OrdenTrabajoMaquinariaSet] (
     [IdOrden] int IDENTITY(1,1) NOT NULL,
-    [IdLinea] nvarchar(max)  NOT NULL,
-    [IdMaquinaria] nvarchar(max)  NOT NULL,
-    [FechaInicio] nvarchar(max)  NOT NULL,
-    [FechaTermino] nvarchar(max)  NOT NULL,
-    [Cantidad] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
+    [IdLinea] int  NOT NULL,
+    [IdMaquinaria] int  NOT NULL,
+    [FechaInicio] datetime  NOT NULL,
+    [FechaTermino] datetime  NOT NULL,
+    [Cantidad] int  NOT NULL,
+    [Estado] int  NOT NULL,
     [OrdenTrabajo_IdOrden] int  NOT NULL,
-    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL,
+    [OrdenTrabajo_IdLinea] int  NOT NULL,
     [Maquinaria_IdMaquinaria] int  NOT NULL
 );
 GO
@@ -873,8 +894,8 @@ GO
 CREATE TABLE [dbo].[MaquinariaSet] (
     [IdMaquinaria] int IDENTITY(1,1) NOT NULL,
     [Descripcion] nvarchar(max)  NOT NULL,
-    [Tipo] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL
+    [Tipo] int  NOT NULL,
+    [Estado] int  NOT NULL
 );
 GO
 
@@ -1271,14 +1292,14 @@ GO
 -- Creating table 'PlanProduccionInsumoSet'
 CREATE TABLE [dbo].[PlanProduccionInsumoSet] (
     [IdProgramacion] int IDENTITY(1,1) NOT NULL,
-    [IdPlan] nvarchar(max)  NOT NULL,
-    [IdLinea] nvarchar(max)  NOT NULL,
-    [IdProducto] nvarchar(max)  NOT NULL,
-    [FechaEntrega] nvarchar(max)  NOT NULL,
-    [Cantidad] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
+    [IdPlan] int  NOT NULL,
+    [IdLinea] int  NOT NULL,
+    [IdProducto] int  NOT NULL,
+    [FechaEntrega] datetime  NOT NULL,
+    [Cantidad] int  NOT NULL,
+    [Estado] int  NOT NULL,
     [PlanProduccion_IdPlan] int  NOT NULL,
-    [PlanProduccion_IdProducto] nvarchar(max)  NOT NULL,
+    [PlanProduccion_IdProducto] int  NOT NULL,
     [Producto_Id] int  NOT NULL,
     [LineaProduccion_IdLinea] int  NOT NULL
 );
@@ -1287,14 +1308,14 @@ GO
 -- Creating table 'PlanProduccionPersonalSet'
 CREATE TABLE [dbo].[PlanProduccionPersonalSet] (
     [IdProgramacion] int IDENTITY(1,1) NOT NULL,
-    [IdPlan] nvarchar(max)  NOT NULL,
-    [IdLinea] nvarchar(max)  NOT NULL,
-    [IdPersonal] nvarchar(max)  NOT NULL,
-    [FechaInicio] nvarchar(max)  NOT NULL,
-    [FechaTermino] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
+    [IdPlan] int  NOT NULL,
+    [IdLinea] int  NOT NULL,
+    [IdPersonal] int  NOT NULL,
+    [FechaInicio] datetime  NOT NULL,
+    [FechaTermino] datetime  NOT NULL,
+    [Estado] int  NOT NULL,
     [PlanProduccion_IdPlan] int  NOT NULL,
-    [PlanProduccion_IdProducto] nvarchar(max)  NOT NULL,
+    [PlanProduccion_IdProducto] int  NOT NULL,
     [Empleado_Id] int  NOT NULL,
     [LineaProduccion_IdLinea] int  NOT NULL
 );
@@ -1303,11 +1324,11 @@ GO
 -- Creating table 'SolicitudReprogramacionSet'
 CREATE TABLE [dbo].[SolicitudReprogramacionSet] (
     [IdReprogramacion] int IDENTITY(1,1) NOT NULL,
-    [IdOrden] nvarchar(max)  NOT NULL,
+    [IdOrden] int  NOT NULL,
     [Motivo] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
+    [Estado] int  NOT NULL,
     [OrdenTrabajo_IdOrden] int  NOT NULL,
-    [OrdenTrabajo_IdLinea] nvarchar(max)  NOT NULL
+    [OrdenTrabajo_IdLinea] int  NOT NULL
 );
 GO
 
@@ -1315,7 +1336,7 @@ GO
 CREATE TABLE [dbo].[TipoProductoSet] (
     [IdTipo] int IDENTITY(1,1) NOT NULL,
     [Descripcion] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL
+    [Estado] int  NOT NULL
 );
 GO
 
@@ -1323,19 +1344,19 @@ GO
 CREATE TABLE [dbo].[LineaProduccionSet] (
     [IdLinea] int IDENTITY(1,1) NOT NULL,
     [Descripcion] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL
+    [Estado] int  NOT NULL
 );
 GO
 
 -- Creating table 'DetallePlanProduccionSet'
 CREATE TABLE [dbo].[DetallePlanProduccionSet] (
     [IdPlan] int IDENTITY(1,1) NOT NULL,
-    [IdLinea] nvarchar(max)  NOT NULL,
-    [IdProducto] nvarchar(max)  NOT NULL,
-    [CantidaRequerida] nvarchar(max)  NOT NULL,
-    [Estado] nvarchar(max)  NOT NULL,
+    [IdLinea] int  NOT NULL,
+    [IdProducto] int  NOT NULL,
+    [CantidaRequerida] int  NOT NULL,
+    [Estado] int  NOT NULL,
     [PlanProduccion_IdPlan] int  NOT NULL,
-    [PlanProduccion_IdProducto] nvarchar(max)  NOT NULL,
+    [PlanProduccion_IdProducto] int  NOT NULL,
     [LineaProduccion_IdLinea] int  NOT NULL,
     [Producto_Id] int  NOT NULL
 );

@@ -649,16 +649,16 @@
       <PropertyRef Name="IdOrden" />
     </Key>
     <Property Name="IdLote" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdOrden" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaInicio" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaTermino" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CantidadSolicitada" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CantidadFabricada" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdOrden" Type="int" Nullable="false" />
+    <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaTermino" Type="datetime" Nullable="false" />
+    <Property Name="CantidadSolicitada" Type="int" Nullable="false" />
+    <Property Name="CantidadFabricada" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
     <Property Name="SolicitudProduccion_IdSolicitud" Type="int" Nullable="false" />
-    <Property Name="SolicitudProduccion_IdPlan" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SolicitudProduccion_IdPlan" Type="int" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
-    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SolicitudesSalida">
     <Key>
@@ -698,9 +698,9 @@
       <PropertyRef Name="IdSolicitud" />
     </Key>
     <Property Name="IdOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdSolicitud" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdSolicitud" Type="int" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
-    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="int" Nullable="false" />
     <Property Name="SolicitudSalida_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OrdenTrabajoInsumoSet">
@@ -710,13 +710,13 @@
       <PropertyRef Name="IdProducto" />
     </Key>
     <Property Name="IdOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdLinea" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IdProducto" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaEntrega" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Cantidad" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdLinea" Type="int" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+    <Property Name="FechaEntrega" Type="datetime" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
-    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="int" Nullable="false" />
     <Property Name="Producto_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ParteProduccionSet">
@@ -726,15 +726,15 @@
       <PropertyRef Name="IdProducto" />
     </Key>
     <Property Name="IdParte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdOrden" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IdProducto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdOrden" Type="int" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
     <Property Name="Glosa" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaFabricacion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CantidadProducida" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaFabricacion" Type="datetime" Nullable="false" />
+    <Property Name="CantidadProducida" Type="int" Nullable="false" />
     <Property Name="Comentario" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
-    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="int" Nullable="false" />
     <Property Name="Producto_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OrdenTrabajoSet">
@@ -743,15 +743,15 @@
       <PropertyRef Name="IdLinea" />
     </Key>
     <Property Name="IdOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdLinea" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdLinea" Type="int" Nullable="false" />
     <Property Name="Glosa" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaExpedicion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaInicio" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaTermino" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CantidadSolicitada" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaExpedicion" Type="datetime" Nullable="false" />
+    <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaTermino" Type="datetime" Nullable="false" />
+    <Property Name="CantidadSolicitada" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
     <Property Name="DetalleSolicitudProduccion_IdSolicitud" Type="int" Nullable="false" />
-    <Property Name="DetalleSolicitudProduccion_IdOrden" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DetalleSolicitudProduccion_IdOrden" Type="int" Nullable="false" />
     <Property Name="LineaProduccion_IdLinea" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OrdenTrabajoPersonalSet">
@@ -761,13 +761,13 @@
       <PropertyRef Name="IdPersonal" />
     </Key>
     <Property Name="IdOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdLinea" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IdPersonal" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaInicio" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaTermino" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdLinea" Type="int" Nullable="false" />
+    <Property Name="IdPersonal" Type="int" Nullable="false" />
+    <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaTermino" Type="datetime" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
-    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="int" Nullable="false" />
     <Property Name="Empleado_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SolicitudProduccionSet">
@@ -776,13 +776,13 @@
       <PropertyRef Name="IdPlan" />
     </Key>
     <Property Name="IdSolicitud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdPlan" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdPlan" Type="int" Nullable="false" />
     <Property Name="Glosa" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaSolicitud" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaSolicitud" Type="datetime" Nullable="false" />
     <Property Name="Observacion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
     <Property Name="PlanProduccion_IdPlan" Type="int" Nullable="false" />
-    <Property Name="PlanProduccion_IdProducto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PlanProduccion_IdProducto" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PlanProduccionSet">
     <Key>
@@ -790,14 +790,14 @@
       <PropertyRef Name="IdProducto" />
     </Key>
     <Property Name="IdPlan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdProducto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
     <Property Name="Glosa" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaPlan" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="UnidadesProducir" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TotalHorasMaquinaria" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TotalCantidadMaquinaria" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TotalCantidadInsumo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaPlan" Type="datetime" Nullable="false" />
+    <Property Name="UnidadesProducir" Type="int" Nullable="false" />
+    <Property Name="TotalHorasMaquinaria" Type="int" Nullable="false" />
+    <Property Name="TotalCantidadMaquinaria" Type="int" Nullable="false" />
+    <Property Name="TotalCantidadInsumo" Type="int" Nullable="false" />
     <Property Name="Producto_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PlanProduccionMaquinariaSet">
@@ -808,15 +808,15 @@
       <PropertyRef Name="IdLinea" />
     </Key>
     <Property Name="IdProgramacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdPlan" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IdLinea" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IdMaquinaria" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaInicio" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaTermino" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Cantidad" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdPlan" Type="int" Nullable="false" />
+    <Property Name="IdLinea" Type="int" Nullable="false" />
+    <Property Name="IdMaquinaria" Type="int" Nullable="false" />
+    <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaTermino" Type="datetime" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
     <Property Name="PlanProduccion_IdPlan" Type="int" Nullable="false" />
-    <Property Name="PlanProduccion_IdProducto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PlanProduccion_IdProducto" Type="int" Nullable="false" />
     <Property Name="Maquinaria_IdMaquinaria" Type="int" Nullable="false" />
     <Property Name="LineaProduccion_IdLinea" Type="int" Nullable="false" />
   </EntityType>
@@ -826,9 +826,9 @@
       <PropertyRef Name="IdOrden" />
     </Key>
     <Property Name="IdSolicitud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdOrden" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdOrden" Type="int" Nullable="false" />
     <Property Name="SolicitudProduccion_IdSolicitud" Type="int" Nullable="false" />
-    <Property Name="SolicitudProduccion_IdPlan" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SolicitudProduccion_IdPlan" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OrdenTrabajoMaquinariaSet">
     <Key>
@@ -837,14 +837,14 @@
       <PropertyRef Name="IdMaquinaria" />
     </Key>
     <Property Name="IdOrden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdLinea" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IdMaquinaria" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaInicio" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaTermino" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Cantidad" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdLinea" Type="int" Nullable="false" />
+    <Property Name="IdMaquinaria" Type="int" Nullable="false" />
+    <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaTermino" Type="datetime" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
-    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="int" Nullable="false" />
     <Property Name="Maquinaria_IdMaquinaria" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="MaquinariaSet">
@@ -853,8 +853,8 @@
     </Key>
     <Property Name="IdMaquinaria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tipo" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Backorder">
     <Key>
@@ -1263,14 +1263,14 @@
       <PropertyRef Name="IdLinea" />
     </Key>
     <Property Name="IdProgramacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdPlan" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IdLinea" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IdProducto" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaEntrega" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Cantidad" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdPlan" Type="int" Nullable="false" />
+    <Property Name="IdLinea" Type="int" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+    <Property Name="FechaEntrega" Type="datetime" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
     <Property Name="PlanProduccion_IdPlan" Type="int" Nullable="false" />
-    <Property Name="PlanProduccion_IdProducto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PlanProduccion_IdProducto" Type="int" Nullable="false" />
     <Property Name="Producto_Id" Type="int" Nullable="false" />
     <Property Name="LineaProduccion_IdLinea" Type="int" Nullable="false" />
   </EntityType>
@@ -1282,14 +1282,14 @@
       <PropertyRef Name="IdLinea" />
     </Key>
     <Property Name="IdProgramacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdPlan" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IdLinea" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IdPersonal" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaInicio" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FechaTermino" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdPlan" Type="int" Nullable="false" />
+    <Property Name="IdLinea" Type="int" Nullable="false" />
+    <Property Name="IdPersonal" Type="int" Nullable="false" />
+    <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaTermino" Type="datetime" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
     <Property Name="PlanProduccion_IdPlan" Type="int" Nullable="false" />
-    <Property Name="PlanProduccion_IdProducto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PlanProduccion_IdProducto" Type="int" Nullable="false" />
     <Property Name="Empleado_Id" Type="int" Nullable="false" />
     <Property Name="LineaProduccion_IdLinea" Type="int" Nullable="false" />
   </EntityType>
@@ -1299,11 +1299,11 @@
       <PropertyRef Name="IdOrden" />
     </Key>
     <Property Name="IdReprogramacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdOrden" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdOrden" Type="int" Nullable="false" />
     <Property Name="Motivo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
     <Property Name="OrdenTrabajo_IdOrden" Type="int" Nullable="false" />
-    <Property Name="OrdenTrabajo_IdLinea" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrdenTrabajo_IdLinea" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TipoProductoSet">
     <Key>
@@ -1311,7 +1311,7 @@
     </Key>
     <Property Name="IdTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="LineaProduccionSet">
     <Key>
@@ -1319,7 +1319,7 @@
     </Key>
     <Property Name="IdLinea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="DetallePlanProduccionSet">
     <Key>
@@ -1328,12 +1328,12 @@
       <PropertyRef Name="IdProducto" />
     </Key>
     <Property Name="IdPlan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdLinea" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IdProducto" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CantidaRequerida" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdLinea" Type="int" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+    <Property Name="CantidaRequerida" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
     <Property Name="PlanProduccion_IdPlan" Type="int" Nullable="false" />
-    <Property Name="PlanProduccion_IdProducto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PlanProduccion_IdProducto" Type="int" Nullable="false" />
     <Property Name="LineaProduccion_IdLinea" Type="int" Nullable="false" />
     <Property Name="Producto_Id" Type="int" Nullable="false" />
   </EntityType>
@@ -3436,14 +3436,14 @@
             <PropertyRef Name="IdOrden" />
           </Key>
           <Property Type="Int32" Name="IdLote" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="IdOrden" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="IdOrden" Nullable="false" />
           <NavigationProperty Name="SolicitudProduccion" Relationship="ETNADbModel.SolicitudProduccionLoteProduccion" FromRole="LoteProduccion" ToRole="SolicitudProduccion" />
           <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.LoteProduccionOrdenTrabajo" FromRole="LoteProduccion" ToRole="OrdenTrabajo" />
-          <Property Name="FechaInicio" Type="String" Nullable="false" />
-          <Property Name="FechaTermino" Type="String" Nullable="false" />
-          <Property Name="CantidadSolicitada" Type="String" Nullable="false" />
-          <Property Name="CantidadFabricada" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" />
+          <Property Name="FechaTermino" Type="DateTime" Nullable="false" />
+          <Property Name="CantidadSolicitada" Type="Int32" Nullable="false" />
+          <Property Name="CantidadFabricada" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="SolicitudSalida">
           <Key>
@@ -3548,7 +3548,7 @@
           <Property Name="IdOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajo" FromRole="DetalleOrdenTrabajo" ToRole="OrdenTrabajo" />
           <NavigationProperty Name="SolicitudSalida" Relationship="ETNADbModel.SolicitudSalidaDetalleOrdenTrabajo" FromRole="DetalleOrdenTrabajo" ToRole="SolicitudSalida" />
-          <Property Name="IdSolicitud" Type="String" Nullable="false" />
+          <Property Name="IdSolicitud" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="OrdenTrabajoInsumo">
           <Key>
@@ -3559,11 +3559,11 @@
           <Property Name="IdOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoOrdenTrabajoInsumo" FromRole="OrdenTrabajoInsumo" ToRole="OrdenTrabajo" />
           <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoOrdenTrabajoInsumo" FromRole="OrdenTrabajoInsumo" ToRole="Producto" />
-          <Property Name="IdLinea" Type="String" Nullable="false" />
-          <Property Name="IdProducto" Type="String" Nullable="false" />
-          <Property Name="FechaEntrega" Type="String" Nullable="false" />
-          <Property Name="Cantidad" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="IdLinea" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="FechaEntrega" Type="DateTime" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ParteProduccion">
           <Key>
@@ -3573,13 +3573,13 @@
           </Key>
           <Property Name="IdParte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoParteProduccion" FromRole="ParteProduccion" ToRole="OrdenTrabajo" />
-          <Property Name="IdOrden" Type="String" Nullable="false" />
-          <Property Name="IdProducto" Type="String" Nullable="false" />
+          <Property Name="IdOrden" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
           <Property Name="Glosa" Type="String" Nullable="false" />
-          <Property Name="FechaFabricacion" Type="String" Nullable="false" />
-          <Property Name="CantidadProducida" Type="String" Nullable="false" />
+          <Property Name="FechaFabricacion" Type="DateTime" Nullable="false" />
+          <Property Name="CantidadProducida" Type="Int32" Nullable="false" />
           <Property Name="Comentario" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoParteProduccion" FromRole="ParteProduccion" ToRole="Producto" />
         </EntityType>
         <EntityType Name="OrdenTrabajo">
@@ -3588,7 +3588,7 @@
             <PropertyRef Name="IdLinea" />
           </Key>
           <Property Name="IdOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdLinea" Type="String" Nullable="false" />
+          <Property Name="IdLinea" Type="Int32" Nullable="false" />
           <NavigationProperty Name="LoteProduccion" Relationship="ETNADbModel.LoteProduccionOrdenTrabajo" FromRole="OrdenTrabajo" ToRole="LoteProduccion" />
           <NavigationProperty Name="DetalleSolicitudProduccion" Relationship="ETNADbModel.DetalleSolicitudProduccionOrdenTrabajo" FromRole="OrdenTrabajo" ToRole="DetalleSolicitudProduccion" />
           <NavigationProperty Name="DetalleOrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoDetalleOrdenTrabajo" FromRole="OrdenTrabajo" ToRole="DetalleOrdenTrabajo" />
@@ -3598,11 +3598,11 @@
           <NavigationProperty Name="OrdenTrabajoPersonal" Relationship="ETNADbModel.OrdenTrabajoOrdenTrabajoPersonal" FromRole="OrdenTrabajo" ToRole="OrdenTrabajoPersonal" />
           <NavigationProperty Name="ParteProduccion" Relationship="ETNADbModel.OrdenTrabajoParteProduccion" FromRole="OrdenTrabajo" ToRole="ParteProduccion" />
           <Property Name="Glosa" Type="String" Nullable="false" />
-          <Property Name="FechaExpedicion" Type="String" Nullable="false" />
-          <Property Name="FechaInicio" Type="String" Nullable="false" />
-          <Property Name="FechaTermino" Type="String" Nullable="false" />
-          <Property Name="CantidadSolicitada" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="FechaExpedicion" Type="DateTime" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" />
+          <Property Name="FechaTermino" Type="DateTime" Nullable="false" />
+          <Property Name="CantidadSolicitada" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="LineaProduccion" Relationship="ETNADbModel.LineaProduccionOrdenTrabajo" FromRole="OrdenTrabajo" ToRole="LineaProduccion" />
         </EntityType>
         <EntityType Name="OrdenTrabajoPersonal">
@@ -3614,11 +3614,11 @@
           <Property Name="IdOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoOrdenTrabajoPersonal" FromRole="OrdenTrabajoPersonal" ToRole="OrdenTrabajo" />
           <NavigationProperty Name="Empleado" Relationship="ETNADbModel.EmpleadoOrdenTrabajoPersonal" FromRole="OrdenTrabajoPersonal" ToRole="Empleado" />
-          <Property Name="IdLinea" Type="String" Nullable="false" />
-          <Property Name="IdPersonal" Type="String" Nullable="false" />
-          <Property Name="FechaInicio" Type="String" Nullable="false" />
-          <Property Name="FechaTermino" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="IdLinea" Type="Int32" Nullable="false" />
+          <Property Name="IdPersonal" Type="Int32" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" />
+          <Property Name="FechaTermino" Type="DateTime" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="SolicitudProduccion">
           <Key>
@@ -3629,11 +3629,11 @@
           <NavigationProperty Name="PlanProduccion" Relationship="ETNADbModel.SolicitudProduccionPlanProduccion" FromRole="SolicitudProduccion" ToRole="PlanProduccion" />
           <NavigationProperty Name="LoteProduccion" Relationship="ETNADbModel.SolicitudProduccionLoteProduccion" FromRole="SolicitudProduccion" ToRole="LoteProduccion" />
           <NavigationProperty Name="DetalleSolicitudProduccion" Relationship="ETNADbModel.SolicitudProduccionDetalleSolicitudProduccion" FromRole="SolicitudProduccion" ToRole="DetalleSolicitudProduccion" />
-          <Property Name="IdPlan" Type="String" Nullable="false" />
+          <Property Name="IdPlan" Type="Int32" Nullable="false" />
           <Property Name="Glosa" Type="String" Nullable="false" />
-          <Property Name="FechaSolicitud" Type="String" Nullable="false" />
+          <Property Name="FechaSolicitud" Type="DateTime" Nullable="false" />
           <Property Name="Observacion" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="PlanProduccion">
           <Key>
@@ -3641,18 +3641,18 @@
             <PropertyRef Name="IdProducto" />
           </Key>
           <Property Name="IdPlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdProducto" Type="String" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PlanProduccionMaquinaria" Relationship="ETNADbModel.PlanProduccionPlanProduccionMaquinaria" FromRole="PlanProduccion" ToRole="PlanProduccionMaquinaria" />
           <NavigationProperty Name="PlanProduccionInsumo" Relationship="ETNADbModel.PlanProduccionPlanProduccionInsumo" FromRole="PlanProduccion" ToRole="PlanProduccionInsumo" />
           <NavigationProperty Name="PlanProduccionPersonal" Relationship="ETNADbModel.PlanProduccionPlanProduccionPersonal" FromRole="PlanProduccion" ToRole="PlanProduccionPersonal" />
           <NavigationProperty Name="SolicitudProduccion" Relationship="ETNADbModel.SolicitudProduccionPlanProduccion" FromRole="PlanProduccion" ToRole="SolicitudProduccion" />
           <Property Name="Glosa" Type="String" Nullable="false" />
           <Property Name="Descripcion" Type="String" Nullable="false" />
-          <Property Name="FechaPlan" Type="String" Nullable="false" />
-          <Property Name="UnidadesProducir" Type="String" Nullable="false" />
-          <Property Name="TotalHorasMaquinaria" Type="String" Nullable="false" />
-          <Property Name="TotalCantidadMaquinaria" Type="String" Nullable="false" />
-          <Property Name="TotalCantidadInsumo" Type="String" Nullable="false" />
+          <Property Name="FechaPlan" Type="DateTime" Nullable="false" />
+          <Property Name="UnidadesProducir" Type="Int32" Nullable="false" />
+          <Property Name="TotalHorasMaquinaria" Type="Int32" Nullable="false" />
+          <Property Name="TotalCantidadMaquinaria" Type="Int32" Nullable="false" />
+          <Property Name="TotalCantidadInsumo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Producto" Relationship="ETNADbModel.PlanProduccionProducto" FromRole="PlanProduccion" ToRole="Producto" />
           <NavigationProperty Name="DetallePlanProduccion" Relationship="ETNADbModel.PlanProduccionDetallePlanProduccion" FromRole="PlanProduccion" ToRole="DetallePlanProduccion" />
         </EntityType>
@@ -3666,13 +3666,13 @@
           <Property Name="IdProgramacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="PlanProduccion" Relationship="ETNADbModel.PlanProduccionPlanProduccionMaquinaria" FromRole="PlanProduccionMaquinaria" ToRole="PlanProduccion" />
           <NavigationProperty Name="Maquinaria" Relationship="ETNADbModel.MaquinariaPlanProduccionMaquinaria" FromRole="PlanProduccionMaquinaria" ToRole="Maquinaria" />
-          <Property Name="IdPlan" Type="String" Nullable="false" />
-          <Property Name="IdLinea" Type="String" Nullable="false" />
-          <Property Name="IdMaquinaria" Type="String" Nullable="false" />
-          <Property Name="FechaInicio" Type="String" Nullable="false" />
-          <Property Name="FechaTermino" Type="String" Nullable="false" />
-          <Property Name="Cantidad" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="IdPlan" Type="Int32" Nullable="false" />
+          <Property Name="IdLinea" Type="Int32" Nullable="false" />
+          <Property Name="IdMaquinaria" Type="Int32" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" />
+          <Property Name="FechaTermino" Type="DateTime" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="LineaProduccion" Relationship="ETNADbModel.LineaProduccionPlanProduccionMaquinaria" FromRole="PlanProduccionMaquinaria" ToRole="LineaProduccion" />
         </EntityType>
         <EntityType Name="DetalleSolicitudProduccion">
@@ -3683,7 +3683,7 @@
           <Property Name="IdSolicitud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.DetalleSolicitudProduccionOrdenTrabajo" FromRole="DetalleSolicitudProduccion" ToRole="OrdenTrabajo" />
           <NavigationProperty Name="SolicitudProduccion" Relationship="ETNADbModel.SolicitudProduccionDetalleSolicitudProduccion" FromRole="DetalleSolicitudProduccion" ToRole="SolicitudProduccion" />
-          <Property Name="IdOrden" Type="String" Nullable="false" />
+          <Property Name="IdOrden" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="OrdenTrabajoMaquinaria">
           <Key>
@@ -3694,12 +3694,12 @@
           <Property Name="IdOrden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoOrdenTrabajoMaquinaria" FromRole="OrdenTrabajoMaquinaria" ToRole="OrdenTrabajo" />
           <NavigationProperty Name="Maquinaria" Relationship="ETNADbModel.MaquinariaOrdenTrabajoMaquinaria" FromRole="OrdenTrabajoMaquinaria" ToRole="Maquinaria" />
-          <Property Name="IdLinea" Type="String" Nullable="false" />
-          <Property Name="IdMaquinaria" Type="String" Nullable="false" />
-          <Property Name="FechaInicio" Type="String" Nullable="false" />
-          <Property Name="FechaTermino" Type="String" Nullable="false" />
-          <Property Name="Cantidad" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="IdLinea" Type="Int32" Nullable="false" />
+          <Property Name="IdMaquinaria" Type="Int32" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" />
+          <Property Name="FechaTermino" Type="DateTime" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Maquinaria">
           <Key>
@@ -3709,8 +3709,8 @@
           <NavigationProperty Name="PlanProduccionMaquinaria" Relationship="ETNADbModel.MaquinariaPlanProduccionMaquinaria" FromRole="Maquinaria" ToRole="PlanProduccionMaquinaria" />
           <NavigationProperty Name="OrdenTrabajoMaquinaria" Relationship="ETNADbModel.MaquinariaOrdenTrabajoMaquinaria" FromRole="Maquinaria" ToRole="OrdenTrabajoMaquinaria" />
           <Property Name="Descripcion" Type="String" Nullable="false" />
-          <Property Name="Tipo" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="Tipo" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Backorder">
           <Key>
@@ -4849,12 +4849,12 @@
           <Property Name="IdProgramacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="PlanProduccion" Relationship="ETNADbModel.PlanProduccionPlanProduccionInsumo" FromRole="PlanProduccionInsumo" ToRole="PlanProduccion" />
           <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoPlanProduccionInsumo" FromRole="PlanProduccionInsumo" ToRole="Producto" />
-          <Property Name="IdPlan" Type="String" Nullable="false" />
-          <Property Name="IdLinea" Type="String" Nullable="false" />
-          <Property Name="IdProducto" Type="String" Nullable="false" />
-          <Property Name="FechaEntrega" Type="String" Nullable="false" />
-          <Property Name="Cantidad" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="IdPlan" Type="Int32" Nullable="false" />
+          <Property Name="IdLinea" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="FechaEntrega" Type="DateTime" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="LineaProduccion" Relationship="ETNADbModel.LineaProduccionPlanProduccionInsumo" FromRole="PlanProduccionInsumo" ToRole="LineaProduccion" />
         </EntityType>
         <EntityType Name="PlanProduccionPersonal">
@@ -4867,12 +4867,12 @@
           <Property Name="IdProgramacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="PlanProduccion" Relationship="ETNADbModel.PlanProduccionPlanProduccionPersonal" FromRole="PlanProduccionPersonal" ToRole="PlanProduccion" />
           <NavigationProperty Name="Empleado" Relationship="ETNADbModel.EmpleadoPlanProduccionPersonal" FromRole="PlanProduccionPersonal" ToRole="Empleado" />
-          <Property Name="IdPlan" Type="String" Nullable="false" />
-          <Property Name="IdLinea" Type="String" Nullable="false" />
-          <Property Name="IdPersonal" Type="String" Nullable="false" />
-          <Property Name="FechaInicio" Type="String" Nullable="false" />
-          <Property Name="FechaTermino" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="IdPlan" Type="Int32" Nullable="false" />
+          <Property Name="IdLinea" Type="Int32" Nullable="false" />
+          <Property Name="IdPersonal" Type="Int32" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" />
+          <Property Name="FechaTermino" Type="DateTime" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="LineaProduccion" Relationship="ETNADbModel.LineaProduccionPlanProduccionPersonal" FromRole="PlanProduccionPersonal" ToRole="LineaProduccion" />
         </EntityType>
         <Association Name="PlanProduccionPlanProduccionMaquinaria">
@@ -4918,9 +4918,9 @@
           </Key>
           <Property Name="IdReprogramacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.OrdenTrabajoSolicitudReprogramacion" FromRole="SolicitudReprogramacion" ToRole="OrdenTrabajo" />
-          <Property Name="IdOrden" Type="String" Nullable="false" />
+          <Property Name="IdOrden" Type="Int32" Nullable="false" />
           <Property Name="Motivo" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="OrdenTrabajoSolicitudReprogramacion">
           <End Type="ETNADbModel.OrdenTrabajo" Role="OrdenTrabajo" Multiplicity="1" />
@@ -4933,7 +4933,7 @@
           <Property Name="IdTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoTipoProducto" FromRole="TipoProducto" ToRole="Producto" />
           <Property Name="Descripcion" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="OrdenTrabajoOrdenTrabajoInsumo">
           <End Type="ETNADbModel.OrdenTrabajo" Role="OrdenTrabajo" Multiplicity="1" />
@@ -4990,7 +4990,7 @@
           <Property Name="IdLinea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="PlanProduccionPersonal" Relationship="ETNADbModel.LineaProduccionPlanProduccionPersonal" FromRole="LineaProduccion" ToRole="PlanProduccionPersonal" />
           <Property Name="Descripcion" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PlanProduccionInsumo" Relationship="ETNADbModel.LineaProduccionPlanProduccionInsumo" FromRole="LineaProduccion" ToRole="PlanProduccionInsumo" />
           <NavigationProperty Name="PlanProduccionMaquinaria" Relationship="ETNADbModel.LineaProduccionPlanProduccionMaquinaria" FromRole="LineaProduccion" ToRole="PlanProduccionMaquinaria" />
           <NavigationProperty Name="OrdenTrabajo" Relationship="ETNADbModel.LineaProduccionOrdenTrabajo" FromRole="LineaProduccion" ToRole="OrdenTrabajo" />
@@ -5027,10 +5027,10 @@
             <PropertyRef Name="IdProducto" />
           </Key>
           <Property Name="IdPlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdLinea" Type="String" Nullable="false" />
-          <Property Name="IdProducto" Type="String" Nullable="false" />
-          <Property Name="CantidaRequerida" Type="String" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" />
+          <Property Name="IdLinea" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="CantidaRequerida" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PlanProduccion" Relationship="ETNADbModel.PlanProduccionDetallePlanProduccion" FromRole="DetallePlanProduccion" ToRole="PlanProduccion" />
           <NavigationProperty Name="LineaProduccion" Relationship="ETNADbModel.LineaProduccionDetallePlanProduccion" FromRole="DetallePlanProduccion" ToRole="LineaProduccion" />
           <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoDetallePlanProduccion" FromRole="DetallePlanProduccion" ToRole="Producto" />

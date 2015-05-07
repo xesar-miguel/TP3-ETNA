@@ -15,9 +15,9 @@ namespace ETNA.Domain
     public partial class SolicitudReprogramacion
     {
         public int IdReprogramacion { get; set; }
-        public string IdOrden { get; set; }
+        public int IdOrden { get; set; }
         public string Motivo { get; set; }
-        public string Estado { get; set; }
+        public int Estado { get; set; }
     
         public virtual OrdenTrabajo OrdenTrabajo { get; set; }
     }

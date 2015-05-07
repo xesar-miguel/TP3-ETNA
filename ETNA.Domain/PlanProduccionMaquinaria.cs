@@ -15,13 +15,13 @@ namespace ETNA.Domain
     public partial class PlanProduccionMaquinaria
     {
         public int IdProgramacion { get; set; }
-        public string IdPlan { get; set; }
-        public string IdLinea { get; set; }
-        public string IdMaquinaria { get; set; }
-        public string FechaInicio { get; set; }
-        public string FechaTermino { get; set; }
-        public string Cantidad { get; set; }
-        public string Estado { get; set; }
+        public int IdPlan { get; set; }
+        public int IdLinea { get; set; }
+        public int IdMaquinaria { get; set; }
+        public System.DateTime FechaInicio { get; set; }
+        public System.DateTime FechaTermino { get; set; }
+        public int Cantidad { get; set; }
+        public int Estado { get; set; }
     
         public virtual PlanProduccion PlanProduccion { get; set; }
         public virtual Maquinaria Maquinaria { get; set; }

@@ -15,13 +15,13 @@ namespace ETNA.Domain
     public partial class ParteProduccion
     {
         public int IdParte { get; set; }
-        public string IdOrden { get; set; }
-        public string IdProducto { get; set; }
+        public int IdOrden { get; set; }
+        public int IdProducto { get; set; }
         public string Glosa { get; set; }
-        public string FechaFabricacion { get; set; }
-        public string CantidadProducida { get; set; }
+        public System.DateTime FechaFabricacion { get; set; }
+        public int CantidadProducida { get; set; }
         public string Comentario { get; set; }
-        public string Estado { get; set; }
+        public int Estado { get; set; }
     
         public virtual OrdenTrabajo OrdenTrabajo { get; set; }
         public virtual Producto Producto { get; set; }

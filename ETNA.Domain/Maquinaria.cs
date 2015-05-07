@@ -22,8 +22,8 @@ namespace ETNA.Domain
     
         public int IdMaquinaria { get; set; }
         public string Descripcion { get; set; }
-        public string Tipo { get; set; }
-        public string Estado { get; set; }
+        public int Tipo { get; set; }
+        public int Estado { get; set; }
     
         public virtual ICollection<PlanProduccionMaquinaria> PlanProduccionMaquinaria { get; set; }
         public virtual ICollection<OrdenTrabajoMaquinaria> OrdenTrabajoMaquinaria { get; set; }

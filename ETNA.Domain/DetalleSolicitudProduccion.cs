@@ -20,7 +20,7 @@ namespace ETNA.Domain
         }
     
         public int IdSolicitud { get; set; }
-        public string IdOrden { get; set; }
+        public int IdOrden { get; set; }
     
         public virtual ICollection<OrdenTrabajo> OrdenTrabajo { get; set; }
         public virtual SolicitudProduccion SolicitudProduccion { get; set; }

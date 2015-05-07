@@ -16,7 +16,7 @@ namespace ETNA.Domain
     {
         public int IdTipo { get; set; }
         public string Descripcion { get; set; }
-        public string Estado { get; set; }
+        public int Estado { get; set; }
     
         public virtual Producto Producto { get; set; }
     }
