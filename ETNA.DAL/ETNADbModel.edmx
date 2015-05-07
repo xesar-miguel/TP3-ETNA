@@ -567,7 +567,7 @@
     </Key>
     <Property Name="IdProducto" Type="int" Nullable="false" />
     <Property Name="IdSolicitudEntrada" Type="int" Nullable="false" />
-    <Property Name="Cantidad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Kardex">
     <Key>
@@ -575,7 +575,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TipoMovimiento" Type="int" Nullable="false" />
-    <Property Name="Cantidad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
     <Property Name="ValorUnitario" Type="float" Nullable="false" />
     <Property Name="DocumentoReferencia_Id" Type="int" Nullable="false" />
     <Property Name="Almacen_Id" Type="int" Nullable="false" />
@@ -2891,7 +2891,7 @@
           </Key>
           <Property Type="Int32" Name="IdProducto" Nullable="false" />
           <Property Type="Int32" Name="IdSolicitudEntrada" Nullable="false" />
-          <Property Type="String" Name="Cantidad" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="Cantidad" Nullable="false" />
           <NavigationProperty Name="SolicitudEntrada" Relationship="ETNADbModel.SolicitudEntradaSolicitudEntradaProducto" FromRole="SolicitudEntradaProducto" ToRole="SolicitudEntrada" />
           <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoSolicitudEntradaProducto" FromRole="SolicitudEntradaProducto" ToRole="Producto" />
         </EntityType>
@@ -2928,7 +2928,7 @@
           <NavigationProperty Name="DocumentoReferencia" Relationship="ETNADbModel.DocumentoReferenciaKardex" FromRole="Kardex" ToRole="DocumentoReferencia" />
           <NavigationProperty Name="Almacen" Relationship="ETNADbModel.AlmacenKardex" FromRole="Kardex" ToRole="Almacen" />
           <NavigationProperty Name="Producto" Relationship="ETNADbModel.ProductoKardex" FromRole="Kardex" ToRole="Producto" />
-          <Property Type="String" Name="Cantidad" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="Cantidad" Nullable="false" />
           <Property Type="Double" Name="ValorUnitario" Nullable="false" />
         </EntityType>
         <Association Name="DocumentoReferenciaKardex">

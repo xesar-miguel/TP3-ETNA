@@ -39,7 +39,7 @@ namespace ETNA.BL.LO
                     kardex.Almacen = context.Almacenes.Find(idAlmacen);
                     kardex.DocumentoReferencia = guiaSalida;
                     kardex.Producto = detalle.Producto;
-                    kardex.Cantidad = detalle.Cantidad.ToString();
+                    kardex.Cantidad = detalle.Cantidad;
                     kardex.ValorUnitario = detalle.Producto.PrecioListaVenta;
                     kardex.TipoMovimiento = (int)Enums.TipoMovimiento.Salida;
                     context.Kardex.Add(kardex);
@@ -125,7 +125,7 @@ namespace ETNA.BL.LO
                     kardex.Almacen = context.Almacenes.Find(idAlmacen);
                     kardex.DocumentoReferencia = guiaSalida;
                     kardex.Producto = detalle.Producto;
-                    kardex.Cantidad = detalle.Cantidad.ToString();
+                    kardex.Cantidad = detalle.Cantidad;
                     kardex.ValorUnitario = detalle.Producto.PrecioListaVenta;
                     kardex.TipoMovimiento = (int)Enums.TipoMovimiento.Salida;
                     context.Kardex.Add(kardex);

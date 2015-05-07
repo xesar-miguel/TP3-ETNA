@@ -30,7 +30,7 @@ namespace ETNA.BL.LO
                 // Actualizar estado de la solicitud
                 guiaEntrada.SolicitudEntrada.Estado = (int)Enums.EstadoSolicitudEntrada.Atendida;
 
-                //Generar Kardex por cada producto
+                //Generar Kardex y actualizar stock por cada producto
                 var detalleSolicitud = context.DetalleSolicitudEntrada.Where(d => d.IdSolicitudEntrada == idSolicitud).ToList();
 
                 foreach (var detalle in detalleSolicitud)
@@ -43,6 +43,9 @@ namespace ETNA.BL.LO
                     kardex.ValorUnitario = detalle.Producto.PrecioListaCompra;
                     kardex.TipoMovimiento = (int)Enums.TipoMovimiento.Entrada;
                     context.Kardex.Add(kardex);
+
+                    var stockProducto = context.StockProductos.First(s => s.IdAlmacen == idAlmacen && s.IdProducto == detalle.IdProducto);
+                    stockProducto.CantidadDisponible += detalle.Cantidad;
                 }
 
                 context.SaveChanges();
@@ -69,7 +72,7 @@ namespace ETNA.BL.LO
             var context = new ETNADbModelContainer();
             var solicitud = context.SolicitudesEntrada.Find(idSolicitud);
             solicitud.Observaciones = observaciones;
-            solicitud.Estado = (int) Enums.EstadoSolicitudEntrada.Rechazada;
+            solicitud.Estado = (int)Enums.EstadoSolicitudEntrada.Rechazada;
             context.SaveChanges();
             return true;
         }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/05/2015 22:38:33
+-- Date Created: 05/06/2015 19:27:19
 -- Generated from EDMX file: C:\Users\DiegoMartín\Documents\Visual Studio 2012\Projects\ETNA-GIT\ETNA.DAL\ETNADbModel.edmx
 -- --------------------------------------------------
 
@@ -640,7 +640,7 @@ GO
 CREATE TABLE [dbo].[DetalleSolicitudEntrada] (
     [IdProducto] int  NOT NULL,
     [IdSolicitudEntrada] int  NOT NULL,
-    [Cantidad] nvarchar(max)  NOT NULL
+    [Cantidad] int  NOT NULL
 );
 GO
 
@@ -648,7 +648,7 @@ GO
 CREATE TABLE [dbo].[Kardex] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [TipoMovimiento] int  NOT NULL,
-    [Cantidad] nvarchar(max)  NOT NULL,
+    [Cantidad] int  NOT NULL,
     [ValorUnitario] float  NOT NULL,
     [DocumentoReferencia_Id] int  NOT NULL,
     [Almacen_Id] int  NOT NULL,

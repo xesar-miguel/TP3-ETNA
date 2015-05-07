@@ -16,7 +16,7 @@ namespace ETNA.Domain
     {
         public int Id { get; set; }
         public int TipoMovimiento { get; set; }
-        public string Cantidad { get; set; }
+        public int Cantidad { get; set; }
         public double ValorUnitario { get; set; }
     
         public virtual DocumentoReferencia DocumentoReferencia { get; set; }
