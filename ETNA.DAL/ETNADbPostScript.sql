@@ -679,7 +679,7 @@ BEGIN
 
 	-- Asignar número de entrega
 	update entrega
-	   set numero = concat('ENT-', FORMAT (codigo, '000')) 
+	   set numero = concat('ENT-', replicate('0', 3 - len(codigo)),cast(codigo as char(3))) 
 	 where codigo = @v_codigo ;
 
 	-- Generar detalle por entrega
@@ -719,6 +719,113 @@ BEGIN
 
 END
 
+
+GO
+
+--SPU generarPedido
+/****** Object:  StoredProcedure [dbo].[generarEntregasPedido]    Script Date: 07/05/2015 13:45:24 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[generarEntregasPedido]
+	@p_fechaInicio DATETIME = '2015-05-06 11:39:07.850'
+	,@p_FechaFin DATETIME = '2015-05-07 11:39:07.850'
+AS
+BEGIN
+	-- Declarar variables
+	declare @v_codigo int;
+	declare @v_idCliente int;
+	declare @v_idDireccion int;
+	declare @v_idMotivoTraslado int;
+	declare @v_fechaEntrega date;
+	declare @rownum int;
+
+	set @rownum = 0;
+
+	--Cursor: Lectura de entregas generadas
+	declare entregasPedido_cursor cursor for
+	 select codigo, idCliente, idDireccion, idMotivoTraslado, fechaEntrega
+	   from entrega
+	  where numero is null
+		and idMotivoTraslado in (2, 3);	
+
+	-- Listado de pedidos de reposición y hojas de renovación: Cabecera entrega
+	insert into entrega ( fechaGeneracion, fechaEntrega, idEstadoEntrega, 
+						idZonaDespacho, idMotivoTraslado, idCliente, idDireccion )
+	select GETDATE(), -- fechaGeneracion
+			b.fechaEntrega,
+			'1', -- estadoEntrega
+			( select x.idZonaDespacho from direccion as x where x.codigo = a.idDireccion ), -- zonaDespacho
+			case a.idTipoPedido
+				when 1 then '2'
+				when 2 then '3'
+				else '0'
+			end, -- motivoTraslado,
+			a.idCliente, 
+			a.idDireccion
+	  from pedido a
+	 inner join pedidodetalle b
+		on ( a.codigo = b.idpedido )
+	 where b.fechaEntrega between @p_fechaInicio and @p_FechaFin
+	   and ISNULL(b.cantidad,0) > ISNULL(b.cantidadEntregada,0)
+	   and a.idEstadoPedido in ( 1, 3 ) -- No atendido
+	 group by a.idcliente, a.idDireccion, a.idTipoPedido, b.fechaEntrega ;
+
+	-- Abrir cursor: Lectura de entregas generadas
+	open entregasPedido_cursor;
+
+	FETCH NEXT FROM entregasPedido_cursor into @v_codigo, @v_idCliente, @v_idDireccion, @v_idMotivoTraslado, @v_fechaEntrega ;
+
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+	
+
+	-- Asignar número de entrega
+	update entrega
+	   set numero = concat('ENT-', replicate('0', 3 - len(codigo)),cast(codigo as char(3))) 
+	 where codigo = @v_codigo ;
+
+	-- Generar detalle por entrega
+	insert into entregaDetalle ( idEntrega, nroItem, cantidadEntregaProg, idProducto )
+	select y.idEntrega, 
+			@rownum+1 AS nroItem,
+			y.cantidad, 
+			y.idProducto
+	  from ( select @v_codigo as idEntrega,
+					sum(ISNULL(b.cantidad,0) - ISNULL(b.cantidadEntregada,0)) as cantidad,
+					b.idProducto
+			  from pedido a
+			 inner join pedidoDetalle b
+				on ( a.codigo = b.idPedido )
+			 where b.fechaEntrega between @p_fechaInicio and @p_FechaFin
+			   and ISNULL(b.cantidad,0) > ISNULL(b.cantidadEntregada,0)
+			   and a.idEstadoPedido in ( '1', '3' )
+			   and a.idCliente = @v_idCliente
+			   and b.fechaEntrega = @v_fechaEntrega
+			   and a.idDireccion = @v_idDireccion
+			   and a.idTipoPedido = ( case @v_idMotivoTraslado when '2' then 1 when '3' then 2 else 0 end )
+			 group by b.idProducto ) y ;
+
+		FETCH NEXT FROM entregasPedido_cursor into @v_codigo, @v_idCliente, @v_idDireccion, @v_idMotivoTraslado, @v_fechaEntrega ;
+
+	END
+
+	close entregasPedido_cursor;
+	DEALLOCATE entregasPedido_cursor;
+
+	-- Actualizar cantidades en entrega
+	update pedidodetalle
+	   set cantidadEntregada = cantidad
+	 where idPedido in ( select distinct x.codigo
+						   from pedido x
+						  where x.idEstadoPedido in ( 1, 3 ) )
+	  and fechaEntrega between @p_fechaInicio and @p_FechaFin
+      and idPedidoDetalle between 1 and 10000 ;
+
+END;
 
 GO
 

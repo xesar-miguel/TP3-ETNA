@@ -40,6 +40,7 @@ namespace ETNA.MVC.Controllers.DI
             {
                 model.GenerarEntrega = true;
                 service.generarEntregasFactura(DateTime.Today, DateTime.Now);
+                service.generarEntregasPedido(DateTime.Today, DateTime.Now);
 
             }
 

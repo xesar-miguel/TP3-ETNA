@@ -51,5 +51,14 @@ namespace ETNA.BL.DI
             return generar;
         }
 
+        public int generarEntregasPedido(DateTime fechaInicio, DateTime fechaFin)
+        {
+            var context = new ETNADbModelContainer();
+
+            int generar = context.generarEntregasPedido(fechaInicio, fechaFin);
+
+            return generar;
+        }
+
     }
 }

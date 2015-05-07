@@ -113,5 +113,18 @@ namespace ETNA.DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("generarEntregasFactura", p_fechaInicioParameter, p_FechaFinParameter);
         }
+    
+        public virtual int generarEntregasPedido(Nullable<System.DateTime> p_fechaInicio, Nullable<System.DateTime> p_FechaFin)
+        {
+            var p_fechaInicioParameter = p_fechaInicio.HasValue ?
+                new ObjectParameter("p_fechaInicio", p_fechaInicio) :
+                new ObjectParameter("p_fechaInicio", typeof(System.DateTime));
+    
+            var p_FechaFinParameter = p_FechaFin.HasValue ?
+                new ObjectParameter("p_FechaFin", p_FechaFin) :
+                new ObjectParameter("p_FechaFin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("generarEntregasPedido", p_fechaInicioParameter, p_FechaFinParameter);
+        }
     }
 }

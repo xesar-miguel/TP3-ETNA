@@ -2187,6 +2187,10 @@
           <Parameter Name="p_fechaInicio" Type="datetime" Mode="In" />
           <Parameter Name="p_FechaFin" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="generarEntregasPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_fechaInicio" Type="datetime" Mode="In" />
+          <Parameter Name="p_FechaFin" Type="datetime" Mode="In" />
+        </Function>
         <EntityContainer Name="ETNADbModelStoreContainer">
           <EntitySet Name="Almacenes" EntityType="Self.Almacenes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Backorder" EntityType="Self.Backorder" Schema="dbo" store:Type="Tables" />
@@ -3178,6 +3182,10 @@
             <End Role="DetallePlanProduccion" EntitySet="DetallePlanProduccionSet" />
           </AssociationSet>
           <FunctionImport Name="generarEntregasFactura">
+            <Parameter Name="p_fechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="p_FechaFin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="generarEntregasPedido">
             <Parameter Name="p_fechaInicio" Mode="In" Type="DateTime" />
             <Parameter Name="p_FechaFin" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -6273,6 +6281,7 @@
       </EndProperty>
     </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="generarEntregasFactura" FunctionName="ETNADbModel.Store.generarEntregasFactura" />
+          <FunctionImportMapping FunctionImportName="generarEntregasPedido" FunctionName="ETNADbModel.Store.generarEntregasPedido" />
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
