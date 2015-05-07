@@ -339,6 +339,8 @@
     <Content Include="Views\Entrega\_ListaDetalle.cshtml" />
     <Content Include="Views\Distribucion\Index.cshtml" />
     <Content Include="Views\Entrega\GenerarEntrega.cshtml" />
+    <Content Include="Views\Entrega\ModificarEntrega.cshtml" />
+    <Content Include="Views\Entrega\EliminarEntrega.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

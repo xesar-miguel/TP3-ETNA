@@ -1,0 +1,91 @@
+﻿@model ETNA.MVC.Models.DI.EntregaViewModel
+
+@{
+    ViewBag.Title = "Detalle de Entrega (Modificar)";
+}
+
+<h2>Detalle de Entrega (Modificar)</h2>
+
+<fieldset>
+    <legend>EntregaViewModel</legend>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "filtradoForm" }))
+    {
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Numero)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Numero, new { disabled = "disabled", @readonly = "readonly" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FechaEntrega)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.FechaEntrega, "{0:dd/MM/yyyy}", new { disabled = "disabled", @readonly = "readonly" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Cliente)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Cliente, new { disabled = "disabled", @readonly = "readonly" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EstadoEntrega)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.EstadoEntrega, new { disabled = "disabled", @readonly = "readonly" })
+        </div>
+
+
+    }
+</fieldset>
+
+
+<div id="targetDiv">
+    @Html.Partial("_ListaDetalle", Model.ListaDetalle)
+</div>
+
+<div class="editor-field" style="padding-top: 10px;">
+    <input type="button" value="Eliminar" onclick="eliminar();" />
+    <a href="@Url.Action("Index", "Entrega")">
+        <input type="button" value="Cerrar" />
+    </a>
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+     
+        var eliminar = function () {
+
+            var r = confirm("¿Desea eliminar la Entrega?");
+
+            if (r == true)
+            {
+
+                var id = '@Model.Codigo';
+               
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("DesactivarEntrega", "Entrega")",
+                    data: {id:id},
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    if (data.Message == 1) {
+                        window.location.href = '@Url.Action("Index", "Entrega")';
+                    }
+                    else {
+                        alert('Error, no se pudo culminar el proceso');
+                    }
+                }
+            });
+
+        }
+
+        };
+
+
+
+    </script>
+}

@@ -43,10 +43,17 @@
                 @Html.ActionLink("Ver", "VerEntrega", new { id = item.Codigo})
             </td>
             <td>
-                @Html.ActionLink("Modificar", "VerEntrega", new { id = item.Codigo })
+                @if (item.idEstadoEntrega != 4)
+                { 
+                     @Html.ActionLink("Modificar", "ModificarEntrega", new { id = item.Codigo })
+                }
+               
             </td>
             <td>
-                @Html.ActionLink("Eliminar", "VerEntrega", new { id = item.Codigo })
+                @if (item.idEstadoEntrega != 4)
+                {
+                    @Html.ActionLink("Eliminar", "EliminarEntrega", new { id = item.Codigo })
+                }
             </td>
         </tr>
     }

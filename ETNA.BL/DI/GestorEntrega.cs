@@ -2,6 +2,7 @@
 using ETNA.Domain;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,6 +59,24 @@ namespace ETNA.BL.DI
             int generar = context.generarEntregasPedido(fechaInicio, fechaFin);
 
             return generar;
+        }
+
+        public bool modificarEntrega(int id, DateTime fechaEntrega)
+        {
+            var context = new ETNADbModelContainer();
+            var entrega = context.Entrega.Find(id);
+            entrega.FechaEntrega = fechaEntrega;
+            context.SaveChanges();
+            return true;
+        }
+
+        public bool eliminarEntrega(int id)
+        {
+            var context = new ETNADbModelContainer();
+            var entrega = context.Entrega.Find(id);
+            entrega.idEstadoEntrega = 4;
+            context.SaveChanges();
+            return true;
         }
 
     }

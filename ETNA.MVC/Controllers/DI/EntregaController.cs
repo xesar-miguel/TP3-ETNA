@@ -117,7 +117,76 @@ namespace ETNA.MVC.Controllers.DI
                 Message = message
             }, JsonRequestBehavior.AllowGet);
         }
-            
+
+        public ActionResult ModificarEntrega(int id)
+        {
+            //Invocamos al servicio
+            var service = new GestorEntrega();
+            var entregaDto = service.ObtenerEntrega(id);
+
+            //Mapeamos el DTO a nuestro modelo (de forma automática o a mano, dependiendo de nuestra necesidad)
+            var entrega = Mapper.Map<EntregaViewModel>(entregaDto);
+
+            var detallesDto = service.ObtenerEntregaDetalles(id);
+
+            var listaDetalles = Mapper.Map<List<DetalleEntregaViewModel>>(detallesDto);
+
+            entrega.ListaDetalle = listaDetalles;
+
+            return View(entrega);
+        }
+
+        [HttpPost]
+        public JsonResult ModificarEntrega(int id, DateTime fechaEntrega)
+        {
+            int message = 0;
+            //Invocamos al servicio
+            var service = new GestorEntrega();
+
+            service.modificarEntrega(id, fechaEntrega);
+
+            message = 1;
+
+            return Json(new
+            {
+                Message = message
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult EliminarEntrega(int id)
+        {
+            //Invocamos al servicio
+            var service = new GestorEntrega();
+            var entregaDto = service.ObtenerEntrega(id);
+
+            //Mapeamos el DTO a nuestro modelo (de forma automática o a mano, dependiendo de nuestra necesidad)
+            var entrega = Mapper.Map<EntregaViewModel>(entregaDto);
+
+            var detallesDto = service.ObtenerEntregaDetalles(id);
+
+            var listaDetalles = Mapper.Map<List<DetalleEntregaViewModel>>(detallesDto);
+
+            entrega.ListaDetalle = listaDetalles;
+
+            return View(entrega);
+        }
+
+        [HttpPost]
+        public JsonResult DesactivarEntrega(int id)
+        {
+            int message = 0;
+            //Invocamos al servicio
+            var service = new GestorEntrega();
+
+            service.eliminarEntrega(id);
+
+            message = 1;
+
+            return Json(new
+            {
+                Message = message
+            }, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

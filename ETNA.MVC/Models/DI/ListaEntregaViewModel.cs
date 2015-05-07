@@ -31,5 +31,7 @@ namespace ETNA.MVC.Models.DI
         [DisplayName("Zona Despacho")]
         public string ZonaDespacho { get; set; }
 
+        public int idEstadoEntrega { get; set; }
+
     }
 }
