@@ -42,5 +42,14 @@ namespace ETNA.BL.DI
                  ).ToList();
         }
 
+        public int generarEntregasFactura(DateTime fechaInicio, DateTime fechaFin)
+        {
+            var context = new ETNADbModelContainer();
+
+            int generar = context.generarEntregasFactura(fechaInicio,fechaFin);
+
+            return generar;
+        }
+
     }
 }

@@ -39,6 +39,8 @@ namespace ETNA.MVC.Controllers.DI
             if (listaEntregas != null && listaEntregas.Count() == 0)
             {
                 model.GenerarEntrega = true;
+                service.generarEntregasFactura(DateTime.Today, DateTime.Now);
+
             }
 
             model.ListaInicial = listaEntregas;
