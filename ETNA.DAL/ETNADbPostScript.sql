@@ -79,50 +79,55 @@ INSERT INTO EmpleadoAlmacen (Empleado_Id, Almacen_Id) VALUES (2,1);
 -- Empleado con 1 almacén JMOSCOSO
 INSERT INTO EmpleadoAlmacen (Empleado_Id, Almacen_Id) VALUES (3,2);
 
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA U1R','','',10,20, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA NS40','','',20,30, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA N4051','','',30,40, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA NS60','','',40,50, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA L18','','',50,60, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA L1','','',70,80, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA 42','','',80,90, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA 40R','','',90,100, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA 026','','',100,110, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA D26','','',110,120, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA D31','','',120,130, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA 31A','','',130,140, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA 31T','','',140,150, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA N200','','',150,160, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA N200 PRO','','',160,170, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('BATERIA 4Y','','',170,180, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('AGUA DESTILADA','','',180,190, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('VOLTIMETRO','','',190,200, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('ALTERNADOR','','',200,250, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('PLOMO','','',10,20, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('MALLA METALICA','','',20,30, 0);
-INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado)
-VALUES ('ANIONES','','',30,40, 0);
+-- Insert tipo de producto
+INSERT INTO TipoProducto (Descripcion, Estado) VALUES ('Insumo',1);
+INSERT INTO TipoProducto (Descripcion, Estado) VALUES ('Bateria',1);
+INSERT INTO TipoProducto (Descripcion, Estado) VALUES ('Otro',1);
+
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA U1R','','',10,20, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA NS40','','',20,30, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA N4051','','',30,40, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA NS60','','',40,50, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA L18','','',50,60, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA L1','','',70,80, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA 42','','',80,90, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA 40R','','',90,100, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA 026','','',100,110, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA D26','','',110,120, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA D31','','',120,130, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA 31A','','',130,140, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA 31T','','',140,150, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA N200','','',150,160, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA N200 PRO','','',160,170, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('BATERIA 4Y','','',170,180, 0, 2);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('AGUA DESTILADA','','',180,190, 0, 3);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('VOLTIMETRO','','',190,200, 0, 3);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('ALTERNADOR','','',200,250, 0, 3);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('PLOMO','','',10,20, 0, 1);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('MALLA METALICA','','',20,30, 0, 1);
+INSERT INTO Productos (Nombre, DescripcionCorta,DescripcionLarga, PrecioListaCompra, PrecioListaVenta, Estado, TipoProducto_IdTipo)
+VALUES ('ANIONES','','',30,40, 0, 1);
 
 INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 1, 100,  'PASILLO A, FILA 01, COLUMNA 05');
 INSERT INTO StockProductos (IdAlmacen, IdProducto, CantidadDisponible, Ubicacion) VALUES(1, 2, 100,  'PASILLO A, FILA 02, COLUMNA 04');
