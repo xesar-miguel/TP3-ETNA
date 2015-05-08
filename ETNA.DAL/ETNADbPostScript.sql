@@ -628,6 +628,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+DROP PROCEDURE [dbo].[generarEntregasFactura]
+GO
 
 CREATE PROCEDURE [dbo].[generarEntregasFactura]
 	@p_fechaInicio DATETIME = '2015-05-06 11:39:07.850'
@@ -679,7 +681,7 @@ BEGIN
 
 	-- Asignar número de entrega
 	update entrega
-	   set numero = concat('ENT-', replicate('0', 3 - len(codigo)),cast(codigo as char(3))) 
+	   set numero = 'ENT-' + replicate('0', 3 - len(codigo)) + cast(codigo as char(3))
 	 where codigo = @v_codigo ;
 
 	-- Generar detalle por entrega
@@ -728,6 +730,9 @@ SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
+GO
+
+DROP PROCEDURE [dbo].[generarEntregasPedido]
 GO
 
 CREATE PROCEDURE [dbo].[generarEntregasPedido]
@@ -785,7 +790,7 @@ BEGIN
 
 	-- Asignar número de entrega
 	update entrega
-	   set numero = concat('ENT-', replicate('0', 3 - len(codigo)),cast(codigo as char(3))) 
+	   set numero = 'ENT-' + replicate('0', 3 - len(codigo)) + cast(codigo as char(3))
 	 where codigo = @v_codigo ;
 
 	-- Generar detalle por entrega
